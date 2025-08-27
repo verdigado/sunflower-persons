@@ -1,0 +1,52 @@
+{
+  "name": "sunflower-persons",
+  "version": "1.1.0",
+  "description": "Sunflower Plugin showing POIs on a map and accepting hints.",
+  "author": "verdigado eG",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Map",
+    "POI"
+  ],
+  "homepage": "https://github.com/verdigado/sunflower-persons",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verdigado/sunflower-persons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/verdigado/sunflower-persons/issues"
+  },
+  "devDependencies": {
+    "@wordpress/data": "^10.25.0",
+    "@wordpress/i18n": "^5.25.0",
+    "@wordpress/scripts": "^30.18.0",
+    "@wordpress/stylelint-config": "^23.17.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "dir-archiver": "^2.1.0",
+    "sass": "^1.77.8"
+  },
+  "scripts": {
+    "watch": "sass sass/style.scss ./style.css -w",
+    "compile:build": "sass sass/style.scss ./style.css",
+    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss' 'src/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js' 'src/**/*.js' 'assets/js/*.js'",
+    "lint:jsa": "wp-scripts lint-js",
+    "copy-node-modules": "copyfiles -u 1 node_modules/jquery-slim/dist/*.min.js node_modules/bootstrap/dist/js/*.min.js assets/vndr",
+    "bundle": "npm run copy-node-modules && cd ../ && dir-archiver --src sunflower-persons --dest sunflower-persons.zip --includebasedir true --exclude Makefile create-changelog.php changelog.html documentation mkdocs .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map .favorites.json",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "dependencies": {
+    "copyfiles": "^2.4.1",
+    "jquery-slim": "^3.0.0",
+    "pa11y": "^8.0"
+  },
+  "overrides": {
+    "ws": "^8.18.0",
+    "lighthouse": "^12.1.0",
+    "puppeteer-core": "^22.13.1"
+  }
+}

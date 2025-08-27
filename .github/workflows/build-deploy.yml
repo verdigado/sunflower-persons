@@ -1,0 +1,71 @@
+# .github/workflows/release.yml
+
+name: Build and Deploy
+
+on:
+  release:
+    types: [published]
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: check theme version against tag
+        run: |
+          THEME_VERSION=$(head  sunflower-persons.php | grep Version | sed -r 's/\*\ version: +//I' | tr -d ' ')
+          V="v"
+          echo Version in style.scss: $THEME_VERSION
+          if [ "$V$THEME_VERSION" != "${{ github.event.release.tag_name }}" ]; then exit 1; fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache node_modules directory
+        uses: actions/cache@v4
+        id: npm-cache-dir
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install npm packages
+        if: steps.npm-cache-dir.outputs.cache-hit != 'true'
+        run: npm ci
+
+      # - name: Build JS
+      #   run: npm run build
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: run install composer
+        run: |
+          composer install
+
+      - name: Make bundle
+        run: npm run bundle
+
+      - name: fail on fork
+        if: github.repository_owner != 'verdigado'
+        run: exit 1
+
+      - name: Rename ZIP file
+        run: |
+          mv ../sunflower-persons.zip sunflower-persons-${{ github.event.release.tag_name }}.zip
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "sunflower-persons-${{ github.event.release.tag_name }}.zip"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}

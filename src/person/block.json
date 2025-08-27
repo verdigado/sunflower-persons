@@ -1,0 +1,20 @@
+{
+  "apiVersion": 2,
+  "name": "sunflower-persons/person",
+  "title": "Person(en)",
+  "category": "widgets",
+  "icon": "groups",
+  "description": "Zeigt eine einzelne Person oder eine Liste von Personen an.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "personId": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": ["file:./style-index.css"],
+  "render": "file:./render.php"
+}

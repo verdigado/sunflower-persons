@@ -1,0 +1,38 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or keep the empty file.
+ */
+
+.sunflower-person {
+    text-align: center;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+
+	&__link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+
+	&__title {
+		margin: 0.5em 0 0;
+		font-size: 1rem;
+	}
+
+	&-thumb {
+		border-radius: 50%;
+		margin-bottom: 0.5em;
+		max-width: 120px;
+		height: auto;
+	}
+
+	&-list {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 1rem;
+	}
+}
