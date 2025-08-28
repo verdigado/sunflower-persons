@@ -14,7 +14,7 @@ $sunflower_persons_person_id = isset( $attributes['personId'] ) ? intval( $attri
 if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_post = get_post( $sunflower_persons_person_id );
 	if ( ! $sunflower_persons_post || 'person' !== $sunflower_persons_post->post_type ) {
-		return '<div class="sunflower-person">⚠️ ' . esc_html__( 'Person nicht gefunden.', 'sunflower-persons' ) . '</div>';
+		return '<div class="sunflower-person">⚠️ ' . esc_html__( 'Person not found.', 'sunflower-persons' ) . '</div>';
 	}
 
 	setup_postdata( $sunflower_persons_post );
@@ -25,6 +25,9 @@ if ( $sunflower_persons_person_id > 0 ) {
 		</div>
 		<div class="sunflower-person__body">
 			<h3 class="sunflower-person__title"><?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?></h3>
+			<?php
+				echo wp_kses_post( sunflower_persons_get_all_person_groups( $sunflower_persons_post ) );
+			?>
 			<div class="sunflower-person__content">
 			<?php
 			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
@@ -36,22 +39,6 @@ if ( $sunflower_persons_person_id > 0 ) {
 	<?php
 	wp_reset_postdata();
 } else {
-	/**
-	 * Query all persons and return as list.
-	 *
-	 * @return WP_Query List of persons.
-	 */
-	function sunflower_persons_get_all_persons() {
-		return new WP_Query(
-			array(
-				'post_type'      => 'person',
-				'posts_per_page' => -1,
-				'orderby'        => 'title',
-				'order'          => 'ASC',
-				'no_found_rows'  => true,
-			)
-		);
-	}
 	$sunflower_persons_persons = sunflower_persons_get_all_persons();
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'Keine Personen gefunden.', 'sunflower-persons' ) . '</div>';

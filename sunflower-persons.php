@@ -65,3 +65,40 @@ register_deactivation_hook(
 		flush_rewrite_rules();
 	}
 );
+
+/**
+ * Query all persons and return as list.
+ *
+ * @return WP_Query List of persons.
+ */
+function sunflower_persons_get_all_persons() {
+	return new WP_Query(
+		array(
+			'post_type'      => 'person',
+			'posts_per_page' => -1,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+			'no_found_rows'  => true,
+		)
+	);
+}
+
+/**
+ * Query all groups of a person.
+ *
+ * @param WP_Post $sunflower_persons_post Person post object.
+ * @return string HTML markup for all groups of a person.
+ */
+function sunflower_persons_get_all_person_groups( $sunflower_persons_post ) {
+
+	$groups                        = get_the_terms( $sunflower_persons_post->ID, 'group' );
+	$sunflower_person_group_string = '';
+	if ( $groups && ! is_wp_error( $groups ) ) {
+		$sunflower_person_group_string = '<div class="sunflower-person__groups">';
+		foreach ( $groups as $group ) {
+			$sunflower_person_group_string .= '<span class="sunflower-person__group">' . esc_html( $group->name ) . '</span> ';
+		}
+		$sunflower_person_group_string .= '</div>';
+	}
+	return $sunflower_person_group_string;
+}

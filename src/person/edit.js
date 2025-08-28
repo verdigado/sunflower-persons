@@ -13,6 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {
+	Disabled,
 	PanelBody,
     SelectControl,
     Spinner
@@ -50,14 +51,16 @@ export default function Edit( { attributes, setAttributes } ) {
                     </PanelBody>
                 </InspectorControls>
                 {!persons && <Spinner />}
-                {persons && (personId === 0 ? 'Liste aller Personen (Frontend zeigt Karten)' : `Einzelne Person #${personId}`)}
+                {persons && (personId === 0 ? 'Liste aller Personen' : `Einzelne Person #${personId}`)}
             </div>
 
             <div { ...blockProps }>
-				<ServerSideRender
-					block="sunflower-persons/person"
-					attributes={ attributes }
-				/>
+                <Disabled>
+                    <ServerSideRender
+                        block="sunflower-persons/person"
+                        attributes={ attributes }
+                    />
+                </Disabled>
 			</div>
 		</>
         );
