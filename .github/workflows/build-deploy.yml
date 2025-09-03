@@ -59,6 +59,17 @@ jobs:
         if: github.repository_owner != 'verdigado'
         run: exit 1
 
+      - name: Rename ZIP file
+        run: |
+          mv ../sunflower-persons.zip sunflower-persons-${{ github.event.release.tag_name }}.zip
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "sunflower-persons-${{ github.event.release.tag_name }}.zip"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Provide deploy_key
         env:
           DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -83,14 +94,3 @@ jobs:
         run: |
             rsync -a sunflower-persons-${{ github.event.release.tag_name }}.zip version.txt changelog.html production:/var/www/updateserver/sunflower-persons/
             PLUGIN_VERSION=$(cat version.txt | sed -e 's/^v//')
-
-      - name: Rename ZIP file
-        run: |
-          mv ../sunflower-persons.zip sunflower-persons-${{ github.event.release.tag_name }}.zip
-
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "sunflower-persons-${{ github.event.release.tag_name }}.zip"
-          allowUpdates: true
-          token: ${{ secrets.GITHUB_TOKEN }}
