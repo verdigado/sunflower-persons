@@ -76,7 +76,7 @@ jobs:
             StrictHostKeyChecking no
           END
 
-          - name: save version
+      - name: save version
         run: echo ${{ github.event.release.tag_name }} > version.txt
 
       - name: rsync zipfile, version and changelog
