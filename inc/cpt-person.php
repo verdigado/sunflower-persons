@@ -73,3 +73,124 @@ function sunflower_persons_register_group_taxonomy() {
 	);
 }
 add_action( 'init', 'sunflower_persons_register_group_taxonomy' );
+
+add_action(
+	'add_meta_boxes',
+	function () {
+		add_meta_box(
+			'sunflower_persons_contact',
+			__( 'Contact details', 'sunflower-persons' ),
+			'sunflower_persons_render_contact_meta',
+			'person',
+			'normal',
+			'default'
+		);
+	}
+);
+
+/**
+ * Render the contact meta box.
+ *
+ * @param WP_Post $post The post object.
+ */
+function sunflower_persons_render_contact_meta( $post ) {
+	$phone       = get_post_meta( $post->ID, 'phone', true );
+	$email       = get_post_meta( $post->ID, 'email', true );
+	$website     = get_post_meta( $post->ID, 'website', true );
+	$socialmedia = get_post_meta( $post->ID, 'socialmedia', true );
+	?>
+	<table class="form-table"><tbody>
+	<tr>
+		<th scope="row">
+			<label for="person_phone"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?></label>
+		</th>
+		<td><input type="tel" name="person_phone" id="person_phone" value="<?php echo esc_attr( $phone ); ?>" />
+			<br><span class="description">Format: +49 123 321 31 2</span>
+		</td>
+		<th scope="row">
+			<label for="person_email"><?php esc_html_e( 'Email', 'sunflower-persons' ); ?></label>
+		</th>
+		<td><input type="email" name="person_email" id="person_email" value="<?php echo esc_attr( $email ); ?>" />
+			<br><span class="description"></span>
+		</td>
+	</tr>
+		<th scope="row">
+			<label for="person_website"><?php esc_html_e( 'Website', 'sunflower-persons' ); ?></label>
+		</th>
+		<td><input type="url" name="person_website" id="person_website" value="<?php echo esc_attr( $website ); ?>" />
+			<br><span class="description"></span>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<label for="person_socialmedia"><?php esc_html_e( 'Social Media', 'sunflower-persons' ); ?></label>
+		</th>
+		<td colspan="3">
+		<?php
+		$default   = array();
+		$default[] = 'fab fa-x-twitter;X (Twitter);';
+		$default[] = 'fab fa-mastodon;Mastodon;';
+		$default[] = 'fab fa-facebook-f;Facebook;';
+		$default[] = 'fab fa-instagram;Instagram;';
+		$default[] = 'fab fa-whatsapp;WhatsApp;';
+		$default[] = 'fab fa-bluesky;Bluesky;';
+		$default[] = 'fab fa-threads;Threads;';
+		$default[] = 'fab fa-tiktok;TikTok;';
+		$default[] = 'fab fa-linkedin;LinkedIn;';
+		$default[] = 'fab fa-youtube;YouTube;';
+		$default[] = 'fas fa-globe;Webseite;';
+		$default[] = 'forkawesome fa-peertube;PeerTube;';
+		$default[] = 'forkawesome fa-pixelfed;Pixelfed;';
+
+		printf(
+			'<textarea rows="10" style="white-space:pre-wrap;width:100%%" id="person_socialmedia" name="person_socialmedia">%s</textarea>',
+			empty( $socialmedia ) ? esc_attr( implode( "\n", $default ) ) : esc_attr( $socialmedia )
+		);
+		?>
+		<br><span class="description">Format: Fontawesome-Klasse; Title-Attribut; URL</span>
+		</td>
+	<tr>
+
+	</table>
+	<?php
+}
+
+add_action(
+	'save_post_person',
+	'sunflower_persons_save_post_form'
+);
+
+/**
+ * Save the form data to custom post type.
+ *
+ * @param int $post_id The post ID.
+ */
+function sunflower_persons_save_post_form( $post_id ) {
+
+	// Do not save, if nonce is invalid.
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-post_' . $post_id ) ) {
+		return;
+	}
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// check user permissions.
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	if ( isset( $_POST['person_phone'] ) ) {
+		update_post_meta( $post_id, 'person_phone', sanitize_text_field( $_POST['person_phone'] ) );
+	}
+	if ( isset( $_POST['person_website'] ) ) {
+		update_post_meta( $post_id, 'person_website', esc_url_raw( $_POST['person_website'] ) );
+	}
+	if ( isset( $_POST['person_email'] ) ) {
+		update_post_meta( $post_id, 'person_email', sanitize_text_field( $_POST['person_email'] ) );
+	}
+	if ( isset( $_POST['person_socialmedia'] ) ) {
+		update_post_meta( $post_id, 'person_socialmedia', sanitize_textarea_field( $_POST['person_socialmedia'] ) );
+	}
+}
