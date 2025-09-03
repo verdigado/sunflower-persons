@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
 "POT-Creation-Date: 2025-08-28T08:06:52+00:00\n"
-"PO-Revision-Date: 2025-08-28 10:07+0200\n"
+"PO-Revision-Date: 2025-09-01 08:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: inc/cpt-person.php:13 inc/cpt-person.php:23
 msgid "Persons"
-msgstr ""
+msgstr "Personen"
 
 #: inc/cpt-person.php:14
 msgid "Person"

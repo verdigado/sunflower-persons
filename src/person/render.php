@@ -18,6 +18,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 
 	setup_postdata( $sunflower_persons_post );
+
+	$sunflower_persons_person_phone       = get_post_meta( $sunflower_persons_post->ID, 'person_phone', true );
+	$sunflower_persons_person_email       = get_post_meta( $sunflower_persons_post->ID, 'person_email', true );
+	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
+	$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $sunflower_persons_post->ID );
 	?>
 	<article class="sunflower-person sunflower-person--single" id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
 		<div class="sunflower-person__media">
@@ -35,6 +40,37 @@ if ( $sunflower_persons_person_id > 0 ) {
 			?>
 			</div>
 		</div>
+		<ul class="sunflower-person__meta">
+				<?php if ( $sunflower_persons_person_phone ) : ?>
+					<li class="sunflower-person__phone">
+						📞 <?php echo esc_html( $sunflower_persons_person_phone ); ?>
+					</li>
+				<?php endif; ?>
+
+				<?php if ( $sunflower_persons_person_email ) : ?>
+					<li class="sunflower-person__email">
+						✉️ <a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+							<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
+						</a>
+					</li>
+				<?php endif; ?>
+
+				<?php if ( $sunflower_persons_person_website ) : ?>
+					<li class="sunflower-person__website">
+						<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
+							<?php echo esc_html( $sunflower_persons_person_website ); ?>
+						</a>
+					</li>
+				<?php endif; ?>
+
+				<?php
+				if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
+					foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
+						echo '<li class="sunflower-person__socialmedia">' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
+					}
+				}
+				?>
+			</ul>
 	</article>
 	<?php
 	wp_reset_postdata();
@@ -45,7 +81,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 
 	?>
-<section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Personen', 'sunflower-persons' ); ?>">
+<section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>">
 	<?php
 	while ( $sunflower_persons_persons->have_posts() ) :
 		$sunflower_persons_persons->the_post();
