@@ -4,7 +4,7 @@
  * Description: Custom Post Type "Person" + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen.
  * Version: 1.0.0
  * Author: verdigado eG
- * Autor URI: https://verdigado.com
+ * Author URI: https://verdigado.com
  * Text Domain: sunflower-persons
  * Requires at least: 6.8
  * Requires PHP: 8.2
@@ -36,7 +36,7 @@ function sunflower_persons_blocks_init() {
 	wp_set_script_translations(
 		'sunflower-persons-person-editor-script',
 		'sunflower-persons-person',
-		plugin_dir_path( __FILE__ ) . 'languages'
+		SUNFLOWER_PERSONS_PATH . 'languages'
 	);
 }
 

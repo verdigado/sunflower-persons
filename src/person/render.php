@@ -26,7 +26,18 @@ if ( $sunflower_persons_person_id > 0 ) {
 	?>
 	<article class="sunflower-person sunflower-person--single" id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
 		<div class="sunflower-person__media">
-			<?php echo get_the_post_thumbnail( $sunflower_persons_post->ID, 'medium', array( 'class' => 'sunflower-person-thumb' ) ); ?>
+			<?php
+				$sunflower_persons_thumbnail = get_the_post_thumbnail( $sunflower_persons_post->ID, 'medium' )
+				? get_the_post_thumbnail( $sunflower_persons_post->ID, 'medium', array( 'class' => 'sunflower-person-medium' ) )
+				: sunflower_get_setting( 'sunflower_open_graph_fallback_image' );
+
+				// If still empty, take the default image.
+			if ( ! $sunflower_persons_thumbnail ) {
+				$sunflower_persons_thumbnail = '<img src="' . esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ) . '" class="sunflower-person-medium" . alt="Drawing of a person head." />';
+
+			}
+				echo wp_kses_post( $sunflower_persons_thumbnail );
+			?>
 		</div>
 		<div class="sunflower-person__body">
 			<h3 class="sunflower-person__title"><?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?></h3>
@@ -43,13 +54,15 @@ if ( $sunflower_persons_person_id > 0 ) {
 		<ul class="sunflower-person__meta">
 				<?php if ( $sunflower_persons_person_phone ) : ?>
 					<li class="sunflower-person__phone">
-						📞 <?php echo esc_html( $sunflower_persons_person_phone ); ?>
+						<i class="fa-solid fa-phone"></i>
+						<?php echo esc_html( $sunflower_persons_person_phone ); ?>
 					</li>
 				<?php endif; ?>
 
 				<?php if ( $sunflower_persons_person_email ) : ?>
 					<li class="sunflower-person__email">
-						✉️ <a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+						<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+							<i class="fa-solid fa-envelope"></i>
 							<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
 						</a>
 					</li>
@@ -58,6 +71,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 				<?php if ( $sunflower_persons_person_website ) : ?>
 					<li class="sunflower-person__website">
 						<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
+							<i class="fa-solid fa-globe"></i>
 							<?php echo esc_html( $sunflower_persons_person_website ); ?>
 						</a>
 					</li>
@@ -85,13 +99,54 @@ if ( $sunflower_persons_person_id > 0 ) {
 	<?php
 	while ( $sunflower_persons_persons->have_posts() ) :
 		$sunflower_persons_persons->the_post();
+		$sunflower_persons_person_phone       = get_post_meta( get_the_ID(), 'person_phone', true );
+		$sunflower_persons_person_email       = get_post_meta( get_the_ID(), 'person_email', true );
+		$sunflower_persons_person_website     = get_post_meta( get_the_ID(), 'person_website', true );
+		$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( get_the_ID() );
 		?>
 		<article class="sunflower-person">
 			<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
 				<div class="sunflower-person__media">
-					<?php echo get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'class' => 'sunflower-person-thumb' ) ); ?>
+				<?php
+				$sunflower_persons_thumbnail = get_the_post_thumbnail( get_the_ID(), 'thumbnail' )
+				? get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'class' => 'sunflower-person-thumb' ) )
+				: sunflower_get_setting( 'sunflower_open_graph_fallback_image' );
+
+				// If still empty, take the default image.
+				if ( ! $sunflower_persons_thumbnail ) {
+					$sunflower_persons_thumbnail = '<img src="' . esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ) . '" class="sunflower-person-thumb" . alt="Drawing of a person head." />';
+
+				}
+				echo wp_kses_post( $sunflower_persons_thumbnail );
+				?>
 				</div>
-				<h4 class="sunflower-person__title"><?php the_title(); ?></h4>
+				<div class="sunflower-person__body">
+					<h4 class="sunflower-person__title"><?php the_title(); ?></h4>
+				</div>
+
+				<ul class="sunflower-person__meta">
+					<?php if ( $sunflower_persons_person_website ) : ?>
+						<li class="sunflower-person__website">
+							<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
+								<i class="fa-solid fa-globe"></i>
+							</a>
+						</li>
+					<?php endif; ?>
+					<?php if ( $sunflower_persons_person_email ) : ?>
+						<li class="sunflower-person__email">
+							<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+								<i class="fa-solid fa-envelope"></i>
+							</a>
+						</li>
+					<?php endif; ?>
+					<?php
+					if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
+						foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
+							echo '<li class="sunflower-person__socialmedia">' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
+						}
+					}
+					?>
+				</ul>
 			</a>
 		</article>
 	<?php endwhile; ?>
