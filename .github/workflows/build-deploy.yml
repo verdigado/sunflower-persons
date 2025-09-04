@@ -20,7 +20,7 @@ jobs:
         run: |
           PLUGIN_VERSION=$(head  sunflower-persons.php | grep Version | sed -r 's/\*\ version: +//I' | tr -d ' ')
           V="v"
-          echo Version in style.scss: $PLUGIN_VERSION
+          echo Version in sunflower-persons.php: $PLUGIN_VERSION
           if [ "$V$PLUGIN_VERSION" != "${{ github.event.release.tag_name }}" ]; then exit 1; fi
 
       - uses: actions/setup-node@v4
