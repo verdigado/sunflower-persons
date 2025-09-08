@@ -72,13 +72,28 @@ register_deactivation_hook(
 /**
  * Query all persons and return as list.
  *
+ * @param array $group_ids Optional array of group IDs or slugs to filter persons by group.
  * @return WP_Query List of persons.
  */
-function sunflower_persons_get_all_persons() {
+function sunflower_persons_get_all_persons( $group_ids = array() ) {
+	$tax_query = array();
+
+	if ( $group_ids ) {
+		array_push(
+			$tax_query,
+			array(
+				'taxonomy' => 'sunflower_group',
+				'field'    => 'slug',
+				'terms'    => $group_ids,
+			)
+		);
+	}
+
 	return new WP_Query(
 		array(
-			'post_type'      => 'person',
+			'post_type'      => 'sunflower_person',
 			'posts_per_page' => -1,
+			'tax_query'      => $tax_query,
 			'orderby'        => 'title',
 			'order'          => 'ASC',
 			'no_found_rows'  => true,
@@ -94,7 +109,7 @@ function sunflower_persons_get_all_persons() {
  */
 function sunflower_persons_get_all_person_groups( $sunflower_persons_post ) {
 
-	$groups                        = get_the_terms( $sunflower_persons_post->ID, 'group' );
+	$groups                        = get_the_terms( $sunflower_persons_post->ID, 'sunflower_group' );
 	$sunflower_person_group_string = '';
 	if ( $groups && ! is_wp_error( $groups ) ) {
 		$sunflower_person_group_string = '<div class="sunflower-person__groups">';

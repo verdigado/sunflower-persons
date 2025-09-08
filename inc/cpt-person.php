@@ -24,7 +24,7 @@ function sunflower_register_cpt_person() {
 	);
 
 	register_post_type(
-		'person',
+		'sunflower_person',
 		array(
 			'labels'       => $labels,
 			'public'       => true,
@@ -62,8 +62,8 @@ function sunflower_persons_register_group_taxonomy() {
 	);
 
 	register_taxonomy(
-		'group',
-		'person',
+		'sunflower_group',
+		'sunflower_person',
 		array(
 			'hierarchical' => true,
 			'labels'       => $labels,
@@ -81,7 +81,7 @@ add_action(
 			'sunflower_persons_contact',
 			__( 'Contact details', 'sunflower-persons' ),
 			'sunflower_persons_render_contact_meta',
-			'person',
+			'sunflower_person',
 			'normal',
 			'default'
 		);
@@ -156,7 +156,7 @@ function sunflower_persons_render_contact_meta( $post ) {
 }
 
 add_action(
-	'save_post_person',
+	'save_post_sunflower_person',
 	'sunflower_persons_save_post_form'
 );
 

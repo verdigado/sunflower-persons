@@ -12,6 +12,10 @@
     "personId": {
       "type": "number",
       "default": 0
+    },
+    "groups": {
+      "type": "array",
+      "default": []
     }
   },
   "editorScript": "file:./index.js",

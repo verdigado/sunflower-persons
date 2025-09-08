@@ -13,7 +13,7 @@ $sunflower_persons_person_id = isset( $attributes['personId'] ) ? intval( $attri
 // Single person view.
 if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_post = get_post( $sunflower_persons_person_id );
-	if ( ! $sunflower_persons_post || 'person' !== $sunflower_persons_post->post_type ) {
+	if ( ! $sunflower_persons_post || 'sunflower_person' !== $sunflower_persons_post->post_type ) {
 		return '<div class="sunflower-person">⚠️ ' . esc_html__( 'Person not found.', 'sunflower-persons' ) . '</div>';
 	}
 
@@ -89,7 +89,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 	<?php
 	wp_reset_postdata();
 } else {
-	$sunflower_persons_persons = sunflower_persons_get_all_persons();
+	$sunflower_persons_groups = array();
+	if ( isset( $attributes['groups'] ) && ! empty( $attributes['groups'] ) ) {
+		$sunflower_persons_groups = $attributes['groups'];
+	}
+	$sunflower_persons_persons = sunflower_persons_get_all_persons( $sunflower_persons_groups );
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'Keine Personen gefunden.', 'sunflower-persons' ) . '</div>';
 	}

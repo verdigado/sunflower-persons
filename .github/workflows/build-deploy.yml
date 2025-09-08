@@ -40,8 +40,8 @@ jobs:
         if: steps.npm-cache-dir.outputs.cache-hit != 'true'
         run: npm ci
 
-      # - name: Build JS
-      #   run: npm run build
+      - name: Build JS
+        run: npm run build
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
