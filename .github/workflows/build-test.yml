@@ -41,8 +41,8 @@ jobs:
       - name: Lint SCSS
         run: npm run lint:scss
 
-      # - name: Lint JS
-      #   run: npm run lint:js
+      - name: Lint JS
+        run: npm run lint:js
 
       - name: Build JS
         run: npm run build
