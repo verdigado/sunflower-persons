@@ -73,9 +73,10 @@ register_deactivation_hook(
  * Query all persons and return as list.
  *
  * @param array $group_ids Optional array of group IDs or slugs to filter persons by group.
+ * @param array $tag_ids Optional array of tag IDs or slugs to filter persons by tags.
  * @return WP_Query List of persons.
  */
-function sunflower_persons_get_all_persons( $group_ids = array() ) {
+function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = array() ) {
 	$tax_query = array();
 
 	if ( $group_ids ) {
@@ -85,6 +86,17 @@ function sunflower_persons_get_all_persons( $group_ids = array() ) {
 				'taxonomy' => 'sunflower_group',
 				'field'    => 'slug',
 				'terms'    => $group_ids,
+			)
+		);
+	}
+
+	if ( $tag_ids ) {
+		array_push(
+			$tax_query,
+			array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => $tag_ids,
 			)
 		);
 	}

@@ -27,7 +27,7 @@ import { useState, useEffect } from '@wordpress/element';
 const EMPTY_ARRAY = [];
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { personId, groups } = attributes;
+	const { personId, groups, tags } = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
 
@@ -58,6 +58,10 @@ export default function Edit( { attributes, setAttributes } ) {
 		useState( EMPTY_ARRAY );
 	const [ groupsFormValue, setGroupsFormValue ] = useState( EMPTY_ARRAY );
 
+	const [ tagsFormSuggestions, setTagsFormSuggestions ] =
+		useState( EMPTY_ARRAY );
+	const [ tagsFormValue, setTagsFormValue ] = useState( EMPTY_ARRAY );
+
 	const query = { per_page: -1, context: 'view' };
 
 	const { records: allGroups, hasResolved } = useEntityRecords(
@@ -66,28 +70,53 @@ export default function Edit( { attributes, setAttributes } ) {
 		query
 	);
 
+	const { records: allTags = [], hasResolved: hasResolvedTags } =
+		useEntityRecords( 'taxonomy', 'post_tag', query );
+
 	useEffect( () => {
 		if ( ! hasResolved ) {
 			return;
 		}
 
-		setGroupsFormSuggestions( allGroups.map( ( group ) => group.name ) );
+		setGroupsFormSuggestions( allGroups.map( ( g ) => g.name ) );
 		setGroupsFormValue(
 			allGroups
-				.filter( ( agroup ) =>
-					attributes.groups?.includes( agroup.slug )
-				)
-				.map( ( agroup ) => agroup.name )
+				.filter( ( g ) => groups?.includes( g.slug ) )
+				.map( ( g ) => g.name )
 		);
-	}, [ allGroups, hasResolved, groups, attributes.groups ] );
+	}, [ allGroups, hasResolved, groups ] );
+
+	useEffect( () => {
+		if ( ! hasResolvedTags ) {
+			return;
+		}
+
+		setTagsFormSuggestions( allTags.map( ( t ) => t.name ) );
+		setTagsFormValue(
+			allTags
+				.filter( ( t ) => tags?.includes( t.slug ) )
+				.map( ( t ) => t.name )
+		);
+	}, [ allTags, hasResolvedTags, tags ] );
 
 	const onChangeGroups = ( formGroups ) => {
 		setAttributes( {
 			groups: formGroups.map(
 				( groupName ) =>
 					allGroups
-						.filter( ( group ) => group.name === groupName )
-						.map( ( group ) => group.slug )[ 0 ]
+						.filter( ( g ) => g.name === groupName )
+						.map( ( g ) => g.slug )[ 0 ]
+			),
+		} );
+	};
+
+	const onChangeTags = ( formTags ) => {
+		setAttributes( {
+			tags: formTags.map(
+				( tagName ) =>
+					allTags
+						.filter( ( t ) => t.name === tagName )
+						.map( ( t ) => t.slug )[ 0 ]
 			),
 		} );
 	};
@@ -116,6 +145,14 @@ export default function Edit( { attributes, setAttributes } ) {
 							value={ groupsFormValue }
 							onChange={ onChangeGroups }
 							suggestions={ groupsFormSuggestions }
+						/>
+
+						<FormTokenField
+							hasResolved={ hasResolvedTags }
+							label={ __( 'Tag' ) }
+							value={ tagsFormValue }
+							onChange={ onChangeTags }
+							suggestions={ tagsFormSuggestions }
 						/>
 					</PanelBody>
 				</InspectorControls>
