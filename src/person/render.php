@@ -93,7 +93,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 	if ( isset( $attributes['groups'] ) && ! empty( $attributes['groups'] ) ) {
 		$sunflower_persons_groups = $attributes['groups'];
 	}
-	$sunflower_persons_persons = sunflower_persons_get_all_persons( $sunflower_persons_groups );
+	$sunflower_persons_tags = array();
+	if ( isset( $attributes['tags'] ) && ! empty( $attributes['tags'] ) ) {
+		$sunflower_persons_tags = $attributes['tags'];
+	}
+	$sunflower_persons_persons = sunflower_persons_get_all_persons( $sunflower_persons_groups, $sunflower_persons_tags );
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'Keine Personen gefunden.', 'sunflower-persons' ) . '</div>';
 	}

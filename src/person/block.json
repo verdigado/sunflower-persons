@@ -16,6 +16,10 @@
     "groups": {
       "type": "array",
       "default": []
+    },
+    "tags": {
+      "type": "array",
+      "default": []
     }
   },
   "editorScript": "file:./index.js",
