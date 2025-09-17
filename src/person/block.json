@@ -20,6 +20,10 @@
     "tags": {
       "type": "array",
       "default": []
+    },
+    "filters": {
+      "type": "array",
+      "default": []
     }
   },
   "editorScript": "file:./index.js",

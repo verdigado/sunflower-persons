@@ -13,6 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {
+	CheckboxControl,
 	Disabled,
 	FormTokenField,
 	PanelBody,
@@ -27,7 +28,7 @@ import { useState, useEffect } from '@wordpress/element';
 const EMPTY_ARRAY = [];
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { personId, groups, tags } = attributes;
+	const { personId, groups, tags, filters } = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
 
@@ -121,6 +122,21 @@ export default function Edit( { attributes, setAttributes } ) {
 		} );
 	};
 
+	const allFilters = [
+		{
+			label: __( 'Show group filter', 'sunflower-persons-person' ),
+			slug: 'groups',
+		},
+	];
+
+	const toggleFilter = ( slug ) => {
+		const next = filters.includes( slug )
+			? filters.filter( ( s ) => s !== slug )
+			: [ ...filters, slug ];
+
+		setAttributes( { filters: next } );
+	};
+
 	return (
 		<>
 			<div { ...blockProps }>
@@ -154,6 +170,21 @@ export default function Edit( { attributes, setAttributes } ) {
 							onChange={ onChangeTags }
 							suggestions={ tagsFormSuggestions }
 						/>
+					</PanelBody>
+					<PanelBody
+						title={ __(
+							'Filter Settings',
+							'sunflower-persons-person'
+						) }
+					>
+						{ allFilters.map( ( t ) => (
+							<CheckboxControl
+								key={ t.slug }
+								label={ t.label }
+								checked={ filters.includes( t.slug ) }
+								onChange={ () => toggleFilter( t.slug ) }
+							/>
+						) ) }
 					</PanelBody>
 				</InspectorControls>
 				{ ! persons && <Spinner /> }
