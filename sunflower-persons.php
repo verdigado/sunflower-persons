@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Sunflower Persons
- * Description: Custom Post Type "Person" + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen.
+ * Description: Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen.
  * Version: 1.0.0
  * Author: verdigado eG
  * Author URI: https://verdigado.com
@@ -22,7 +22,6 @@ define( 'SUNFLOWER_PERSONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNFLOWER_PERSONS_URL', plugin_dir_url( __FILE__ ) );
 
 require_once SUNFLOWER_PERSONS_PATH . 'inc/cpt-person.php';
-
 
 add_action( 'init', 'sunflower_persons_blocks_init' );
 
@@ -51,8 +50,8 @@ function sunflower_persons_points_blocks_load_textdomain() {
 add_action( 'after_setup_theme', 'sunflower_persons_points_blocks_load_textdomain' );
 
 /**
- * Flush rewrite rules on activation/deactivation (for CPT permalinks).
- */
+* Flush rewrite rules on activation/deactivation ( for CPT permalinks ).
+*/
 register_activation_hook(
 	__FILE__,
 	function () {
@@ -133,7 +132,6 @@ function sunflower_persons_get_all_person_groups( $sunflower_persons_post ) {
 	return $sunflower_person_group_string;
 }
 
-
 /**
  * Get the linked social media icons.
  *
@@ -144,7 +142,7 @@ function sunflower_persons_get_social_media_profiles( $post_id ) {
 
 	$return = array();
 
-	$lines = explode( "\n", (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
+	$lines = explode( '\n', (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
 
 	foreach ( $lines as $line ) {
 		$line         = trim( $line );
@@ -169,14 +167,14 @@ function sunflower_persons_get_social_media_profiles( $post_id ) {
 }
 
 /**
- * Send update request to update server specified in $plugin_data['UpdateURI'].
+ * Send update request to update server specified in $plugin_data[ 'UpdateURI' ].
  *
  * @param Array  $update The plugin update data with the latest details. Default false.
  * @param Array  $plugin_data Theme data array.
  * @param string $plugin_file The plugin slug - 'sunflower-persons' our case.
  */
 function sunflower_persons_update_plugin( $update, $plugin_data, $plugin_file ) {
-		// Include an unmodified $wp_version.
+	// Include an unmodified $wp_version.
 	require ABSPATH . WPINC . '/version.php';
 	$php_version = PHP_VERSION;
 
@@ -189,7 +187,7 @@ function sunflower_persons_update_plugin( $update, $plugin_data, $plugin_file ) 
 	// Start checking for an update.
 	$send_for_check = array(
 		'body' => array(
-			'request' => serialize( $request ), // phpcs:ignore
+            'request' => serialize( $request ), // phpcs:ignore
 		),
 	);
 	$raw_response   = wp_remote_post( $plugin_data['UpdateURI'], $send_for_check );
