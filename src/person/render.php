@@ -89,6 +89,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	<?php
 	wp_reset_postdata();
 } else {
+	// Person list view.
 	$sunflower_persons_groups = array();
 	if ( isset( $attributes['groups'] ) && ! empty( $attributes['groups'] ) ) {
 		$sunflower_persons_groups = $attributes['groups'];
@@ -101,8 +102,24 @@ if ( $sunflower_persons_person_id > 0 ) {
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'Keine Personen gefunden.', 'sunflower-persons' ) . '</div>';
 	}
-
 	?>
+	<div class="persons-filter">
+		<?php
+		$sunflower_persons_groups_filter = '';
+		foreach ( $sunflower_persons_groups as $sunflower_persons_group_slug ) {
+			$sunflower_persons_group_term = get_term_by( 'slug', $sunflower_persons_group_slug, 'sunflower_group' );
+			if ( $sunflower_persons_group_term ) {
+				$sunflower_persons_groups_filter .= sprintf(
+					'<button class="filter-btn" data-filter="%s">%s</button>',
+					esc_attr( $sunflower_persons_group_term->slug ),
+					esc_html( $sunflower_persons_group_term->name )
+				);
+			}
+		}
+		echo wp_kses_post( $sunflower_persons_groups_filter );
+		?>
+	</div>
+
 <section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>">
 	<?php
 	while ( $sunflower_persons_persons->have_posts() ) :
@@ -112,7 +129,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 		$sunflower_persons_person_website     = get_post_meta( get_the_ID(), 'person_website', true );
 		$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( get_the_ID() );
 		?>
-		<article class="sunflower-person">
+		<article class="sunflower-person" data-group="<?php esc_attr( implode( ' ', $person_groups ) ); ?>">
 			<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
 				<div class="sunflower-person__media">
 				<?php

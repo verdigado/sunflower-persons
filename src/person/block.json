@@ -23,6 +23,7 @@
     }
   },
   "editorScript": "file:./index.js",
+  "script": ["file:./person-frontend.js"],
   "style": ["file:./style-index.css"],
   "render": "file:./render.php"
 }
