@@ -216,3 +216,26 @@ function sunflower_persons_update_plugin( $update, $plugin_data, $plugin_file ) 
 }
 
 add_filter( 'update_plugins_sunflower-theme.de', 'sunflower_persons_update_plugin', 10, 3 );
+
+/**
+ * Use custom single template for sunflower_person post type.
+ *
+ * @param string $template The path of the template to include.
+ * @return string The path of the template to include.
+ */
+function sunflower_person_single_template( $template ) {
+	if ( is_singular( 'sunflower_person' ) ) {
+		// First check if theme has a template part for sunflower_person.
+		$theme_part = locate_template( 'template-parts/content-sunflower_person.php' );
+		if ( $theme_part ) {
+			return $template;
+		}
+		// If not, check if theme has a single-sunflower_person.php template.
+		$plugin_template = plugin_dir_path( __FILE__ ) . 'templates/single-sunflower_person.php';
+		if ( file_exists( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+	return $template;
+}
+add_filter( 'single_template', 'sunflower_person_single_template' );
