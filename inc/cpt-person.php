@@ -194,3 +194,45 @@ function sunflower_persons_save_post_form( $post_id ) {
 		update_post_meta( $post_id, 'person_socialmedia', sanitize_textarea_field( $_POST['person_socialmedia'] ) );
 	}
 }
+
+/**
+ * Register meta field to connect persons to posts.
+ */
+function sunflower_persons_register_post_persons_meta() {
+	register_post_meta(
+		'post',
+		'sunflower_connected_persons',
+		array(
+			'type'          => 'array',
+			'single'        => true,
+			'show_in_rest'  => array(
+				'schema' => array(
+					'type'  => 'array',
+					'items' => array(
+						'type' => 'integer',
+					),
+				),
+			),
+			'default'       => array(),
+			'auth_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		)
+	);
+}
+add_action( 'init', 'sunflower_persons_register_post_persons_meta' );
+
+/**
+ * Enqueue block editor assets.
+ */
+function sunflower_persons_enqueue_editor_assets() {
+	$asset_data = include SUNFLOWER_PERSONS_PATH . 'build/editor-plugin/plugin.asset.php';
+	wp_enqueue_script(
+		'sunflower-persons-block-editor',
+		SUNFLOWER_PERSONS_URL . '/build/editor-plugin/plugin.js',
+		$asset_data['dependencies'],
+		$asset_data['version'],
+		true
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_editor_assets' );
