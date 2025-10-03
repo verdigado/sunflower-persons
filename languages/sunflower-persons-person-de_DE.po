@@ -1,12 +1,10 @@
-# Copyright (C) 2025 verdigado eG
-# This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-"
 "person\n"
-"POT-Creation-Date: 2025-09-08T09:06:03+00:00\n"
-"PO-Revision-Date: 2025-09-08 11:06+0200\n"
+"POT-Creation-Date: 2025-10-03T07:23:00+00:00\n"
+"PO-Revision-Date: 2025-10-03 09:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -29,7 +27,7 @@ msgstr ""
 #. Description of the plugin
 #: sunflower-persons.php
 msgid ""
-"Custom Post Type \"Person\" + Gutenberg Block zur Ausgabe einer einzelnen "
+"Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen "
 "Person oder einer Liste von Personen."
 msgstr ""
 
@@ -43,17 +41,34 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/person/index.js:79 build/person/index.js:42
+#: build/editor-plugin/plugin.js:293 build/editor-plugin/plugin.js:156
+msgid "Related persons"
+msgstr "Personen zuordnen"
+
+#: build/person/index.js:81 build/person/index.js:45
 msgid "Show all persons"
 msgstr "Zeige alle Personen"
 
-#: build/person/index.js:117 build/person/index.js:96
-msgid "Choose person"
-msgstr "Wähle Person"
+#: build/person/index.js:131 build/person/index.js:127
+msgid "Show group filter"
+msgstr "Zeige Gruppen-Filter"
 
-#: build/person/index.js:125 build/person/index.js:107
+#: build/person/index.js:147 build/person/index.js:146
+msgid "Choose person"
+msgstr "Wählte Person"
+
+#: build/person/index.js:155 build/person/index.js:160
 msgid "Groups"
-msgstr "Gruppe"
+msgstr "Gruppen"
+
+#: build/person/index.js:167 build/person/index.js:175
+msgid "Filter Settings"
+msgstr "Filter Einstellungen"
+
+#: build/editor-plugin/block.json
+msgctxt "block title"
+msgid "Editor Plugin: not a block, but block.json is very useful."
+msgstr ""
 
 #: build/person/block.json
 msgctxt "block title"

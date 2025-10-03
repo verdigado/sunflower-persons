@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-08T09:07:20+00:00\n"
+"POT-Creation-Date: 2025-10-03T07:24:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid "Custom Post Type \"Person\" + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
+msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -44,15 +44,15 @@ msgstr ""
 msgid "Person not found."
 msgstr ""
 
-#: build/person/render.php:98
-#: src/person/render.php:98
+#: build/person/render.php:103
+#: src/person/render.php:103
 msgid "Keine Personen gefunden."
 msgstr ""
 
-#: build/person/render.php:102
+#: build/person/render.php:128
 #: inc/cpt-person.php:13
 #: inc/cpt-person.php:23
-#: src/person/render.php:102
+#: src/person/render.php:128
 msgid "Persons"
 msgstr ""
 
@@ -159,6 +159,12 @@ msgstr ""
 
 #: inc/cpt-person.php:126
 msgid "Social Media"
+msgstr ""
+
+#: build/editor-plugin/block.json
+#: src/editor-plugin/block.json
+msgctxt "block title"
+msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
 #: build/person/block.json

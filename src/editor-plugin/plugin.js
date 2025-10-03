@@ -3,8 +3,8 @@
  */
 import { PluginDocumentSettingPanel } from '@wordpress/editor';
 import { registerPlugin } from '@wordpress/plugins';
-import { FormTokenField, Text, Tooltip } from '@wordpress/components';
-import { Icon, people } from '@wordpress/icons';
+import { FormTokenField, Icon } from '@wordpress/components';
+import { people } from '@wordpress/icons';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEntityRecords } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
@@ -39,21 +39,18 @@ const PersonsPanel = () => {
 	};
 
 	/**
-	 * Enhances a label with an icon and tooltip.
+	 * Enhances a label with an icon.
 	 *
-	 * @param {string} icon    The icon to display.
-	 * @param {string} text    The label text.
-	 * @param {string} tooltip The tooltip text.
+	 * @param {string} icon The icon to display.
+	 * @param {string} text The label text.
 	 *
 	 * @return {string} The enhanced label component.
 	 */
-	const enhancedLabel = ( icon, text, tooltip ) => (
-		<Tooltip text={ tooltip }>
-			<Text style={ labelStyling }>
-				<Icon icon={ icon } />
-				{ text }
-			</Text>
-		</Tooltip>
+	const enhancedLabel = ( icon = people, text ) => (
+		<span style={ labelStyling }>
+			<Icon icon={ icon } size={ 24 } />
+			<span>{ text }</span>
+		</span>
 	);
 
 	useEffect( () => {
@@ -83,7 +80,7 @@ const PersonsPanel = () => {
 			name="sunflower-persons-panel"
 			title={ enhancedLabel(
 				people,
-				__( 'Related persons', 'sunflower-persons' )
+				__( 'Related persons', 'sunflower-persons-person' )
 			) }
 		>
 			<FormTokenField
