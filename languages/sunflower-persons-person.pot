@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-08T09:07:22+00:00\n"
+"POT-Creation-Date: 2025-10-03T07:24:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons-person\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid "Custom Post Type \"Person\" + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
+msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -39,19 +39,39 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/person/index.js:79
-#: build/person/index.js:42
+#: build/editor-plugin/plugin.js:293
+#: build/editor-plugin/plugin.js:156
+msgid "Related persons"
+msgstr ""
+
+#: build/person/index.js:81
+#: build/person/index.js:45
 msgid "Show all persons"
 msgstr ""
 
-#: build/person/index.js:117
-#: build/person/index.js:96
+#: build/person/index.js:131
+#: build/person/index.js:127
+msgid "Show group filter"
+msgstr ""
+
+#: build/person/index.js:147
+#: build/person/index.js:146
 msgid "Choose person"
 msgstr ""
 
-#: build/person/index.js:125
-#: build/person/index.js:107
+#: build/person/index.js:155
+#: build/person/index.js:160
 msgid "Groups"
+msgstr ""
+
+#: build/person/index.js:167
+#: build/person/index.js:175
+msgid "Filter Settings"
+msgstr ""
+
+#: build/editor-plugin/block.json
+msgctxt "block title"
+msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
 #: build/person/block.json
