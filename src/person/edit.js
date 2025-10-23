@@ -17,6 +17,7 @@ import {
 	Disabled,
 	FormTokenField,
 	PanelBody,
+	RangeControl,
 	SelectControl,
 	Spinner,
 } from '@wordpress/components';
@@ -25,10 +26,18 @@ import { useSelect } from '@wordpress/data';
 import { useEntityRecords } from '@wordpress/core-data';
 import { useState, useEffect } from '@wordpress/element';
 
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+import './editor.scss';
+
 const EMPTY_ARRAY = [];
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { personId, groups, tags, filters } = attributes;
+	const { personId, groups, tags, filters, limit, order } = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
 
@@ -141,7 +150,9 @@ export default function Edit( { attributes, setAttributes } ) {
 		<>
 			<div { ...blockProps }>
 				<InspectorControls>
-					<PanelBody title="Einstellungen">
+					<PanelBody
+						title={ __( 'Settings', 'sunflower-persons-person' ) }
+					>
 						<SelectControl
 							label={ __(
 								'Choose person',
@@ -185,6 +196,56 @@ export default function Edit( { attributes, setAttributes } ) {
 								onChange={ () => toggleFilter( t.slug ) }
 							/>
 						) ) }
+					</PanelBody>
+					<PanelBody
+						title={ __(
+							'Display Options',
+							'sunflower-persons-person'
+						) }
+					>
+						<RangeControl
+							label={ __(
+								'Number of Persons to show',
+								'sunflower-persons-person'
+							) }
+							value={ limit }
+							onChange={ ( value ) =>
+								setAttributes( { limit: value } )
+							}
+							min={ 1 }
+							max={ 100 }
+						/>
+
+						<SelectControl
+							label={ __( 'Order', 'sunflower-persons-person' ) }
+							value={ order }
+							options={ [
+								{
+									label: __(
+										'Random',
+										'sunflower-persons-person'
+									),
+									value: 'random',
+								},
+								{
+									label: __(
+										'alphabetic order (A–Z)',
+										'sunflower-persons-person'
+									),
+									value: 'asc',
+								},
+								{
+									label: __(
+										'alphabetic order (Z–A)',
+										'sunflower-persons-person'
+									),
+									value: 'desc',
+								},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( { order: value } )
+							}
+						/>
 					</PanelBody>
 				</InspectorControls>
 				{ ! persons && <Spinner /> }

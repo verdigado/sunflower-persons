@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-"
 "person\n"
-"POT-Creation-Date: 2025-10-03T07:23:00+00:00\n"
-"PO-Revision-Date: 2025-10-03 09:24+0200\n"
+"POT-Creation-Date: 2025-10-23T13:21:02+00:00\n"
+"PO-Revision-Date: 2025-10-23 15:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -45,25 +45,55 @@ msgstr ""
 msgid "Related persons"
 msgstr "Personen zuordnen"
 
-#: build/person/index.js:81 build/person/index.js:45
+#: build/person/index.js:92 build/person/index.js:54
 msgid "Show all persons"
 msgstr "Zeige alle Personen"
 
-#: build/person/index.js:131 build/person/index.js:127
+#: build/person/index.js:142 build/person/index.js:136
 msgid "Show group filter"
 msgstr "Zeige Gruppen-Filter"
 
-#: build/person/index.js:147 build/person/index.js:146
+#: build/person/index.js:156 build/person/index.js:153
+#, fuzzy
+#| msgid "Filter Settings"
+msgid "Settings"
+msgstr "Filter Einstellungen"
+
+#: build/person/index.js:158 build/person/index.js:155
 msgid "Choose person"
 msgstr "Wählte Person"
 
-#: build/person/index.js:155 build/person/index.js:160
+#: build/person/index.js:166 build/person/index.js:169
 msgid "Groups"
 msgstr "Gruppen"
 
-#: build/person/index.js:167 build/person/index.js:175
+#: build/person/index.js:178 build/person/index.js:184
 msgid "Filter Settings"
 msgstr "Filter Einstellungen"
+
+#: build/person/index.js:185 build/person/index.js:198
+msgid "Display Options"
+msgstr "Anzeige-Optionen"
+
+#: build/person/index.js:187 build/person/index.js:200
+msgid "Number of Persons to show"
+msgstr "Anzahl der Personen"
+
+#: build/person/index.js:195 build/person/index.js:208
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: build/person/index.js:198 build/person/index.js:211
+msgid "Random"
+msgstr "Zufall"
+
+#: build/person/index.js:201 build/person/index.js:212
+msgid "alphabetic order (A–Z)"
+msgstr "Alphabetisch (A-Z)"
+
+#: build/person/index.js:204 build/person/index.js:213
+msgid "alphabetic order (Z–A)"
+msgstr "Alphabetisch (Z-A)"
 
 #: build/editor-plugin/block.json
 msgctxt "block title"

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.0.0\n"
+"Project-Id-Version: Sunflower Persons 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-03T07:24:31+00:00\n"
+"POT-Creation-Date: 2025-10-23T13:21:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons-person\n"
@@ -44,29 +44,64 @@ msgstr ""
 msgid "Related persons"
 msgstr ""
 
-#: build/person/index.js:81
-#: build/person/index.js:45
+#: build/person/index.js:92
+#: build/person/index.js:54
 msgid "Show all persons"
 msgstr ""
 
-#: build/person/index.js:131
-#: build/person/index.js:127
+#: build/person/index.js:142
+#: build/person/index.js:136
 msgid "Show group filter"
 msgstr ""
 
-#: build/person/index.js:147
-#: build/person/index.js:146
+#: build/person/index.js:156
+#: build/person/index.js:153
+msgid "Settings"
+msgstr ""
+
+#: build/person/index.js:158
+#: build/person/index.js:155
 msgid "Choose person"
 msgstr ""
 
-#: build/person/index.js:155
-#: build/person/index.js:160
+#: build/person/index.js:166
+#: build/person/index.js:169
 msgid "Groups"
 msgstr ""
 
-#: build/person/index.js:167
-#: build/person/index.js:175
+#: build/person/index.js:178
+#: build/person/index.js:184
 msgid "Filter Settings"
+msgstr ""
+
+#: build/person/index.js:185
+#: build/person/index.js:198
+msgid "Display Options"
+msgstr ""
+
+#: build/person/index.js:187
+#: build/person/index.js:200
+msgid "Number of Persons to show"
+msgstr ""
+
+#: build/person/index.js:195
+#: build/person/index.js:208
+msgid "Order"
+msgstr ""
+
+#: build/person/index.js:198
+#: build/person/index.js:211
+msgid "Random"
+msgstr ""
+
+#: build/person/index.js:201
+#: build/person/index.js:212
+msgid "alphabetic order (A–Z)"
+msgstr ""
+
+#: build/person/index.js:204
+#: build/person/index.js:213
+msgid "alphabetic order (Z–A)"
 msgstr ""
 
 #: build/editor-plugin/block.json

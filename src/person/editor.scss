@@ -1,0 +1,34 @@
+.wp-block-sunflower-persons-person {
+	display: flex;
+	position: relative;
+	align-items: center;
+
+	.sunflower-person-track-wrapper {
+		overflow: hidden;
+		flex: 1;
+	}
+
+	.sunflower-person-track {
+		display: flex;
+		flex-direction: row; // sicherstellen, dass horizontal
+		gap: 0.5rem;
+	}
+
+	.sunflower-person-nav {
+		position: relative; // nicht absolute, sonst Balken lang
+		width: 2rem;
+		height: 2rem;
+		background: #eee;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+	}
+
+	.sunflower-person {
+		flex-shrink: 0;
+		width: 100px; // Editor fix
+		text-align: center;
+		margin-right: 0.5rem;
+	}
+}

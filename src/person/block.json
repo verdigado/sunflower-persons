@@ -24,7 +24,20 @@
     "filters": {
       "type": "array",
       "default": []
-    }
+    },
+		"navigateAll": {
+			"type": "boolean",
+			"default": false
+		},
+		"limit": {
+			"type": "number",
+			"default": 5
+		},
+		"order": {
+			"type": "string",
+			"default": "asc"
+		}
+
   },
   "editorScript": "file:./index.js",
   "script": ["file:./person-frontend.js"],
