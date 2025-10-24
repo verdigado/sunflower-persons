@@ -141,7 +141,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 	?>
 
-<section class="sunflower-person-list <?php echo ( true === $attributes['showAsFilmstrip'] ) ? 'sunflower-person-list--carousel' : 'sunflower-person-list--grid'; ?>" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>" data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>">
+<section class="sunflower-person-list <?php echo ( true === $attributes['showAsFilmstrip'] ) ? 'sunflower-person-list--carousel' : 'sunflower-person-list--grid'; ?>"
+	aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>"
+	data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>"
+	data-autoplay-timer="<?php echo esc_attr( isset( $attributes['autoplayTimer'] ) ? intval( $attributes['autoplayTimer'] ) : 5 ); ?>"
+	data-autoplay="<?php echo esc_attr( isset( $attributes['slideAutoplay'] ) ? intval( $attributes['slideAutoplay'] ) : 0 ); ?>">
 	<?php
 	if ( true === $sunflower_persons_person_navbuttons ) {
 		printf(

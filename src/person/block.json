@@ -33,6 +33,14 @@
 			"type": "boolean",
 			"default": false
 		},
+		"slideAutoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplayTimer": {
+			"type": "number",
+			"default": 4
+		},
 		"limit": {
 			"type": "number",
 			"default": 5

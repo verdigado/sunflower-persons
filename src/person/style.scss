@@ -6,12 +6,17 @@
  */
 
 .sunflower-person-list {
+	--person-width: 180px;
+	--person-gap: 1rem;
+
 	position: relative;
 	width: 100%;
 	box-sizing: border-box;
+	display: flex;
 
 	// common styles for person items
 	.sunflower-person {
+		flex: 0 0 auto;
 		padding: 0.5rem;
 		background: #fafafa;
 		border: 1px solid #ddd;
@@ -45,13 +50,13 @@
 		}
 
 		&-thumb {
-			width: 120px;
-			height: 120px;
+			width: calc(var(--person-width) * 0.75);
+			height: calc(var(--person-width) * 0.75);
 		}
 
 		&-medium {
-			width: 240px;
-			height: 240px;
+			width: calc(var(--person-width) * 2);
+			height: calc(var(--person-width) * 2);
 		}
 
 		&__meta {
@@ -95,13 +100,15 @@
 
 		.sunflower-person-track {
 			display: flex;
-			gap: 0.5rem;
-			scroll-behavior: smooth;
+			gap: var(--person-gap, 0.5rem);
 			transition: transform 0.5s ease;
+			scroll-behavior: smooth;
 		}
 
 		.sunflower-person {
 			flex: 0 0 auto;
+			min-width: 180px;
+			box-sizing: border-box;
 		}
 
 		// Pfeile
@@ -113,7 +120,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: rgba(14, 138, 31, 0.2);
+			background: rgba(14, 138, 31, 0.05);
 			border: none;
 			cursor: pointer;
 			font-size: 2rem;
@@ -122,11 +129,11 @@
 			z-index: 2;
 
 			&.prev {
-				left: -1rem;
+				left: -2rem;
 			}
 
 			&.next {
-				right: -1rem;
+				right: -2rem;
 			}
 
 			&:hover {
@@ -146,10 +153,6 @@
 	&--grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-		gap: 1rem;
-
-		.sunflower-person-nav {
-			display: none;
-		}
+		gap: var(--person-gap);
 	}
 }

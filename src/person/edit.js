@@ -44,6 +44,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		showFilterButtons,
 		showNavButtons,
 		showAsFilmstrip,
+		slideAutoplay,
+		autoplayTimer,
 		limit,
 		order,
 	} = attributes;
@@ -213,6 +215,30 @@ export default function Edit( { attributes, setAttributes } ) {
 								) }
 								checked={ showNavButtons }
 								onChange={ toggleAttribute( 'showNavButtons' ) }
+							/>
+						) }
+						{ showAsFilmstrip && (
+							<ToggleControl
+								label={ __(
+									'Autoplay sliding',
+									'sunflower-persons-person'
+								) }
+								checked={ slideAutoplay }
+								onChange={ toggleAttribute( 'slideAutoplay' ) }
+							/>
+						) }
+						{ showAsFilmstrip && slideAutoplay && (
+							<RangeControl
+								label={ __(
+									'Seconds between slides (autoplay)',
+									'sunflower-persons-person'
+								) }
+								value={ autoplayTimer }
+								onChange={ ( value ) =>
+									setAttributes( { autoplayTimer: value } )
+								}
+								min={ 1 }
+								max={ 10 }
 							/>
 						) }
 						{ showAsFilmstrip && (
