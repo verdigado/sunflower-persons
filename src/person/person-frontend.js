@@ -46,6 +46,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const trackWrapper = list.querySelector(
 				'.sunflower-person-track-wrapper'
 			);
+			if ( ! trackWrapper ) {
+				return;
+			}
 			const track = trackWrapper.querySelector(
 				'.sunflower-person-track'
 			);
@@ -75,8 +78,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				const offset = -index * personWidthLocal;
 				track.style.transform = `translateX(${ offset }px)`;
 
-				prevBtn.disabled = index === 0;
-				nextBtn.disabled = index >= persons.length - visibleCount;
+				if ( prevBtn && nextBtn ) {
+					prevBtn.disabled = index === 0;
+					nextBtn.disabled = index >= persons.length - visibleCount;
+				}
 			};
 
 			// Klick-Handler

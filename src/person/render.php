@@ -99,8 +99,10 @@ if ( $sunflower_persons_person_id > 0 ) {
 		$sunflower_persons_tags = $attributes['tags'];
 	}
 	$sunflower_persons_filter            = array();
+	$sunflower_persons_person_filmstrip  = false;
 	$sunflower_persons_person_navbuttons = false;
 	if ( isset( $attributes['showAsFilmstrip'] ) && true === $attributes['showAsFilmstrip'] ) {
+		$sunflower_persons_person_filmstrip = true;
 		if ( isset( $attributes['showNavButtons'] ) && true === $attributes['showNavButtons'] ) {
 			$sunflower_persons_filter['limit']   = -1;
 			$sunflower_persons_person_navbuttons = true;
@@ -139,14 +141,24 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 	?>
 
-<section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>" data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>">
+<section class="sunflower-person-list <?php echo ( true === $attributes['showAsFilmstrip'] ) ? 'sunflower-person-list--carousel' : 'sunflower-person-list--grid'; ?>" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>" data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>">
 	<?php
 	if ( true === $sunflower_persons_person_navbuttons ) {
-		printf( '<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-solid fa-chevron-left"></i></button>', esc_attr__( 'Back', 'sunflower-persons' ) );
+		printf(
+			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-solid fa-chevron-left"></i></button>
+		',
+			esc_attr__( 'Back', 'sunflower-persons' )
+		);
+	}
+	if ( true === $sunflower_persons_person_filmstrip ) {
+		printf(
+			'<div class="sunflower-person-track-wrapper">
+			<div class="sunflower-person-track">
+		',
+			esc_attr__( 'Back', 'sunflower-persons' )
+		);
 	}
 	?>
-	<div class="sunflower-person-track-wrapper">
-		<div class="sunflower-person-track">
 		<?php
 		while ( $sunflower_persons_persons->have_posts() ) :
 			$sunflower_persons_persons->the_post();
@@ -202,11 +214,20 @@ if ( $sunflower_persons_person_id > 0 ) {
 				</a>
 			</article>
 		<?php endwhile; ?>
-		</div>
-	</div>
 	<?php
+	if ( true === $sunflower_persons_person_filmstrip ) {
+		printf(
+			'</div>
+			</div>
+		'
+		);
+	}
 	if ( true === $sunflower_persons_person_navbuttons ) {
-		printf( '<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-solid fa-chevron-right"></i></button>', esc_attr__( 'Next', 'sunflower-persons' ) );
+		printf(
+			'
+			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-solid fa-chevron-right"></i></button>',
+			esc_attr__( 'Next', 'sunflower-persons' )
+		);
 	}
 	?>
 	<?php

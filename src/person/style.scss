@@ -5,151 +5,151 @@
  * Replace them with your own styles or keep the empty file.
  */
 
-// .sunflower-person-list {
-// 	display: flex;
-// 	align-items: center;
-// 	gap: 0.5rem;
-// }
-
 .sunflower-person-list {
 	position: relative;
-	display: flex;
-	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
 
-	.sunflower-person-track-wrapper {
-		overflow: hidden;
-		flex: 1;
+	// common styles for person items
+	.sunflower-person {
+		padding: 0.5rem;
+		background: #fafafa;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		text-align: center;
+		box-sizing: border-box;
+
+		&__link {
+			text-decoration: none;
+			color: inherit;
+			display: block;
+		}
+
+		&__title {
+			margin: 0.5em 0 0;
+			font-size: 1rem;
+			text-align: center;
+		}
+
+		&-thumb,
+		&-medium {
+			border-radius: 50%;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		&-thumb {
+			width: 120px;
+			height: 120px;
+		}
+
+		&-medium {
+			width: 240px;
+			height: 240px;
+		}
+
+		&__meta {
+			list-style: none;
+			display: flex;
+			padding: 0;
+			margin: 0.5em 0 0;
+
+			li {
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #fff;
+				border-radius: 50%;
+			}
+
+			a {
+				color: #000;
+				opacity: 1;
+				background-color: #fff;
+				text-decoration: none;
+
+				i {
+					color: #000;
+				}
+			}
+		}
 	}
 
-
-	.sunflower-person-track {
+	// filmstrip / carousel layout
+	&--carousel {
 		display: flex;
-		gap: 0.5rem;
-		scroll-behavior: smooth;
-		transition: transform 0.5s ease;
+		align-items: center;
+
+		.sunflower-person-track-wrapper {
+			overflow: hidden;
+			flex: 1;
+		}
+
+		.sunflower-person-track {
+			display: flex;
+			gap: 0.5rem;
+			scroll-behavior: smooth;
+			transition: transform 0.5s ease;
+		}
 
 		.sunflower-person {
 			flex: 0 0 auto;
-			padding: 0.5rem;
-			background: #fafafa;
-			border: 1px solid #ddd;
-			border-radius: 8px;
-			text-align: center;
-			box-sizing: border-box;
+		}
 
-			&__link {
-				text-decoration: none;
-				color: inherit;
-				display: block;
+		// Pfeile
+		.sunflower-person-nav {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(14, 138, 31, 0.2);
+			border: none;
+			cursor: pointer;
+			font-size: 2rem;
+			color: #333;
+			transition: background 0.3s ease, color 0.3s ease;
+			z-index: 2;
+
+			&.prev {
+				left: -1rem;
 			}
 
-			&__title {
-				margin: 0.5em 0 0;
-				font-size: 1rem;
+			&.next {
+				right: -1rem;
 			}
 
-			&-thumb,
-			&-medium {
-				border-radius: 50%;
-				overflow: hidden;
-
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					display: block;
-				}
+			&:hover {
+				background: rgba(14, 138, 31, 0.6);
+				color: #000;
 			}
 
-			&-thumb {
-				width: 120px;
-				height: 120px;
-			}
-
-			&-medium {
-				width: 240px;
-				height: 240px;
-			}
-
-			&-list {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-				gap: 1rem;
-			}
-
-			.sunflower-person__meta {
-
-				list-style: none;
-				display: flex;
-				padding: 0;
-				margin: 0.5em 0 0;
-
-				li {
-					width: 40px;
-					height: 40px;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					background: #fff;
-					border-radius: 50%;
-				}
-
-				a {
-					color: #000;
-					opacity: 1;
-					background-color: #fff;
-					text-decoration: none;
-
-					i {
-						color: #000;
-					}
-				}
+			&:disabled {
+				opacity: 0.2;
+				cursor: default;
+				pointer-events: none;
 			}
 		}
 	}
 
-	// 👇 Navigationspfeile
-	.sunflower-person-nav {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 3rem;                  // etwas breiter als vorher
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: auto;
-		background: rgba(255, 255, 255, 0.2); // halbtransparent
-		border: none;
-		cursor: pointer;
-		font-size: 2rem;
-		color: #333;
-		transition: background 0.3s ease, color 0.3s ease;
-		z-index: 2;
+	// grid multi-column layout
+	&--grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 1rem;
 
-		&.prev {
-			left: -1rem;
-			background: rgba(14, 138, 31, 0.2);
-
-			&:hover {
-				background: rgba(14, 138, 31, 0.6);
-				color: #000;
-			}
-		}
-
-		&.next {
-			right: -1rem;
-			background: rgba(14, 138, 31, 0.2);
-
-			&:hover {
-				background: rgba(14, 138, 31, 0.6);
-				color: #000;
-			}
-		}
-
-		&:disabled {
-			opacity: 0.2;
-			cursor: default;
-			pointer-events: none;
+		.sunflower-person-nav {
+			display: none;
 		}
 	}
 }
