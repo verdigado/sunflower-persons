@@ -21,11 +21,15 @@
       "type": "array",
       "default": []
     },
-    "filters": {
-      "type": "array",
-      "default": []
+    "showFilterButtons": {
+			"type": "boolean",
+			"default": false
     },
-		"navigateAll": {
+		"showAsFilmstrip": {
+			"type": "boolean",
+			"default": false
+		},
+		"showNavButtons": {
 			"type": "boolean",
 			"default": false
 		},

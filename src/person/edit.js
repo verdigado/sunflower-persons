@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {
-	CheckboxControl,
+	ToggleControl,
 	Disabled,
 	FormTokenField,
 	PanelBody,
@@ -37,7 +37,16 @@ import './editor.scss';
 const EMPTY_ARRAY = [];
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { personId, groups, tags, filters, limit, order } = attributes;
+	const {
+		personId,
+		groups,
+		tags,
+		showFilterButtons,
+		showNavButtons,
+		showAsFilmstrip,
+		limit,
+		order,
+	} = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
 
@@ -131,20 +140,13 @@ export default function Edit( { attributes, setAttributes } ) {
 		} );
 	};
 
-	const allFilters = [
-		{
-			label: __( 'Show group filter', 'sunflower-persons-person' ),
-			slug: 'groups',
-		},
-	];
+	function toggleAttribute( propName ) {
+		return () => {
+			const value = attributes[ propName ];
 
-	const toggleFilter = ( slug ) => {
-		const next = filters.includes( slug )
-			? filters.filter( ( s ) => s !== slug )
-			: [ ...filters, slug ];
-
-		setAttributes( { filters: next } );
-	};
+			setAttributes( { [ propName ]: ! value } );
+		};
+	}
 
 	return (
 		<>
@@ -173,7 +175,14 @@ export default function Edit( { attributes, setAttributes } ) {
 							onChange={ onChangeGroups }
 							suggestions={ groupsFormSuggestions }
 						/>
-
+						<ToggleControl
+							label={ __(
+								'Show group filter buttons on top',
+								'sunflower-persons-person'
+							) }
+							checked={ showFilterButtons }
+							onChange={ toggleAttribute( 'showFilterButtons' ) }
+						/>
 						<FormTokenField
 							hasResolved={ hasResolvedTags }
 							label={ __( 'Tag' ) }
@@ -184,38 +193,42 @@ export default function Edit( { attributes, setAttributes } ) {
 					</PanelBody>
 					<PanelBody
 						title={ __(
-							'Filter Settings',
-							'sunflower-persons-person'
-						) }
-					>
-						{ allFilters.map( ( t ) => (
-							<CheckboxControl
-								key={ t.slug }
-								label={ t.label }
-								checked={ filters.includes( t.slug ) }
-								onChange={ () => toggleFilter( t.slug ) }
-							/>
-						) ) }
-					</PanelBody>
-					<PanelBody
-						title={ __(
 							'Display Options',
 							'sunflower-persons-person'
 						) }
 					>
-						<RangeControl
+						<ToggleControl
 							label={ __(
-								'Number of Persons to show',
+								'Show as filmstrip',
 								'sunflower-persons-person'
 							) }
-							value={ limit }
-							onChange={ ( value ) =>
-								setAttributes( { limit: value } )
-							}
-							min={ 1 }
-							max={ 100 }
+							checked={ showAsFilmstrip }
+							onChange={ toggleAttribute( 'showAsFilmstrip' ) }
 						/>
-
+						{ showAsFilmstrip && (
+							<ToggleControl
+								label={ __(
+									'Show navigation buttons',
+									'sunflower-persons-person'
+								) }
+								checked={ showNavButtons }
+								onChange={ toggleAttribute( 'showNavButtons' ) }
+							/>
+						) }
+						{ showAsFilmstrip && (
+							<RangeControl
+								label={ __(
+									'Number of Persons to show',
+									'sunflower-persons-person'
+								) }
+								value={ limit }
+								onChange={ ( value ) =>
+									setAttributes( { limit: value } )
+								}
+								min={ 1 }
+								max={ 10 }
+							/>
+						) }
 						<SelectControl
 							label={ __( 'Order', 'sunflower-persons-person' ) }
 							value={ order }

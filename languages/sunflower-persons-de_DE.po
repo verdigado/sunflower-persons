@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2025-10-23T13:21:01+00:00\n"
-"PO-Revision-Date: 2025-10-23 15:22+0200\n"
+"POT-Creation-Date: 2025-10-24T12:43:54+00:00\n"
+"PO-Revision-Date: 2025-10-24 14:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -45,14 +45,22 @@ msgstr ""
 msgid "Person not found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:111 src/person/render.php:111
+#: build/person/render.php:119 src/person/render.php:119
 msgid "No persons found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:136 inc/cpt-person.php:13 inc/cpt-person.php:23
-#: src/person/render.php:136
+#: build/person/render.php:144 inc/cpt-person.php:13 inc/cpt-person.php:23
+#: src/person/render.php:144
 msgid "Persons"
 msgstr "Personen"
+
+#: build/person/render.php:147 src/person/render.php:147
+msgid "Back"
+msgstr "zurück"
+
+#: build/person/render.php:211 src/person/render.php:211
+msgid "Next"
+msgstr "weiter"
 
 #: inc/cpt-person.php:14
 msgid "Person"

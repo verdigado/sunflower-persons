@@ -98,9 +98,15 @@ if ( $sunflower_persons_person_id > 0 ) {
 	if ( isset( $attributes['tags'] ) && ! empty( $attributes['tags'] ) ) {
 		$sunflower_persons_tags = $attributes['tags'];
 	}
-	$sunflower_persons_filter = array();
-	if ( isset( $attributes['limit'] ) && ! empty( $attributes['limit'] ) ) {
-		$sunflower_persons_filter['limit'] = $attributes['navigateAll'] ? -1 : $attributes['limit'];
+	$sunflower_persons_filter            = array();
+	$sunflower_persons_person_navbuttons = false;
+	if ( isset( $attributes['showAsFilmstrip'] ) && true === $attributes['showAsFilmstrip'] ) {
+		if ( isset( $attributes['showNavButtons'] ) && true === $attributes['showNavButtons'] ) {
+			$sunflower_persons_filter['limit']   = -1;
+			$sunflower_persons_person_navbuttons = true;
+		} elseif ( isset( $attributes['limit'] ) && ! empty( $attributes['limit'] ) ) {
+				$sunflower_persons_filter['limit'] = $attributes['limit'];
+		}
 	}
 	if ( isset( $attributes['order'] ) && ! empty( $attributes['order'] ) ) {
 		$sunflower_persons_filter['order'] = $attributes['order'];
@@ -110,8 +116,8 @@ if ( $sunflower_persons_person_id > 0 ) {
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'No persons found.', 'sunflower-persons' ) . '</div>';
 	}
-	$sunflower_persons_person_filters = $attributes['filters'] ?? array();
-	if ( ! empty( $sunflower_persons_person_filters ) && in_array( 'groups', $sunflower_persons_person_filters, true ) ) {
+	$sunflower_persons_person_filters = $attributes['showFilterButtons'] ?? false;
+	if ( $sunflower_persons_person_filters ) {
 		?>
 	<div class="persons-filter">
 		<?php
@@ -133,8 +139,12 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 	?>
 
-<section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>" data-visible="4">
-	<button class="sunflower-person-nav prev" aria-label="Zurück">‹</button>
+<section class="sunflower-person-list" aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>" data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>">
+	<?php
+	if ( true === $sunflower_persons_person_navbuttons ) {
+		printf( '<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-solid fa-chevron-left"></i></button>', esc_attr__( 'Back', 'sunflower-persons' ) );
+	}
+	?>
 	<div class="sunflower-person-track-wrapper">
 		<div class="sunflower-person-track">
 		<?php
@@ -194,7 +204,10 @@ if ( $sunflower_persons_person_id > 0 ) {
 		<?php endwhile; ?>
 		</div>
 	</div>
-	<button class="sunflower-person-nav next" aria-label="Weiter">›</button>
-</section>
+	<?php
+	if ( true === $sunflower_persons_person_navbuttons ) {
+		printf( '<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-solid fa-chevron-right"></i></button>', esc_attr__( 'Next', 'sunflower-persons' ) );
+	}
+	?>
 	<?php
 }
