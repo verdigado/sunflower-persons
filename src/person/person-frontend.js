@@ -39,6 +39,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	}
 } );
 
+/**
+ * Carousel functionality
+ */
 document.addEventListener( 'DOMContentLoaded', () => {
 	const lists = document.querySelectorAll(
 		'.sunflower-person-list--carousel'
@@ -72,7 +75,27 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			person.style.width = `${ Math.max( maxTileWidth, 180 ) }px`;
 		} );
 
+		const startMode = list.dataset.slideStart || 'start';
 		let index = 0;
+
+		switch ( startMode ) {
+			case 'center':
+				index = Math.floor( Math.max( persons.length / 2, 0 ) );
+				break;
+
+			case 'random':
+				index = Math.floor(
+					Math.random() *
+						Math.max( persons.length - visibleCount + 1, 1 )
+				);
+				break;
+
+			case 'start':
+			default:
+				index = 0;
+				break;
+		}
+
 		let personWidth = persons[ 0 ].offsetWidth + gap;
 
 		const autoplayDelay =

@@ -37,6 +37,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"slideStart": {
+			"type": "array",
+			"default": [ "start"]
+		},
 		"autoplayTimer": {
 			"type": "number",
 			"default": 4

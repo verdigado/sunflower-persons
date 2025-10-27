@@ -45,6 +45,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		showNavButtons,
 		showAsFilmstrip,
 		slideAutoplay,
+		slideStart,
 		autoplayTimer,
 		limit,
 		order,
@@ -285,6 +286,41 @@ export default function Edit( { attributes, setAttributes } ) {
 								setAttributes( { order: value } )
 							}
 						/>
+						{ showAsFilmstrip && (
+							<SelectControl
+								label={ __(
+									'Start with position',
+									'sunflower-persons-person'
+								) }
+								value={ slideStart }
+								options={ [
+									{
+										label: __(
+											'Start',
+											'sunflower-persons-person'
+										),
+										value: 'start',
+									},
+									{
+										label: __(
+											'Center',
+											'sunflower-persons-person'
+										),
+										value: 'center',
+									},
+									{
+										label: __(
+											'Random',
+											'sunflower-persons-person'
+										),
+										value: 'random',
+									},
+								] }
+								onChange={ ( value ) =>
+									setAttributes( { slideStart: value } )
+								}
+							/>
+						) }
 					</PanelBody>
 				</InspectorControls>
 				{ ! persons && <Spinner /> }

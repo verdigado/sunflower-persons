@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-24T12:48:27+00:00\n"
+"POT-Creation-Date: 2025-10-27T07:55:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -49,20 +49,22 @@ msgstr ""
 msgid "No persons found."
 msgstr ""
 
-#: build/person/render.php:144
+#: build/person/render.php:145
 #: inc/cpt-person.php:13
 #: inc/cpt-person.php:23
-#: src/person/render.php:144
+#: src/person/render.php:145
 msgid "Persons"
 msgstr ""
 
-#: build/person/render.php:147
-#: src/person/render.php:147
+#: build/person/render.php:155
+#: build/person/render.php:163
+#: src/person/render.php:155
+#: src/person/render.php:163
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:211
-#: src/person/render.php:211
+#: build/person/render.php:234
+#: src/person/render.php:234
 msgid "Next"
 msgstr ""
 

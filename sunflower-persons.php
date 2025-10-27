@@ -145,8 +145,7 @@ function sunflower_persons_get_all_person_groups( $sunflower_persons_post ) {
 function sunflower_persons_get_social_media_profiles( $post_id ) {
 
 	$return = array();
-
-	$lines = explode( '\n', (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
+	$lines  = explode( "\n", (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
 
 	foreach ( $lines as $line ) {
 		$line         = trim( $line );
