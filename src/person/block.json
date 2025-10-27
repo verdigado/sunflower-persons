@@ -21,10 +21,39 @@
       "type": "array",
       "default": []
     },
-    "filters": {
-      "type": "array",
-      "default": []
-    }
+    "showFilterButtons": {
+			"type": "boolean",
+			"default": false
+    },
+		"showAsFilmstrip": {
+			"type": "boolean",
+			"default": false
+		},
+		"showNavButtons": {
+			"type": "boolean",
+			"default": false
+		},
+		"slideAutoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"slideStart": {
+			"type": "array",
+			"default": [ "start"]
+		},
+		"autoplayTimer": {
+			"type": "number",
+			"default": 4
+		},
+		"limit": {
+			"type": "number",
+			"default": 5
+		},
+		"order": {
+			"type": "string",
+			"default": "asc"
+		}
+
   },
   "editorScript": "file:./index.js",
   "script": ["file:./person-frontend.js"],

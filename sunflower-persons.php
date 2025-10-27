@@ -73,9 +73,13 @@ register_deactivation_hook(
  *
  * @param array $group_ids Optional array of group IDs or slugs to filter persons by group.
  * @param array $tag_ids Optional array of tag IDs or slugs to filter persons by tags.
+ * @param array $display_options Optional filter array with 'limit' and 'order' keys.
  * @return WP_Query List of persons.
  */
-function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = array() ) {
+function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = array(), $display_options = array(
+	'limit' => -1,
+	'order' => 'asc',
+) ) {
 	$tax_query = array();
 
 	if ( $group_ids ) {
@@ -89,7 +93,7 @@ function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = arr
 		);
 	}
 
-	if ( $tag_ids ) {
+	if ( ! empty( $tag_ids ) ) {
 		array_push(
 			$tax_query,
 			array(
@@ -103,10 +107,10 @@ function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = arr
 	return new WP_Query(
 		array(
 			'post_type'      => 'sunflower_person',
-			'posts_per_page' => -1,
+			'posts_per_page' => $display_options['limit'] ?? -1,
 			'tax_query'      => $tax_query,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+			'order'          => strtoupper( $display_options['order'] ?? 'asc' ),
+			'orderby'        => ( ( ( $display_options['order'] ?? 'none' ) === 'random' ) ? 'rand' : 'title' ),
 			'no_found_rows'  => true,
 		)
 	);
@@ -141,8 +145,7 @@ function sunflower_persons_get_all_person_groups( $sunflower_persons_post ) {
 function sunflower_persons_get_social_media_profiles( $post_id ) {
 
 	$return = array();
-
-	$lines = explode( '\n', (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
+	$lines  = explode( "\n", (string) get_post_meta( $post_id, 'person_socialmedia', true ) );
 
 	foreach ( $lines as $line ) {
 		$line         = trim( $line );

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.0.0\n"
+"Project-Id-Version: Sunflower Persons 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-03T07:24:31+00:00\n"
+"POT-Creation-Date: 2025-10-27T07:55:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons-person\n"
@@ -40,46 +40,135 @@ msgid "https://verdigado.com"
 msgstr ""
 
 #: build/editor-plugin/plugin.js:293
+#: src/editor-plugin/plugin.js:83
 #: build/editor-plugin/plugin.js:156
 msgid "Related persons"
 msgstr ""
 
-#: build/person/index.js:81
-#: build/person/index.js:45
+#: build/person/index.js:97
+#: src/person/edit.js:66
+#: build/person/index.js:66
 msgid "Show all persons"
 msgstr ""
 
-#: build/person/index.js:131
-#: build/person/index.js:127
-msgid "Show group filter"
+#: build/person/index.js:159
+#: src/person/edit.js:159
+msgid "Settings"
 msgstr ""
 
-#: build/person/index.js:147
-#: build/person/index.js:146
+#: build/person/index.js:161
+#: src/person/edit.js:162
+#: build/person/index.js:162
 msgid "Choose person"
 msgstr ""
 
-#: build/person/index.js:155
-#: build/person/index.js:160
+#: build/person/index.js:169
+#: src/person/edit.js:176
+#: build/person/index.js:176
 msgid "Groups"
 msgstr ""
 
-#: build/person/index.js:167
-#: build/person/index.js:175
-msgid "Filter Settings"
+#: build/person/index.js:174
+#: src/person/edit.js:182
+#: build/person/index.js:182
+msgid "Show group filter buttons on top"
+msgstr ""
+
+#: build/person/index.js:185
+#: src/person/edit.js:198
+#: build/person/index.js:198
+msgid "Display Options"
+msgstr ""
+
+#: build/person/index.js:187
+#: src/person/edit.js:204
+#: build/person/index.js:204
+msgid "Show as filmstrip"
+msgstr ""
+
+#: build/person/index.js:191
+#: src/person/edit.js:213
+#: build/person/index.js:213
+msgid "Show navigation buttons"
+msgstr ""
+
+#: build/person/index.js:195
+#: src/person/edit.js:223
+#: build/person/index.js:223
+msgid "Autoplay sliding"
+msgstr ""
+
+#: build/person/index.js:199
+#: src/person/edit.js:233
+#: build/person/index.js:233
+msgid "Seconds between slides (autoplay)"
+msgstr ""
+
+#: build/person/index.js:207
+#: src/person/edit.js:247
+#: build/person/index.js:247
+msgid "Number of Persons to show"
+msgstr ""
+
+#: build/person/index.js:215
+#: src/person/edit.js:260
+#: build/person/index.js:260
+msgid "Order"
+msgstr ""
+
+#: build/person/index.js:218
+#: build/person/index.js:240
+#: src/person/edit.js:264
+#: src/person/edit.js:312
+#: build/person/index.js:264
+#: build/person/index.js:312
+msgid "Random"
+msgstr ""
+
+#: build/person/index.js:221
+#: src/person/edit.js:271
+#: build/person/index.js:271
+msgid "alphabetic order (A–Z)"
+msgstr ""
+
+#: build/person/index.js:224
+#: src/person/edit.js:278
+#: build/person/index.js:278
+msgid "alphabetic order (Z–A)"
+msgstr ""
+
+#: build/person/index.js:231
+#: src/person/edit.js:291
+#: build/person/index.js:291
+msgid "Start with position"
+msgstr ""
+
+#: build/person/index.js:234
+#: src/person/edit.js:298
+#: build/person/index.js:298
+msgid "Start"
+msgstr ""
+
+#: build/person/index.js:237
+#: src/person/edit.js:305
+#: build/person/index.js:305
+msgid "Center"
 msgstr ""
 
 #: build/editor-plugin/block.json
+#: src/editor-plugin/block.json
 msgctxt "block title"
 msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
 #: build/person/block.json
+#: src/person/block.json
 msgctxt "block title"
 msgid "Person(en)"
 msgstr ""
 
 #: build/person/block.json
+#: src/person/block.json
 msgctxt "block description"
 msgid "Zeigt eine einzelne Person oder eine Liste von Personen an."
 msgstr ""

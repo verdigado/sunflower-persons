@@ -1,16 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-"
-"person\n"
-"POT-Creation-Date: 2025-10-03T07:23:00+00:00\n"
-"PO-Revision-Date: 2025-10-03 09:24+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-10-27T07:55:06+00:00\n"
+"PO-Revision-Date: 2025-10-27 08:56+0100\n"
+"Language: de_DE\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Domain: sunflower-persons-person\n"
 
@@ -26,9 +25,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid ""
-"Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen "
-"Person oder einer Liste von Personen."
+msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -41,41 +38,23 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/editor-plugin/plugin.js:293 build/editor-plugin/plugin.js:156
-msgid "Related persons"
-msgstr "Personen zuordnen"
-
-#: build/person/index.js:81 build/person/index.js:45
-msgid "Show all persons"
-msgstr "Zeige alle Personen"
-
-#: build/person/index.js:131 build/person/index.js:127
-msgid "Show group filter"
-msgstr "Zeige Gruppen-Filter"
-
-#: build/person/index.js:147 build/person/index.js:146
-msgid "Choose person"
-msgstr "Wählte Person"
-
-#: build/person/index.js:155 build/person/index.js:160
-msgid "Groups"
-msgstr "Gruppen"
-
-#: build/person/index.js:167 build/person/index.js:175
-msgid "Filter Settings"
-msgstr "Filter Einstellungen"
-
 #: build/editor-plugin/block.json
+#: src/editor-plugin/block.json
 msgctxt "block title"
 msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
 #: build/person/block.json
+#: src/person/block.json
 msgctxt "block title"
 msgid "Person(en)"
 msgstr ""
 
 #: build/person/block.json
+#: src/person/block.json
 msgctxt "block description"
 msgid "Zeigt eine einzelne Person oder eine Liste von Personen an."
 msgstr ""
+
+#~ msgid "Filter Settings"
+#~ msgstr "Filter Einstellungen"
