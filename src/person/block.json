@@ -38,8 +38,8 @@
 			"default": true
 		},
 		"slideStart": {
-			"type": "array",
-			"default": [ "start"]
+			"type": "string",
+			"default": "start"
 		},
 		"autoplayTimer": {
 			"type": "number",

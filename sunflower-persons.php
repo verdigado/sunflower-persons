@@ -104,16 +104,17 @@ function sunflower_persons_get_all_persons( $group_ids = array(), $tag_ids = arr
 		);
 	}
 
-	return new WP_Query(
-		array(
-			'post_type'      => 'sunflower_person',
-			'posts_per_page' => $display_options['limit'] ?? -1,
-			'tax_query'      => $tax_query,
-			'order'          => strtoupper( $display_options['order'] ?? 'asc' ),
-			'orderby'        => ( ( ( $display_options['order'] ?? 'none' ) === 'random' ) ? 'rand' : 'title' ),
-			'no_found_rows'  => true,
-		)
+	$args = array(
+		'post_type'      => 'sunflower_person',
+		'posts_per_page' => $display_options['limit'] ?? -1,
+		'tax_query'      => $tax_query,
+		'meta_key'       => 'person_sortname',
+		'order'          => strtoupper( $display_options['order'] ?? 'asc' ),
+		'orderby'        => ( ( ( $display_options['order'] ?? 'none' ) === 'random' ) ? 'rand' : 'meta_value title' ),
+		'no_found_rows'  => true,
 	);
+
+	return new WP_Query( $args );
 }
 
 /**
