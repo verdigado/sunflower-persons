@@ -94,12 +94,21 @@ add_action(
  * @param WP_Post $post The post object.
  */
 function sunflower_persons_render_contact_meta( $post ) {
-	$phone       = get_post_meta( $post->ID, 'phone', true );
-	$email       = get_post_meta( $post->ID, 'email', true );
-	$website     = get_post_meta( $post->ID, 'website', true );
-	$socialmedia = get_post_meta( $post->ID, 'socialmedia', true );
+	$sortname    = get_post_meta( $post->ID, 'person_sortname', true );
+	$phone       = get_post_meta( $post->ID, 'person_phone', true );
+	$email       = get_post_meta( $post->ID, 'person_email', true );
+	$website     = get_post_meta( $post->ID, 'person_website', true );
+	$socialmedia = get_post_meta( $post->ID, 'person_socialmedia', true );
 	?>
 	<table class="form-table"><tbody>
+	<tr>
+		<th scope="row">
+			<label for="person_sortname"><?php esc_html_e( 'Sortname', 'sunflower-persons' ); ?></label>
+		</th>
+		<td><input type="text" name="person_sortname" id="person_sortname" value="<?php echo esc_attr( $sortname ); ?>" />
+			<br><span class="description"><?php esc_html_e( 'Sorting name. e.g. last-name', 'sunflower-persons' ); ?></span>
+		</td>
+	</tr>
 	<tr>
 		<th scope="row">
 			<label for="person_phone"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?></label>
@@ -181,6 +190,11 @@ function sunflower_persons_save_post_form( $post_id ) {
 		return;
 	}
 
+	if ( isset( $_POST['person_sortname'] ) && ! empty( $_POST['person_sortname'] ) ) {
+		update_post_meta( $post_id, 'person_sortname', sanitize_text_field( $_POST['person_sortname'] ) );
+	} else {
+		update_post_meta( $post_id, 'person_sortname', explode( ' ', get_the_title( $post_id ) )[1] ?? get_the_title( $post_id ) );
+	}
 	if ( isset( $_POST['person_phone'] ) ) {
 		update_post_meta( $post_id, 'person_phone', sanitize_text_field( $_POST['person_phone'] ) );
 	}
