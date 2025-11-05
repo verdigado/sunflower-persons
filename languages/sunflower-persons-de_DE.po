@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
+"persons\n"
+"POT-Creation-Date: 2025-11-05T13:02:20+00:00\n"
+"PO-Revision-Date: 2025-11-05 14:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-27T07:55:05+00:00\n"
-"PO-Revision-Date: 2025-10-27 08:55+0100\n"
-"Language: de_DE\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Domain: sunflower-persons\n"
 
@@ -25,7 +26,9 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
+msgid ""
+"Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen "
+"Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -38,32 +41,25 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/person/render.php:17
-#: src/person/render.php:17
+#: build/person/render.php:17 src/person/render.php:17
 msgid "Person not found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:119
-#: src/person/render.php:119
+#: build/person/render.php:119 src/person/render.php:119
 msgid "No persons found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:145
-#: inc/cpt-person.php:13
-#: inc/cpt-person.php:23
+#: build/person/render.php:145 inc/cpt-person.php:13 inc/cpt-person.php:23
 #: src/person/render.php:145
 msgid "Persons"
 msgstr "Personen"
 
-#: build/person/render.php:155
-#: build/person/render.php:163
-#: src/person/render.php:155
-#: src/person/render.php:163
+#: build/person/render.php:155 build/person/render.php:163
+#: src/person/render.php:155 src/person/render.php:163
 msgid "Back"
 msgstr "zurück"
 
-#: build/person/render.php:234
-#: src/person/render.php:234
+#: build/person/render.php:234 src/person/render.php:234
 msgid "Next"
 msgstr "weiter"
 
@@ -103,8 +99,7 @@ msgstr "Keine Person gefunden"
 msgid "No person found in trash"
 msgstr "Keine Person im Papierkorb gefunden"
 
-#: inc/cpt-person.php:49
-#: inc/cpt-person.php:61
+#: inc/cpt-person.php:49 inc/cpt-person.php:61
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -156,36 +151,41 @@ msgstr "Keine Gruppe im Papierkorb gefunden"
 msgid "Contact details"
 msgstr "Kontakt-Details"
 
-#: inc/cpt-person.php:105
+#: inc/cpt-person.php:106
+msgid "Sortname"
+msgstr "Sortiername"
+
+#: inc/cpt-person.php:109
+msgid "Sorting name. e.g. last-name"
+msgstr "Sortierung nach z.B. Nachname"
+
+#: inc/cpt-person.php:114
 msgid "Phone"
 msgstr "Telefon"
 
-#: inc/cpt-person.php:111
+#: inc/cpt-person.php:120
 msgid "Email"
 msgstr "E-Mail"
 
-#: inc/cpt-person.php:118
+#: inc/cpt-person.php:127
 msgid "Website"
 msgstr "Webseite"
 
-#: inc/cpt-person.php:126
+#: inc/cpt-person.php:135
 msgid "Social Media"
 msgstr ""
 
-#: build/editor-plugin/block.json
-#: src/editor-plugin/block.json
+#: build/editor-plugin/block.json src/editor-plugin/block.json
 msgctxt "block title"
 msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
-#: build/person/block.json
-#: src/person/block.json
+#: build/person/block.json src/person/block.json
 msgctxt "block title"
 msgid "Person(en)"
 msgstr ""
 
-#: build/person/block.json
-#: src/person/block.json
+#: build/person/block.json src/person/block.json
 msgctxt "block description"
 msgid "Zeigt eine einzelne Person oder eine Liste von Personen an."
 msgstr ""
