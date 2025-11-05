@@ -1,16 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-"
-"person\n"
-"POT-Creation-Date: 2025-10-24T12:46:48+00:00\n"
-"PO-Revision-Date: 2025-10-24 14:48+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-05T13:02:21+00:00\n"
+"PO-Revision-Date: 2025-11-05 14:07+0100\n"
+"Language: de_DE\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Domain: sunflower-persons-person\n"
 
@@ -26,9 +25,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid ""
-"Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen "
-"Person oder einer Liste von Personen."
+msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -41,74 +38,20 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/editor-plugin/plugin.js:293 src/editor-plugin/plugin.js:83
-#: build/editor-plugin/plugin.js:156
-msgid "Related persons"
-msgstr "Personen zuordnen"
-
-#: build/person/index.js:94 src/person/edit.js:54 build/person/index.js:54
-msgid "Show all persons"
-msgstr "Zeige alle Personen"
-
-#: build/person/index.js:156 src/person/edit.js:147 build/person/index.js:147
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: build/person/index.js:158 src/person/edit.js:150 build/person/index.js:150
-msgid "Choose person"
-msgstr "Wählte Person"
-
-#: build/person/index.js:166 src/person/edit.js:164 build/person/index.js:164
-msgid "Groups"
-msgstr "Gruppen"
-
-#: build/person/index.js:171 src/person/edit.js:170 build/person/index.js:170
-msgid "Show group filter buttons on top"
-msgstr "Zeige Gruppen-Filter Buttons"
-
-#: build/person/index.js:182 src/person/edit.js:186 build/person/index.js:186
-msgid "Display Options"
-msgstr "Anzeige-Optionen"
-
-#: build/person/index.js:184 src/person/edit.js:192 build/person/index.js:192
-msgid "Show as filmstrip"
-msgstr "Anzeige als FIlmstrip (1-zeilig)"
-
-#: build/person/index.js:188 src/person/edit.js:201 build/person/index.js:201
-msgid "Show navigation buttons"
-msgstr "Zeige Navigations-Buttons (vor/zurück)"
-
-#: build/person/index.js:192 src/person/edit.js:211 build/person/index.js:211
-msgid "Number of Persons to show"
-msgstr "Anzahl der Personen"
-
-#: build/person/index.js:200 src/person/edit.js:224 build/person/index.js:224
-msgid "Order"
-msgstr "Reihenfolge"
-
-#: build/person/index.js:203 src/person/edit.js:228 build/person/index.js:228
-msgid "Random"
-msgstr "Zufall"
-
-#: build/person/index.js:206 src/person/edit.js:235 build/person/index.js:235
-msgid "alphabetic order (A–Z)"
-msgstr "Alphabetisch (A-Z)"
-
-#: build/person/index.js:209 src/person/edit.js:242 build/person/index.js:242
-msgid "alphabetic order (Z–A)"
-msgstr "Alphabetisch (Z-A)"
-
-#: build/editor-plugin/block.json src/editor-plugin/block.json
+#: build/editor-plugin/block.json
+#: src/editor-plugin/block.json
 msgctxt "block title"
 msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
-#: build/person/block.json src/person/block.json
+#: build/person/block.json
+#: src/person/block.json
 msgctxt "block title"
 msgid "Person(en)"
 msgstr ""
 
-#: build/person/block.json src/person/block.json
+#: build/person/block.json
+#: src/person/block.json
 msgctxt "block description"
 msgid "Zeigt eine einzelne Person oder eine Liste von Personen an."
 msgstr ""
