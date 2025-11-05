@@ -8,7 +8,7 @@
  * Text Domain: sunflower-persons
  * Requires at least: 6.8
  * Requires PHP: 8.2
- * Plugin URI:  https://github.com/verdigado/sunflower-persons
+ * Plugin URI: https://github.com/verdigado/sunflower-persons
  * Update URI: https://sunflower-theme.de/updateserver/sunflower-persons/
  *
  * @package Sunflower Persons
@@ -178,6 +178,9 @@ function sunflower_persons_get_social_media_profiles( $post_id ) {
  * @param string $plugin_file The plugin slug - 'sunflower-persons' our case.
  */
 function sunflower_persons_update_plugin( $update, $plugin_data, $plugin_file ) {
+	if ( plugin_basename( __FILE__ ) !== $plugin_file ) {
+		return $update;
+	}
 	// Include an unmodified $wp_version.
 	require ABSPATH . WPINC . '/version.php';
 	$php_version = PHP_VERSION;
