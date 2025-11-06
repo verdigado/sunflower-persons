@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-05T13:02:20+00:00\n"
+"POT-Creation-Date: 2025-11-06T10:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -44,27 +44,27 @@ msgstr ""
 msgid "Person not found."
 msgstr ""
 
-#: build/person/render.php:119
-#: src/person/render.php:119
+#: build/person/render.php:121
+#: src/person/render.php:121
 msgid "No persons found."
 msgstr ""
 
-#: build/person/render.php:145
+#: build/person/render.php:147
 #: inc/cpt-person.php:13
 #: inc/cpt-person.php:23
-#: src/person/render.php:145
+#: src/person/render.php:147
 msgid "Persons"
 msgstr ""
 
-#: build/person/render.php:155
-#: build/person/render.php:163
-#: src/person/render.php:155
-#: src/person/render.php:163
+#: build/person/render.php:157
+#: build/person/render.php:165
+#: src/person/render.php:157
+#: src/person/render.php:165
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:234
-#: src/person/render.php:234
+#: build/person/render.php:238
+#: src/person/render.php:238
 msgid "Next"
 msgstr ""
 
@@ -157,28 +157,52 @@ msgstr ""
 msgid "Contact details"
 msgstr ""
 
-#: inc/cpt-person.php:106
+#: inc/cpt-person.php:111
 msgid "Sortname"
 msgstr ""
 
-#: inc/cpt-person.php:109
+#: inc/cpt-person.php:114
 msgid "Sorting name. e.g. last-name"
 msgstr ""
 
-#: inc/cpt-person.php:114
+#: inc/cpt-person.php:119
+msgid "Profile picture"
+msgstr ""
+
+#: inc/cpt-person.php:136
+msgid "Select or upload image"
+msgstr ""
+
+#: inc/cpt-person.php:140
+msgid "Change image"
+msgstr ""
+
+#: inc/cpt-person.php:143
+msgid "Remove image"
+msgstr ""
+
+#: inc/cpt-person.php:150
 msgid "Phone"
 msgstr ""
 
-#: inc/cpt-person.php:120
+#: inc/cpt-person.php:156
 msgid "Email"
 msgstr ""
 
-#: inc/cpt-person.php:127
+#: inc/cpt-person.php:163
 msgid "Website"
 msgstr ""
 
-#: inc/cpt-person.php:135
+#: inc/cpt-person.php:171
 msgid "Social Media"
+msgstr ""
+
+#: inc/cpt-person.php:212
+msgid "Select or upload person image"
+msgstr ""
+
+#: inc/cpt-person.php:213
+msgid "Use this image"
 msgstr ""
 
 #: build/editor-plugin/block.json

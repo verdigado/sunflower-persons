@@ -27,9 +27,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 	<article class="sunflower-person sunflower-person--single" id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
 		<div class="sunflower-person__media">
 			<?php
-				$sunflower_persons_thumbnail = get_the_post_thumbnail( $sunflower_persons_post->ID, 'medium' )
-				? get_the_post_thumbnail( $sunflower_persons_post->ID, 'medium', array( 'class' => 'sunflower-person-medium' ) )
-				: sunflower_get_setting( 'sunflower_open_graph_fallback_image' );
+				$sunflower_persons_thumbnail = '';
+				$sunflower_persons_photo_id  = get_post_meta( $sunflower_persons_post->ID, 'person_photo_id', true );
+			if ( $sunflower_persons_photo_id ) {
+				$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'medium', false, array( 'class' => 'sunflower-person-medium' ) );
+			}
 
 				// If still empty, take the default image.
 			if ( ! $sunflower_persons_thumbnail ) {
@@ -177,9 +179,11 @@ if ( $sunflower_persons_person_id > 0 ) {
 				<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
 					<div class="sunflower-person__media">
 					<?php
-					$sunflower_persons_thumbnail = get_the_post_thumbnail( get_the_ID(), 'thumbnail' )
-					? get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'class' => 'sunflower-person-thumb' ) )
-					: sunflower_get_setting( 'sunflower_open_graph_fallback_image' );
+					$sunflower_persons_thumbnail = '';
+					$sunflower_persons_photo_id  = get_post_meta( get_the_ID(), 'person_photo_id', true );
+					if ( $sunflower_persons_photo_id ) {
+						$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'thumbnail', false, array( 'class' => 'sunflower-person-thumb' ) );
+					}
 
 					// If still empty, take the default image.
 					if ( ! $sunflower_persons_thumbnail ) {
