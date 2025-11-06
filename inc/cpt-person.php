@@ -99,6 +99,11 @@ function sunflower_persons_render_contact_meta( $post ) {
 	$email       = get_post_meta( $post->ID, 'person_email', true );
 	$website     = get_post_meta( $post->ID, 'person_website', true );
 	$socialmedia = get_post_meta( $post->ID, 'person_socialmedia', true );
+	$photo_id    = get_post_meta( $post->ID, 'person_photo_id', true );
+	$photo_url   = $photo_id ? wp_get_attachment_image_url( $photo_id, 'thumbnail' ) : '';
+
+	// Allow media uploader scripts.
+	wp_enqueue_media();
 	?>
 	<table class="form-table"><tbody>
 	<tr>
@@ -107,6 +112,42 @@ function sunflower_persons_render_contact_meta( $post ) {
 		</th>
 		<td><input type="text" name="person_sortname" id="person_sortname" value="<?php echo esc_attr( $sortname ); ?>" />
 			<br><span class="description"><?php esc_html_e( 'Sorting name. e.g. last-name', 'sunflower-persons' ); ?></span>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<label><?php esc_html_e( 'Profile picture', 'sunflower-persons' ); ?></label>
+		</th>
+		<td id="person-photo-preview">
+			<div class="sunflower-person-list">
+			<?php if ( $photo_url ) : ?>
+						<img src="<?php echo esc_url( $photo_url ); ?>" alt="" class="sunflower-person-thumb" style="max-width:150px;" />
+			<?php else : ?>
+						<span class="sunflower-person-thumb" style=""></span>
+			<?php endif; ?>
+			</div>
+		</td>
+		<td>
+			<input type="hidden" id="person_photo_id" name="person_photo_id" value="<?php echo esc_attr( $photo_id ); ?>" />
+			<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;">
+				<?php
+					printf(
+						'<button type="button" class="button person-photo-action" id="person-photo-select" style="%s">%s</button>',
+						$photo_id ? 'display:none;' : '',
+						esc_html__( 'Select or upload image', 'sunflower-persons' ),
+					);
+					printf(
+						'<button type="button" class="button person-photo-action" id="person-photo-change" style="%s">%s</button>',
+						( ! $photo_id ) ? 'display:none;' : '',
+						esc_html__( 'Change image', 'sunflower-persons' )
+					);
+					printf(
+						'<button type="button" class="button" id="person-photo-remove" style="%s">%s</button>',
+						( ! $photo_id ) ? 'display:none;' : '',
+						esc_html__( 'Remove image', 'sunflower-persons' )
+					);
+				?>
+			</div>
 		</td>
 	</tr>
 	<tr>
@@ -161,6 +202,44 @@ function sunflower_persons_render_contact_meta( $post ) {
 	<tr>
 
 	</table>
+
+
+	<script>
+	jQuery(document).ready(function($) {
+		let frame;
+		$('.person-photo-action').on('click', function(e) {
+			e.preventDefault();
+			if (frame) {
+				frame.open();
+				return;
+			}
+			frame = wp.media({
+				title: '<?php echo esc_js( __( 'Select or upload person image', 'sunflower-persons' ) ); ?>',
+				button: { text: '<?php echo esc_js( __( 'Use this image', 'sunflower-persons' ) ); ?>' },
+				multiple: false
+			});
+			frame.on('select', function() {
+				const attachment = frame.state().get('selection').first().toJSON();
+				$('#person_photo_id').val(attachment.id);
+				$('#person-photo-preview').html('<div class="sunflower-person-list"><img src="'+attachment.sizes.thumbnail.url+'" class="sunflower-person-thumb" style="max-width:150px;" /></div>');
+				$('#person-photo-change').show();
+				$('#person-photo-remove').show();
+				$('#person-photo-select').hide();
+			});
+			frame.open();
+		});
+
+		$('#person-photo-remove').on('click', function(e) {
+			e.preventDefault();
+			$('#person_photo_id').val('');
+			$('#person-photo-preview').html('<div class="sunflower-person-list"><span class="sunflower-person-thumb" style=""></span></div>');
+			$('#person-photo-change').hide();
+			$('#person-photo-select').show();
+			$(this).hide();
+		});
+	});
+	</script>
+
 	<?php
 }
 
@@ -207,6 +286,9 @@ function sunflower_persons_save_post_form( $post_id ) {
 	if ( isset( $_POST['person_socialmedia'] ) ) {
 		update_post_meta( $post_id, 'person_socialmedia', sanitize_textarea_field( $_POST['person_socialmedia'] ) );
 	}
+	if ( isset( $_POST['person_photo_id'] ) ) {
+		update_post_meta( $post_id, 'person_photo_id', intval( $_POST['person_photo_id'] ) );
+	}
 }
 
 /**
@@ -247,6 +329,12 @@ function sunflower_persons_enqueue_editor_assets() {
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
+	);
+	wp_register_style(
+		'fontawesome6',
+		SUNFLOWER_PERSONS_URL . '/build/person/style-index.css',
+		array(),
+		SUNFLOWER_MAP_POINTS_VERSION
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_editor_assets' );
