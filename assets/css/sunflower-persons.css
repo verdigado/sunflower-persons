@@ -1,0 +1,46 @@
+/* Bootstrap
+--------------------------------------------- */
+.sunflower-person__offices, .sunflower-person__meta {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0;
+}
+.sunflower-person__offices li a, .sunflower-person__meta li a {
+  text-decoration: none;
+}
+.sunflower-person__offices li a i, .sunflower-person__meta li a i {
+  color: #000;
+}
+.sunflower-person__socialmedia .social-media-profiles {
+  list-style: none;
+  padding: 0.5em 0 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5em;
+  width: 32px;
+  height: 32px;
+}
+.sunflower-person__socialmedia .social-media-profiles li {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 50%;
+}
+.sunflower-person__socialmedia .social-media-profiles li a {
+  color: #000;
+  opacity: 1;
+  background-color: #008939;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  font-size: 90%;
+}
+.sunflower-person__socialmedia .social-media-profiles li a i {
+  color: #fff;
+}
+
+/*# sourceMappingURL=sunflower-persons.css.map */

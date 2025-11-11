@@ -1,9 +1,6 @@
 node_modules/
 bundle*
 vendor/
-style.css
-style.css.map
-style-rtl.css
 documentation/
 build/
 assets/vndr/
