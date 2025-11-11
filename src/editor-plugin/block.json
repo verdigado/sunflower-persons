@@ -4,5 +4,6 @@
 	"category": "widgets",
 	"icon": "admin-comments",
 	"keywords": [],
-	"editorScript": "file:./plugin.js"
+	"editorScript": "file:./plugin.js",
+	"editorStyle": "file:./index.css"
 }

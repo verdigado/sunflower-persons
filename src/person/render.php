@@ -33,7 +33,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 				$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'medium', false, array( 'class' => 'sunflower-person-medium' ) );
 			}
 
-				// If still empty, take the default image.
+			// If still empty, take the default image.
 			if ( ! $sunflower_persons_thumbnail ) {
 				$sunflower_persons_thumbnail = '<img src="' . esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ) . '" class="sunflower-person-medium" . alt="Drawing of a person head." />';
 

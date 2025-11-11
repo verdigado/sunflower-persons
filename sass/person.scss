@@ -1,0 +1,58 @@
+.sunflower-person {
+
+	&__offices,
+	&__meta {
+		list-style: none;
+		padding: 0;
+		margin: 0.5em 0 0;
+
+		li {
+
+			a {
+				text-decoration: none;
+
+				i {
+					color: #000;
+				}
+			}
+		}
+	}
+
+	&__socialmedia {
+
+		.social-media-profiles {
+			list-style: none;
+			padding: 0.5em 0 0;
+			margin: 0;
+			display: flex;
+			gap: 0.5em;
+			width: 32px;
+			height: 32px;
+
+			li {
+				width: 32px;
+				height: 32px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #fff;
+				border-radius: 50%;
+
+				a {
+					color: #000;
+					opacity: 1;
+					background-color: $primary;
+					border-radius: 50%;
+					justify-content: center;
+					align-items: center;
+					padding: 0;
+					font-size: 90%;
+
+					i {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
