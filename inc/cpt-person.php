@@ -74,20 +74,6 @@ function sunflower_persons_register_group_taxonomy() {
 }
 add_action( 'init', 'sunflower_persons_register_group_taxonomy' );
 
-add_action(
-	'add_meta_boxes',
-	function () {
-		add_meta_box(
-			'sunflower_persons_contact',
-			__( 'Contact details', 'sunflower-persons' ),
-			'sunflower_persons_render_contact_meta',
-			'sunflower_person',
-			'normal',
-			'default'
-		);
-	}
-);
-
 /**
  * Render the contact meta box.
  *
@@ -289,6 +275,22 @@ function sunflower_persons_save_post_form( $post_id ) {
 	if ( isset( $_POST['person_photo_id'] ) ) {
 		update_post_meta( $post_id, 'person_photo_id', intval( $_POST['person_photo_id'] ) );
 	}
+
+	if ( isset( $_POST['person_offices'] ) && is_array( $_POST['person_offices'] ) ) {
+		$clean = array();
+		foreach ( $_POST['person_offices'] as $office ) {
+			$clean[] = array(
+				'label'  => sanitize_text_field( $office['label'] ?? '' ),
+				'street' => sanitize_text_field( $office['street'] ?? '' ),
+				'city'   => sanitize_text_field( $office['city'] ?? '' ),
+				'phone'  => sanitize_text_field( $office['phone'] ?? '' ),
+				'email'  => sanitize_email( $office['email'] ?? '' ),
+			);
+		}
+		update_post_meta( $post_id, 'person_offices', $clean );
+	} else {
+		delete_post_meta( $post_id, 'person_offices' );
+	}
 }
 
 /**
@@ -319,6 +321,127 @@ function sunflower_persons_register_post_persons_meta() {
 add_action( 'init', 'sunflower_persons_register_post_persons_meta' );
 
 /**
+ * Render the office meta box.
+ *
+ * @param WP_Post $post The post object.
+ */
+function sunflower_persons_render_office_meta( $post ) {
+	$offices = get_post_meta( $post->ID, 'person_offices', true );
+	if ( ! is_array( $offices ) ) {
+		$offices = array();
+	}
+
+	wp_nonce_field( 'save_person_offices', 'person_offices_nonce' );
+	?>
+	<div id="person-offices">
+		<?php foreach ( $offices as $index => $office ) : ?>
+			<div class="person-office-block" style="margin-bottom: 1em; border: 1px solid #ddd; padding: 1em;">
+				<h4>
+				<?php
+					printf(
+						'%s %s',
+						esc_html_e( 'Office', 'sunflower-persons' ),
+						esc_attr( $index + 1 )
+					);
+				?>
+				</h4>
+				<p>
+					<label><?php esc_html_e( 'Label', 'sunflower-persons' ); ?>:<br>
+						<input type="text" name="person_offices[<?php echo esc_attr( $index ); ?>][label]" value="<?php echo esc_attr( $office['label'] ?? '' ); ?>">
+					</label>
+				</p>
+				<p>
+					<label><?php esc_html_e( 'Street and Housenumber', 'sunflower-persons' ); ?>:<br>
+						<input type="text" name="person_offices[<?php echo esc_attr( $index ); ?>][street]" value="<?php echo esc_attr( $office['street'] ?? '' ); ?>">
+					</label>
+				</p>
+				<p>
+					<label><?php esc_html_e( 'ZIP-code and city', 'sunflower-persons' ); ?>:<br>
+						<input type="text" name="person_offices[<?php echo esc_attr( $index ); ?>][city]" value="<?php echo esc_attr( $office['city'] ?? '' ); ?>">
+					</label>
+				</p>
+				<p>
+					<label><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:<br>
+						<input type="text" name="person_offices[<?php echo esc_attr( $index ); ?>][phone]" value="<?php echo esc_attr( $office['phone'] ?? '' ); ?>">
+					</label>
+				</p>
+				<p>
+					<label><?php esc_html_e( 'Email', 'sunflower-persons' ); ?>:<br>
+						<input type="email" name="person_offices[<?php echo esc_attr( $index ); ?>][email]" value="<?php echo esc_attr( $office['email'] ?? '' ); ?>">
+					</label>
+				</p>
+				<p>
+					<button type="button" class="button remove-office"><?php esc_html_e( 'Remove office', 'sunflower-persons' ); ?></button>
+				</p>
+			</div>
+		<?php endforeach; ?>
+	</div>
+
+	<p>
+		<button type="button" class="button" id="add-office"><?php esc_html_e( 'Add office', 'sunflower-persons' ); ?></button>
+	</p>
+
+	<template id="person-office-template">
+		<div class="person-office-block" style="margin-bottom: 1em; border: 1px solid #ddd; padding: 1em;">
+			<h4><?php esc_html_e( 'Office', 'sunflower-persons' ); ?></h4>
+			<p><label><?php esc_html_e( 'Label', 'sunflower-persons' ); ?>:<br><input type="text" name="__name__[label]" value=""></label></p>
+			<p><label><?php esc_html_e( 'Street and Housenumber', 'sunflower-persons' ); ?>:<br><input type="text" name="__name__[street]" value=""></label></p>
+			<p><label><?php esc_html_e( 'ZIP-code and city', 'sunflower-persons' ); ?>:<br><input type="text" name="__name__[city]" value=""></label></p>
+			<p><label><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:<br><input type="text" name="__name__[phone]" value=""></label></p>
+			<p><label><?php esc_html_e( 'Email', 'sunflower-persons' ); ?>:<br><input type="email" name="__name__[email]" value=""></label></p>
+			<p><button type="button" class="button remove-office">Büro entfernen</button></p>
+		</div>
+	</template>
+
+	<script>
+	jQuery(document).ready(function($){
+		const container = $('#person-offices');
+		const template = $('#person-office-template').html();
+
+		$('#add-office').on('click', function(){
+			const index = container.find('.person-office-block').length;
+			const newBlock = template.replace(/__name__/g, 'person_offices[' + index + ']');
+			container.append(newBlock);
+		});
+
+		container.on('click', '.remove-office', function(){
+			$(this).closest('.person-office-block').remove();
+			container.find('.person-office-block').each(function(i, el){
+				$(el).find('input').each(function(){
+					const name = $(this).attr('name');
+					const newName = name.replace(/person_offices\[\d+\]/, 'person_offices[' + i + ']');
+					$(this).attr('name', newName);
+				});
+			});
+		});
+	});
+	</script>
+	<?php
+}
+
+add_action(
+	'add_meta_boxes_sunflower_person',
+	function () {
+		add_meta_box(
+			'person_offices',
+			__( 'Offices', 'sunflower-persons' ),
+			'sunflower_persons_render_office_meta',
+			'sunflower_person',
+			'normal',
+			'default'
+		);
+		add_meta_box(
+			'sunflower_persons_contact',
+			__( 'Contact details', 'sunflower-persons' ),
+			'sunflower_persons_render_contact_meta',
+			'sunflower_person',
+			'normal',
+			'default'
+		);
+	}
+);
+
+/**
  * Enqueue block editor assets.
  */
 function sunflower_persons_enqueue_editor_assets() {
@@ -334,7 +457,7 @@ function sunflower_persons_enqueue_editor_assets() {
 		'fontawesome6',
 		SUNFLOWER_PERSONS_URL . '/build/person/style-index.css',
 		array(),
-		SUNFLOWER_MAP_POINTS_VERSION
+		SUNFLOWER_PERSONS_VERSION
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_editor_assets' );

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-06T10:40:31+00:00\n"
+"POT-Creation-Date: 2025-11-11T09:58:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -153,56 +153,100 @@ msgstr ""
 msgid "No group found in trash"
 msgstr ""
 
-#: inc/cpt-person.php:82
-msgid "Contact details"
-msgstr ""
-
-#: inc/cpt-person.php:111
+#: inc/cpt-person.php:97
 msgid "Sortname"
 msgstr ""
 
-#: inc/cpt-person.php:114
+#: inc/cpt-person.php:100
 msgid "Sorting name. e.g. last-name"
 msgstr ""
 
-#: inc/cpt-person.php:119
+#: inc/cpt-person.php:105
 msgid "Profile picture"
 msgstr ""
 
-#: inc/cpt-person.php:136
+#: inc/cpt-person.php:123
 msgid "Select or upload image"
 msgstr ""
 
-#: inc/cpt-person.php:140
+#: inc/cpt-person.php:128
 msgid "Change image"
 msgstr ""
 
-#: inc/cpt-person.php:143
+#: inc/cpt-person.php:133
 msgid "Remove image"
 msgstr ""
 
-#: inc/cpt-person.php:150
+#: inc/cpt-person.php:141
+#: inc/cpt-person.php:364
+#: inc/cpt-person.php:390
 msgid "Phone"
 msgstr ""
 
-#: inc/cpt-person.php:156
+#: inc/cpt-person.php:147
+#: inc/cpt-person.php:369
+#: inc/cpt-person.php:391
 msgid "Email"
 msgstr ""
 
-#: inc/cpt-person.php:163
+#: inc/cpt-person.php:154
 msgid "Website"
 msgstr ""
 
-#: inc/cpt-person.php:171
+#: inc/cpt-person.php:162
 msgid "Social Media"
 msgstr ""
 
-#: inc/cpt-person.php:212
+#: inc/cpt-person.php:203
 msgid "Select or upload person image"
 msgstr ""
 
-#: inc/cpt-person.php:213
+#: inc/cpt-person.php:204
 msgid "Use this image"
+msgstr ""
+
+#: inc/cpt-person.php:343
+#: inc/cpt-person.php:386
+msgid "Office"
+msgstr ""
+
+#: inc/cpt-person.php:349
+#: inc/cpt-person.php:387
+msgid "Label"
+msgstr ""
+
+#: inc/cpt-person.php:354
+#: inc/cpt-person.php:388
+msgid "Street and Housenumber"
+msgstr ""
+
+#: inc/cpt-person.php:359
+#: inc/cpt-person.php:389
+msgid "ZIP-code and city"
+msgstr ""
+
+#: inc/cpt-person.php:374
+msgid "Remove office"
+msgstr ""
+
+#: inc/cpt-person.php:381
+msgid "Add office"
+msgstr ""
+
+#: inc/cpt-person.php:427
+msgid "Büros"
+msgstr ""
+
+#: inc/cpt-person.php:435
+msgid "Contact details"
+msgstr ""
+
+#: template-parts/content-sunflower_person.php:100
+msgid "Contact"
+msgstr ""
+
+#: template-parts/content-sunflower_person.php:139
+msgid "Offices"
 msgstr ""
 
 #: build/editor-plugin/block.json

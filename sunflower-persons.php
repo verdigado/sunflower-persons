@@ -21,6 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'SUNFLOWER_PERSONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNFLOWER_PERSONS_URL', plugin_dir_url( __FILE__ ) );
 
+if ( ! defined( 'SUNFLOWER_PERSONS_VERSION' ) ) {
+	$sunflower_persons_plugin_data    = get_plugin_data( __FILE__, false, false );
+	$sunflower_persons_plugin_version = $sunflower_persons_plugin_data['Version'];
+	define( 'SUNFLOWER_PERSONS_VERSION', $sunflower_persons_plugin_version );
+}
+
 require_once SUNFLOWER_PERSONS_PATH . 'inc/cpt-person.php';
 
 add_action( 'init', 'sunflower_persons_blocks_init' );
@@ -160,7 +166,7 @@ function sunflower_persons_get_social_media_profiles( $post_id ) {
 		}
 
 		$return[] = sprintf(
-			'<a href="%1$s" target="_blank" title="%3$s" class="social-media-profile" rel="me"><i class="%2$s"></i></a>',
+			'<a href="%1$s" target="_blank" title="%3$s" class="social-media-profiles" rel="me"><i class="%2$s"></i></a>',
 			$url,
 			$class,
 			$title
@@ -246,3 +252,18 @@ function sunflower_person_single_template( $template ) {
 	return $template;
 }
 add_filter( 'single_template', 'sunflower_person_single_template' );
+
+
+/**
+ * Enqueue frontend assets.
+ */
+function sunflower_persons_enqueue_frontend_assets() {
+	wp_enqueue_style(
+		'sunflower-persons-frontend-style',
+		SUNFLOWER_PERSONS_URL . '/assets/css/sunflower-persons.css',
+		array(),
+		SUNFLOWER_PERSONS_VERSION
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );

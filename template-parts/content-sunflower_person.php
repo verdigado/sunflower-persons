@@ -10,12 +10,21 @@
 $sunflower_styled_layout = (bool) get_post_meta( $post->ID, '_sunflower_styled_layout', true ) ?? false;
 
 $sunflower_show_post_thumbnail = has_post_thumbnail() && ! get_post_meta( $post->ID, '_sunflower_hide_feature_image', true );
-$sunflower_metadata            = $sunflower_persons_person_args['metadata'] ?? '';
-$sunflower_class               = 'display-single';
+
+$sunflower_metadata = true;
+
+$sunflower_persons_person_phone       = get_post_meta( $post->ID, 'person_phone', true );
+$sunflower_persons_person_email       = get_post_meta( $post->ID, 'person_email', true );
+$sunflower_persons_person_website     = get_post_meta( $post->ID, 'person_website', true );
+$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $post->ID );
+
+$sunflower_persons_person_offices = get_post_meta( $post->ID, 'person_offices', true );
+
+
+$sunflower_class = 'display-single';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $sunflower_class ); ?>>
-	<?php if ( ! $sunflower_styled_layout ) { ?>
 	<header class="entry-header <?php echo ( $sunflower_show_post_thumbnail ) ? 'has-post-thumbnail' : 'has-no-post-thumbnail'; ?>">
 		<div class="row position-relative">
 			<div class="col-12">
@@ -31,133 +40,128 @@ $sunflower_class               = 'display-single';
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-
-		if ( 'post' === get_post_type() ) :
-			?>
-						<div class="entry-meta mb-3">
-						<?php
-						sunflower_posted_on();
-
-						if ( sunflower_get_setting( 'sunflower_show_author' ) ) {
-							sunflower_posted_by();
-						}
-						?>
-						</div><!-- .entry-meta -->
-					<?php
-					endif;
 		?>
 			</div>
 		</div>
 	</header><!-- .entry-header -->
 		<?php
-	}
-	?>
+		if ( 'sunflower_person' === get_post_type() ) :
+			?>
+			<div class="row">
+				<div class="order-1 <?php echo ( $sunflower_metadata ) ? 'col-md-8' : 'col-md-12'; ?>">
+					<div class="entry-content accordion">
+						<?php
+						if ( $sunflower_show_post_thumbnail ) {
+							sunflower_post_thumbnail( $sunflower_styled_layout, true );
+						}
+						?>
+						<h3 class="wp-block-heading">tbd. Rolle</h3>
+						<h3 class="wp-block-heading">tbd. Wahlkreis</h3>
+						<h3 class="wp-block-heading">tbd. Statement</h3>
 
-	<?php
-	if ( $sunflower_show_post_thumbnail ) {
-		sunflower_post_thumbnail( $sunflower_styled_layout, true );
-	}
-	?>
+						<?php
+						the_content();
 
-	<div class="row">
-	<?php
-	if ( sunflower_get_setting( 'sunflower_sharer_mastodon' ) ) {
-		?>
-		<div class="modal fade" id="mastodonShareModal" tabindex="-1" role="dialog" aria-labelledby="mastodonShareModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h3 class="modal-title" id="mastodonShareModalLabel"><?php esc_html_e( 'Mastodon Instance address', 'sunflower' ); ?></h3>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<form>
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="msb-address"><?php esc_html_e( 'Enter your instance\'s address', 'sunflower' ); ?></label>
-						<input type="text" class="form-control" id="msb-address" required="required" placeholder="https://gruene.social">
-					</div>
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="msb-memorize-instance">
-						<label class="form-check-label" for="msb-memorize-instance"><?php esc_html_e( 'Memorize my instance', 'sunflower' ); ?></label>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php esc_html_e( 'Close', 'sunflower' ); ?></button>
-					<button id="msb-share" type="submit" class="btn btn-primary"><?php esc_html_e( 'Save and Share', 'sunflower' ); ?></button>
-				</div>
-			</form>
-			</div>
-		</div>
-		</div>
-		<?php } ?>
-		<div class="order-1 <?php echo ( $sunflower_metadata ) ? 'col-md-9' : 'col-md-12'; ?>">
-			<div class="entry-content accordion">
-				<?php
-				the_content(
-					sprintf(
-						wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'sunflower' ),
-							array(
-								'span' => array(
-									'class' => array(),
+						// Fetch all posts connected to this person.
+						$sunflower_persons_person_id    = get_the_ID();
+						$sunflower_persons_person_args  = array(
+							'post_type'  => 'post',
+							'meta_query' => array(
+								array(
+									'key'     => 'sunflower_connected_persons',
+									'value'   => $sunflower_persons_person_id,
+									'compare' => 'LIKE',
 								),
+							),
+						);
+						$sunflower_persons_person_query = new WP_Query( $sunflower_persons_person_args );
+
+						if ( $sunflower_persons_person_query->have_posts() ) {
+							/* translators: %s: Author's display name. */
+							echo '<h2> ' . esc_attr( sprintf( __( 'Posts by %s', 'default' ), get_the_title() ) ) . '</h2><ul>';
+							while ( $sunflower_persons_person_query->have_posts() ) {
+								$sunflower_persons_person_query->the_post();
+								echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></li>';
+							}
+							echo '</ul>';
+							wp_reset_postdata();
+						}
+
+
+						wp_link_pages(
+							array(
+								'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'sunflower' ),
+								'after'  => '</div>',
 							)
-						),
-						wp_kses_post( get_the_title() )
-					)
-				);
+						);
+						?>
+					</div><!-- .entry-content -->
+				</div><!-- .col-md-8 -->
 
+				<div class="col-md-4 order-md-1 has-sand-background-color px-4 py-4">
+					<h3 class="wp-block-heading"><?php esc_html_e( 'Contact', 'sunflower-persons' ); ?></h3>
+					<ul class="sunflower-person__meta">
+						<?php if ( $sunflower_persons_person_phone ) : ?>
+							<li class="sunflower-person__phone">
+								<i class="fa-solid fa-phone"></i>
+								<?php echo esc_html( $sunflower_persons_person_phone ); ?>
+							</li>
+						<?php endif; ?>
 
-				// Fetch all posts connected to this person.
-				$sunflower_persons_person_id    = get_the_ID();
-				$sunflower_persons_person_args  = array(
-					'post_type'  => 'post',
-					'meta_query' => array(
-						array(
-							'key'     => 'sunflower_connected_persons',
-							'value'   => $sunflower_persons_person_id,
-							'compare' => 'LIKE',
-						),
-					),
-				);
-				$sunflower_persons_person_query = new WP_Query( $sunflower_persons_person_args );
+						<?php if ( $sunflower_persons_person_email ) : ?>
+							<li class="sunflower-person__email">
+								<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+									<i class="fa-solid fa-envelope"></i>
+									<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
+								</a>
+							</li>
+						<?php endif; ?>
 
-				if ( $sunflower_persons_person_query->have_posts() ) {
-					echo '<h2>Beiträge dieser Person</h2><ul>';
-					while ( $sunflower_persons_person_query->have_posts() ) {
-						$sunflower_persons_person_query->the_post();
-						echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></li>';
-					}
-					echo '</ul>';
-					wp_reset_postdata();
-				}
+						<?php if ( $sunflower_persons_person_website ) : ?>
+							<li class="sunflower-person__website">
+								<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
+									<i class="fa-solid fa-globe"></i>
+									<?php echo esc_html( $sunflower_persons_person_website ); ?>
+								</a>
+							</li>
+						<?php endif; ?>
 
+						<?php
+						if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
+							echo '<li class="sunflower-person__socialmedia"><ul class="social-media-profiles">';
+							foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
+								echo '<li>' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
+							}
+							echo '</ul></li>';
+						}
+						?>
+					</ul>
 
-				wp_link_pages(
-					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'sunflower' ),
-						'after'  => '</div>',
-					)
-				);
-				?>
-			</div><!-- .entry-content -->
-
-		</div><!-- .col-md-9 -->
-		<?php
-		if ( $sunflower_metadata ) {
-			printf(
-				'<div class="col-md-3 order-md-1 metabox small">%s</div>',
-				wp_kses_post( $sunflower_metadata )
-			);
-		}
+					<?php if ( $sunflower_persons_person_offices && is_array( $sunflower_persons_person_offices ) ) : ?>
+						<h3 class="wp-block-heading mt-4"><?php esc_html_e( 'Offices', 'sunflower-persons' ); ?></h3>
+						<ul class="sunflower-person__offices">
+							<?php
+							foreach ( $sunflower_persons_person_offices as $sunflower_persons_person_office ) {
+								echo '<li class="sunflower-person__office">';
+								echo '<strong>' . esc_html( $sunflower_persons_person_office['label'] ) . '</strong><br />';
+								echo esc_html( $sunflower_persons_person_office['street'] ) . '<br />';
+								echo esc_html( $sunflower_persons_person_office['city'] ) . '<br />';
+								if ( ! empty( $sunflower_persons_person_office['phone'] ) ) {
+									echo '<i class="fa-solid fa-phone"></i> ' . esc_html( $sunflower_persons_person_office['phone'] ) . '<br />';
+								}
+								if ( ! empty( $sunflower_persons_person_office['email'] ) ) {
+									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
+								}
+								echo '</li>';
+							}
+							?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div><!-- .row -->
+			<?php
+		endif;
 		?>
-	</div>
-
-	<div class="row">
-		<footer class="entry-footer mt-4">
-			<?php sunflower_entry_footer( true ); ?>
-		</footer><!-- .entry-footer -->
 	</div>
 
 </article><!-- #post-<?php the_ID(); ?> -->
