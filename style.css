@@ -43,38 +43,4 @@
   color: #fff;
 }
 
-.person-managers-tokens {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.manager-token {
-  background: #e5f3e8;
-  border: 1px solid #99c19e;
-  border-radius: 12px;
-  padding: 2px 6px;
-  font-size: 13px;
-}
-
-.manager-token button.remove-token {
-  background: none;
-  border: none;
-  color: #333;
-  margin-left: 4px;
-  cursor: pointer;
-}
-
-.manager-token button.remove-token:hover {
-  color: #000;
-}
-
-.person-employees-tokens {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-/*# sourceMappingURL=sunflower-persons.css.map */
+/*# sourceMappingURL=style.css.map */

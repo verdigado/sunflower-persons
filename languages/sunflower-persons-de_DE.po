@@ -1,16 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
-"persons\n"
-"POT-Creation-Date: 2025-11-11T09:58:09+00:00\n"
-"PO-Revision-Date: 2025-11-11 11:01+0100\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-13T07:01:55+00:00\n"
+"PO-Revision-Date: 2025-11-13 08:02+0100\n"
+"Language: de_DE\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Domain: sunflower-persons\n"
 
@@ -26,9 +25,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sunflower-persons.php
-msgid ""
-"Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen "
-"Person oder einer Liste von Personen."
+msgid "Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen."
 msgstr ""
 
 #. Author of the plugin
@@ -41,214 +38,237 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/person/render.php:17 src/person/render.php:17
+#: build/person/render.php:17
+#: src/person/render.php:17
 msgid "Person not found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:121 src/person/render.php:121
+#: build/person/render.php:121
+#: src/person/render.php:121
 msgid "No persons found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:147 inc/cpt-person.php:13 inc/cpt-person.php:23
+#: build/person/render.php:147
+#: inc/cpt-person.php:14
+#: inc/cpt-person.php:24
 #: src/person/render.php:147
 msgid "Persons"
 msgstr "Personen"
 
-#: build/person/render.php:157 build/person/render.php:165
-#: src/person/render.php:157 src/person/render.php:165
+#: build/person/render.php:157
+#: build/person/render.php:165
+#: src/person/render.php:157
+#: src/person/render.php:165
 msgid "Back"
 msgstr "zurück"
 
-#: build/person/render.php:238 src/person/render.php:238
+#: build/person/render.php:238
+#: src/person/render.php:238
 msgid "Next"
 msgstr "weiter"
 
-#: inc/cpt-person.php:14
+#: inc/cpt-person.php:15
 msgid "Person"
 msgstr "Person"
 
-#: inc/cpt-person.php:15
+#: inc/cpt-person.php:16
 msgid "Add new person"
 msgstr "Neue Person anlegen"
 
-#: inc/cpt-person.php:16
+#: inc/cpt-person.php:17
 msgid "Edit person"
 msgstr "Person bearbeiten"
 
-#: inc/cpt-person.php:17
+#: inc/cpt-person.php:18
 msgid "New person"
 msgstr "Neue Person"
 
-#: inc/cpt-person.php:18
+#: inc/cpt-person.php:19
 msgid "All persons"
 msgstr "Alle Personen"
 
-#: inc/cpt-person.php:19
+#: inc/cpt-person.php:20
 msgid "Show person"
 msgstr "Zeige Person"
 
-#: inc/cpt-person.php:20
+#: inc/cpt-person.php:21
 msgid "Search person"
 msgstr "Suche Person"
 
-#: inc/cpt-person.php:21
+#: inc/cpt-person.php:22
 msgid "No person found"
 msgstr "Keine Person gefunden"
 
-#: inc/cpt-person.php:22
+#: inc/cpt-person.php:23
 msgid "No person found in trash"
 msgstr "Keine Person im Papierkorb gefunden"
 
-#: inc/cpt-person.php:49 inc/cpt-person.php:61
+#: inc/cpt-person.php:51
+#: inc/cpt-person.php:63
 msgid "Groups"
 msgstr "Gruppen"
 
-#: inc/cpt-person.php:50
+#: inc/cpt-person.php:52
 msgid "Group"
 msgstr "Gruppe"
 
-#: inc/cpt-person.php:51
+#: inc/cpt-person.php:53
 msgid "Add new group"
 msgstr "Neue Gruppe anlegen"
 
-#: inc/cpt-person.php:52
+#: inc/cpt-person.php:54
 msgid "Edit group"
 msgstr "Gruppe bearbeiten"
 
-#: inc/cpt-person.php:53
+#: inc/cpt-person.php:55
 msgid "New group"
 msgstr "Neue Gruppe"
 
-#: inc/cpt-person.php:54
+#: inc/cpt-person.php:56
 msgid "All groups"
 msgstr "Alle Gruppen"
 
-#: inc/cpt-person.php:55
+#: inc/cpt-person.php:57
 msgid "Show group"
 msgstr "Zeige Gruppe"
 
-#: inc/cpt-person.php:56
+#: inc/cpt-person.php:58
 msgid "Search group"
 msgstr "Suche Gruppe"
 
-#: inc/cpt-person.php:57
+#: inc/cpt-person.php:59
 msgid "Parent group"
 msgstr "Übergeordnete Gruppe"
 
-#: inc/cpt-person.php:58
+#: inc/cpt-person.php:60
 msgid "Parent group:"
 msgstr "Übergeordnete Gruppe:"
 
-#: inc/cpt-person.php:59
+#: inc/cpt-person.php:61
 msgid "No group found"
 msgstr "Keine Gruppe gefunden"
 
-#: inc/cpt-person.php:60
+#: inc/cpt-person.php:62
 msgid "No group found in trash"
 msgstr "Keine Gruppe im Papierkorb gefunden"
 
-#: inc/cpt-person.php:97
+#: inc/cpt-person.php:99
 msgid "Sortname"
 msgstr "Sortiername"
 
-#: inc/cpt-person.php:100
+#: inc/cpt-person.php:102
 msgid "Sorting name. e.g. last-name"
 msgstr "Sortierung nach z.B. Nachname"
 
-#: inc/cpt-person.php:105
+#: inc/cpt-person.php:107
 msgid "Profile picture"
 msgstr "Profilbild"
 
-#: inc/cpt-person.php:123
+#: inc/cpt-person.php:125
 msgid "Select or upload image"
 msgstr "Wähle Bild"
 
-#: inc/cpt-person.php:128
+#: inc/cpt-person.php:130
 msgid "Change image"
 msgstr "Bild ändern"
 
-#: inc/cpt-person.php:133
+#: inc/cpt-person.php:135
 msgid "Remove image"
 msgstr "Bild entfernen"
 
-#: inc/cpt-person.php:141 inc/cpt-person.php:364 inc/cpt-person.php:390
+#: inc/cpt-person.php:143
+#: inc/cpt-person.php:350
 msgid "Phone"
 msgstr "Telefon"
 
-#: inc/cpt-person.php:147 inc/cpt-person.php:369 inc/cpt-person.php:391
+#: inc/cpt-person.php:149
 msgid "Email"
 msgstr "E-Mail"
 
-#: inc/cpt-person.php:154
+#: inc/cpt-person.php:156
 msgid "Website"
 msgstr "Webseite"
 
-#: inc/cpt-person.php:162
+#: inc/cpt-person.php:164
 msgid "Social Media"
 msgstr "Social Media"
 
-#: inc/cpt-person.php:203
+#: inc/cpt-person.php:205
 msgid "Select or upload person image"
 msgstr "Wähle ein Portrait Bild für die Person"
 
-#: inc/cpt-person.php:204
+#: inc/cpt-person.php:206
 msgid "Use this image"
 msgstr "Dieses Bild wählen"
 
-#: inc/cpt-person.php:343 inc/cpt-person.php:386
-msgid "Office"
-msgstr "Büro"
-
-#: inc/cpt-person.php:349 inc/cpt-person.php:387
-msgid "Label"
-msgstr "Bezeichnung"
-
-#: inc/cpt-person.php:354 inc/cpt-person.php:388
-msgid "Street and Housenumber"
-msgstr "Straße und Hausnummer"
-
-#: inc/cpt-person.php:359 inc/cpt-person.php:389
-msgid "ZIP-code and city"
-msgstr "PLZ und Ort"
-
-#: inc/cpt-person.php:374
-msgid "Remove office"
-msgstr "Büro entfernen"
-
-#: inc/cpt-person.php:381
-msgid "Add office"
-msgstr "Büro hinzufügen"
-
-#: inc/cpt-person.php:427
-msgid "Büros"
-msgstr ""
-
-#: inc/cpt-person.php:435
+#: inc/cpt-person.php:314
 msgid "Contact details"
 msgstr "Kontakt-Details"
 
-#: template-parts/content-sunflower_person.php:100
+#: inc/cpt-person.php:347
+msgid "Label"
+msgstr "Bezeichnung"
+
+#: inc/cpt-person.php:348
+msgid "Street and housenumber"
+msgstr "Straße und Hausnummer"
+
+#: inc/cpt-person.php:349
+msgid "ZIP and location"
+msgstr "PLZ und Ort"
+
+#: inc/cpt-person.php:351
+#: src/editor-offices/__new-plugin.js:107
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: inc/cpt-person.php:352
+#: template-parts/content-sunflower_person.php:158
+msgid "Employees"
+msgstr "Mitarbeiter*innen"
+
+#: inc/cpt-person.php:353
+msgid "Remove office"
+msgstr "Büro entfernen"
+
+#: inc/cpt-person.php:354
+msgid "Add office"
+msgstr "Büro hinzufügen"
+
+#: inc/meta-offices.php:9
+msgid "Offices and employees"
+msgstr "Büros und Mitarbeiter*innen"
+
+#: template-parts/content-sunflower_person.php:102
 msgid "Contact"
 msgstr "Kontakt"
 
-#: template-parts/content-sunflower_person.php:139
+#: template-parts/content-sunflower_person.php:141
 msgid "Offices"
 msgstr "Büros"
 
-#: build/editor-plugin/block.json src/editor-plugin/block.json
+#: build/editor-offices/block.json
+#: build/editor-plugin/block.json
+#: src/editor-offices/block.json
+#: src/editor-plugin/block.json
 msgctxt "block title"
 msgid "Editor Plugin: not a block, but block.json is very useful."
 msgstr ""
 
-#: build/person/block.json src/person/block.json
+#: build/person/block.json
+#: src/person/block.json
 msgctxt "block title"
 msgid "Person(en)"
 msgstr ""
 
-#: build/person/block.json src/person/block.json
+#: build/person/block.json
+#: src/person/block.json
 msgctxt "block description"
 msgid "Zeigt eine einzelne Person oder eine Liste von Personen an."
 msgstr ""
+
+#~ msgid "Office"
+#~ msgstr "Büro"
 
 #~ msgid "Portrait photo"
 #~ msgstr "Portrait Bild"

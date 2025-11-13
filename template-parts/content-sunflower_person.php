@@ -153,6 +153,16 @@ $sunflower_class = 'display-single';
 									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
 								}
 								echo '</li>';
+
+								if ( ! empty( $sunflower_persons_person_office['employees'] ) && is_array( $sunflower_persons_person_office['employees'] ) ) {
+									echo esc_html_e( 'Employees', 'sunflower-persons' ) . '<ul>';
+									foreach ( $sunflower_persons_person_office['employees'] as $sunflower_persons_person_office_employee ) {
+										echo '<li><a href="' . esc_url( get_permalink( $sunflower_persons_person_office_employee ) ) . '">'
+											. esc_html( get_the_title( $sunflower_persons_person_office_employee ) )
+											. '</a></li>';
+									}
+									echo '</ul>';
+								}
 							}
 							?>
 						</ul>
