@@ -260,7 +260,7 @@ add_filter( 'single_template', 'sunflower_person_single_template' );
 function sunflower_persons_enqueue_frontend_assets() {
 	wp_enqueue_style(
 		'sunflower-persons-frontend-style',
-		SUNFLOWER_PERSONS_URL . '/assets/css/sunflower-persons.css',
+		SUNFLOWER_PERSONS_URL . 'assets/css/sunflower-persons.css',
 		array(),
 		SUNFLOWER_PERSONS_VERSION
 	);

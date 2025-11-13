@@ -10,12 +10,12 @@
 
 	.sunflower-person-track {
 		display: flex;
-		flex-direction: row; // sicherstellen, dass horizontal
+		flex-direction: row;
 		gap: 0.5rem;
 	}
 
 	.sunflower-person-nav {
-		position: relative; // nicht absolute, sonst Balken lang
+		position: relative;
 		width: 2rem;
 		height: 2rem;
 		background: #eee;
@@ -27,7 +27,7 @@
 
 	.sunflower-person {
 		flex-shrink: 0;
-		width: 100px; // Editor fix
+		width: 100px;
 		text-align: center;
 		margin-right: 0.5rem;
 	}
