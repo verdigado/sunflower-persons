@@ -140,7 +140,7 @@ const OfficeMetaBox = ( { postType, postId } ) => {
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const container = document.getElementById(
-		'sunflower-office-metabox-root'
+		'sunflower-persons-metabox-offices'
 	);
 	if ( container ) {
 		const root = createRoot( container );

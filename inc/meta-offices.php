@@ -8,26 +8,26 @@
 /**
  * Render a wide React-based meta box for sunflower_person post type.
  */
-function sunflower_persons_add_office_metabox() {
+function sunflower_persons_add_metabox_offices() {
 	add_meta_box(
 		'person_offices',
 		__( 'Offices and employees', 'sunflower-persons' ),
-		'sunflower_persons_render_office_metabox',
+		'sunflower_persons_render_metabox_offices',
 		'sunflower_person',
 		'normal',
 		'default'
 	);
 }
-add_action( 'add_meta_boxes', 'sunflower_persons_add_office_metabox' );
+add_action( 'add_meta_boxes', 'sunflower_persons_add_metabox_offices', 30 );
 
 /**
  * Output container div for the React app.
  *
  * @param WP_Post $post The current post object.
  */
-function sunflower_persons_render_office_metabox( $post ) {
+function sunflower_persons_render_metabox_offices( $post ) {
 	?>
-	<div id="sunflower-office-metabox-root"
+	<div id="sunflower-persons-metabox-offices"
 		data-post-id="<?php echo esc_attr( $post->ID ); ?>">
 		<!-- React app will render here -->
 	</div>
@@ -43,14 +43,14 @@ function sunflower_persons_enqueue_office_editor_assets() {
 	}
 
 	wp_enqueue_script(
-		'sunflower-office-metabox',
+		'sunflower-persons-metabox-offices',
 		SUNFLOWER_PERSONS_URL . 'build/editor-offices/plugin.js',
 		array( 'wp-element', 'wp-components', 'wp-data', 'wp-core-data', 'wp-i18n', 'wp-api-fetch' ),
 		SUNFLOWER_PERSONS_VERSION,
 		true
 	);
 	wp_localize_script(
-		'sunflower-office-metabox',
+		'sunflower-persons-metabox-offices',
 		'sunflowerPersonOffices',
 		array(
 			'text' => array(
@@ -87,11 +87,26 @@ function sunflower_persons_register_office_meta() {
 					'items' => array(
 						'type'       => 'object',
 						'properties' => array(
-							'label'     => array( 'type' => 'string' ),
-							'street'    => array( 'type' => 'string' ),
-							'city'      => array( 'type' => 'string' ),
-							'phone'     => array( 'type' => 'string' ),
-							'email'     => array( 'type' => 'string' ),
+							'label'     => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
+							'street'    => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
+							'city'      => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
+							'phone'     => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
+							'email'     => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
 							'employees' => array(
 								'type'  => 'array',
 								'items' => array( 'type' => 'integer' ),
