@@ -14,7 +14,6 @@ import { useEffect, useState } from '@wordpress/element';
  * Editor plugin for Sunflower Persons settings in the block editor.
  *
  */
-
 const PersonsPanel = () => {
 	const meta = useSelect( ( select ) =>
 		select( 'core/editor' ).getEditedPostAttribute( 'meta' )
