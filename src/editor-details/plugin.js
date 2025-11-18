@@ -65,6 +65,7 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 	//
 	const sortname = meta?.person_sortname || '';
 	const phone = meta?.person_phone || '';
+	const mobilephone = meta?.person_mobilephone || '';
 	const email = meta?.person_email || '';
 	const website = meta?.person_website || '';
 	const socialmedia = meta?.person_socialmedia || '';
@@ -121,6 +122,12 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 				label={ sunflowerPersonDetails.text.phone }
 				value={ phone }
 				onChange={ ( v ) => updateField( 'person_phone', v ) }
+			/>
+
+			<TextControl
+				label={ sunflowerPersonDetails.text.mobilephone }
+				value={ mobilephone }
+				onChange={ ( v ) => updateField( 'person_mobilephone', v ) }
 			/>
 
 			<TextControl

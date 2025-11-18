@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.2.0\n"
+"Project-Id-Version: Sunflower Persons 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-13T07:01:58+00:00\n"
+"POT-Creation-Date: 2025-11-18T12:22:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons-person\n"
@@ -40,8 +40,8 @@ msgid "https://verdigado.com"
 msgstr ""
 
 #: build/editor-plugin/plugin.js:293
-#: src/editor-plugin/plugin.js:83
-#: build/editor-plugin/plugin.js:156
+#: src/editor-plugin/plugin.js:82
+#: build/editor-plugin/plugin.js:155
 msgid "Related persons"
 msgstr ""
 
@@ -155,8 +155,10 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
+#: build/editor-details/block.json
 #: build/editor-offices/block.json
 #: build/editor-plugin/block.json
+#: src/editor-details/block.json
 #: src/editor-offices/block.json
 #: src/editor-plugin/block.json
 msgctxt "block title"

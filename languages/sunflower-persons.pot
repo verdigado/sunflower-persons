@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.2.0\n"
+"Project-Id-Version: Sunflower Persons 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-13T07:01:55+00:00\n"
+"POT-Creation-Date: 2025-11-18T12:22:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -50,8 +50,8 @@ msgid "No persons found."
 msgstr ""
 
 #: build/person/render.php:147
-#: inc/cpt-person.php:14
-#: inc/cpt-person.php:24
+#: inc/cpt-person.php:19
+#: inc/cpt-person.php:29
 #: src/person/render.php:147
 msgid "Persons"
 msgstr ""
@@ -68,220 +68,194 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: inc/cpt-person.php:15
+#: inc/cpt-person.php:20
 msgid "Person"
 msgstr ""
 
-#: inc/cpt-person.php:16
+#: inc/cpt-person.php:21
 msgid "Add new person"
 msgstr ""
 
-#: inc/cpt-person.php:17
+#: inc/cpt-person.php:22
 msgid "Edit person"
 msgstr ""
 
-#: inc/cpt-person.php:18
+#: inc/cpt-person.php:23
 msgid "New person"
 msgstr ""
 
-#: inc/cpt-person.php:19
+#: inc/cpt-person.php:24
 msgid "All persons"
 msgstr ""
 
-#: inc/cpt-person.php:20
+#: inc/cpt-person.php:25
 msgid "Show person"
 msgstr ""
 
-#: inc/cpt-person.php:21
+#: inc/cpt-person.php:26
 msgid "Search person"
 msgstr ""
 
-#: inc/cpt-person.php:22
+#: inc/cpt-person.php:27
 msgid "No person found"
 msgstr ""
 
-#: inc/cpt-person.php:23
+#: inc/cpt-person.php:28
 msgid "No person found in trash"
 msgstr ""
 
-#: inc/cpt-person.php:51
-#: inc/cpt-person.php:63
+#: inc/cpt-person.php:56
+#: inc/cpt-person.php:68
 msgid "Groups"
 msgstr ""
 
-#: inc/cpt-person.php:52
+#: inc/cpt-person.php:57
 msgid "Group"
 msgstr ""
 
-#: inc/cpt-person.php:53
+#: inc/cpt-person.php:58
 msgid "Add new group"
 msgstr ""
 
-#: inc/cpt-person.php:54
+#: inc/cpt-person.php:59
 msgid "Edit group"
 msgstr ""
 
-#: inc/cpt-person.php:55
+#: inc/cpt-person.php:60
 msgid "New group"
 msgstr ""
 
-#: inc/cpt-person.php:56
+#: inc/cpt-person.php:61
 msgid "All groups"
 msgstr ""
 
-#: inc/cpt-person.php:57
+#: inc/cpt-person.php:62
 msgid "Show group"
 msgstr ""
 
-#: inc/cpt-person.php:58
+#: inc/cpt-person.php:63
 msgid "Search group"
 msgstr ""
 
-#: inc/cpt-person.php:59
+#: inc/cpt-person.php:64
 msgid "Parent group"
 msgstr ""
 
-#: inc/cpt-person.php:60
+#: inc/cpt-person.php:65
 msgid "Parent group:"
 msgstr ""
 
-#: inc/cpt-person.php:61
+#: inc/cpt-person.php:66
 msgid "No group found"
 msgstr ""
 
-#: inc/cpt-person.php:62
+#: inc/cpt-person.php:67
 msgid "No group found in trash"
 msgstr ""
 
-#: inc/cpt-person.php:99
+#: inc/meta-details.php:14
+msgid "Details of person"
+msgstr ""
+
+#: inc/meta-details.php:57
 msgid "Sortname"
 msgstr ""
 
-#: inc/cpt-person.php:102
-msgid "Sorting name. e.g. last-name"
-msgstr ""
-
-#: inc/cpt-person.php:107
-msgid "Profile picture"
-msgstr ""
-
-#: inc/cpt-person.php:125
-msgid "Select or upload image"
-msgstr ""
-
-#: inc/cpt-person.php:130
-msgid "Change image"
-msgstr ""
-
-#: inc/cpt-person.php:135
-msgid "Remove image"
-msgstr ""
-
-#: inc/cpt-person.php:143
-#: inc/cpt-person.php:350
+#: inc/meta-details.php:58
+#: inc/meta-offices.php:61
 msgid "Phone"
 msgstr ""
 
-#: inc/cpt-person.php:149
-msgid "Email"
+#: inc/meta-details.php:59
+msgid "Mobile phone"
 msgstr ""
 
-#: inc/cpt-person.php:156
-msgid "Website"
-msgstr ""
-
-#: inc/cpt-person.php:164
-msgid "Social Media"
-msgstr ""
-
-#: inc/cpt-person.php:205
-msgid "Select or upload person image"
-msgstr ""
-
-#: inc/cpt-person.php:206
-msgid "Use this image"
-msgstr ""
-
-#: inc/cpt-person.php:314
-msgid "Contact details"
-msgstr ""
-
-#: inc/cpt-person.php:347
-msgid "Label"
-msgstr ""
-
-#: inc/cpt-person.php:348
-msgid "Street and housenumber"
-msgstr ""
-
-#: inc/cpt-person.php:349
-msgid "ZIP and location"
-msgstr ""
-
-#: inc/cpt-person.php:351
-#: src/editor-offices/__new-plugin.js:107
+#: inc/meta-details.php:60
+#: inc/meta-offices.php:62
 msgid "E-Mail"
 msgstr ""
 
-#: inc/cpt-person.php:352
-#: template-parts/content-sunflower_person.php:158
-msgid "Employees"
+#: inc/meta-details.php:61
+msgid "Website"
 msgstr ""
 
-#: inc/cpt-person.php:353
-msgid "Remove office"
+#: inc/meta-details.php:62
+msgid "Social Media"
 msgstr ""
 
-#: inc/cpt-person.php:354
-msgid "Add office"
+#: inc/meta-details.php:63
+msgid "Profile picture"
 msgstr ""
 
-#: inc/meta-offices.php:9
+#: inc/meta-details.php:64
+msgid "No picture selected"
+msgstr ""
+
+#: inc/meta-details.php:65
+msgid "Change image"
+msgstr ""
+
+#: inc/meta-details.php:66
+msgid "Select or upload image"
+msgstr ""
+
+#: inc/meta-details.php:67
+msgid "Remove image"
+msgstr ""
+
+#: inc/meta-offices.php:14
 msgid "Offices and employees"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:102
+#: inc/meta-offices.php:58
+msgid "Label"
+msgstr ""
+
+#: inc/meta-offices.php:59
+msgid "Street and housenumber"
+msgstr ""
+
+#: inc/meta-offices.php:60
+msgid "ZIP and location"
+msgstr ""
+
+#: inc/meta-offices.php:63
+#: template-parts/content-sunflower_person.php:165
+msgid "Employees"
+msgstr ""
+
+#: inc/meta-offices.php:64
+msgid "Remove office"
+msgstr ""
+
+#: inc/meta-offices.php:65
+msgid "Add office"
+msgstr ""
+
+#: template-parts/content-sunflower_person.php:103
 msgid "Contact"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:141
+#: template-parts/content-sunflower_person.php:148
 msgid "Offices"
 msgstr ""
 
-#: src/editor-offices/__new-plugin.js:70
-msgid "Büros & Mitarbeitende"
+#: build/editor-details/plugin.js:273
+#: src/editor-details/plugin.js:146
+#: build/editor-details/plugin.js:202
+msgid "Social Media (eine Zeile pro Plattform)"
 msgstr ""
 
-#: src/editor-offices/__new-plugin.js:87
-msgid "Bezeichnung"
+#: build/editor-details/plugin.js:274
+#: src/editor-details/plugin.js:150
+#: build/editor-details/plugin.js:206
+msgid "Format: icon;label;URL"
 msgstr ""
 
-#: src/editor-offices/__new-plugin.js:92
-msgid "Straße & Hausnummer"
-msgstr ""
-
-#: src/editor-offices/__new-plugin.js:97
-msgid "PLZ / Ort"
-msgstr ""
-
-#: src/editor-offices/__new-plugin.js:102
-msgid "Telefon"
-msgstr ""
-
-#: src/editor-offices/__new-plugin.js:112
-msgid "Mitarbeiter:innen"
-msgstr ""
-
-#: src/editor-offices/__new-plugin.js:132
-msgid "Büro entfernen"
-msgstr ""
-
-#: src/editor-offices/__new-plugin.js:138
-msgid "Neues Büro hinzufügen"
-msgstr ""
-
+#: build/editor-details/block.json
 #: build/editor-offices/block.json
 #: build/editor-plugin/block.json
+#: src/editor-details/block.json
 #: src/editor-offices/block.json
 #: src/editor-plugin/block.json
 msgctxt "block title"

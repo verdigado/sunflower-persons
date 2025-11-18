@@ -14,6 +14,7 @@ $sunflower_show_post_thumbnail = has_post_thumbnail() && ! get_post_meta( $post-
 $sunflower_metadata = true;
 
 $sunflower_persons_person_phone       = get_post_meta( $post->ID, 'person_phone', true );
+$sunflower_persons_person_mobilephone = get_post_meta( $post->ID, 'person_mobilephone', true );
 $sunflower_persons_person_email       = get_post_meta( $post->ID, 'person_email', true );
 $sunflower_persons_person_website     = get_post_meta( $post->ID, 'person_website', true );
 $sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $post->ID );
@@ -105,6 +106,12 @@ $sunflower_class = 'display-single';
 							<li class="sunflower-person__phone">
 								<i class="fa-solid fa-phone"></i>
 								<?php echo esc_html( $sunflower_persons_person_phone ); ?>
+							</li>
+						<?php endif; ?>
+						<?php if ( $sunflower_persons_person_mobilephone ) : ?>
+							<li class="sunflower-person__mobilephone">
+								<i class="fa-solid fa-phone"></i>
+								<?php echo esc_html( $sunflower_persons_person_mobilephone ); ?>
 							</li>
 						<?php endif; ?>
 

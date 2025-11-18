@@ -56,6 +56,7 @@ function sunflower_persons_enqueue_details_editor_assets() {
 			'text' => array(
 				'sortname'    => esc_html__( 'Sortname', 'sunflower-persons' ),
 				'phone'       => esc_html__( 'Phone', 'sunflower-persons' ),
+				'mobilephone' => esc_html__( 'Mobile phone', 'sunflower-persons' ),
 				'email'       => esc_html__( 'E-Mail', 'sunflower-persons' ),
 				'website'     => esc_html__( 'Website', 'sunflower-persons' ),
 				'socialmedia' => esc_html__( 'Social Media', 'sunflower-persons' ),
@@ -88,6 +89,16 @@ function sunflower_persons_register_details_meta() {
 	register_post_meta(
 		'sunflower_person',
 		'person_phone',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_mobilephone',
 		array(
 			'type'              => 'string',
 			'single'            => true,
