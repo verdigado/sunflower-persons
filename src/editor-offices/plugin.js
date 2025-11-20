@@ -15,11 +15,13 @@ const OfficeMetaBox = ( { postType, postId } ) => {
 
 	const [ suggestions, setSuggestions ] = useState( [] );
 
-	const { records: allPersons = [], hasResolved } = useEntityRecords(
+	const { records: personRecords = [], hasResolved } = useEntityRecords(
 		'postType',
 		'sunflower_person',
 		{ per_page: -1, context: 'edit' }
 	);
+
+	const allPersons = personRecords ?? [];
 
 	useEffect( () => {
 		if ( ! hasResolved ) {
