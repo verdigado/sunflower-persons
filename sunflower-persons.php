@@ -267,3 +267,100 @@ function sunflower_persons_enqueue_frontend_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );
+
+
+
+if ( ! function_exists( 'sunflower_persons_post_thumbnail' ) ) :
+	/**
+	 * Displays an optional post thumbnail.
+	 *
+	 * Wraps the post thumbnail in an anchor element on index views, or a div
+	 * element when on single views.
+	 *
+	 * @param boolean $styled_layout Is this a styled layout.
+	 * @param boolean $show_caption Show the caption.
+	 */
+	function sunflower_persons_post_thumbnail( $styled_layout = false, $show_caption = false ) {
+		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+			return;
+		}
+
+		global $post;
+
+		$sunflower_media_creator_settings = sunflower_get_setting( 'sunflower_media_creator' ) ? sunflower_get_setting( 'sunflower_media_creator' ) : 'optional';
+		$creator                          = '';
+		if ( 'disabled' !== $sunflower_media_creator_settings ) {
+			$creator = get_post_meta( get_post_thumbnail_id(), '_media_creator', true );
+		}
+
+		$sunflower_media_creator_required = '';
+		if ( 'required' === $sunflower_media_creator_settings || 'strict' === $sunflower_media_creator_settings ) {
+			$sunflower_media_creator_required = true;
+		}
+
+		if ( is_singular() ) :
+			?>
+			<div class="wp-block-cover">
+			<?php
+			if ( $styled_layout ) {
+				echo ' mt-1';
+			}
+			?>
+			">
+				<?php
+
+				$classes = array( 'w-100', 'wp-block-cover__image-background', 'size-large' );
+				if ( 'strict' === $sunflower_media_creator_settings && empty( $creator ) ) {
+					$classes[] = ' no-creator';
+				}
+				the_post_thumbnail(
+					'medium_large',
+					array(
+						'class' => implode( ' ', $classes ),
+					)
+				);
+				?>
+			<?php
+			if ( $show_caption ) {
+				$caption = array_filter(
+					array(
+						$creator,
+						get_post( get_post_thumbnail_id() )?->post_excerpt,
+					)
+				);
+
+				$caption_string = implode( ' | ', $caption );
+				if ( ! empty( $caption_string ) ) {
+					?>
+				<figcaption><?php echo wp_kses_post( $caption_string ); ?></figcaption>
+					<?php
+				}
+			}
+			?>
+			</div><!-- .post-thumbnail -->
+
+		<?php else : ?>
+			<?php
+				$classes = array( 'post-thumbnail', 'doofi' );
+			if ( 'strict' === $sunflower_media_creator_settings && empty( $creator ) ) {
+				$classes[] = ' no-creator';
+			}
+
+			get_the_post_thumbnail(
+				'medium_large',
+				array(
+					'alt'   => the_title_attribute(
+						array(
+							'echo' => false,
+						)
+					),
+					'class' => implode( ' ', $classes ),
+				)
+			);
+			?>
+
+
+			<?php
+		endif; // End is_singular().
+	}
+endif;

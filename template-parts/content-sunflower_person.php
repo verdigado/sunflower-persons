@@ -19,13 +19,23 @@ $sunflower_persons_person_email       = get_post_meta( $post->ID, 'person_email'
 $sunflower_persons_person_website     = get_post_meta( $post->ID, 'person_website', true );
 $sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $post->ID );
 
-$sunflower_persons_person_offices = get_post_meta( $post->ID, 'person_offices', true );
+$sunflower_persons_person_offices   = get_post_meta( $post->ID, 'person_offices', true );
+$sunflower_persons_person_govoffice = get_post_meta( $post->ID, 'person_govoffice', true );
+$sunflower_persons_person_mandate   = get_post_meta( $post->ID, 'person_mandate', true );
 
 
 $sunflower_class = 'display-single';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $sunflower_class ); ?>>
+	<div class="entry-content">
+	<?php
+	if ( $sunflower_show_post_thumbnail ) {
+		sunflower_persons_post_thumbnail( $sunflower_styled_layout, true );
+	}
+	?>
+	</div>
+
 	<header class="entry-header <?php echo ( $sunflower_show_post_thumbnail ) ? 'has-post-thumbnail' : 'has-no-post-thumbnail'; ?>">
 		<div class="row position-relative">
 			<div class="col-12">
@@ -50,13 +60,14 @@ $sunflower_class = 'display-single';
 			?>
 			<div class="row">
 				<div class="order-1 <?php echo ( $sunflower_metadata ) ? 'col-md-8' : 'col-md-12'; ?>">
-					<div class="entry-content accordion">
-						<?php
-						if ( $sunflower_show_post_thumbnail ) {
-							sunflower_post_thumbnail( $sunflower_styled_layout, true );
-						}
-						?>
-						<h3 class="wp-block-heading">tbd. Rolle</h3>
+				<?php
+				if ( $sunflower_persons_person_govoffice ) {
+					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_govoffice ) );
+				}
+				if ( $sunflower_persons_person_govoffice ) {
+					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_mandate ) );
+				}
+				?>
 						<h3 class="wp-block-heading">tbd. Wahlkreis</h3>
 						<h3 class="wp-block-heading">tbd. Statement</h3>
 
@@ -96,7 +107,6 @@ $sunflower_class = 'display-single';
 							)
 						);
 						?>
-					</div><!-- .entry-content -->
 				</div><!-- .col-md-8 -->
 
 				<div class="col-md-4 order-md-1 has-sand-background-color px-4 py-4">
