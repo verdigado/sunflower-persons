@@ -1,6 +1,6 @@
 /* global sunflowerPersonOffices */
 
-import { createRoot, useState, useEffect } from '@wordpress/element';
+import { createRoot, useState, useEffect, useMemo } from '@wordpress/element';
 import { FormTokenField, TextControl, Button } from '@wordpress/components';
 import { useEntityProp, useEntityRecords } from '@wordpress/core-data';
 
@@ -21,7 +21,7 @@ const OfficeMetaBox = ( { postType, postId } ) => {
 		{ per_page: -1, context: 'edit' }
 	);
 
-	const allPersons = personRecords ?? [];
+	const allPersons = useMemo( () => personRecords ?? [], [ personRecords ] );
 
 	useEffect( () => {
 		if ( ! hasResolved ) {
