@@ -72,6 +72,9 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 	const photoId = meta?.person_photo_id || '';
 	const govoffice = meta?.person_govoffice || '';
 	const mandate = meta?.person_mandate || '';
+	const constituency = meta?.person_constituency || '';
+	const occupation = meta?.person_occupation || '';
+	const yearofbirth = meta?.person_yearofbirth || '';
 
 	const [ title ] = useEntityProp( 'postType', postType, 'title', postId );
 	const debouncedTitle = useDebounce( title, 1000 );
@@ -239,6 +242,21 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 				label={ sunflowerPersonDetails.text.mandate }
 				value={ mandate }
 				onChange={ ( v ) => updateField( 'person_mandate', v ) }
+			/>
+			<TextControl
+				label={ sunflowerPersonDetails.text.constituency }
+				value={ constituency }
+				onChange={ ( v ) => updateField( 'person_constituency', v ) }
+			/>
+			<TextControl
+				label={ sunflowerPersonDetails.text.occupation }
+				value={ occupation }
+				onChange={ ( v ) => updateField( 'person_occupation', v ) }
+			/>
+			<TextControl
+				label={ sunflowerPersonDetails.text.yearofbirth }
+				value={ yearofbirth }
+				onChange={ ( v ) => updateField( 'person_yearofbirth', v ) }
 			/>
 		</div>
 	);

@@ -23,6 +23,9 @@ $sunflower_persons_person_offices   = get_post_meta( $post->ID, 'person_offices'
 $sunflower_persons_person_govoffice = get_post_meta( $post->ID, 'person_govoffice', true );
 $sunflower_persons_person_mandate   = get_post_meta( $post->ID, 'person_mandate', true );
 
+$sunflower_persons_person_constituency = get_post_meta( $post->ID, 'person_constituency', true );
+$sunflower_persons_person_occupation   = get_post_meta( $post->ID, 'person_occupation', true );
+$sunflower_persons_person_yearofbirth  = get_post_meta( $post->ID, 'person_yearofbirth', true );
 
 $sunflower_class = 'display-single';
 ?>
@@ -67,6 +70,26 @@ $sunflower_class = 'display-single';
 				if ( $sunflower_persons_person_govoffice ) {
 					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_mandate ) );
 				}
+				if ( $sunflower_persons_person_constituency ) {
+					printf( '<h3 class="wp-block-heading">%s %s</h3>', esc_html__( 'Constituency', 'sunflower-persons' ), esc_html( $sunflower_persons_person_constituency ) );
+				}
+				$sunflower_persons_person_labels = array();
+
+				if ( $sunflower_persons_person_yearofbirth ) {
+					$sunflower_persons_person_labels[] = esc_html( $sunflower_persons_person_yearofbirth );
+				}
+
+				if ( $sunflower_persons_person_occupation ) {
+					$sunflower_persons_person_labels[] = esc_html( $sunflower_persons_person_occupation );
+				}
+
+				if ( ! empty( $sunflower_persons_person_labels ) ) {
+					printf(
+						'<p class="sunflower-person__meta-inline-labels">%s</p>',
+						wp_kses_post( implode( ' <span class="spacer"> | </span> ', $sunflower_persons_person_labels ) )
+					);
+				}
+
 				?>
 						<h3 class="wp-block-heading">tbd. Wahlkreis</h3>
 						<h3 class="wp-block-heading">tbd. Statement</h3>
