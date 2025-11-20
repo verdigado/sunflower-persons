@@ -65,6 +65,8 @@ function sunflower_persons_enqueue_details_editor_assets() {
 				'photochange' => esc_html__( 'Change image', 'sunflower-persons' ),
 				'photoadd'    => esc_html__( 'Select or upload image', 'sunflower-persons' ),
 				'photoremove' => esc_html__( 'Remove image', 'sunflower-persons' ),
+				'govoffice'   => esc_html__( 'Office / Post', 'sunflower-persons' ),
+				'mandate'     => esc_html__( 'Mandate / Position', 'sunflower-persons' ),
 			),
 		)
 	);
@@ -141,6 +143,26 @@ function sunflower_persons_register_details_meta() {
 		'person_photo_id',
 		array(
 			'type'              => 'number',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_govoffice',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_mandate',
+		array(
+			'type'              => 'string',
 			'single'            => true,
 			'show_in_rest'      => true,
 			'sanitize_callback' => 'sanitize_text_field',

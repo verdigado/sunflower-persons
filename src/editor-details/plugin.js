@@ -70,6 +70,8 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 	const website = meta?.person_website || '';
 	const socialmedia = meta?.person_socialmedia || '';
 	const photoId = meta?.person_photo_id || '';
+	const govoffice = meta?.person_govoffice || '';
+	const mandate = meta?.person_mandate || '';
 
 	const [ title ] = useEntityProp( 'postType', postType, 'title', postId );
 	const debouncedTitle = useDebounce( title, 1000 );
@@ -154,7 +156,7 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 
 			<div
 				className="sunflower-person-list"
-				style={ { display: 'block' } }
+				style={ { display: 'block', 'padding-bottom': '10px' } }
 			>
 				{ thumbnail ? (
 					<img
@@ -177,57 +179,67 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 						{ sunflowerPersonDetails.text.nophoto }
 					</div>
 				) }
+				<MediaUploadCheck>
+					<MediaUpload
+						onSelect={ ( media ) =>
+							updateField( 'person_photo_id', media.id )
+						}
+						allowedTypes={ [ 'image' ] }
+						multiple={ false }
+						value={ photoId }
+						render={ ( { open } ) => (
+							<>
+								{ ! photoId && (
+									<Button variant="primary" onClick={ open }>
+										{ sunflowerPersonDetails.text.photoadd }
+									</Button>
+								) }
+
+								{ photoId && (
+									<>
+										<Button
+											variant="secondary"
+											onClick={ open }
+											style={ { marginRight: '10px' } }
+										>
+											{
+												sunflowerPersonDetails.text
+													.photochange
+											}
+										</Button>
+
+										<Button
+											variant="tertiary"
+											isDestructive
+											onClick={ () =>
+												updateField(
+													'person_photo_id',
+													null
+												)
+											}
+										>
+											{
+												sunflowerPersonDetails.text
+													.photoremove
+											}
+										</Button>
+									</>
+								) }
+							</>
+						) }
+					/>
+				</MediaUploadCheck>
 			</div>
-			<MediaUploadCheck>
-				<MediaUpload
-					onSelect={ ( media ) =>
-						updateField( 'person_photo_id', media.id )
-					}
-					allowedTypes={ [ 'image' ] }
-					multiple={ false }
-					value={ photoId }
-					render={ ( { open } ) => (
-						<>
-							{ ! photoId && (
-								<Button variant="primary" onClick={ open }>
-									{ sunflowerPersonDetails.text.photoadd }
-								</Button>
-							) }
-
-							{ photoId && (
-								<>
-									<Button
-										variant="secondary"
-										onClick={ open }
-										style={ { marginRight: '10px' } }
-									>
-										{
-											sunflowerPersonDetails.text
-												.photochange
-										}
-									</Button>
-
-									<Button
-										variant="tertiary"
-										isDestructive
-										onClick={ () =>
-											updateField(
-												'person_photo_id',
-												null
-											)
-										}
-									>
-										{
-											sunflowerPersonDetails.text
-												.photoremove
-										}
-									</Button>
-								</>
-							) }
-						</>
-					) }
-				/>
-			</MediaUploadCheck>
+			<TextControl
+				label={ sunflowerPersonDetails.text.govoffice }
+				value={ govoffice }
+				onChange={ ( v ) => updateField( 'person_govoffice', v ) }
+			/>
+			<TextControl
+				label={ sunflowerPersonDetails.text.mandate }
+				value={ mandate }
+				onChange={ ( v ) => updateField( 'person_mandate', v ) }
+			/>
 		</div>
 	);
 };

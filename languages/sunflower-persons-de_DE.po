@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2025-11-18T12:22:36+00:00\n"
-"PO-Revision-Date: 2025-11-18 13:23+0100\n"
+"POT-Creation-Date: 2025-11-20T10:17:16+00:00\n"
+"PO-Revision-Date: 2025-11-20 11:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -195,6 +195,14 @@ msgstr "Wähle Bild"
 msgid "Remove image"
 msgstr "Bild entfernen"
 
+#: inc/meta-details.php:68
+msgid "Office / Post"
+msgstr "Amt"
+
+#: inc/meta-details.php:69
+msgid "Mandate / Position"
+msgstr "Mandat / Position"
+
 #: inc/meta-offices.php:14
 msgid "Offices and employees"
 msgstr "Büros und Mitarbeiter*innen"
@@ -211,7 +219,7 @@ msgstr "Straße und Hausnummer"
 msgid "ZIP and location"
 msgstr "PLZ und Ort"
 
-#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:165
+#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:175
 msgid "Employees"
 msgstr "Mitarbeiter*innen"
 
@@ -223,21 +231,21 @@ msgstr "Büro entfernen"
 msgid "Add office"
 msgstr "Büro hinzufügen"
 
-#: template-parts/content-sunflower_person.php:103
+#: template-parts/content-sunflower_person.php:113
 msgid "Contact"
 msgstr "Kontakt"
 
-#: template-parts/content-sunflower_person.php:148
+#: template-parts/content-sunflower_person.php:158
 msgid "Offices"
 msgstr "Büros"
 
-#: build/editor-details/plugin.js:273 src/editor-details/plugin.js:146
-#: build/editor-details/plugin.js:202
+#: build/editor-details/plugin.js:275 src/editor-details/plugin.js:148
+#: build/editor-details/plugin.js:204
 msgid "Social Media (eine Zeile pro Plattform)"
 msgstr ""
 
-#: build/editor-details/plugin.js:274 src/editor-details/plugin.js:150
-#: build/editor-details/plugin.js:206
+#: build/editor-details/plugin.js:276 src/editor-details/plugin.js:152
+#: build/editor-details/plugin.js:208
 msgid "Format: icon;label;URL"
 msgstr ""
 
