@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.3.0\n"
+"Project-Id-Version: Sunflower Persons 1.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-20T10:17:16+00:00\n"
+"POT-Creation-Date: 2025-11-20T16:16:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sunflower-persons\n"
@@ -211,6 +211,19 @@ msgstr ""
 msgid "Mandate / Position"
 msgstr ""
 
+#: inc/meta-details.php:70
+#: template-parts/content-sunflower_person.php:74
+msgid "Constituency"
+msgstr ""
+
+#: inc/meta-details.php:71
+msgid "Occupation"
+msgstr ""
+
+#: inc/meta-details.php:72
+msgid "Year of birth"
+msgstr ""
+
 #: inc/meta-offices.php:14
 msgid "Offices and employees"
 msgstr ""
@@ -228,7 +241,7 @@ msgid "ZIP and location"
 msgstr ""
 
 #: inc/meta-offices.php:63
-#: template-parts/content-sunflower_person.php:175
+#: template-parts/content-sunflower_person.php:198
 msgid "Employees"
 msgstr ""
 
@@ -240,23 +253,23 @@ msgstr ""
 msgid "Add office"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:113
+#: template-parts/content-sunflower_person.php:136
 msgid "Contact"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:158
+#: template-parts/content-sunflower_person.php:181
 msgid "Offices"
 msgstr ""
 
-#: build/editor-details/plugin.js:275
-#: src/editor-details/plugin.js:148
-#: build/editor-details/plugin.js:204
+#: build/editor-details/plugin.js:278
+#: src/editor-details/plugin.js:151
+#: build/editor-details/plugin.js:207
 msgid "Social Media (eine Zeile pro Plattform)"
 msgstr ""
 
-#: build/editor-details/plugin.js:276
-#: src/editor-details/plugin.js:152
-#: build/editor-details/plugin.js:208
+#: build/editor-details/plugin.js:279
+#: src/editor-details/plugin.js:155
+#: build/editor-details/plugin.js:211
 msgid "Format: icon;label;URL"
 msgstr ""
 

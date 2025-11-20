@@ -54,19 +54,22 @@ function sunflower_persons_enqueue_details_editor_assets() {
 		'sunflowerPersonDetails',
 		array(
 			'text' => array(
-				'sortname'    => esc_html__( 'Sortname', 'sunflower-persons' ),
-				'phone'       => esc_html__( 'Phone', 'sunflower-persons' ),
-				'mobilephone' => esc_html__( 'Mobile phone', 'sunflower-persons' ),
-				'email'       => esc_html__( 'E-Mail', 'sunflower-persons' ),
-				'website'     => esc_html__( 'Website', 'sunflower-persons' ),
-				'socialmedia' => esc_html__( 'Social Media', 'sunflower-persons' ),
-				'photoid'     => esc_html__( 'Profile picture', 'sunflower-persons' ),
-				'nophoto'     => esc_html__( 'No picture selected', 'sunflower-persons' ),
-				'photochange' => esc_html__( 'Change image', 'sunflower-persons' ),
-				'photoadd'    => esc_html__( 'Select or upload image', 'sunflower-persons' ),
-				'photoremove' => esc_html__( 'Remove image', 'sunflower-persons' ),
-				'govoffice'   => esc_html__( 'Office / Post', 'sunflower-persons' ),
-				'mandate'     => esc_html__( 'Mandate / Position', 'sunflower-persons' ),
+				'sortname'     => esc_html__( 'Sortname', 'sunflower-persons' ),
+				'phone'        => esc_html__( 'Phone', 'sunflower-persons' ),
+				'mobilephone'  => esc_html__( 'Mobile phone', 'sunflower-persons' ),
+				'email'        => esc_html__( 'E-Mail', 'sunflower-persons' ),
+				'website'      => esc_html__( 'Website', 'sunflower-persons' ),
+				'socialmedia'  => esc_html__( 'Social Media', 'sunflower-persons' ),
+				'photoid'      => esc_html__( 'Profile picture', 'sunflower-persons' ),
+				'nophoto'      => esc_html__( 'No picture selected', 'sunflower-persons' ),
+				'photochange'  => esc_html__( 'Change image', 'sunflower-persons' ),
+				'photoadd'     => esc_html__( 'Select or upload image', 'sunflower-persons' ),
+				'photoremove'  => esc_html__( 'Remove image', 'sunflower-persons' ),
+				'govoffice'    => esc_html__( 'Office / Post', 'sunflower-persons' ),
+				'mandate'      => esc_html__( 'Mandate / Position', 'sunflower-persons' ),
+				'constituency' => esc_html__( 'Constituency', 'sunflower-persons' ),
+				'occupation'   => esc_html__( 'Occupation', 'sunflower-persons' ),
+				'yearofbirth'  => esc_html__( 'Year of birth', 'sunflower-persons' ),
 			),
 		)
 	);
@@ -161,6 +164,36 @@ function sunflower_persons_register_details_meta() {
 	register_post_meta(
 		'sunflower_person',
 		'person_mandate',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_constituency',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_occupation',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_yearofbirth',
 		array(
 			'type'              => 'string',
 			'single'            => true,

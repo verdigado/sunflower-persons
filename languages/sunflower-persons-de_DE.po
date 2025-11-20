@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2025-11-20T10:17:16+00:00\n"
-"PO-Revision-Date: 2025-11-20 11:18+0100\n"
+"POT-Creation-Date: 2025-11-20T16:16:36+00:00\n"
+"PO-Revision-Date: 2025-11-20 17:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -203,6 +203,18 @@ msgstr "Amt"
 msgid "Mandate / Position"
 msgstr "Mandat / Position"
 
+#: inc/meta-details.php:70 template-parts/content-sunflower_person.php:74
+msgid "Constituency"
+msgstr "Wahlkreis"
+
+#: inc/meta-details.php:71
+msgid "Occupation"
+msgstr "Beruf"
+
+#: inc/meta-details.php:72
+msgid "Year of birth"
+msgstr "Geburtsjahr"
+
 #: inc/meta-offices.php:14
 msgid "Offices and employees"
 msgstr "Büros und Mitarbeiter*innen"
@@ -219,7 +231,7 @@ msgstr "Straße und Hausnummer"
 msgid "ZIP and location"
 msgstr "PLZ und Ort"
 
-#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:175
+#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:198
 msgid "Employees"
 msgstr "Mitarbeiter*innen"
 
@@ -231,21 +243,21 @@ msgstr "Büro entfernen"
 msgid "Add office"
 msgstr "Büro hinzufügen"
 
-#: template-parts/content-sunflower_person.php:113
+#: template-parts/content-sunflower_person.php:136
 msgid "Contact"
 msgstr "Kontakt"
 
-#: template-parts/content-sunflower_person.php:158
+#: template-parts/content-sunflower_person.php:181
 msgid "Offices"
 msgstr "Büros"
 
-#: build/editor-details/plugin.js:275 src/editor-details/plugin.js:148
-#: build/editor-details/plugin.js:204
+#: build/editor-details/plugin.js:278 src/editor-details/plugin.js:151
+#: build/editor-details/plugin.js:207
 msgid "Social Media (eine Zeile pro Plattform)"
 msgstr ""
 
-#: build/editor-details/plugin.js:276 src/editor-details/plugin.js:152
-#: build/editor-details/plugin.js:208
+#: build/editor-details/plugin.js:279 src/editor-details/plugin.js:155
+#: build/editor-details/plugin.js:211
 msgid "Format: icon;label;URL"
 msgstr ""
 
