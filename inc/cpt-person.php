@@ -125,3 +125,63 @@ function sunflower_persons_enqueue_editor_assets() {
 	}
 }
 add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_editor_assets' );
+
+// REST API: Hide person single view when "hide single page" meta is set.
+add_filter(
+	'rest_request_before_callbacks',
+	function ( $response, $handler, $request ) {
+
+		$route = $request->get_route();
+
+		// Return early if not a sunflower_person request.
+		if ( ! preg_match( '#^/wp/v2/sunflower_person/(\d+)$#', $route, $m ) ) {
+			return $response;
+		}
+
+		$post_id = intval( $m[1] );
+
+		// Only proceed for GET requests.
+		if ( $request->get_method() !== 'GET' ) {
+			return $response;
+		}
+
+		// Gutenberg Editor Preview must always have access.
+		if ( 'edit' === $request['context'] ) {
+			return $response;
+		}
+
+		// Check if the person is marked as hidden.
+		$hidden = get_post_meta( $post_id, 'person_hide_single', true );
+
+		if ( $hidden ) {
+			return new WP_Error(
+				'rest_post_hidden',
+				__( 'Dieser Eintrag ist nicht öffentlich verfügbar.', 'sunflower' ),
+				array( 'status' => 404 )
+			);
+		}
+
+		return $response;
+	},
+	10,
+	3
+);
+
+// Disable single view for persons with "hide single page" meta set.
+add_action(
+	'template_redirect',
+	function () {
+		if ( is_singular( 'sunflower_person' ) ) {
+			$id   = get_queried_object_id();
+			$hide = get_post_meta( $id, 'person_hide_single', true );
+
+			if ( $hide ) {
+				// 404 statt Einzelansicht anzeigen
+				global $wp_query;
+				$wp_query->set_404();
+				status_header( 404 );
+				return;
+			}
+		}
+	}
+);

@@ -11,7 +11,12 @@ import {
 	useMemo,
 	useCallback,
 } from '@wordpress/element';
-import { TextControl, TextareaControl, Button } from '@wordpress/components';
+import {
+	TextControl,
+	TextareaControl,
+	ToggleControl,
+	Button,
+} from '@wordpress/components';
 import { useEntityProp, store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
@@ -70,6 +75,7 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 	const website = meta?.person_website || '';
 	const socialmedia = meta?.person_socialmedia || '';
 	const photoId = meta?.person_photo_id || '';
+	const hideSingle = meta?.person_hide_single || false;
 	const govoffice = meta?.person_govoffice || '';
 	const mandate = meta?.person_mandate || '';
 	const constituency = meta?.person_constituency || '';
@@ -233,31 +239,50 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 					/>
 				</MediaUploadCheck>
 			</div>
-			<TextControl
-				label={ sunflowerPersonDetails.text.govoffice }
-				value={ govoffice }
-				onChange={ ( v ) => updateField( 'person_govoffice', v ) }
+			<ToggleControl
+				label={ sunflowerPersonDetails.text.hidesinglepage }
+				checked={ hideSingle }
+				onChange={ ( value ) =>
+					setMeta( { ...meta, person_hide_single: value } )
+				}
 			/>
-			<TextControl
-				label={ sunflowerPersonDetails.text.mandate }
-				value={ mandate }
-				onChange={ ( v ) => updateField( 'person_mandate', v ) }
-			/>
-			<TextControl
-				label={ sunflowerPersonDetails.text.constituency }
-				value={ constituency }
-				onChange={ ( v ) => updateField( 'person_constituency', v ) }
-			/>
-			<TextControl
-				label={ sunflowerPersonDetails.text.occupation }
-				value={ occupation }
-				onChange={ ( v ) => updateField( 'person_occupation', v ) }
-			/>
-			<TextControl
-				label={ sunflowerPersonDetails.text.yearofbirth }
-				value={ yearofbirth }
-				onChange={ ( v ) => updateField( 'person_yearofbirth', v ) }
-			/>
+			{ ! hideSingle && (
+				<TextControl
+					label={ sunflowerPersonDetails.text.govoffice }
+					value={ govoffice }
+					onChange={ ( v ) => updateField( 'person_govoffice', v ) }
+				/>
+			) }
+			{ ! hideSingle && (
+				<TextControl
+					label={ sunflowerPersonDetails.text.mandate }
+					value={ mandate }
+					onChange={ ( v ) => updateField( 'person_mandate', v ) }
+				/>
+			) }
+			{ ! hideSingle && (
+				<TextControl
+					label={ sunflowerPersonDetails.text.constituency }
+					value={ constituency }
+					onChange={ ( v ) =>
+						updateField( 'person_constituency', v )
+					}
+				/>
+			) }
+			{ ! hideSingle && (
+				<TextControl
+					label={ sunflowerPersonDetails.text.occupation }
+					value={ occupation }
+					onChange={ ( v ) => updateField( 'person_occupation', v ) }
+				/>
+			) }
+			{ ! hideSingle && (
+				<TextControl
+					label={ sunflowerPersonDetails.text.yearofbirth }
+					value={ yearofbirth }
+					onChange={ ( v ) => updateField( 'person_yearofbirth', v ) }
+				/>
+			) }
 		</div>
 	);
 };
