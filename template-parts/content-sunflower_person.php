@@ -91,7 +91,6 @@ $sunflower_class = 'display-single';
 				}
 
 				?>
-						<h3 class="wp-block-heading">tbd. Wahlkreis</h3>
 						<h3 class="wp-block-heading">tbd. Statement</h3>
 
 						<?php

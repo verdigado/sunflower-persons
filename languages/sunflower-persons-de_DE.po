@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2025-11-20T16:16:36+00:00\n"
-"PO-Revision-Date: 2025-11-20 17:17+0100\n"
+"POT-Creation-Date: 2025-11-25T18:40:49+00:00\n"
+"PO-Revision-Date: 2025-11-25 19:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -215,6 +215,10 @@ msgstr "Beruf"
 msgid "Year of birth"
 msgstr "Geburtsjahr"
 
+#: inc/meta-details.php:73
+msgid "Hide person single page"
+msgstr "Personen Einzelseite deaktivieren"
+
 #: inc/meta-offices.php:14
 msgid "Offices and employees"
 msgstr "Büros und Mitarbeiter*innen"
@@ -251,13 +255,13 @@ msgstr "Kontakt"
 msgid "Offices"
 msgstr "Büros"
 
-#: build/editor-details/plugin.js:278 src/editor-details/plugin.js:151
-#: build/editor-details/plugin.js:207
+#: build/editor-details/plugin.js:279 src/editor-details/plugin.js:157
+#: build/editor-details/plugin.js:213
 msgid "Social Media (eine Zeile pro Plattform)"
 msgstr ""
 
-#: build/editor-details/plugin.js:279 src/editor-details/plugin.js:155
-#: build/editor-details/plugin.js:211
+#: build/editor-details/plugin.js:280 src/editor-details/plugin.js:161
+#: build/editor-details/plugin.js:217
 msgid "Format: icon;label;URL"
 msgstr ""
 
