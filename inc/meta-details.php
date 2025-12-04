@@ -71,6 +71,7 @@ function sunflower_persons_enqueue_details_editor_assets() {
 				'occupation'     => esc_html__( 'Occupation', 'sunflower-persons' ),
 				'yearofbirth'    => esc_html__( 'Year of birth', 'sunflower-persons' ),
 				'hidesinglepage' => esc_html__( 'Hide person single page', 'sunflower-persons' ),
+				'statement'      => esc_html__( 'Statement', 'sunflower-persons' ),
 			),
 		)
 	);
@@ -208,6 +209,16 @@ function sunflower_persons_register_details_meta() {
 	register_post_meta(
 		'sunflower_person',
 		'person_yearofbirth',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	register_post_meta(
+		'sunflower_person',
+		'person_statement',
 		array(
 			'type'              => 'string',
 			'single'            => true,

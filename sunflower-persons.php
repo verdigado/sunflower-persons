@@ -270,7 +270,7 @@ add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );
 
 
 
-if ( ! function_exists( 'sunflower_persons_post_thumbnail' ) ) :
+if ( ! function_exists( 'sunflower_persons_post_thumbnail_cover' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
@@ -280,7 +280,7 @@ if ( ! function_exists( 'sunflower_persons_post_thumbnail' ) ) :
 	 * @param boolean $styled_layout Is this a styled layout.
 	 * @param boolean $show_caption Show the caption.
 	 */
-	function sunflower_persons_post_thumbnail( $styled_layout = false, $show_caption = false ) {
+	function sunflower_persons_post_thumbnail_cover( $styled_layout = false, $show_caption = false ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
