@@ -7,3 +7,4 @@ assets/vndr/
 .vscode
 pa11y.json
 inc/external-content.php
+*.css.map

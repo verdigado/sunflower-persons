@@ -23,7 +23,7 @@ $sunflower_styled_layout = get_post_meta( $post->ID, '_sunflower_styled_layout',
 						the_post();
 
 						// Fetch the template from the plugin.
-						require plugin_dir_path( __DIR__ ) . 'template-parts/content-sunflower_person.php';
+						require SUNFLOWER_PERSONS_PATH . 'template-parts/content-sunflower_person.php';
 
 					endwhile;
 
@@ -33,11 +33,10 @@ $sunflower_styled_layout = get_post_meta( $post->ID, '_sunflower_styled_layout',
 				</main><!-- #main -->
 			</div>
 		</div>
+	</div>
 
 	<?php
-	if ( sunflower_get_setting( 'sunflower_show_related_posts' ) ) {
-		get_template_part( 'template-parts/related-posts', '' );
-	}
+		require SUNFLOWER_PERSONS_PATH . 'template-parts/related-posts.php';
 	?>
 
 </div>

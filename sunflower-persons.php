@@ -268,8 +268,6 @@ function sunflower_persons_enqueue_frontend_assets() {
 
 add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );
 
-
-
 if ( ! function_exists( 'sunflower_persons_post_thumbnail_cover' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
