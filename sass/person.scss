@@ -86,8 +86,18 @@
 		object-fit: cover;
 		padding-bottom: 10px;
 	}
+
 }
 
+.sunflower-person-post-excerpt {
+	padding: 10px;
+	margin-bottom: 0;
+
+	.entry-content p {
+		font-size: 85%;
+		margin-bottom: 1em;
+	}
+}
 
 .person-managers-tokens {
 	display: flex;
