@@ -81,6 +81,7 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 	const constituency = meta?.person_constituency || '';
 	const occupation = meta?.person_occupation || '';
 	const yearofbirth = meta?.person_yearofbirth || '';
+	const statement = meta?.person_statement || '';
 
 	const [ title ] = useEntityProp( 'postType', postType, 'title', postId );
 	const debouncedTitle = useDebounce( title, 1000 );
@@ -281,6 +282,13 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 					label={ sunflowerPersonDetails.text.yearofbirth }
 					value={ yearofbirth }
 					onChange={ ( v ) => updateField( 'person_yearofbirth', v ) }
+				/>
+			) }
+			{ ! hideSingle && (
+				<TextareaControl
+					label={ sunflowerPersonDetails.text.statement }
+					value={ statement }
+					onChange={ ( v ) => updateField( 'person_statement', v ) }
 				/>
 			) }
 		</div>
