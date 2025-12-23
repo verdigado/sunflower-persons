@@ -16,6 +16,7 @@
 		margin: 0.5em 0 0;
 
 		li {
+
 			a {
 				text-decoration: none;
 
@@ -24,10 +25,13 @@
 				}
 			}
 		}
+
 		.sunflower-person {
+
 			&__website {
 				font-size: 87%;
 			}
+
 			&__email {
 				font-size: 87%;
 				display: inline-block;        /* oder inline-flex */
@@ -146,7 +150,9 @@
 }
 
 .single-sunflower_person {
-	.container.container-narrow  {
+
+	.container.container-narrow {
+
 		.wp-block-columns {
 			flex-wrap: nowrap !important;
 
