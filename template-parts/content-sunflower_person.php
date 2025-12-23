@@ -57,83 +57,50 @@ $sunflower_class = 'display-single';
 		?>
 			<div class="row">
 				<div class="order-1 <?php echo ( $sunflower_metadata ) ? 'col-md-8' : 'col-md-12'; ?>">
-			<?php
-			if ( $sunflower_show_post_thumbnail ) {
-				sunflower_post_thumbnail( $sunflower_styled_layout, true );
-			}
-			if ( $sunflower_persons_person_govoffice ) {
-				printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_govoffice ) );
-			}
-			if ( $sunflower_persons_person_govoffice ) {
-				printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_mandate ) );
-			}
+				<?php
+				if ( $sunflower_show_post_thumbnail ) {
+					sunflower_post_thumbnail( $sunflower_styled_layout, true );
+				}
+				if ( $sunflower_persons_person_govoffice ) {
+					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_govoffice ) );
+				}
+				if ( $sunflower_persons_person_govoffice ) {
+					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_mandate ) );
+				}
 
-			$sunflower_persons_person_labels = array();
+				$sunflower_persons_person_labels = array();
 
-			if ( $sunflower_persons_person_constituency ) {
-				$sunflower_persons_person_labels[] = esc_html__( 'Constituency', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_constituency );
-			}
+				if ( $sunflower_persons_person_constituency ) {
+					$sunflower_persons_person_labels[] = esc_html__( 'Constituency', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_constituency );
+				}
 
-			if ( $sunflower_persons_person_occupation ) {
-				$sunflower_persons_person_labels[] = esc_html__( 'Occupation', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_occupation );
-			}
+				if ( $sunflower_persons_person_occupation ) {
+					$sunflower_persons_person_labels[] = esc_html__( 'Occupation', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_occupation );
+				}
 
-			if ( $sunflower_persons_person_yearofbirth ) {
-				$sunflower_persons_person_labels[] = esc_html__( 'Year of birth', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_yearofbirth );
-			}
+				if ( $sunflower_persons_person_yearofbirth ) {
+					$sunflower_persons_person_labels[] = esc_html__( 'Year of birth', 'sunflower-persons' ) . ': ' . esc_html( $sunflower_persons_person_yearofbirth );
+				}
 
 
-			if ( ! empty( $sunflower_persons_person_labels ) ) {
-				printf(
-					'<p class="sunflower-person__meta-inline-labels">%s</p>',
-					wp_kses_post( implode( ' <br/> ', $sunflower_persons_person_labels ) )
-				);
-			}
+				if ( ! empty( $sunflower_persons_person_labels ) ) {
+					printf(
+						'<p class="sunflower-person__meta-inline-labels">%s</p>',
+						wp_kses_post( implode( ' <br/> ', $sunflower_persons_person_labels ) )
+					);
+				}
 
-			if ( ! empty( $sunflower_persons_person_statement ) ) {
-				printf(
-					'<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">%s</blockquote>',
-					esc_html( $sunflower_persons_person_statement )
-				);
-			}
+				if ( ! empty( $sunflower_persons_person_statement ) ) {
+					printf(
+						'<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">%s</blockquote>',
+						esc_html( $sunflower_persons_person_statement )
+					);
+				}
 
-			?>
+				?>
 
 					<?php
 					the_content();
-
-					// Fetch all posts connected to this person.
-					$sunflower_persons_person_id    = get_the_ID();
-					$sunflower_persons_person_args  = array(
-						'post_type'  => 'post',
-						'meta_query' => array(
-							array(
-								'key'     => 'sunflower_connected_persons',
-								'value'   => $sunflower_persons_person_id,
-								'compare' => 'LIKE',
-							),
-						),
-					);
-					$sunflower_persons_person_query = new WP_Query( $sunflower_persons_person_args );
-
-					if ( $sunflower_persons_person_query->have_posts() ) {
-						/* translators: %s: Author's display name. */
-						echo '<h2> ' . esc_attr( sprintf( __( 'Posts by %s', 'default' ), get_the_title() ) ) . '</h2><ul>';
-						while ( $sunflower_persons_person_query->have_posts() ) {
-							$sunflower_persons_person_query->the_post();
-							echo '<li><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></li>';
-						}
-						echo '</ul>';
-						wp_reset_postdata();
-					}
-
-
-					wp_link_pages(
-						array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'sunflower' ),
-							'after'  => '</div>',
-						)
-					);
 					?>
 				</div><!-- .col-md-8 -->
 

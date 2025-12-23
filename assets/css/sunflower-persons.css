@@ -24,6 +24,21 @@
 .sunflower_person__meta li a i {
   color: #000;
 }
+.sunflower-person__offices .sunflower-person__website, .sunflower-person__meta .sunflower-person__website,
+.sunflower_person__offices .sunflower-person__website,
+.sunflower_person__meta .sunflower-person__website {
+  font-size: 87%;
+}
+.sunflower-person__offices .sunflower-person__email, .sunflower-person__meta .sunflower-person__email,
+.sunflower_person__offices .sunflower-person__email,
+.sunflower_person__meta .sunflower-person__email {
+  font-size: 87%;
+  display: inline-block; /* oder inline-flex */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .sunflower-person__socialmedia .social-media-profiles,
 .sunflower_person__socialmedia .social-media-profiles {
   list-style: none;
@@ -123,6 +138,15 @@
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 4px;
+}
+
+.single-sunflower_person .container.container-narrow .wp-block-columns {
+  flex-wrap: nowrap !important;
+}
+.single-sunflower_person .container.container-narrow .wp-block-columns .wp-block-column img {
+  object-fit: cover;
+  height: auto;
+  max-height: 250px;
 }
 
 /*# sourceMappingURL=sunflower-persons.css.map */

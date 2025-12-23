@@ -25,6 +25,22 @@
 				}
 			}
 		}
+
+		.sunflower-person {
+
+			&__website {
+				font-size: 87%;
+			}
+
+			&__email {
+				font-size: 87%;
+				display: inline-block;        /* oder inline-flex */
+				max-width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
 	}
 
 	&__socialmedia {
@@ -133,10 +149,18 @@
 	margin-top: 4px;
 }
 
+.single-sunflower_person {
 
-// blockquote::before, blockquote::after {
-//   position: absolute;
-//   display: block;
-//   font-size: 10em;
-//   color: #c32e04;
-// }
+	.container.container-narrow {
+
+		.wp-block-columns {
+			flex-wrap: nowrap !important;
+
+			.wp-block-column img {
+				object-fit: cover;
+				height: auto;
+				max-height: 250px;
+			}
+		}
+	}
+}
