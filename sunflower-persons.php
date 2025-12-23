@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Sunflower Persons
  * Description: Custom Post Type 'Person' + Gutenberg Block zur Ausgabe einer einzelnen Person oder einer Liste von Personen.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: verdigado eG
  * Author URI: https://verdigado.com
  * Text Domain: sunflower-persons
