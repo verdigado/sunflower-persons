@@ -264,6 +264,24 @@ function sunflower_persons_enqueue_frontend_assets() {
 		array(),
 		SUNFLOWER_PERSONS_VERSION
 	);
+
+	// check for Sunflower 26 theme
+	$theme = wp_get_theme();
+
+	// check for parent theme in case of child theme
+	$parent = $theme->parent() ? $theme->parent()->get_stylesheet() : null;
+
+	if (
+		$theme->get_stylesheet() === 'sunflower26' ||
+		$parent === 'sunflower26'
+	) {
+		wp_enqueue_style(
+			'sunflower-persons-frontend-style-26',
+			SUNFLOWER_PERSONS_URL . 'assets/css/sunflower26-persons.css',
+			array(),
+			SUNFLOWER_PERSONS_VERSION
+		);
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );

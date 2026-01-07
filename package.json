@@ -28,9 +28,9 @@
     "sass": "^1.77.8"
   },
   "scripts": {
-    "watch": "sass sass/style.scss ./assets/css/sunflower-persons.css -w",
-    "compile:build": "sass sass/style.scss ./assets/css/sunflower-persons.css",
-    "compile:css": "sass sass/style.scss ./style.css && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "watch": "sass --watch sass/style.scss:assets/css/sunflower-persons.css sass/sunflower26/style.scss:assets/css/sunflower26-persons.css",
+    "compile:build": "sass sass/style.scss:assets/css/sunflower-persons.css sass/sunflower26/style.scss:assets/css/sunflower26-persons.css",
+    "compile:css": "sass sass/style.scss:assets/css/sunflower-persons.css sass/sunflower26/style.scss:assets/css/sunflower26-persons.css && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss' 'src/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'src/**/*.js'",
     "lint:jsa": "wp-scripts lint-js",

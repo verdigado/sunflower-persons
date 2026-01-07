@@ -1,0 +1,33 @@
+/* Bootstrap
+--------------------------------------------- */
+.sunflower-person,
+.sunflower_person {
+  /* Sunflower 26 adaptations */
+}
+.sunflower-person ul li,
+.sunflower_person ul li {
+  padding: 0;
+  margin: 0;
+}
+.sunflower-person ul li::before,
+.sunflower_person ul li::before {
+  all: unset;
+}
+
+.single-sunflower_person .container.container-narrow .wp-block-columns {
+  /* Sunflower 26 adaptations */
+}
+.single-sunflower_person .container.container-narrow .wp-block-columns .wp-block-column img {
+  height: unset;
+  max-height: unset;
+}
+.single-sunflower_person .container.container-narrow .wp-block-columns a:has(.wp-post-image) {
+  height: 298px;
+  border-radius: calc(var(--border-radius-medium) - 2px);
+}
+.single-sunflower_person .container.container-narrow .wp-block-columns a:has(.wp-post-image) .wp-post-image {
+  width: 50%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=sunflower26-persons.css.map */

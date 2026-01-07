@@ -1,0 +1,40 @@
+
+.sunflower-person,
+.sunflower_person {
+
+	/* Sunflower 26 adaptations */
+	ul li {
+		&::before {
+			all: unset;
+		}
+		padding: 0;
+		margin: 0;
+	}
+}
+
+.single-sunflower_person {
+
+	.container.container-narrow {
+
+		.wp-block-columns {
+
+			.wp-block-column img {
+				height: unset;
+				max-height: unset;
+			}
+
+
+			/* Sunflower 26 adaptations */
+			 a:has(.wp-post-image) {
+				height: 298px;
+				border-radius: calc(var(--border-radius-medium) - 2px);
+
+				.wp-post-image {
+					width: 50%;
+					height: 100%;
+				}
+			 }
+
+		}
+	}
+}
