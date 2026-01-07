@@ -265,15 +265,15 @@ function sunflower_persons_enqueue_frontend_assets() {
 		SUNFLOWER_PERSONS_VERSION
 	);
 
-	// check for Sunflower 26 theme
+	// Check for Sunflower 26 theme.
 	$theme = wp_get_theme();
 
-	// check for parent theme in case of child theme
+	// Check for parent theme in case of child theme.
 	$parent = $theme->parent() ? $theme->parent()->get_stylesheet() : null;
 
 	if (
-		$theme->get_stylesheet() === 'sunflower26' ||
-		$parent === 'sunflower26'
+		'sunflower26' === $theme->get_stylesheet() ||
+		'sunflower26' === $parent
 	) {
 		wp_enqueue_style(
 			'sunflower-persons-frontend-style-26',
