@@ -103,7 +103,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_filter            = array();
 	$sunflower_persons_person_filmstrip  = false;
 	$sunflower_persons_person_navbuttons = false;
-	if ( isset( $attributes['showAsFilmstrip'] ) && true === $attributes['showAsFilmstrip'] ) {
+	if ( isset( $attributes['blockLayout'] ) && 'filmstrip' === $attributes['blockLayout'] ) {
 		$sunflower_persons_person_filmstrip = true;
 		if ( isset( $attributes['showNavButtons'] ) && true === $attributes['showNavButtons'] ) {
 			$sunflower_persons_filter['limit']   = -1;
@@ -143,7 +143,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 	?>
 
-<section class="sunflower-person-list <?php echo ( true === $attributes['showAsFilmstrip'] ) ? 'sunflower-person-list--carousel' : 'sunflower-person-list--grid'; ?>"
+<section class="sunflower-person-list <?php echo ( $attributes['blockLayout'] ) ? 'sunflower-person-list--' . esc_attr( $attributes['blockLayout'] ) : 'sunflower-person-list--grid'; ?>"
 	aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>"
 	data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>"
 	data-autoplay-timer="<?php echo esc_attr( isset( $attributes['autoplayTimer'] ) ? intval( $attributes['autoplayTimer'] ) : 5 ); ?>"

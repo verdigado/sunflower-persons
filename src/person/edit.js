@@ -11,7 +11,11 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	BlockControls,
+	InspectorControls,
+} from '@wordpress/block-editor';
 import {
 	ToggleControl,
 	Disabled,
@@ -20,8 +24,10 @@ import {
 	RangeControl,
 	SelectControl,
 	Spinner,
+	ToolbarGroup,
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import { grid, list, gallery } from '@wordpress/icons';
 import { useSelect } from '@wordpress/data';
 import { useEntityRecords } from '@wordpress/core-data';
 import { useState, useEffect } from '@wordpress/element';
@@ -41,6 +47,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		personId,
 		groups,
 		tags,
+		blockLayout,
 		showFilterButtons,
 		showNavButtons,
 		showAsFilmstrip,
@@ -151,9 +158,33 @@ export default function Edit( { attributes, setAttributes } ) {
 		};
 	}
 
+	const toolbarControls = [
+		{
+			icon: list,
+			title: __( 'List view' ),
+			onClick: () => setAttributes( { blockLayout: 'list' } ),
+			isActive: blockLayout === 'list',
+		},
+		{
+			icon: grid,
+			title: __( 'Grid view' ),
+			onClick: () => setAttributes( { blockLayout: 'grid' } ),
+			isActive: blockLayout === 'grid',
+		},
+		{
+			icon: gallery,
+			title: __( 'Filmstrip view', 'sunflower-persons-person' ),
+			onClick: () => setAttributes( { blockLayout: 'carousel' } ),
+			isActive: blockLayout === 'carousel',
+		},
+	];
+
 	return (
 		<>
 			<div { ...blockProps }>
+				<BlockControls>
+					<ToolbarGroup controls={ toolbarControls } />
+				</BlockControls>
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'Settings', 'sunflower-persons-person' ) }
@@ -200,15 +231,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							'sunflower-persons-person'
 						) }
 					>
-						<ToggleControl
-							label={ __(
-								'Show as filmstrip',
-								'sunflower-persons-person'
-							) }
-							checked={ showAsFilmstrip }
-							onChange={ toggleAttribute( 'showAsFilmstrip' ) }
-						/>
-						{ showAsFilmstrip && (
+						{ blockLayout === 'carousel' && (
 							<ToggleControl
 								label={ __(
 									'Show navigation buttons',
@@ -218,7 +241,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								onChange={ toggleAttribute( 'showNavButtons' ) }
 							/>
 						) }
-						{ showAsFilmstrip && (
+						{ blockLayout === 'carousel' && (
 							<ToggleControl
 								label={ __(
 									'Autoplay sliding',
@@ -228,7 +251,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								onChange={ toggleAttribute( 'slideAutoplay' ) }
 							/>
 						) }
-						{ showAsFilmstrip && slideAutoplay && (
+						{ blockLayout === 'carousel' && slideAutoplay && (
 							<RangeControl
 								label={ __(
 									'Seconds between slides (autoplay)',
@@ -242,7 +265,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								max={ 10 }
 							/>
 						) }
-						{ showAsFilmstrip && (
+						{ blockLayout === 'carousel' && (
 							<RangeControl
 								label={ __(
 									'Number of Persons to show',

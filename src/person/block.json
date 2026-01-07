@@ -25,9 +25,9 @@
 			"type": "boolean",
 			"default": false
     },
-	"showAsFilmstrip": {
-		"type": "boolean",
-		"default": false
+	"blockLayout": {
+		"type": "string",
+		"default": "grid"
 	},
 	"showNavButtons": {
 		"type": "boolean",
