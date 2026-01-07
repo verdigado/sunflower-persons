@@ -6,160 +6,160 @@
  */
 
 .sunflower-person-list {
-	--person-width: 180px;
-	--person-gap: 1rem;
+    --person-width: 180px;
+    --person-gap: 1rem;
 
-	position: relative;
-	width: 100%;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 
-	// common styles for person items
-	.sunflower-person {
-		flex: 0 0 auto;
-		padding: 0.5rem;
-		background: #fafafa;
-		border: 1px solid #ddd;
-		border-radius: 8px;
-		text-align: center;
-		box-sizing: border-box;
+    // common styles for person items
+    .sunflower-person {
+        flex: 0 0 auto;
+        padding: 0.5rem;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        box-sizing: border-box;
 
-		&__link {
-			text-decoration: none;
-			color: inherit;
-			display: block;
-		}
+        &__link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
 
-		&__title {
-			margin: 0.5em 0 0;
-			font-size: 1rem;
-			text-align: center;
-		}
+        &__title {
+            margin: 0.5em 0 0;
+            font-size: 1rem;
+            text-align: center;
+        }
 
-		&-thumb,
-		&-medium {
-			border-radius: 50%;
-			overflow: hidden;
-			border: 1px solid #005437;
+        &-thumb,
+        &-medium {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #005437;
 
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				display: block;
-			}
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
 
-		}
+        }
 
-		&-thumb {
-			width: calc(var(--person-width) * 0.75);
-			height: calc(var(--person-width) * 0.75);
+        &-thumb {
+            width: calc(var(--person-width) * 0.75);
+            height: calc(var(--person-width) * 0.75);
 
-			&:hover {
-				border-width: 2px;
-			}
-		}
+            &:hover {
+                border-width: 2px;
+            }
+        }
 
-		&-medium {
-			width: calc(var(--person-width) * 2);
-			height: calc(var(--person-width) * 2);
-		}
+        &-medium {
+            width: calc(var(--person-width) * 2);
+            height: calc(var(--person-width) * 2);
+        }
 
-		&__meta {
-			list-style: none;
-			display: flex;
-			padding: 0;
-			margin: 0.5em 0 0;
+        &__meta {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0.5em 0 0;
 
-			li {
-				width: 40px;
-				height: 40px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background: #fff;
-				border-radius: 50%;
-			}
+            li {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #fff;
+                border-radius: 50%;
+            }
 
-			a {
-				color: #000;
-				opacity: 1;
-				background-color: #fff;
-				text-decoration: none;
+            a {
+                color: #000;
+                opacity: 1;
+                background-color: #fff;
+                text-decoration: none;
 
-				i {
-					color: #000;
-				}
-			}
-		}
-	}
+                i {
+                    color: #000;
+                }
+            }
+        }
+    }
 
-	// filmstrip / carousel layout
-	&--carousel {
-		display: flex;
-		align-items: center;
+    // filmstrip / carousel layout
+    &--carousel {
+        display: flex;
+        align-items: center;
 
-		.sunflower-person-track-wrapper {
-			overflow: hidden;
-			flex: 1;
-		}
+        .sunflower-person-track-wrapper {
+            overflow: hidden;
+            flex: 1;
+        }
 
-		.sunflower-person-track {
-			display: flex;
-			gap: var(--person-gap, 0.5rem);
-			transition: transform 0.5s ease;
-			scroll-behavior: smooth;
-		}
+        .sunflower-person-track {
+            display: flex;
+            gap: var(--person-gap, 0.5rem);
+            transition: transform 0.5s ease;
+            scroll-behavior: smooth;
+        }
 
-		.sunflower-person {
-			flex: 0 0 auto;
-			min-width: 180px;
-			box-sizing: border-box;
-		}
+        .sunflower-person {
+            flex: 0 0 auto;
+            min-width: 180px;
+            box-sizing: border-box;
+        }
 
-		// Pfeile
-		.sunflower-person-nav {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			width: 3rem;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: rgba(14, 138, 31, 0.05);
-			border: none;
-			cursor: pointer;
-			font-size: 2rem;
-			color: #333;
-			transition: background 0.3s ease, color 0.3s ease;
-			z-index: 2;
+        // Pfeile
+        .sunflower-person-nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(14, 138, 31, 0.05);
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+            z-index: 2;
 
-			&.prev {
-				left: -2rem;
-			}
+            &.prev {
+                left: -2rem;
+            }
 
-			&.next {
-				right: -2rem;
-			}
+            &.next {
+                right: -2rem;
+            }
 
-			&:hover {
-				background: rgba(14, 138, 31, 0.6);
-				color: #000;
-			}
+            &:hover {
+                background: rgba(14, 138, 31, 0.6);
+                color: #000;
+            }
 
-			&:disabled {
-				opacity: 0.2;
-				cursor: default;
-				pointer-events: none;
-			}
-		}
-	}
+            &:disabled {
+                opacity: 0.2;
+                cursor: default;
+                pointer-events: none;
+            }
+        }
+    }
 
-	// grid multi-column layout
-	&--grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-		gap: var(--person-gap);
-	}
+    // grid multi-column layout
+    &--grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--person-gap);
+    }
 }
