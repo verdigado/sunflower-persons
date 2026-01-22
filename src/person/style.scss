@@ -8,12 +8,57 @@
 .sunflower-person-list {
     --person-width: 180px;
     --person-gap: 1rem;
+    --person-filter-gap: 0.5rem;
+    --person-border-radius: 0.25rem;
 
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
+
+    .persons-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--person-filter-gap, 0.5rem);
+        justify-content: flex-start;
+
+        $filter-bg          : #f5f5f5;
+        $filter-bg-hover    : #e0e0e0;
+        $filter-bg-active   : #005437;
+        $filter-color       : #333;
+        $filter-color-active: #fff;
+
+        @media (max-width: 480px) {
+            justify-content: center;
+        }
+
+        .filter-btn {
+            flex: 0 1 auto;
+            padding: 0.5rem 1rem;
+            font-size: 90%;
+            color: $filter-color;
+            background: $filter-bg;
+            border-radius: var(--person-border-radius, 0.25rem);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+
+            // Fokus‑Ring für Barrierefreiheit
+            &:focus-visible {
+                outline: 2px solid #005a87;
+                outline-offset: 2px;
+            }
+
+            // Hover‑Zustand
+            &:hover,
+            &:focus-visible {
+                background: $filter-bg-hover;
+            }
+
+            // Aktiver Zustand (z. B. aktuelle Filter‑Kategorie)
+            &.is-active {
+                background: $filter-bg-active;
+                color: $filter-color-active;
+            }
+        }
+
+    }
 
     // common styles for person items
     .sunflower-person {
@@ -21,7 +66,7 @@
         padding: 0.5rem;
         background: #fafafa;
         border: 1px solid #ddd;
-        border-radius: 8px;
+        border-radius: var(--person-border-radius, 0.25rem);
         text-align: center;
         box-sizing: border-box;
 
@@ -100,6 +145,11 @@
         display: flex;
         align-items: center;
 
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+
         .sunflower-person-track-wrapper {
             overflow: hidden;
             flex: 1;
@@ -161,5 +211,22 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: var(--person-gap);
+
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+    // list layout
+    &--list {
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+
+
     }
 }

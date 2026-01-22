@@ -8,6 +8,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	// Hilfsfunktion: filtert nach Slug
 	const applyFilter = ( filter ) => {
 		persons.forEach( ( p ) => {
+			// Show all
+			if ( filter === 'all' ) {
+				p.style.display = '';
+				return;
+			}
 			const groups = p.dataset.group.split( ' ' );
 			if ( groups.includes( filter ) ) {
 				p.style.display = '';
