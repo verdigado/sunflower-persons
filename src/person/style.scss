@@ -67,7 +67,6 @@
         background: #fafafa;
         border: 1px solid #ddd;
         border-radius: var(--person-border-radius, 0.25rem);
-        text-align: center;
         box-sizing: border-box;
 
         &__link {
@@ -113,24 +112,16 @@
 
         &__meta {
             list-style: none;
-            display: flex;
             padding: 0;
             margin: 0.5em 0 0;
 
             li {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                justify-content: center;
                 align-items: center;
-                background: #fff;
-                border-radius: 50%;
             }
 
             a {
                 color: #000;
                 opacity: 1;
-                background-color: #fff;
                 text-decoration: none;
 
                 i {
@@ -166,6 +157,22 @@
             flex: 0 0 auto;
             min-width: 180px;
             box-sizing: border-box;
+            text-align: center;
+
+            &__meta {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
         }
 
         // Pfeile
@@ -216,6 +223,26 @@
         width: 100%;
         box-sizing: border-box;
         justify-content: center;
+
+        .sunflower-person {
+            text-align: center;
+
+            &__meta {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+        }
     }
     // list layout
     &--list {
@@ -227,6 +254,58 @@
         box-sizing: border-box;
         justify-content: center;
 
+        .sunflower-person {
 
+            .wp-block-media-text {
+                display: grid;
+                align-items: center;
+                gap: var(--wp--style--global--spacing--unit, 1rem);
+
+                &.is-stacked-on-mobile {
+                    grid-template-columns: 100% !important;
+
+                    @media (min-width: 600px) {
+                        grid-template-columns: auto 30% !important;
+                    }
+                }
+
+                &__content {
+                    padding: var(--wp--style--global--spacing--unit, 1rem);
+                }
+
+                &__media {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                }
+            }
+
+            &__metasocial {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+        }
     }
 }
+
+
+/* --------------------------------------------------------------
+   Media‑Text‑Block‑Stil für das Plugin
+   -------------------------------------------------------------- */

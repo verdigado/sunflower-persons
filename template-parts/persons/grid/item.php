@@ -8,7 +8,7 @@
  */
 
 ?>
-<article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', $args['groups'] ) ); ?>">
+<article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', wp_list_pluck( $args['groups'], 'slug' ) ) ); ?>">
 
 	<h4><?php echo esc_html( $args['title'] ); ?></h4>
 		<a href="<?php the_permalink(); ?>" class="sunflower-person__link">

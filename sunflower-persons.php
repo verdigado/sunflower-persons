@@ -390,12 +390,7 @@ endif;
 function sunflower_persons_get_template_part( string $template, array $args = array() ) {
 	$template_file = SUNFLOWER_PERSONS_PATH . 'template-parts/' . $template . '.php';
 
-	if ( ! file_exists( $template_file ) ) {
-		return;
+	if ( file_exists( $template_file ) ) {
+		load_template( $template_file, false, $args );
 	}
-
-	// $args als Variablen verfügbar machen
-	extract( $args, EXTR_SKIP );
-
-	include $template_file;
 }

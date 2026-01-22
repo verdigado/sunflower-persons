@@ -196,10 +196,18 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 				'photo_id'    => get_post_meta( get_the_ID(), 'person_photo_id', true ),
 
-				'groups'      => wp_get_post_terms(
-					get_the_ID(),
-					'sunflower_group',
-					array( 'fields' => 'slugs' )
+				'groups'      => array_map(
+					function ( $term ) {
+						return array(
+							'slug' => $term->slug,
+							'name' => $term->name,
+						);
+					},
+					wp_get_post_terms(
+						get_the_ID(),
+						'sunflower_group',
+						array( 'fields' => 'all' )
+					)
 				),
 
 				'socialmedia' => sunflower_persons_get_social_media_profiles( get_the_ID() ),
@@ -210,6 +218,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 				'persons/' . $sunflower_persons_layout . '/item',
 				$sunflower_persons_context
 			);
+
 			endwhile;
 
 		sunflower_persons_get_template_part(
