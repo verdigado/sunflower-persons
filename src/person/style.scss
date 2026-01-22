@@ -8,12 +8,57 @@
 .sunflower-person-list {
     --person-width: 180px;
     --person-gap: 1rem;
+    --person-filter-gap: 0.5rem;
+    --person-border-radius: 0.25rem;
 
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
+
+    .persons-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--person-filter-gap, 0.5rem);
+        justify-content: flex-start;
+
+        $filter-bg          : #f5f5f5;
+        $filter-bg-hover    : #e0e0e0;
+        $filter-bg-active   : #005437;
+        $filter-color       : #333;
+        $filter-color-active: #fff;
+
+        @media (max-width: 480px) {
+            justify-content: center;
+        }
+
+        .filter-btn {
+            flex: 0 1 auto;
+            padding: 0.5rem 1rem;
+            font-size: 90%;
+            color: $filter-color;
+            background: $filter-bg;
+            border-radius: var(--person-border-radius, 0.25rem);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+
+            // Fokus‑Ring für Barrierefreiheit
+            &:focus-visible {
+                outline: 2px solid #005a87;
+                outline-offset: 2px;
+            }
+
+            // Hover‑Zustand
+            &:hover,
+            &:focus-visible {
+                background: $filter-bg-hover;
+            }
+
+            // Aktiver Zustand (z. B. aktuelle Filter‑Kategorie)
+            &.is-active {
+                background: $filter-bg-active;
+                color: $filter-color-active;
+            }
+        }
+
+    }
 
     // common styles for person items
     .sunflower-person {
@@ -21,8 +66,7 @@
         padding: 0.5rem;
         background: #fafafa;
         border: 1px solid #ddd;
-        border-radius: 8px;
-        text-align: center;
+        border-radius: var(--person-border-radius, 0.25rem);
         box-sizing: border-box;
 
         &__link {
@@ -68,24 +112,16 @@
 
         &__meta {
             list-style: none;
-            display: flex;
             padding: 0;
             margin: 0.5em 0 0;
 
             li {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                justify-content: center;
                 align-items: center;
-                background: #fff;
-                border-radius: 50%;
             }
 
             a {
                 color: #000;
                 opacity: 1;
-                background-color: #fff;
                 text-decoration: none;
 
                 i {
@@ -99,6 +135,11 @@
     &--carousel {
         display: flex;
         align-items: center;
+
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
 
         .sunflower-person-track-wrapper {
             overflow: hidden;
@@ -116,6 +157,22 @@
             flex: 0 0 auto;
             min-width: 180px;
             box-sizing: border-box;
+            text-align: center;
+
+            &__meta {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
         }
 
         // Pfeile
@@ -161,5 +218,94 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: var(--person-gap);
+
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+
+        .sunflower-person {
+            text-align: center;
+
+            &__meta {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+        }
+    }
+    // list layout
+    &--list {
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+
+        .sunflower-person {
+
+            .wp-block-media-text {
+                display: grid;
+                align-items: center;
+                gap: var(--wp--style--global--spacing--unit, 1rem);
+
+                &.is-stacked-on-mobile {
+                    grid-template-columns: 100% !important;
+
+                    @media (min-width: 600px) {
+                        grid-template-columns: auto 30% !important;
+                    }
+                }
+
+                &__content {
+                    padding: var(--wp--style--global--spacing--unit, 1rem);
+                }
+
+                &__media {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                }
+            }
+
+            &__metasocial {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+        }
     }
 }
+
+
+/* --------------------------------------------------------------
+   Media‑Text‑Block‑Stil für das Plugin
+   -------------------------------------------------------------- */

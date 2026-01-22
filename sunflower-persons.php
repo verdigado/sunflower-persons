@@ -380,3 +380,17 @@ if ( ! function_exists( 'sunflower_persons_post_thumbnail_cover' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+
+/**
+ * Load a template part from the plugin's templates directory.
+ *
+ * @param string $template The template file name (without .php extension).
+ * @param array  $args     Optional. An associative array of variables to pass to the template.
+ */
+function sunflower_persons_get_template_part( string $template, array $args = array() ) {
+	$template_file = SUNFLOWER_PERSONS_PATH . 'template-parts/' . $template . '.php';
+
+	if ( file_exists( $template_file ) ) {
+		load_template( $template_file, false, $args );
+	}
+}

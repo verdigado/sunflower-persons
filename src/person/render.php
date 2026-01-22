@@ -103,7 +103,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_filter            = array();
 	$sunflower_persons_person_filmstrip  = false;
 	$sunflower_persons_person_navbuttons = false;
-	if ( isset( $attributes['blockLayout'] ) && 'filmstrip' === $attributes['blockLayout'] ) {
+	if ( isset( $attributes['blockLayout'] ) && 'carousel' === $attributes['blockLayout'] ) {
 		$sunflower_persons_person_filmstrip = true;
 		if ( isset( $attributes['showNavButtons'] ) && true === $attributes['showNavButtons'] ) {
 			$sunflower_persons_filter['limit']   = -1;
@@ -120,6 +120,20 @@ if ( $sunflower_persons_person_id > 0 ) {
 	if ( ! $sunflower_persons_persons->have_posts() ) {
 		return '<div class="sunflower-person-list">' . esc_html__( 'No persons found.', 'sunflower-persons' ) . '</div>';
 	}
+
+	$sunflower_persons_classes = array( 'sunflower-person-list' );
+	$sunflower_persons_classes = get_block_wrapper_attributes(
+		array(
+			'class' => implode( ' ', $sunflower_persons_classes ),
+		)
+	);
+
+	?>
+
+	<div <?php echo $sunflower_persons_classes;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+
+	<?php
+
 	$sunflower_persons_person_filters = $attributes['showFilterButtons'] ?? false;
 	if ( $sunflower_persons_person_filters ) {
 		?>
@@ -143,13 +157,15 @@ if ( $sunflower_persons_person_id > 0 ) {
 	}
 	?>
 
-<section class="sunflower-person-list <?php echo ( $attributes['blockLayout'] ) ? 'sunflower-person-list--' . esc_attr( $attributes['blockLayout'] ) : 'sunflower-person-list--grid'; ?>"
+<section class="<?php echo ( $attributes['blockLayout'] ) ? 'sunflower-person-list--' . esc_attr( $attributes['blockLayout'] ) : 'sunflower-person-list--grid'; ?>"
 	aria-label="<?php echo esc_attr__( 'Persons', 'sunflower-persons' ); ?>"
 	data-visible="<?php echo esc_attr( isset( $attributes['limit'] ) ? intval( $attributes['limit'] ) : 5 ); ?>"
 	data-autoplay-timer="<?php echo esc_attr( isset( $attributes['autoplayTimer'] ) ? intval( $attributes['autoplayTimer'] ) : 5 ); ?>"
 	data-slide-start="<?php echo esc_attr( isset( $attributes['slideStart'] ) ? $attributes['slideStart'] : 'start' ); ?>"
 	data-autoplay="<?php echo esc_attr( isset( $attributes['slideAutoplay'] ) ? intval( $attributes['slideAutoplay'] ) : 0 ); ?>">
 	<?php
+	$sunflower_persons_layout = $attributes['blockLayout'] ?? 'grid';
+
 	if ( true === $sunflower_persons_person_navbuttons ) {
 		printf(
 			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-solid fa-chevron-left"></i></button>
@@ -157,87 +173,67 @@ if ( $sunflower_persons_person_id > 0 ) {
 			esc_attr__( 'Back', 'sunflower-persons' )
 		);
 	}
-	if ( true === $sunflower_persons_person_filmstrip ) {
-		printf(
-			'<div class="sunflower-person-track-wrapper">
-			<div class="sunflower-person-track">
-		',
-			esc_attr__( 'Back', 'sunflower-persons' )
-		);
-	}
+
+	sunflower_persons_get_template_part(
+		'persons/' . $sunflower_persons_layout . '/wrapper-open',
+		array()
+	);
+
 	?>
 		<?php
 		while ( $sunflower_persons_persons->have_posts() ) :
 			$sunflower_persons_persons->the_post();
-			$sunflower_persons_person_phone       = get_post_meta( get_the_ID(), 'person_phone', true );
-			$sunflower_persons_person_email       = get_post_meta( get_the_ID(), 'person_email', true );
-			$sunflower_persons_person_website     = get_post_meta( get_the_ID(), 'person_website', true );
-			$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( get_the_ID() );
-			$sunflower_persons_person_groups      = wp_get_post_terms( get_the_ID(), 'sunflower_group', array( 'fields' => 'slugs' ) );
-			?>
-			<article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', $sunflower_persons_person_groups ) ); ?>">
-				<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
-					<div class="sunflower-person__media">
-					<?php
-					$sunflower_persons_thumbnail = '';
-					$sunflower_persons_photo_id  = get_post_meta( get_the_ID(), 'person_photo_id', true );
-					if ( $sunflower_persons_photo_id ) {
-						$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'thumbnail', false, array( 'class' => 'sunflower-person-thumb' ) );
-					}
 
-					// If still empty, take the default image.
-					if ( ! $sunflower_persons_thumbnail ) {
-						$sunflower_persons_thumbnail = '<img src="' . esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ) . '" class="sunflower-person-thumb" . alt="Drawing of a person head." />';
+			$sunflower_persons_context = array(
+				'post_id'     => get_the_ID(),
+				'title'       => get_the_title(),
+				'permalink'   => get_permalink(),
 
-					}
-					echo wp_kses_post( $sunflower_persons_thumbnail );
-					?>
-					</div>
-					<div class="sunflower-person__body">
-						<h4 class="sunflower-person__title"><?php the_title(); ?></h4>
-					</div>
+				'phone'       => get_post_meta( get_the_ID(), 'person_phone', true ),
+				'email'       => get_post_meta( get_the_ID(), 'person_email', true ),
+				'website'     => get_post_meta( get_the_ID(), 'person_website', true ),
+				'position'    => get_post_meta( get_the_ID(), 'person_position', true ),
 
-					<ul class="sunflower-person__meta">
-						<?php if ( $sunflower_persons_person_website ) : ?>
-							<li class="sunflower-person__website">
-								<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
-									<i class="fa-solid fa-globe"></i>
-								</a>
-							</li>
-						<?php endif; ?>
-						<?php if ( $sunflower_persons_person_email ) : ?>
-							<li class="sunflower-person__email">
-								<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
-									<i class="fa-solid fa-envelope"></i>
-								</a>
-							</li>
-						<?php endif; ?>
-						<?php
-						if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
-							foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
-								echo '<li class="sunflower-person__socialmedia">' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
-							}
-						}
-						?>
-					</ul>
-				</a>
-			</article>
-		<?php endwhile; ?>
-	<?php
-	if ( true === $sunflower_persons_person_filmstrip ) {
-		printf(
-			'</div>
-			</div>
-		'
+				'photo_id'    => get_post_meta( get_the_ID(), 'person_photo_id', true ),
+
+				'groups'      => array_map(
+					function ( $term ) {
+						return array(
+							'slug' => $term->slug,
+							'name' => $term->name,
+						);
+					},
+					wp_get_post_terms(
+						get_the_ID(),
+						'sunflower_group',
+						array( 'fields' => 'all' )
+					)
+				),
+
+				'socialmedia' => sunflower_persons_get_social_media_profiles( get_the_ID() ),
+			);
+
+
+			sunflower_persons_get_template_part(
+				'persons/' . $sunflower_persons_layout . '/item',
+				$sunflower_persons_context
+			);
+
+			endwhile;
+
+		sunflower_persons_get_template_part(
+			'persons/' . $sunflower_persons_layout . '/wrapper-close',
+			array()
 		);
-	}
-	if ( true === $sunflower_persons_person_navbuttons ) {
-		printf(
-			'
+
+		if ( true === $sunflower_persons_person_navbuttons ) {
+			printf(
+				'
 			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-solid fa-chevron-right"></i></button>',
-			esc_attr__( 'Next', 'sunflower-persons' )
-		);
-	}
-	?>
+				esc_attr__( 'Next', 'sunflower-persons' )
+			);
+		}
+		?>
+</div>
 	<?php
 }
