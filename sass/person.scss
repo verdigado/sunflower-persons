@@ -1,32 +1,32 @@
+/* Single Person Styles */
+.single-sunflower_person {
 
-.sunflower-person,
-.sunflower_person {
+    .sunflower-person {
 
-    @media (min-width: 768px) {
+        @media (min-width: 768px) {
 
-        &.display-single > .entry-header {
-            padding-bottom: 35px;
-        }
-    }
-
-    &__offices,
-    &__meta {
-        list-style: none;
-        padding: 0;
-        margin: 0.5em 0 0;
-
-        li {
-
-            a {
-                text-decoration: none;
-
-                i {
-                    color: #000;
-                }
+            &.display-single > .entry-header {
+                padding-bottom: 35px;
             }
         }
 
-        .sunflower-person {
+        &__offices,
+        &__meta {
+            list-style: none;
+            padding: 0;
+            margin: 0.5em 0 0;
+
+            li {
+
+                a {
+                    opacity: 1;
+                    text-decoration: none;
+
+                    i {
+                        color: #000;
+                    }
+                }
+            }
 
             &__website {
                 font-size: 87%;
@@ -34,47 +34,42 @@
 
             &__email {
                 font-size: 87%;
-                display: inline-block;        /* oder inline-flex */
+                display: inline-block;
                 max-width: 100%;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
         }
-    }
 
-    &__socialmedia {
+        &__socialmedia {
 
-        .social-media-profiles {
-            list-style: none;
-            padding: 0.5em 0 0;
-            margin: 0;
-            display: flex;
-            gap: 0.5em;
-            width: 32px;
-            height: 32px;
+            ul {
 
-            li {
-                width: 32px;
-                height: 32px;
+                padding: 0.5em 0 0;
+                margin: 0;
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                background: #fff;
-                border-radius: 50%;
+                gap: 0.5em;
 
-                a {
-                    color: #000;
-                    opacity: 1;
-                    background-color: $primary;
-                    border-radius: 50%;
+                li {
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0;
-                    font-size: 90%;
+                    background-color: $primary;
+                    border-radius: 50%;
 
-                    i {
-                        color: #fff;
+                    a {
+                        opacity: 1;
+                        border-radius: 50%;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 0;
+
+                        i {
+                            color: #fff;
+                        }
                     }
                 }
             }
@@ -84,18 +79,31 @@
     .wp-block-quote {
         padding: 1em 1.5em;
         border-left: 4px solid $primary;
-    }
 
-    .wp-block-quote::before {
-        content: "„";
-        left: -0.33em;
-        top: -0.7em;
-    }
+        &::before {
+            content: "„";
+            font-size: 4em;
+            line-height: 1em;
+            position: relative;
+            color: $primary;
+            font-family: serif;
+            font-weight: 700;
+            bottom: 20px;
+            padding-right: 5px;
+        }
 
-    .wp-block-quote::after {
-        content: "“";
-        top: -0.3em;
-        right: -0.3em;
+        &::after {
+            content: "“";
+            font-size: 4em;
+            line-height: 0;
+            position: relative;
+            color: $primary;
+            font-family: serif;
+            font-weight: 700;
+            right: 10px;
+            bottom: -22px;
+            padding-left: 15px;
+        }
     }
 
     .wp-post-image {

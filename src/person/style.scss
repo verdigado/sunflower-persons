@@ -5,6 +5,8 @@
  * Replace them with your own styles or keep the empty file.
  */
 
+@import "../../sass/variables";
+
 .sunflower-person-list {
     --person-width: 180px;
     --person-gap: 1rem;
@@ -114,6 +116,8 @@
             list-style: none;
             padding: 0;
             margin: 0.5em 0 0;
+            display: flex;
+            flex-wrap: wrap;
 
             li {
                 align-items: center;
@@ -161,7 +165,6 @@
 
             &__meta {
                 list-style: none;
-                display: flex;
                 padding: 0;
                 margin: 0.5em 0 0;
 
@@ -229,7 +232,6 @@
 
             &__meta {
                 list-style: none;
-                display: flex;
                 padding: 0;
                 margin: 0.5em 0 0;
 
@@ -255,6 +257,13 @@
         justify-content: center;
 
         .sunflower-person {
+
+            &__meta {
+                display: block;
+                list-style: none;
+                padding: 0;
+                margin: 0.5em 0 0;
+            }
 
             .wp-block-media-text {
                 display: grid;
@@ -287,25 +296,34 @@
             }
 
             &__metasocial {
-                list-style: none;
+
+                padding: 0.5em 0 0;
+                margin: 0;
                 display: flex;
-                padding: 0;
-                margin: 0.5em 0 0;
+                gap: 0.5em;
 
                 li {
+                    width: 32px;
+                    height: 32px;
                     display: flex;
                     justify-content: center;
-                    width: 40px;
-                    height: 40px;
+                    align-items: center;
+                    background-color: $primary;
                     border-radius: 50%;
+
+                    a {
+                        opacity: 1;
+                        border-radius: 50%;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 0;
+
+                        i {
+                            color: #fff;
+                        }
+                    }
                 }
             }
-
         }
     }
 }
-
-
-/* --------------------------------------------------------------
-   Media‑Text‑Block‑Stil für das Plugin
-   -------------------------------------------------------------- */

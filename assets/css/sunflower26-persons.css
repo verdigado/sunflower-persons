@@ -1,9 +1,5 @@
 /* Bootstrap
 --------------------------------------------- */
-.sunflower-person,
-.sunflower_person {
-  /* Sunflower 26 adaptations */
-}
 .sunflower-person ul li,
 .sunflower_person ul li {
   padding: 0;
@@ -14,9 +10,6 @@
   all: unset;
 }
 
-.single-sunflower_person .container.container-narrow .wp-block-columns {
-  /* Sunflower 26 adaptations */
-}
 .single-sunflower_person .container.container-narrow .wp-block-columns .wp-block-column img {
   height: unset;
   max-height: unset;
