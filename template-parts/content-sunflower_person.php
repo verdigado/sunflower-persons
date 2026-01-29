@@ -140,7 +140,7 @@ $sunflower_class = 'display-single';
 
 						<?php
 						if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
-							echo '<li class="sunflower-person__socialmedia"><ul class="social-media-profiles">';
+							echo '<li class="sunflower-person__socialmedia"><ul>';
 							foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
 								echo '<li>' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
 							}

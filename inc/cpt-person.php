@@ -112,7 +112,6 @@ add_action( 'init', 'sunflower_persons_register_post_persons_meta' );
  * Enqueue block editor assets.
  */
 function sunflower_persons_enqueue_editor_assets() {
-	$da = get_post_type();
 	if ( 'post' === get_post_type() ) {
 		$asset_data = include SUNFLOWER_PERSONS_PATH . 'build/editor-plugin/plugin.asset.php';
 		wp_enqueue_script(
