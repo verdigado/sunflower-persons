@@ -169,9 +169,14 @@ $sunflower_class = 'display-single';
 								if ( ! empty( $sunflower_persons_person_office['employees'] ) && is_array( $sunflower_persons_person_office['employees'] ) ) {
 									echo esc_html_e( 'Employees', 'sunflower-persons' ) . '<ul>';
 									foreach ( $sunflower_persons_person_office['employees'] as $sunflower_persons_person_office_employee ) {
-										echo '<li><a href="' . esc_url( get_permalink( $sunflower_persons_person_office_employee ) ) . '">'
-											. esc_html( get_the_title( $sunflower_persons_person_office_employee ) )
-											. '</a></li>';
+										$sunflower_persons_person_hidesinglepage = get_post_meta( $sunflower_persons_person_office_employee, 'person_hide_single', true );
+										if ( empty( $sunflower_persons_person_hidesinglepage ) ) {
+											echo '<li><a href="' . esc_url( get_permalink( $sunflower_persons_person_office_employee ) ) . '">'
+												. esc_html( get_the_title( $sunflower_persons_person_office_employee ) )
+												. '</a></li>';
+										} else {
+											echo '<li>' . esc_html( get_the_title( $sunflower_persons_person_office_employee ) ) . '</li>';
+										}
 									}
 									echo '</ul>';
 								}
