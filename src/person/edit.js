@@ -354,12 +354,10 @@ export default function Edit( { attributes, setAttributes } ) {
 			</div>
 
 			<div { ...blockProps }>
-				<Disabled>
 					<ServerSideRender
 						block="sunflower-persons/person"
 						attributes={ attributes }
 					/>
-				</Disabled>
 			</div>
 		</>
 	);

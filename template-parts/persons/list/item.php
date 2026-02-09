@@ -15,14 +15,14 @@
 			<ul class="sunflower-person__meta">
 			<?php if ( $args['phone'] ) : ?>
 				<li class="sunflower-person__phone">
-					<i class="fa-solid fa-phone"></i>
+					<i class="fab fa-phone"></i>
 					<?php echo esc_html( $args['phone'] ); ?>
 				</li>
 			<?php endif; ?>
 			<?php if ( $args['email'] ) : ?>
 				<li class="sunflower-person__email">
 					<a href="mailto:<?php echo esc_attr( $args['email'] ); ?>">
-						<i class="fa-solid fa-envelope"></i> <?php echo esc_html( $args['email'] ); ?>
+						<i class="fab fa-envelope"></i> <?php echo esc_html( $args['email'] ); ?>
 					</a>
 				</li>
 			<?php endif; ?>

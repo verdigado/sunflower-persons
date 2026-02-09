@@ -24,70 +24,130 @@ if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
 	$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $sunflower_persons_post->ID );
 	?>
-	<article class="sunflower-person sunflower-person--single" id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
-		<div class="sunflower-person__media">
-			<?php
-				$sunflower_persons_thumbnail = '';
-				$sunflower_persons_photo_id  = get_post_meta( $sunflower_persons_post->ID, 'person_photo_id', true );
-			if ( $sunflower_persons_photo_id ) {
-				$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'medium', false, array( 'class' => 'sunflower-person-medium' ) );
-			}
+	<?php
+	/**
+	 * Template‑Teil: Einzelansicht einer Person
+	 *
+	 * Erwartete Variablen (vorher im Loop gesetzt):
+	 * - $sunflower_persons_post            (WP_Post)
+	 * - $sunflower_persons_person_phone   (string|false)
+	 * - $sunflower_persons_person_email   (string|false)
+	 * - $sunflower_persons_person_website (string|false)
+	 * - $sunflower_persons_person_socialmedia (array|false)
+	 */
+	?>
+<article
+	class="sunflower-person sunflower-person--single"
+	id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
 
-			// If still empty, take the default image.
-			if ( ! $sunflower_persons_thumbnail ) {
-				$sunflower_persons_thumbnail = '<img src="' . esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ) . '" class="sunflower-person-medium" . alt="Drawing of a person head." />';
+	<header class="sunflower-person__header">
 
-			}
-				echo wp_kses_post( $sunflower_persons_thumbnail );
-			?>
-		</div>
-		<div class="sunflower-person__body">
-			<h3 class="sunflower-person__title"><?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?></h3>
+		<?php
+		$sunflower_persons_photo_id = (int) get_post_meta( $sunflower_persons_post->ID, 'person_photo_id', true );
+
+		// 1️⃣ Bild aus Medienbibliothek, falls hinterlegt
+		if ( $sunflower_persons_photo_id ) {
+			$sunflower_persons_thumbnail = wp_get_attachment_image(
+				$sunflower_persons_photo_id,
+				'medium',
+				false,
+				array(
+					'class' => 'sunflower-person__image',
+					'alt'   => get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true )
+								? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) : sprintf(
+									/* translators: %s = Personen‑Name */
+									__( 'Portrait of %s', 'sunflower-persons' ),
+									get_the_title( $sunflower_persons_post )
+								),
+				)
+			);
+		}
+
+		// Use default placeholder if no image is set or image is missing in media library.
+		if ( empty( $sunflower_persons_thumbnail ) ) {
+			$sunflower_persons_thumbnail = sprintf(
+				'<img src="%s" class="sunflower-person__image" alt="%s" loading="lazy" decoding="async" />',
+				esc_url( SUNFLOWER_PERSONS_URL . 'assets/img/exampleuser_eloise.png' ),
+				esc_attr__( 'Default person illustration', 'sunflower-persons' )
+			);
+		}
+
+		echo wp_kses_post( $sunflower_persons_thumbnail );
+		?>
+
+		<div class="sunflower-person__info">
+
+			<h2 class="sunflower-person__title">
+				<?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?>
+			</h2>
+
 			<?php
-				echo wp_kses_post( sunflower_persons_get_all_person_groups( $sunflower_persons_post ) );
-			?>
-			<div class="sunflower-person__content">
+			if ( $sunflower_persons_person_phone
+				|| $sunflower_persons_person_email
+				|| $sunflower_persons_person_website
+				|| ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) )
+			) :
+				?>
+				<ul class="sunflower-person__meta">
+
+					<?php if ( $sunflower_persons_person_phone ) : ?>
+						<li class="sunflower-person__phone">
+							<i class="fab fa-phone" aria-hidden="true"></i>
+							<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
+							<?php echo esc_html( $sunflower_persons_person_phone ); ?>
+						</li>
+					<?php endif; ?>
+
+					<?php if ( $sunflower_persons_person_email ) : ?>
+						<li class="sunflower-person__email">
+							<i class="fab fa-envelope" aria-hidden="true"></i>
+							<span class="sr-only"><?php esc_html_e( 'E‑mail', 'sunflower-persons' ); ?>:</span>
+							<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
+								<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
+							</a>
+						</li>
+					<?php endif; ?>
+
+					<?php if ( $sunflower_persons_person_website ) : ?>
+						<li class="sunflower-person__website">
+							<i class="fa-solid fa-globe" aria-hidden="true"></i>
+							<span class="sr-only"><?php esc_html_e( 'Website', 'sunflower-persons' ); ?>:</span>
+							<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>"
+								target="_blank"
+								rel="noopener noreferrer">
+								<?php echo esc_html( $sunflower_persons_person_website ); ?>
+							</a>
+						</li>
+					<?php endif; ?>
+
+					<?php
+					// Add Social‑Media Icons if available.
+					if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) :
+						echo '<li class="sunflower-person__socialmedia"><ul>';
+						foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) :
+							echo '<li class="sunflower-person__socialmedia">'
+								. wp_kses_post( $sunflower_persons_person_profile )
+								. '</li>';
+						endforeach;
+						echo '</ul></li>';
+					endif;
+					?>
+
+				</ul>
+			<?php endif; ?>
+		</div><!-- .sunflower-person__info -->
+	</header>
+
+	<section class="sunflower-person__body">
+		<div class="sunflower-person__content">
 			<?php
-			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			echo wp_kses_post( apply_filters( 'the_content', $sunflower_persons_post->post_content ) );
 			?>
-			</div>
 		</div>
-		<ul class="sunflower-person__meta">
-				<?php if ( $sunflower_persons_person_phone ) : ?>
-					<li class="sunflower-person__phone">
-						<i class="fa-solid fa-phone"></i>
-						<?php echo esc_html( $sunflower_persons_person_phone ); ?>
-					</li>
-				<?php endif; ?>
+	</section>
 
-				<?php if ( $sunflower_persons_person_email ) : ?>
-					<li class="sunflower-person__email">
-						<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
-							<i class="fa-solid fa-envelope"></i>
-							<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
-						</a>
-					</li>
-				<?php endif; ?>
-
-				<?php if ( $sunflower_persons_person_website ) : ?>
-					<li class="sunflower-person__website">
-						<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
-							<i class="fa-solid fa-globe"></i>
-							<?php echo esc_html( $sunflower_persons_person_website ); ?>
-						</a>
-					</li>
-				<?php endif; ?>
-
-				<?php
-				if ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) ) {
-					foreach ( $sunflower_persons_person_socialmedia as $sunflower_persons_person_profile ) {
-						echo '<li class="sunflower-person__socialmedia">' . wp_kses_post( $sunflower_persons_person_profile ) . '</li>';
-					}
-				}
-				?>
-			</ul>
-	</article>
+</article>
 	<?php
 	wp_reset_postdata();
 } else {
@@ -168,7 +228,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 	if ( true === $sunflower_persons_person_navbuttons ) {
 		printf(
-			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-solid fa-chevron-left"></i></button>
+			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-chevron-left"></i></button>
 		',
 			esc_attr__( 'Back', 'sunflower-persons' )
 		);
@@ -229,7 +289,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 		if ( true === $sunflower_persons_person_navbuttons ) {
 			printf(
 				'
-			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-solid fa-chevron-right"></i></button>',
+			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-chevron-right"></i></button>',
 				esc_attr__( 'Next', 'sunflower-persons' )
 			);
 		}

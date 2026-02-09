@@ -40,7 +40,7 @@
 		<?php if ( $args['email'] ) : ?>
 			<li class="sunflower-person__email">
 				<a href="mailto:<?php echo esc_attr( $args['email'] ); ?>">
-					<i class="fa-solid fa-envelope"></i>
+					<i class="fab fa-envelope"></i>
 				</a>
 			</li>
 		<?php endif; ?>
