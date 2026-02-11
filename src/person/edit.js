@@ -50,7 +50,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		blockLayout,
 		showFilterButtons,
 		showNavButtons,
-		showAsFilmstrip,
 		slideAutoplay,
 		slideStart,
 		autoplayTimer,
@@ -58,7 +57,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		displayOrder,
 		displayPhone,
 		displayPhoneClickable,
-		displayBio
+		displayBio,
 	} = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
@@ -321,16 +320,18 @@ export default function Edit( { attributes, setAttributes } ) {
 							onChange={ toggleAttribute( 'displayPhone' ) }
 						/>
 						{ displayPhone && (
-						<ToggleControl
-							label={ __(
-								'Make phone number clickable',
-								'sunflower-persons-person'
-							) }
-							checked={ displayPhoneClickable }
-							onChange={ toggleAttribute( 'displayPhoneClickable' ) }
-						/>
+							<ToggleControl
+								label={ __(
+									'Make phone number clickable',
+									'sunflower-persons-person'
+								) }
+								checked={ displayPhoneClickable }
+								onChange={ toggleAttribute(
+									'displayPhoneClickable'
+								) }
+							/>
 						) }
-						{  blockLayout !== 'carousel' && (
+						{ blockLayout !== 'carousel' && (
 							<ToggleControl
 								label={ __(
 									'Show biography',
@@ -340,7 +341,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								onChange={ toggleAttribute( 'displayBio' ) }
 							/>
 						) }
-						{  blockLayout === 'carousel' && (
+						{ blockLayout === 'carousel' && (
 							<SelectControl
 								label={ __(
 									'Start with position',
@@ -385,10 +386,12 @@ export default function Edit( { attributes, setAttributes } ) {
 			</div>
 
 			<div { ...blockProps }>
+				<Disabled>
 					<ServerSideRender
 						block="sunflower-persons/person"
 						attributes={ attributes }
 					/>
+				</Disabled>
 			</div>
 		</>
 	);

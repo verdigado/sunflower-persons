@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2025-12-04T15:45:45+00:00\n"
-"PO-Revision-Date: 2025-12-04 16:46+0100\n"
+"POT-Creation-Date: 2026-02-11T16:50:28+01:00\n"
+"PO-Revision-Date: 2026-02-11 16:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -45,21 +45,50 @@ msgstr ""
 msgid "Person not found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:121 src/person/render.php:121
+#. translators: %s = Personen‑Name
+#: build/person/render.php:59 src/person/render.php:59
+#, php-format
+msgid "Portrait of %s"
+msgstr "Portrait Bild von %s"
+
+#: build/person/render.php:71 src/person/render.php:71
+msgid "Default person illustration"
+msgstr "Standard Personen Illustration"
+
+#: build/person/render.php:98 build/person/render.php:105
+#: inc/meta-details.php:58 inc/meta-offices.php:61 src/person/render.php:98
+#: src/person/render.php:105 template-parts/persons/carousel/item.php:39
+#: template-parts/persons/carousel/item.php:43
+#: template-parts/persons/grid/item.php:39
+#: template-parts/persons/grid/item.php:43
+#: template-parts/persons/list/item.php:22
+#: template-parts/persons/list/item.php:27
+msgid "Phone"
+msgstr "Telefon"
+
+#: build/person/render.php:114 src/person/render.php:114
+msgid "E‑mail"
+msgstr "E-Mail"
+
+#: build/person/render.php:124 inc/meta-details.php:61
+#: src/person/render.php:124
+msgid "Website"
+msgstr "Webseite"
+
+#: build/person/render.php:193 src/person/render.php:193
 msgid "No persons found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:147 inc/cpt-person.php:19 inc/cpt-person.php:29
-#: src/person/render.php:147
+#: build/person/render.php:233 inc/cpt-person.php:19 inc/cpt-person.php:29
+#: src/person/render.php:233
 msgid "Persons"
 msgstr "Personen"
 
-#: build/person/render.php:157 build/person/render.php:165
-#: src/person/render.php:157 src/person/render.php:165
+#: build/person/render.php:245 src/person/render.php:245
 msgid "Back"
 msgstr "zurück"
 
-#: build/person/render.php:238 src/person/render.php:238
+#: build/person/render.php:308 src/person/render.php:308
 msgid "Next"
 msgstr "weiter"
 
@@ -155,10 +184,6 @@ msgstr "Details zur Person"
 msgid "Sortname"
 msgstr "Sortiername"
 
-#: inc/meta-details.php:58 inc/meta-offices.php:61
-msgid "Phone"
-msgstr "Telefon"
-
 #: inc/meta-details.php:59
 msgid "Mobile phone"
 msgstr "Mobiltelefon"
@@ -166,10 +191,6 @@ msgstr "Mobiltelefon"
 #: inc/meta-details.php:60 inc/meta-offices.php:62
 msgid "E-Mail"
 msgstr "E-Mail"
-
-#: inc/meta-details.php:61
-msgid "Website"
-msgstr "Webseite"
 
 #: inc/meta-details.php:62
 msgid "Social Media"
@@ -239,7 +260,7 @@ msgstr "Straße und Hausnummer"
 msgid "ZIP and location"
 msgstr "PLZ und Ort"
 
-#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:203
+#: inc/meta-offices.php:63 template-parts/content-sunflower_person.php:170
 msgid "Employees"
 msgstr "Mitarbeiter*innen"
 
@@ -251,11 +272,11 @@ msgstr "Büro entfernen"
 msgid "Add office"
 msgstr "Büro hinzufügen"
 
-#: template-parts/content-sunflower_person.php:141
+#: template-parts/content-sunflower_person.php:108
 msgid "Contact"
 msgstr "Kontakt"
 
-#: template-parts/content-sunflower_person.php:186
+#: template-parts/content-sunflower_person.php:153
 msgid "Offices"
 msgstr "Büros"
 
@@ -294,9 +315,6 @@ msgstr ""
 #~ msgid "Sorting name. e.g. last-name"
 #~ msgstr "Sortierung nach z.B. Nachname"
 
-#~ msgid "Email"
-#~ msgstr "E-Mail"
-
 #~ msgid "Select or upload person image"
 #~ msgstr "Wähle ein Portrait Bild für die Person"
 
@@ -308,6 +326,3 @@ msgstr ""
 
 #~ msgid "Office"
 #~ msgstr "Büro"
-
-#~ msgid "Portrait photo"
-#~ msgstr "Portrait Bild"

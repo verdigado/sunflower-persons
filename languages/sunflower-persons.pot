@@ -1,17 +1,17 @@
-# Copyright (C) 2025 verdigado eG
+# Copyright (C) 2026 verdigado eG
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.4.0\n"
+"Project-Id-Version: Sunflower Persons 1.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-04T15:45:45+00:00\n"
+"POT-Creation-Date: 2026-02-11T17:06:19+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sunflower-persons\n"
 
 #. Plugin Name of the plugin
@@ -44,27 +44,63 @@ msgstr ""
 msgid "Person not found."
 msgstr ""
 
-#: build/person/render.php:121
-#: src/person/render.php:121
+#. translators: %s = Personen‑Name
+#: build/person/render.php:59
+#: src/person/render.php:59
+#, php-format
+msgid "Portrait of %s"
+msgstr ""
+
+#: build/person/render.php:71
+#: src/person/render.php:71
+msgid "Default person illustration"
+msgstr ""
+
+#: build/person/render.php:98
+#: build/person/render.php:105
+#: inc/meta-details.php:58
+#: inc/meta-offices.php:61
+#: src/person/render.php:98
+#: src/person/render.php:105
+#: template-parts/persons/carousel/item.php:39
+#: template-parts/persons/carousel/item.php:43
+#: template-parts/persons/grid/item.php:39
+#: template-parts/persons/grid/item.php:43
+#: template-parts/persons/list/item.php:22
+#: template-parts/persons/list/item.php:27
+msgid "Phone"
+msgstr ""
+
+#: build/person/render.php:114
+#: src/person/render.php:114
+msgid "E‑mail"
+msgstr ""
+
+#: build/person/render.php:124
+#: inc/meta-details.php:61
+#: src/person/render.php:124
+msgid "Website"
+msgstr ""
+
+#: build/person/render.php:193
+#: src/person/render.php:193
 msgid "No persons found."
 msgstr ""
 
-#: build/person/render.php:147
+#: build/person/render.php:233
 #: inc/cpt-person.php:19
 #: inc/cpt-person.php:29
-#: src/person/render.php:147
+#: src/person/render.php:233
 msgid "Persons"
 msgstr ""
 
-#: build/person/render.php:157
-#: build/person/render.php:165
-#: src/person/render.php:157
-#: src/person/render.php:165
+#: build/person/render.php:245
+#: src/person/render.php:245
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:238
-#: src/person/render.php:238
+#: build/person/render.php:308
+#: src/person/render.php:308
 msgid "Next"
 msgstr ""
 
@@ -161,11 +197,6 @@ msgstr ""
 msgid "Sortname"
 msgstr ""
 
-#: inc/meta-details.php:58
-#: inc/meta-offices.php:61
-msgid "Phone"
-msgstr ""
-
 #: inc/meta-details.php:59
 msgid "Mobile phone"
 msgstr ""
@@ -173,10 +204,6 @@ msgstr ""
 #: inc/meta-details.php:60
 #: inc/meta-offices.php:62
 msgid "E-Mail"
-msgstr ""
-
-#: inc/meta-details.php:61
-msgid "Website"
 msgstr ""
 
 #: inc/meta-details.php:62
@@ -251,7 +278,7 @@ msgid "ZIP and location"
 msgstr ""
 
 #: inc/meta-offices.php:63
-#: template-parts/content-sunflower_person.php:203
+#: template-parts/content-sunflower_person.php:170
 msgid "Employees"
 msgstr ""
 
@@ -263,11 +290,11 @@ msgstr ""
 msgid "Add office"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:141
+#: template-parts/content-sunflower_person.php:108
 msgid "Contact"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:186
+#: template-parts/content-sunflower_person.php:153
 msgid "Offices"
 msgstr ""
 
