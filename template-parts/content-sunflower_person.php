@@ -109,13 +109,13 @@ $sunflower_class = 'display-single';
 					<ul class="sunflower-person__meta">
 						<?php if ( $sunflower_persons_person_phone ) : ?>
 							<li class="sunflower-person__phone">
-								<i class="fab fa-phone"></i>
+								<i class="fa-solid fa-phone"></i>
 								<?php echo esc_html( $sunflower_persons_person_phone ); ?>
 							</li>
 						<?php endif; ?>
 						<?php if ( $sunflower_persons_person_mobilephone ) : ?>
 							<li class="sunflower-person__mobilephone">
-								<i class="fab fa-phone"></i>
+								<i class="fa-solid fa-phone"></i>
 								<?php echo esc_html( $sunflower_persons_person_mobilephone ); ?>
 							</li>
 						<?php endif; ?>
@@ -123,7 +123,7 @@ $sunflower_class = 'display-single';
 						<?php if ( $sunflower_persons_person_email ) : ?>
 							<li class="sunflower-person__email">
 								<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
-									<i class="fab fa-envelope"></i>
+									<i class="fa-solid fa-envelope"></i>
 									<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
 								</a>
 							</li>
@@ -159,10 +159,10 @@ $sunflower_class = 'display-single';
 								echo esc_html( $sunflower_persons_person_office['street'] ) . '<br />';
 								echo esc_html( $sunflower_persons_person_office['city'] ) . '<br />';
 								if ( ! empty( $sunflower_persons_person_office['phone'] ) ) {
-									echo '<i class="fab fa-phone"></i> ' . esc_html( $sunflower_persons_person_office['phone'] ) . '<br />';
+									echo '<i class="fa-solid fa-phone"></i> ' . esc_html( $sunflower_persons_person_office['phone'] ) . '<br />';
 								}
 								if ( ! empty( $sunflower_persons_person_office['email'] ) ) {
-									echo '<i class="fab fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
+									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
 								}
 								echo '</li>';
 

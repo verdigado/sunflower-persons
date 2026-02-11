@@ -55,7 +55,10 @@ export default function Edit( { attributes, setAttributes } ) {
 		slideStart,
 		autoplayTimer,
 		limit,
-		order,
+		displayOrder,
+		displayPhone,
+		displayPhoneClickable,
+		displayBio
 	} = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
@@ -281,7 +284,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						) }
 						<SelectControl
 							label={ __( 'Order', 'sunflower-persons-person' ) }
-							value={ order }
+							value={ displayOrder }
 							options={ [
 								{
 									label: __(
@@ -306,10 +309,38 @@ export default function Edit( { attributes, setAttributes } ) {
 								},
 							] }
 							onChange={ ( value ) =>
-								setAttributes( { order: value } )
+								setAttributes( { displayOrder: value } )
 							}
 						/>
-						{ showAsFilmstrip && (
+						<ToggleControl
+							label={ __(
+								'Show Phone number',
+								'sunflower-persons-person'
+							) }
+							checked={ displayPhone }
+							onChange={ toggleAttribute( 'displayPhone' ) }
+						/>
+						{ displayPhone && (
+						<ToggleControl
+							label={ __(
+								'Make phone number clickable',
+								'sunflower-persons-person'
+							) }
+							checked={ displayPhoneClickable }
+							onChange={ toggleAttribute( 'displayPhoneClickable' ) }
+						/>
+						) }
+						{  blockLayout !== 'carousel' && (
+							<ToggleControl
+								label={ __(
+									'Show biography',
+									'sunflower-persons-person'
+								) }
+								checked={ displayBio }
+								onChange={ toggleAttribute( 'displayBio' ) }
+							/>
+						) }
+						{  blockLayout === 'carousel' && (
 							<SelectControl
 								label={ __(
 									'Start with position',

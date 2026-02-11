@@ -22,8 +22,8 @@
       "default": []
     },
     "showFilterButtons": {
-			"type": "boolean",
-			"default": false
+		"type": "boolean",
+		"default": false
     },
 	"blockLayout": {
 		"type": "string",
@@ -49,9 +49,21 @@
 		"type": "number",
 		"default": 5
 	},
-	"order": {
+	"displayOrder": {
 		"type": "string",
 		"default": "asc"
+	},
+	"displayPhone": {
+		"type": "boolean",
+		"default": true
+	},
+	"displayPhoneClickable": {
+		"type": "boolean",
+		"default": true
+	},
+	"displayBio": {
+		"type": "boolean",
+		"default": true
 	}
   },
   "editorScript": "file:./index.js",
