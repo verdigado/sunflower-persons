@@ -13,16 +13,34 @@
 		<div class="wp-block-media-text__content">
 			<h4><?php echo esc_html( $args['title'] ); ?></h4>
 			<ul class="sunflower-person__meta">
-			<?php if ( $args['phone'] ) : ?>
-				<li class="sunflower-person__phone">
-					<i class="fab fa-phone"></i>
-					<?php echo esc_html( $args['phone'] ); ?>
-				</li>
+			<?php if ( true === $args['display_phone'] ) : ?>
+				<?php if ( $args['phone'] ) : ?>
+					<li class="sunflower-person__phone">
+						<?php if ( isset( $args['display_phone_clickable'] ) && true === $args['display_phone_clickable'] ) : ?>
+							<a href="tel:<?php echo esc_attr( $args['phone'] ); ?>">
+								<i class="fa-solid fa-phone" aria-hidden="true"></i>
+								<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
+								<?php echo esc_html( $args['phone'] ); ?>
+							</a>
+						<?php else : ?>
+							<i class="fa-solid fa-phone" aria-hidden="true"></i>
+							<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
+							<?php echo esc_html( $args['phone'] ); ?>
+						<?php endif; ?>
+					</li>
+				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( $args['email'] ) : ?>
 				<li class="sunflower-person__email">
 					<a href="mailto:<?php echo esc_attr( $args['email'] ); ?>">
-						<i class="fab fa-envelope"></i> <?php echo esc_html( $args['email'] ); ?>
+						<i class="fa-solid fa-envelope"></i> <?php echo esc_html( $args['email'] ); ?>
+					</a>
+				</li>
+			<?php endif; ?>
+			<?php if ( $args['website'] ) : ?>
+				<li class="sunflower-person__website">
+					<a href="<?php echo esc_url( $args['website'] ); ?>" target="_blank" rel="noopener">
+						<i class="fa-solid fa-globe"></i> <?php echo esc_html( $args['website'] ); ?>
 					</a>
 				</li>
 			<?php endif; ?>

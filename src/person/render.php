@@ -90,17 +90,27 @@ if ( $sunflower_persons_person_id > 0 ) {
 				?>
 				<ul class="sunflower-person__meta">
 
-					<?php if ( $sunflower_persons_person_phone ) : ?>
-						<li class="sunflower-person__phone">
-							<i class="fab fa-phone" aria-hidden="true"></i>
-							<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
-							<?php echo esc_html( $sunflower_persons_person_phone ); ?>
-						</li>
+					<?php if ( isset( $attributes['displayPhone'] ) && true === $attributes['displayPhone'] ) : ?>
+						<?php if ( $sunflower_persons_person_phone && isset( $attributes['displayPhoneClickable'] ) && true === $attributes['displayPhoneClickable'] ) : ?>
+							<li class="sunflower-person__phone">
+								<i class="fa-solid fa-phone" aria-hidden="true"></i>
+								<a href="tel:<?php echo esc_attr( $sunflower_persons_person_phone ); ?>">
+									<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
+									<?php echo esc_html( $sunflower_persons_person_phone ); ?>
+								</a>
+							</li>
+						<?php elseif ( $sunflower_persons_person_phone ) : ?>
+							<li class="sunflower-person__phone">
+								<i class="fa-solid fa-phone" aria-hidden="true"></i>
+								<span class="sr-only"><?php esc_html_e( 'Phone', 'sunflower-persons' ); ?>:</span>
+								<?php echo esc_html( $sunflower_persons_person_phone ); ?>
+							</li>
+						<?php endif; ?>
 					<?php endif; ?>
 
 					<?php if ( $sunflower_persons_person_email ) : ?>
 						<li class="sunflower-person__email">
-							<i class="fab fa-envelope" aria-hidden="true"></i>
+							<i class="fa-solid fa-envelope" aria-hidden="true"></i>
 							<span class="sr-only"><?php esc_html_e( 'E‑mail', 'sunflower-persons' ); ?>:</span>
 							<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
 								<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
@@ -138,14 +148,16 @@ if ( $sunflower_persons_person_id > 0 ) {
 		</div><!-- .sunflower-person__info -->
 	</header>
 
-	<section class="sunflower-person__body">
-		<div class="sunflower-person__content">
-			<?php
-            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-			echo wp_kses_post( apply_filters( 'the_content', $sunflower_persons_post->post_content ) );
-			?>
-		</div>
-	</section>
+	<?php if ( isset( $attributes['displayBio'] ) && true === $attributes['displayBio'] ) : ?>
+		<section class="sunflower-person__body">
+			<div class="sunflower-person__content">
+				<?php
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+				echo wp_kses_post( apply_filters( 'the_content', $sunflower_persons_post->post_content ) );
+				?>
+			</div>
+		</section>
+	<?php endif; ?>
 
 </article>
 	<?php
@@ -172,8 +184,8 @@ if ( $sunflower_persons_person_id > 0 ) {
 				$sunflower_persons_filter['limit'] = $attributes['limit'];
 		}
 	}
-	if ( isset( $attributes['order'] ) && ! empty( $attributes['order'] ) ) {
-		$sunflower_persons_filter['order'] = $attributes['order'];
+	if ( isset( $attributes['displayOrder'] ) && ! empty( $attributes['displayOrder'] ) ) {
+		$sunflower_persons_filter['order'] = $attributes['displayOrder'];
 	}
 
 	$sunflower_persons_persons = sunflower_persons_get_all_persons( $sunflower_persons_groups, $sunflower_persons_tags, $sunflower_persons_filter );
@@ -245,18 +257,21 @@ if ( $sunflower_persons_person_id > 0 ) {
 			$sunflower_persons_persons->the_post();
 
 			$sunflower_persons_context = array(
-				'post_id'     => get_the_ID(),
-				'title'       => get_the_title(),
-				'permalink'   => get_permalink(),
+				'post_id'                 => get_the_ID(),
+				'title'                   => get_the_title(),
+				'permalink'               => get_permalink(),
 
-				'phone'       => get_post_meta( get_the_ID(), 'person_phone', true ),
-				'email'       => get_post_meta( get_the_ID(), 'person_email', true ),
-				'website'     => get_post_meta( get_the_ID(), 'person_website', true ),
-				'position'    => get_post_meta( get_the_ID(), 'person_position', true ),
+				'phone'                   => get_post_meta( get_the_ID(), 'person_phone', true ),
+				'email'                   => get_post_meta( get_the_ID(), 'person_email', true ),
+				'website'                 => get_post_meta( get_the_ID(), 'person_website', true ),
+				'position'                => get_post_meta( get_the_ID(), 'person_position', true ),
 
-				'photo_id'    => get_post_meta( get_the_ID(), 'person_photo_id', true ),
+				'photo_id'                => get_post_meta( get_the_ID(), 'person_photo_id', true ),
 
-				'groups'      => array_map(
+				'display_phone'           => $attributes['displayPhone'] ?? false,
+				'display_phone_clickable' => $attributes['displayPhoneClickable'] ?? false,
+
+				'groups'                  => array_map(
 					function ( $term ) {
 						return array(
 							'slug' => $term->slug,
@@ -270,7 +285,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 					)
 				),
 
-				'socialmedia' => sunflower_persons_get_social_media_profiles( get_the_ID() ),
+				'socialmedia'             => sunflower_persons_get_social_media_profiles( get_the_ID() ),
 			);
 
 
@@ -294,6 +309,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 			);
 		}
 		?>
-</div>
+</section>
+		</div>
 	<?php
 }
