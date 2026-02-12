@@ -12,6 +12,15 @@
 	<div class="wp-block-media-text is-stacked-on-mobile mb-4" style="grid-template-columns:auto 30%">
 		<div class="wp-block-media-text__content">
 			<h4><?php echo esc_html( $args['title'] ); ?></h4>
+
+			<?php if ( $args['display_govoffice'] && $args['govoffice'] ) : ?>
+				<p class="sunflower-person__govoffice"><?php echo esc_html( $args['govoffice'] ); ?></p>
+			<?php endif; ?>
+
+			<?php if ( $args['display_mandate'] && $args['mandate'] ) : ?>
+				<p class="sunflower-person__mandate"><?php echo esc_html( $args['mandate'] ); ?></p>
+			<?php endif; ?>
+
 			<ul class="sunflower-person__meta">
 			<?php if ( true === $args['display_phone'] ) : ?>
 				<?php if ( $args['phone'] ) : ?>

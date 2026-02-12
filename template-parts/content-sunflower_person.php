@@ -62,7 +62,7 @@ $sunflower_class = 'display-single';
 				if ( $sunflower_persons_person_govoffice ) {
 					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_govoffice ) );
 				}
-				if ( $sunflower_persons_person_govoffice ) {
+				if ( $sunflower_persons_person_mandate ) {
 					printf( '<h3 class="wp-block-heading">%s</h3>', esc_html( $sunflower_persons_person_mandate ) );
 				}
 

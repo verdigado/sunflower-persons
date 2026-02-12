@@ -61,6 +61,14 @@
 		"type": "boolean",
 		"default": true
 	},
+	"displayGovOffice": {
+		"type": "boolean",
+		"default": false
+	},
+	"displayMandate": {
+		"type": "boolean",
+		"default": true
+	},
 	"displayBio": {
 		"type": "boolean",
 		"default": true

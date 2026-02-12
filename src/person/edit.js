@@ -58,6 +58,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		displayPhone,
 		displayPhoneClickable,
 		displayBio,
+		displayGovOffice,
+		displayMandate,
 	} = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
@@ -339,6 +341,28 @@ export default function Edit( { attributes, setAttributes } ) {
 								) }
 								checked={ displayBio }
 								onChange={ toggleAttribute( 'displayBio' ) }
+							/>
+						) }
+						{ blockLayout !== 'carousel' && (
+							<ToggleControl
+								label={ __(
+									'Show government office',
+									'sunflower-persons-person'
+								) }
+								checked={ displayGovOffice }
+								onChange={ toggleAttribute(
+									'displayGovOffice'
+								) }
+							/>
+						) }
+						{ blockLayout !== 'carousel' && (
+							<ToggleControl
+								label={ __(
+									'Show mandate',
+									'sunflower-persons-person'
+								) }
+								checked={ displayMandate }
+								onChange={ toggleAttribute( 'displayMandate' ) }
 							/>
 						) }
 						{ blockLayout === 'carousel' && (
