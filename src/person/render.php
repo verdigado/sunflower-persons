@@ -22,7 +22,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_person_phone       = get_post_meta( $sunflower_persons_post->ID, 'person_phone', true );
 	$sunflower_persons_person_email       = get_post_meta( $sunflower_persons_post->ID, 'person_email', true );
 	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
-	$sunflower_persons_person_govoffice     = get_post_meta( $sunflower_persons_post->ID, 'person_govoffice', true );
+	$sunflower_persons_person_govoffice   = get_post_meta( $sunflower_persons_post->ID, 'person_govoffice', true );
 	$sunflower_persons_person_mandate     = get_post_meta( $sunflower_persons_post->ID, 'person_mandate', true );
 	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
 	$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $sunflower_persons_post->ID );
