@@ -22,6 +22,9 @@ if ( $sunflower_persons_person_id > 0 ) {
 	$sunflower_persons_person_phone       = get_post_meta( $sunflower_persons_post->ID, 'person_phone', true );
 	$sunflower_persons_person_email       = get_post_meta( $sunflower_persons_post->ID, 'person_email', true );
 	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
+	$sunflower_persons_person_govoffice     = get_post_meta( $sunflower_persons_post->ID, 'person_govoffice', true );
+	$sunflower_persons_person_mandate     = get_post_meta( $sunflower_persons_post->ID, 'person_mandate', true );
+	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
 	$sunflower_persons_person_socialmedia = sunflower_persons_get_social_media_profiles( $sunflower_persons_post->ID );
 	?>
 	<?php
@@ -88,6 +91,14 @@ if ( $sunflower_persons_person_id > 0 ) {
 				|| ( $sunflower_persons_person_socialmedia && is_array( $sunflower_persons_person_socialmedia ) )
 			) :
 				?>
+				<?php if ( $attributes['displayGovOffice'] && $sunflower_persons_person_govoffice ) : ?>
+					<p class="sunflower-person__govoffice"><?php echo esc_html( $sunflower_persons_person_govoffice ); ?></p>
+				<?php endif; ?>
+
+				<?php if ( $attributes['displayMandate'] && $sunflower_persons_person_mandate ) : ?>
+					<p class="sunflower-person__mandate"><?php echo esc_html( $sunflower_persons_person_mandate ); ?></p>
+				<?php endif; ?>
+
 				<ul class="sunflower-person__meta">
 
 					<?php if ( isset( $attributes['displayPhone'] ) && true === $attributes['displayPhone'] ) : ?>
@@ -270,6 +281,12 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 				'display_phone'           => $attributes['displayPhone'] ?? false,
 				'display_phone_clickable' => $attributes['displayPhoneClickable'] ?? false,
+
+				'govoffice'               => get_post_meta( get_the_ID(), 'person_govoffice', true ),
+				'mandate'                 => get_post_meta( get_the_ID(), 'person_mandate', true ),
+
+				'display_govoffice'       => $attributes['displayGovOffice'] ?? false,
+				'display_mandate'         => $attributes['displayMandate'] ?? false,
 
 				'groups'                  => array_map(
 					function ( $term ) {

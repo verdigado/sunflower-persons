@@ -29,6 +29,14 @@
 		</div>
 	</a>
 
+	<?php if ( $args['display_govoffice'] && $args['govoffice'] ) : ?>
+		<p class="sunflower-person__govoffice"><?php echo esc_html( $args['govoffice'] ); ?></p>
+	<?php endif; ?>
+
+	<?php if ( $args['display_mandate'] && $args['mandate'] ) : ?>
+		<p class="sunflower-person__mandate"><?php echo esc_html( $args['mandate'] ); ?></p>
+	<?php endif; ?>
+
 	<ul class="sunflower-person__meta">
 		<?php if ( true === $args['display_phone'] ) : ?>
 			<?php if ( $args['phone'] ) : ?>

@@ -252,6 +252,15 @@
         .sunflower-person {
             text-align: center;
 
+            p.sunflower-person__govoffice,
+            p.sunflower-person__mandate {
+                margin: 0 !important;
+                padding: 0;
+                font-size: 0.9em;
+                line-height: normal;
+                font-style: italic;
+            }
+
             &__meta {
                 list-style: none;
                 padding: 0.5em 0 0;
@@ -305,6 +314,15 @@
         justify-content: center;
 
         .sunflower-person {
+
+            p.sunflower-person__govoffice,
+            p.sunflower-person__mandate {
+                margin: 0 !important;
+                padding: 0;
+                font-size: 0.9em;
+                line-height: normal;
+                font-style: italic;
+            }
 
             &__meta {
                 display: block;
@@ -415,6 +433,16 @@
         &__info {
             display: flex;
             flex-direction: column;
+
+            p.sunflower-person__govoffice,
+            p.sunflower-person__mandate {
+                margin: 0 !important;
+                padding: 0;
+                font-size: 0.9em;
+                line-height: normal;
+                font-style: italic;
+            }
+
         }
 
         &__title {

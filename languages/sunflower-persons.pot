@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-11T17:06:19+01:00\n"
+"POT-Creation-Date: 2026-02-12T14:45:19+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sunflower-persons\n"
@@ -64,10 +64,10 @@ msgstr ""
 #: src/person/render.php:105
 #: template-parts/persons/carousel/item.php:39
 #: template-parts/persons/carousel/item.php:43
-#: template-parts/persons/grid/item.php:39
-#: template-parts/persons/grid/item.php:43
-#: template-parts/persons/list/item.php:22
-#: template-parts/persons/list/item.php:27
+#: template-parts/persons/grid/item.php:47
+#: template-parts/persons/grid/item.php:51
+#: template-parts/persons/list/item.php:31
+#: template-parts/persons/list/item.php:36
 msgid "Phone"
 msgstr ""
 
@@ -99,8 +99,8 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:308
-#: src/person/render.php:308
+#: build/person/render.php:314
+#: src/person/render.php:314
 msgid "Next"
 msgstr ""
 
