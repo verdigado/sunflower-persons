@@ -350,7 +350,9 @@ export default function Edit( { attributes, setAttributes } ) {
 									'sunflower-persons-person'
 								) }
 								checked={ displayGovOffice }
-								onChange={ toggleAttribute( 'displayGovOffice' ) }
+								onChange={ toggleAttribute(
+									'displayGovOffice'
+								) }
 							/>
 						) }
 						{ blockLayout !== 'carousel' && (
