@@ -11,8 +11,6 @@ $sunflower_styled_layout = (bool) get_post_meta( $post->ID, '_sunflower_styled_l
 
 $sunflower_show_post_thumbnail = has_post_thumbnail() && ! get_post_meta( $post->ID, '_sunflower_hide_feature_image', true );
 
-$sunflower_metadata = true;
-
 $sunflower_persons_person_phone       = get_post_meta( $post->ID, 'person_phone', true );
 $sunflower_persons_person_mobilephone = get_post_meta( $post->ID, 'person_mobilephone', true );
 $sunflower_persons_person_email       = get_post_meta( $post->ID, 'person_email', true );
@@ -56,7 +54,7 @@ $sunflower_class = 'display-single';
 	if ( 'sunflower_person' === get_post_type() ) :
 		?>
 			<div class="row">
-				<div class="order-1 <?php echo ( $sunflower_metadata ) ? 'col-md-8' : 'col-md-12'; ?>">
+				<div class="col-md-8 order-0 order-md-0">
 				<?php
 				if ( $sunflower_show_post_thumbnail ) {
 					sunflower_post_thumbnail( $sunflower_styled_layout, true );
@@ -98,13 +96,9 @@ $sunflower_class = 'display-single';
 				}
 
 				?>
-
-					<?php
-					the_content();
-					?>
 				</div><!-- .col-md-8 -->
 
-				<div class="col-md-4 order-md-1 has-sand-background-color px-4 py-4">
+				<div class="col-md-4 order-1 order-md-1 has-sand-background-color px-4 py-4">
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Contact', 'sunflower-persons' ); ?></h3>
 					<ul class="sunflower-person__meta">
 						<?php if ( $sunflower_persons_person_phone ) : ?>
@@ -185,6 +179,11 @@ $sunflower_class = 'display-single';
 						</ul>
 					<?php endif; ?>
 				</div>
+				<div class="col-md-8 order-2 order-md-2">
+					<?php
+					the_content();
+					?>
+				</div><!-- .col-md-8 -->
 			</div><!-- .row -->
 			<?php
 		endif;
