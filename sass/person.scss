@@ -156,12 +156,13 @@
     margin-top: 4px;
 }
 
+/* For related posts */
 .single-sunflower_person {
 
     .container.container-narrow {
 
         .wp-block-columns {
-            flex-wrap: nowrap !important;
+            flex-wrap: nowrap;
 
             .wp-block-column img {
                 object-fit: cover;
@@ -169,5 +170,20 @@
                 max-height: 250px;
             }
         }
+
+
+        @media (max-width: 767px) {
+
+            .wp-block-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+
+                > .wp-block-column {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+
     }
 }

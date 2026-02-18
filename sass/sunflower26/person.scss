@@ -16,23 +16,26 @@
 
     .container.container-narrow {
 
-        .wp-block-columns {
+        .related-posts article {
 
-            .wp-block-column img {
-                height: unset;
-                max-height: unset;
-            }
+            .wp-block-columns {
 
-            a:has(.wp-post-image) {
-                height: 298px;
-                border-radius: calc(var(--border-radius-medium) - 2px);
-
-                .wp-post-image {
-                    width: 50%;
-                    height: 100%;
+                .wp-block-column img {
+                    height: unset;
+                    max-height: unset;
                 }
-            }
 
+                a:has(.wp-post-image) {
+                    height: 298px;
+                    border-radius: calc(var(--border-radius-medium) - 2px);
+
+                    .wp-post-image {
+                        width: 50%;
+                        height: 100%;
+                    }
+                }
+
+            }
         }
     }
 }
