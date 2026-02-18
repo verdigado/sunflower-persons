@@ -10,15 +10,15 @@
   all: unset;
 }
 
-.single-sunflower_person .container.container-narrow .wp-block-columns .wp-block-column img {
+.single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns .wp-block-column img {
   height: unset;
   max-height: unset;
 }
-.single-sunflower_person .container.container-narrow .wp-block-columns a:has(.wp-post-image) {
+.single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) {
   height: 298px;
   border-radius: calc(var(--border-radius-medium) - 2px);
 }
-.single-sunflower_person .container.container-narrow .wp-block-columns a:has(.wp-post-image) .wp-post-image {
+.single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) .wp-post-image {
   width: 50%;
   height: 100%;
 }
