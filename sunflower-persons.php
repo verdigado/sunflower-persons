@@ -166,7 +166,7 @@ function sunflower_persons_get_social_media_profiles( $post_id ) {
 		}
 
 		$return[] = sprintf(
-			'<a href="%1$s" target="_blank" title="%3$s" class="social-media-profiles" rel="me"><i class="%2$s"></i></a>',
+			'<a href="%1$s" target="_blank" title="%3$s" class="social-media-profile" rel="me"><i class="%2$s"></i></a>',
 			$url,
 			$class,
 			$title

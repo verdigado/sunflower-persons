@@ -1,91 +1,107 @@
+@use "variables";
+@use "themes";
+
+
 /* Single Person Styles */
-.single-sunflower_person {
+.sunflower-person {
 
-    .sunflower-person {
+    @media (min-width: 768px) {
 
-        @media (min-width: 768px) {
+        &.display-single > .entry-header {
+            padding-bottom: 35px;
+        }
+    }
 
-            &.display-single > .entry-header {
-                padding-bottom: 35px;
+    &__offices,
+    &__meta {
+        list-style: none;
+        padding: 0;
+        margin: 0.5em 0 0;
+
+        li {
+
+            a {
+                opacity: 1;
+                text-decoration: none;
             }
         }
 
-        &__offices,
-        &__meta {
-            list-style: none;
+        &__website {
+            font-size: 87%;
+        }
+
+        &__email {
+            font-size: 87%;
+            display: inline-block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__socialmedia {
+
+        ul {
+
+            margin: 0;
             padding: 0;
-            margin: 0.5em 0 0;
+            display: flex;
+            flex-wrap: wrap;
 
             li {
+                display: flex;
 
                 a {
-                    opacity: 1;
-                    text-decoration: none;
-
-                    i {
-                        color: #000;
-                    }
-                }
-            }
-
-            &__website {
-                font-size: 87%;
-            }
-
-            &__email {
-                font-size: 87%;
-                display: inline-block;
-                max-width: 100%;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        &__socialmedia {
-
-            ul {
-
-                padding: 0.5em 0 0;
-                margin: 0;
-                display: flex;
-                gap: 0.5em;
-
-                li {
-                    width: 32px;
-                    height: 32px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: $primary;
                     border-radius: 50%;
 
-                    a {
-                        opacity: 1;
-                        border-radius: 50%;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0;
+                    border: 2px solid;
+
+                    @include themes.themed-sunflower-colorscheme() {
+                        color: themes.t("icon-color");
+                        border-color: themes.t("icon-color");
+                    }
+
+                    &:hover {
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            color: themes.t("icon-color-text-hover");
+                            background-color: themes.t("icon-color-hover");
+                        }
+                        text-decoration: none;
 
                         i {
-                            color: #fff;
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                color: themes.t("icon-color-text-hover");
+                            }
                         }
                     }
+
+                    i {
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            color: themes.t("icon-color");
+                        }
+
+                    }
+
                 }
+
             }
         }
     }
 
     .wp-block-quote {
         padding: 1em 1.5em;
-        border-left: 4px solid $primary;
+        border-left: 4px solid variables.$primary;
 
         &::before {
             content: "„";
             font-size: 4em;
             line-height: 1em;
             position: relative;
-            color: $primary;
+            color: variables.$primary;
             font-family: serif;
             font-weight: 700;
             bottom: 20px;
@@ -97,7 +113,7 @@
             font-size: 4em;
             line-height: 0;
             position: relative;
-            color: $primary;
+            color: variables.$primary;
             font-family: serif;
             font-weight: 700;
             right: 10px;
@@ -111,6 +127,7 @@
         padding-bottom: 10px;
     }
 }
+
 
 .sunflower-person-post-excerpt {
     padding: 10px;
