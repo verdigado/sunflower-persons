@@ -5,7 +5,9 @@
  * Replace them with your own styles or keep the empty file.
  */
 
-@import "../../sass/variables";
+@use "../../sass/variables";
+@use "../../sass/themes";
+
 
 .sunflower-person-list {
     --person-width: 180px;
@@ -120,17 +122,43 @@
 
             li {
                 align-items: center;
-            }
 
-            a {
-                color: #000;
-                opacity: 1;
-                text-decoration: none;
-
-                i {
-                    color: #000;
+                @include themes.themed-sunflower-colorscheme() {
+                    color: themes.t("icon-color-hover");
+                    border-color: themes.t("icon-color");
                 }
+
+                &:hover {
+
+                    @include themes.themed-sunflower-colorscheme() {
+                        color: themes.t("icon-color");
+                        border-color: themes.t("icon-color-hover");
+                    }
+                }
+
+                a {
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    i {
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            color: themes.t("icon-color");
+                        }
+
+                        &:hover {
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                color: themes.t("icon-color-hover");
+                            }
+                        }
+                    }
+                }
+
             }
+
         }
     }
 
@@ -166,7 +194,7 @@
                 list-style: none;
                 padding: 0;
                 margin: 0.5em 0 0;
-                gap: 0.5em;
+                gap: 0.3em;
 
                 li {
                     position: relative;
@@ -177,7 +205,6 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background-color: $primary;
                     border-radius: 50%;
 
                     a {
@@ -263,35 +290,29 @@
 
             &__meta {
                 list-style: none;
-                padding: 0.5em 0 0;
                 margin: 0;
                 display: flex;
                 justify-content: center;
-                gap: 0.5em;
+                gap: 0.3em;
 
                 li {
                     position: relative;
                     padding-left: 0;
                     margin-bottom: 0;
-                    width: 32px;
-                    height: 32px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: $primary;
-                    border-radius: 50%;
 
                     a {
-                        opacity: 1;
+                        width: 32px;
+                        height: 32px;
+                        margin: 0;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            border: 2px solid themes.t("icon-color");
+                        }
                         border-radius: 50%;
+                        display: flex;
                         justify-content: center;
                         align-items: center;
-                        padding: 0;
-
-                        i {
-                            padding-top: 8px;
-                            color: #fff;
-                        }
+                        font-size: 90%;
                     }
 
                     > .fa-solid {
@@ -325,10 +346,10 @@
             }
 
             &__meta {
-                display: block;
                 list-style: none;
                 padding: 0;
                 margin: 0.5em 0 0;
+                gap: 0.5em;
             }
 
             .wp-block-media-text {
@@ -372,26 +393,54 @@
                     position: relative;
                     padding-left: 0;
                     margin-bottom: 0;
-                    width: 32px;
-                    height: 32px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background-color: $primary;
-                    border-radius: 50%;
 
-                    a {
-                        opacity: 1;
-                        border-radius: 50%;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0;
+                    @include themes.themed-sunflower-colorscheme() {
+                        color: themes.t("icon-color-hover");
+                        border-color: themes.t("icon-color");
+                    }
 
-                        i {
-                            color: #fff;
+                    &:hover {
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            color: themes.t("icon-color");
+                            border-color: themes.t("icon-color-hover");
                         }
                     }
+
+                    a {
+                        width: 32px;
+                        height: 32px;
+                        margin: 0;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            border: 2px solid themes.t("icon-color");
+                        }
+                        border-radius: 50%;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+
+                        i {
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                color: themes.t("icon-color");
+                            }
+
+                            &:hover {
+
+                                @include themes.themed-sunflower-colorscheme() {
+                                    color: themes.t("icon-color-hover");
+                                }
+                            }
+                        }
+                    }
+
                 }
+
             }
         }
     }
@@ -475,7 +524,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        background-color: $primary;
+                        background-color: variables.$primary;
                         border-radius: 50%;
 
                         a {

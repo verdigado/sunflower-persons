@@ -14,6 +14,23 @@
 
 .single-sunflower_person {
 
+    .sunflower-person {
+
+        &__socialmedia {
+
+            ul {
+
+                li {
+
+                    i {
+                        color: unset;
+                    }
+                }
+            }
+        }
+
+    }
+
     .container.container-narrow {
 
         .related-posts article {

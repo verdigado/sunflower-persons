@@ -10,6 +10,9 @@
   all: unset;
 }
 
+.single-sunflower_person .sunflower-person__socialmedia ul li i {
+  color: unset;
+}
 .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns .wp-block-column img {
   height: unset;
   max-height: unset;

@@ -1,28 +1,29 @@
 @charset "UTF-8";
 /* Bootstrap
 --------------------------------------------- */
+/* -------------------------------------------------
+   1️⃣  themes.scss  (exportiert via @use) asdfasfd
+   ------------------------------------------------- */
+/* ---------------  t()  ------------------------ */
 /* Single Person Styles */
 @media (min-width: 768px) {
-  .single-sunflower_person .sunflower-person.display-single > .entry-header {
+  .sunflower-person.display-single > .entry-header {
     padding-bottom: 35px;
   }
 }
-.single-sunflower_person .sunflower-person__offices, .single-sunflower_person .sunflower-person__meta {
+.sunflower-person__offices, .sunflower-person__meta {
   list-style: none;
   padding: 0;
   margin: 0.5em 0 0;
 }
-.single-sunflower_person .sunflower-person__offices li a, .single-sunflower_person .sunflower-person__meta li a {
+.sunflower-person__offices li a, .sunflower-person__meta li a {
   opacity: 1;
   text-decoration: none;
 }
-.single-sunflower_person .sunflower-person__offices li a i, .single-sunflower_person .sunflower-person__meta li a i {
-  color: #000;
-}
-.single-sunflower_person .sunflower-person__offices__website, .single-sunflower_person .sunflower-person__meta__website {
+.sunflower-person__offices__website, .sunflower-person__meta__website {
   font-size: 87%;
 }
-.single-sunflower_person .sunflower-person__offices__email, .single-sunflower_person .sunflower-person__meta__email {
+.sunflower-person__offices__email, .sunflower-person__meta__email {
   font-size: 87%;
   display: inline-block;
   max-width: 100%;
@@ -30,36 +31,81 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.single-sunflower_person .sunflower-person__socialmedia ul {
-  padding: 0.5em 0 0;
+.sunflower-person__socialmedia ul {
   margin: 0;
-  display: flex;
-  gap: 0.5em;
-}
-.single-sunflower_person .sunflower-person__socialmedia ul li {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #008939;
-  border-radius: 50%;
-}
-.single-sunflower_person .sunflower-person__socialmedia ul li a {
-  opacity: 1;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
-.single-sunflower_person .sunflower-person__socialmedia ul li a i {
+.sunflower-person__socialmedia ul li {
+  display: flex;
+}
+.sunflower-person__socialmedia ul li a {
+  border-radius: 50%;
+  border: 2px solid;
+}
+.colorscheme-light .sunflower-person__socialmedia ul li a {
+  color: #005437;
+  border-color: #005437;
+}
+
+.colorscheme-green .sunflower-person__socialmedia ul li a {
+  color: #005437;
+  border-color: #005437;
+}
+
+.wp-theme-sunflower .sunflower-person__socialmedia ul li a {
+  color: #005437;
+  border-color: #005437;
+}
+
+.sunflower-person__socialmedia ul li a:hover {
+  text-decoration: none;
+}
+.colorscheme-light .sunflower-person__socialmedia ul li a:hover {
+  color: #fff;
+  background-color: #006e2e;
+}
+
+.colorscheme-green .sunflower-person__socialmedia ul li a:hover {
+  color: #fff;
+  background-color: #006e2e;
+}
+
+.wp-theme-sunflower .sunflower-person__socialmedia ul li a:hover {
+  color: #fff;
+  background-color: #006e2e;
+}
+
+.colorscheme-light .sunflower-person__socialmedia ul li a:hover i {
   color: #fff;
 }
-.single-sunflower_person .wp-block-quote {
+
+.colorscheme-green .sunflower-person__socialmedia ul li a:hover i {
+  color: #fff;
+}
+
+.wp-theme-sunflower .sunflower-person__socialmedia ul li a:hover i {
+  color: #fff;
+}
+
+.colorscheme-light .sunflower-person__socialmedia ul li a i {
+  color: #005437;
+}
+
+.colorscheme-green .sunflower-person__socialmedia ul li a i {
+  color: #005437;
+}
+
+.wp-theme-sunflower .sunflower-person__socialmedia ul li a i {
+  color: #005437;
+}
+
+.sunflower-person .wp-block-quote {
   padding: 1em 1.5em;
   border-left: 4px solid #008939;
 }
-.single-sunflower_person .wp-block-quote::before {
+.sunflower-person .wp-block-quote::before {
   content: "„";
   font-size: 4em;
   line-height: 1em;
@@ -70,7 +116,7 @@
   bottom: 20px;
   padding-right: 5px;
 }
-.single-sunflower_person .wp-block-quote::after {
+.sunflower-person .wp-block-quote::after {
   content: "“";
   font-size: 4em;
   line-height: 0;
@@ -82,7 +128,7 @@
   bottom: -22px;
   padding-left: 15px;
 }
-.single-sunflower_person .wp-post-image {
+.sunflower-person .wp-post-image {
   object-fit: cover;
   padding-bottom: 10px;
 }
