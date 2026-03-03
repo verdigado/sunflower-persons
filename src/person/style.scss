@@ -448,8 +448,8 @@
 
 .sunflower-person--single {
     display: grid;
-    grid-template-rows: auto 1fr;   // Header + Body
-    gap: 2rem;                     // Abstand zwischen Header & Body
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
     max-width: 48rem;
     margin: 0 auto;
     padding: 2rem;
@@ -459,93 +459,56 @@
 
     .sunflower-person__header {
 
-        /* kein display:contents – wir brauchen ein echtes Element */
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-wrap: wrap;
         gap: 1.5rem;
-        align-items: start;
+        align-items: flex-start;
 
-        @media (min-width: 600px) {
-            grid-template-columns: 12rem 1fr;
-        }
+        .sunflower-person {
 
-        .sunflower-person__image {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            object-fit: cover;
-        }
-    }
-
-    .sunflower-person {
-
-        &__info {
-            display: flex;
-            flex-direction: column;
-
-            p.sunflower-person__govoffice,
-            p.sunflower-person__mandate {
-                margin: 0 !important;
-                padding: 0;
-                font-size: 0.9em;
-                line-height: normal;
-                font-style: italic;
+            &__image {
+                flex: 0 1 12rem;
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                border-radius: 0.5rem;
+                object-fit: cover;
             }
 
-        }
+            &__info {
+                display: flex;
+                flex-direction: column;
 
-        &__title {
-            margin: 0 0 0.5rem;
-            font-size: 1.75rem;
-        }
-
-        &__meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 0.75rem;
-            list-style: none;
-            padding: 0;
-
-            .sunflower-person__socialmedia {
-
-                padding: 0;
-
-                > ul {
-                    display: flex;
-                    gap: 0.5em;
+                p.sunflower-person__govoffice,
+                p.sunflower-person__mandate {
+                    margin: 0 !important;
                     padding: 0;
-                    margin: 0;
-                    list-style: none;
-
-                    li {
-                        width: 32px;
-                        height: 32px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: variables.$primary;
-                        border-radius: 50%;
-
-                        a {
-                            position: unset;
-                            opacity: 1;
-                            border-radius: 50%;
-                            justify-content: center;
-                            align-items: center;
-                            padding: 0;
-
-                            i {
-                                padding-top: 5px;
-                                color: #fff;
-                            }
-                        }
-                    }
-
+                    font-size: 0.9em;
+                    line-height: normal;
+                    font-style: italic;
                 }
+
             }
 
-        }
+            &__title {
+                margin: 0 0 0.5rem;
+                font-size: 1.75rem;
+            }
 
+            &__meta {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 0;
+                margin-top: 0.75rem;
+                list-style: none;
+                padding: 0;
+
+                .sunflower-person__socialmedia {
+                    padding-top: 10px;
+                }
+
+            }
+        }
     }
 }
