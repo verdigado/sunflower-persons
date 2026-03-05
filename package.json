@@ -18,14 +18,14 @@
     "url": "https://github.com/verdigado/sunflower-persons/issues"
   },
   "devDependencies": {
-    "@wordpress/data": "^10.25.0",
-    "@wordpress/i18n": "^5.25.0",
-    "@wordpress/scripts": "^30.18.0",
-    "@wordpress/icons": "^10.19.2",
-    "@wordpress/stylelint-config": "^23.17.0",
+    "@wordpress/data": "^10.33.1",
+    "@wordpress/i18n": "^6.6.1",
+    "@wordpress/icons": "^11.0.1",
+    "@wordpress/scripts": "^30.26.2",
+    "@wordpress/stylelint-config": "^23.25.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "dir-archiver": "^2.1.0",
-    "sass": "^1.77.8"
+    "dir-archiver": "^2.2.0",
+    "sass": "^1.97.3"
   },
   "scripts": {
     "watch": "sass --watch sass/style.scss:assets/css/sunflower-persons.css sass/sunflower26/style.scss:assets/css/sunflower26-persons.css",
@@ -35,7 +35,7 @@
     "lint:js": "wp-scripts lint-js 'src/**/*.js'",
     "lint:jsa": "wp-scripts lint-js",
     "copy-node-modules": "copyfiles -u 1 node_modules/jquery-slim/dist/*.min.js node_modules/bootstrap/dist/js/*.min.js assets/vndr",
-    "bundle": "npm run copy-node-modules && cd ../ && dir-archiver --src sunflower-persons --dest sunflower-persons.zip --includebasedir true --exclude Makefile create-changelog.php changelog.html documentation mkdocs .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map .favorites.json",
+    "bundle": "npm run copy-node-modules && cd ../ && dir-archiver --src sunflower-persons --dest sunflower-persons.zip --includebasedir true --exclude Makefile create-changelog.php changelog.html documentation mkdocs .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules ./vendor/ package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map .favorites.json",
     "build": "wp-scripts build",
     "start": "wp-scripts start",
     "format": "wp-scripts format",

@@ -59,9 +59,6 @@
   border-color: #005437;
 }
 
-.sunflower-person__socialmedia ul li a:hover {
-  text-decoration: none;
-}
 .colorscheme-light .sunflower-person__socialmedia ul li a:hover {
   color: #fff;
   background-color: #006e2e;
@@ -77,6 +74,9 @@
   background-color: #006e2e;
 }
 
+.sunflower-person__socialmedia ul li a:hover {
+  text-decoration: none;
+}
 .colorscheme-light .sunflower-person__socialmedia ul li a:hover i {
   color: #fff;
 }
@@ -194,6 +194,67 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+
+/* Style single posts with related persons */
+.display-single .related-persons .wp-block-group {
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+  container-type: inline-size;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single {
+  gap: 0;
+  padding: 0.5rem;
+}
+@media (min-width: 768px) {
+  .display-single .related-persons .wp-block-group .sunflower-person--single {
+    padding: 1.5rem;
+  }
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__image {
+  flex: 0 1 12rem;
+  width: 45%;
+  height: auto;
+  max-width: 45%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info {
+  display: flex;
+  flex-direction: column;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__govoffice,
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__mandate {
+  margin: 0 !important;
+  padding: 0;
+  font-size: 0.9em;
+  line-height: normal;
+  font-style: italic;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__meta {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__meta .sunflower-person__socialmedia {
+  padding-top: 10px;
 }
 
 /*# sourceMappingURL=sunflower-persons.css.map */

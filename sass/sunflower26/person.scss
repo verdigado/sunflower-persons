@@ -56,3 +56,37 @@
         }
     }
 }
+
+
+/* Style single posts with related persons */
+.display-single {
+
+    .related-persons {
+
+        @include alignwide;
+
+        .wp-block-group {
+            grid-template-columns: repeat(auto-fill, minmax(min(38rem, 100%), 1fr));
+            container-type: inline-size;
+
+
+            .sunflower-person {
+
+                &--single {
+
+                    .sunflower-person__header {
+
+
+                        .sunflower-person {
+
+                            &__image {
+                                max-height: 200px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,13 +1,13 @@
 /* Bootstrap
 --------------------------------------------- */
+.sunflower-person ul li::before,
+.sunflower_person ul li::before {
+  all: unset;
+}
 .sunflower-person ul li,
 .sunflower_person ul li {
   padding: 0;
   margin: 0;
-}
-.sunflower-person ul li::before,
-.sunflower_person ul li::before {
-  all: unset;
 }
 
 .single-sunflower_person .sunflower-person__socialmedia ul li i {
@@ -24,6 +24,37 @@
 .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) .wp-post-image {
   width: 50%;
   height: 100%;
+}
+
+/* Style single posts with related persons */
+.display-single .related-persons {
+  width: calc((100% - 11 * var(--grid-margin)) / 12 * 10 + 9 * var(--grid-margin));
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 781px) {
+  .display-single .related-persons {
+    width: 100%;
+    max-width: 100%;
+    padding-left: var(--grid-margin);
+    padding-right: var(--grid-margin);
+  }
+}
+@media (max-width: 480px) {
+  .display-single .related-persons {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.display-single .related-persons .wp-block-group {
+  grid-template-columns: repeat(auto-fill, minmax(min(38rem, 100%), 1fr));
+  container-type: inline-size;
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__image {
+  max-height: 200px;
 }
 
 /*# sourceMappingURL=sunflower26-persons.css.map */
