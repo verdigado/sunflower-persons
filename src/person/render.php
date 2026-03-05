@@ -275,7 +275,6 @@ if ( $sunflower_persons_person_id > 0 ) {
 				'phone'                   => get_post_meta( get_the_ID(), 'person_phone', true ),
 				'email'                   => get_post_meta( get_the_ID(), 'person_email', true ),
 				'website'                 => get_post_meta( get_the_ID(), 'person_website', true ),
-				'position'                => get_post_meta( get_the_ID(), 'person_position', true ),
 
 				'photo_id'                => get_post_meta( get_the_ID(), 'person_photo_id', true ),
 

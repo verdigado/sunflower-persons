@@ -204,3 +204,85 @@
 
     }
 }
+
+/* Style single posts with related persons */
+.display-single {
+
+    .related-persons .wp-block-group {
+        grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+        container-type: inline-size;
+
+        .sunflower-person {
+
+            &--single {
+                gap: 0;
+
+                padding: 0.5rem;
+
+                @media (min-width: 768px) {
+
+                    padding: 1.5rem;
+                }
+
+                background: #fff;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+
+                .sunflower-person__header {
+
+                    display: flex;
+                    gap: 1.5rem;
+                    align-items: flex-start;
+                    flex-wrap: nowrap;
+
+                    .sunflower-person {
+
+                        &__image {
+                            flex: 0 1 12rem;
+                            width: 45%;
+                            height: auto;
+                            max-width: 45%;
+                            border-radius: 0.5rem;
+                            object-fit: cover;
+                        }
+
+                        &__info {
+                            display: flex;
+                            flex-direction: column;
+
+                            p.sunflower-person__govoffice,
+                            p.sunflower-person__mandate {
+                                margin: 0 !important;
+                                padding: 0;
+                                font-size: 0.9em;
+                                line-height: normal;
+                                font-style: italic;
+                            }
+
+                        }
+
+                        &__title {
+                            margin: 0 0 0.5rem;
+                            font-size: 1.75rem;
+                        }
+
+                        &__meta {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            gap: 0;
+                            margin-top: 0.75rem;
+                            list-style: none;
+                            padding: 0;
+
+                            .sunflower-person__socialmedia {
+                                padding-top: 10px;
+                            }
+
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

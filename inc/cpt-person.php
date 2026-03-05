@@ -184,3 +184,23 @@ add_action(
 		}
 	}
 );
+
+
+/**
+ * Show related persons in single post view. Using the "sunflower/content/before-footer" hook provided by the Sunflower theme.
+ */
+add_action( 'sunflower/content/before-footer', 'sunflower_persons_post_related_persons_hook' );
+
+/**
+ * Show related persons on a single post.
+ *
+ * @param WP_Post $post The current post object.
+ */
+function sunflower_persons_post_related_persons_hook( $post ) {
+
+	if ( 'post' !== $post->post_type ) {
+		return;
+	}
+
+	require SUNFLOWER_PERSONS_PATH . 'template-parts/related-persons-posts.php';
+}

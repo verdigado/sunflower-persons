@@ -16,3 +16,24 @@ $custom-colors: (
 
 
 $primary: map.get($custom-colors, "klee");
+
+@mixin alignwide {
+    width: calc(((100% - (11 * var(--grid-margin))) / 12) * 10 + (9 * var(--grid-margin)));
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 781px) {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--grid-margin);
+        padding-right: var(--grid-margin);
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
