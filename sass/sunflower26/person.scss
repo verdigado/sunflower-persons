@@ -69,7 +69,6 @@
             grid-template-columns: repeat(auto-fill, minmax(min(38rem, 100%), 1fr));
             container-type: inline-size;
 
-
             .sunflower-person {
 
                 &--single {
@@ -81,6 +80,7 @@
 
                             &__image {
                                 max-height: 200px;
+                                border-radius: calc(var(--border-radius-medium) - 2px);
                             }
                         }
                     }

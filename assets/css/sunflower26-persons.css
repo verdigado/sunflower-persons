@@ -55,6 +55,7 @@
 }
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__image {
   max-height: 200px;
+  border-radius: calc(var(--border-radius-medium) - 2px);
 }
 
 /*# sourceMappingURL=sunflower26-persons.css.map */

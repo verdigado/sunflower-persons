@@ -37,7 +37,7 @@ if ( ! empty( $sunflower_persons_person_ids ) ) {
 								$sunflower_persons_context = array(
 									'post_id'   => get_the_ID(),
 									'title'     => get_the_title(),
-									'permalink' => get_permalink(),
+									'permalink' => get_post_meta( get_the_ID(), 'person_hide_single', true ) ? '#' : get_permalink(),
 
 									'photo_id'  => get_post_meta( get_the_ID(), 'person_photo_id', true ),
 

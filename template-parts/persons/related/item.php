@@ -12,7 +12,10 @@
 	class="sunflower-person sunflower-person--single"
 	id="person-<?php echo esc_attr( $args['post_id'] ); ?>">
 
-	<header class="sunflower-person__header">
+	<a class="sunflower-person__header"
+		href="<?php echo esc_url( $args['permalink'] ); ?>"
+		title="<?php echo esc_attr( $args['title'] ); ?>"
+		rel="bookmark">
 
 		<?php
 			$sunflower_persons_photo_id = get_post_meta( $args['post_id'], 'person_photo_id', true );
@@ -63,5 +66,5 @@
 
 		</div>
 
-	</header>
+			</a>
 </article>
