@@ -189,7 +189,7 @@ add_action(
 /**
  * Show related persons in single post view. Using the "sunflower/content/before-footer" hook provided by the Sunflower theme.
  */
-add_action( 'sunflower/content/before-footer', 'sunflower_persons_post_related_persons_hook' );
+add_action( 'sunflower_content_before_footer', 'sunflower_persons_post_related_persons_hook' );
 
 /**
  * Show related persons on a single post.

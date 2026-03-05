@@ -22,8 +22,13 @@ define( 'SUNFLOWER_PERSONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNFLOWER_PERSONS_URL', plugin_dir_url( __FILE__ ) );
 
 if ( ! defined( 'SUNFLOWER_PERSONS_VERSION' ) ) {
-	$sunflower_persons_plugin_data    = get_plugin_data( __FILE__, false, false );
-	$sunflower_persons_plugin_version = $sunflower_persons_plugin_data['Version'];
+	$sunflower_persons_plugin_version = get_file_data( __FILE__, array( 'Version' => 'Version' ), 'plugin' );
+
+	if ( is_array( $sunflower_persons_plugin_version ) && isset( $sunflower_persons_plugin_version['Version'] ) ) {
+		$sunflower_persons_plugin_version = $sunflower_persons_plugin_version['Version'];
+	} else {
+		$sunflower_persons_plugin_version = '1.0.0';
+	}
 	define( 'SUNFLOWER_PERSONS_VERSION', $sunflower_persons_plugin_version );
 }
 
