@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "variables";
+
 
 .sunflower-person,
 .sunflower_person {
@@ -66,8 +69,6 @@
         @include alignwide;
 
         .wp-block-group {
-            grid-template-columns: repeat(auto-fill, minmax(min(38rem, 100%), 1fr));
-            container-type: inline-size;
 
             .sunflower-person {
 
@@ -81,6 +82,14 @@
                             &__image {
                                 max-height: 200px;
                                 border-radius: calc(var(--border-radius-medium) - 2px);
+                            }
+
+                            &__info {
+
+                                p.sunflower-person__govoffice,
+                                p.sunflower-person__mandate {
+                                    color: map.get(variables.$custom-colors, "schwarzwald");
+                                }
                             }
                         }
                     }
