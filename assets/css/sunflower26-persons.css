@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Bootstrap
 --------------------------------------------- */
 .sunflower-person ul li::before,
@@ -13,6 +14,11 @@
 .single-sunflower_person .sunflower-person__socialmedia ul li i {
   color: unset;
 }
+@media (max-width: 767px) {
+  .single-sunflower_person .container.container-narrow {
+    margin: 0 10px;
+  }
+}
 .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns .wp-block-column img {
   height: unset;
   max-height: unset;
@@ -23,7 +29,27 @@
 }
 .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) .wp-post-image {
   width: 50%;
+}
+@media (max-width: 767px) {
+  .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) .wp-post-image {
+    width: 100%;
+  }
+}
+.single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns a:has(.wp-post-image) .wp-post-image {
   height: 100%;
+}
+@media (max-width: 767px) {
+  .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns > .wp-block-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .single-sunflower_person .container.container-narrow .related-posts article .wp-block-columns > .wp-block-column a:has(.wp-post-image) {
+    position: unset;
+  }
 }
 
 /* Style single posts with related persons */
@@ -56,6 +82,25 @@
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__govoffice,
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__mandate {
   color: #002216;
+}
+
+/* ----------  Flex‑Container & Breakpoint  ---------- */
+.wp-block-columns.is-layout-flex {
+  display: flex;
+  flex-wrap: wrap; /* Zeilen‑Umbruch aktivieren */
+}
+
+/* Mobile: Bild oben, Text unten */
+@media (max-width: 768px) {
+  .wp-block-columns.is-layout-flex .wp-block-column {
+    flex: 1 1 100% !important; /* 100 % Breite, überschreibt inline flex-basis */
+    max-width: 100% !important;
+    min-width: 0; /* verhindert „shrink-to-fit“ */
+  }
+  /* Optional: Abstand zwischen den Zeilen */
+  .wp-block-columns.is-layout-flex {
+    gap: 1.5rem; /* gleiche Gap‑Klasse wie im Desktop‑Layout */
+  }
 }
 
 /*# sourceMappingURL=sunflower26-persons.css.map */

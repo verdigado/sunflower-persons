@@ -36,6 +36,11 @@
 
     .container.container-narrow {
 
+        @media (max-width: 767px) {
+
+            margin: 0 10px;
+        }
+
         .related-posts article {
 
             .wp-block-columns {
@@ -51,10 +56,32 @@
 
                     .wp-post-image {
                         width: 50%;
+
+                        @media (max-width: 767px) {
+
+                            width: 100%;
+                        }
                         height: 100%;
                     }
                 }
 
+            }
+
+            @media (max-width: 767px) {
+
+                .wp-block-columns {
+                    flex-direction: column;
+                    gap: 1.5rem;
+
+                    > .wp-block-column {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+
+                        a:has(.wp-post-image) {
+                            position: unset;
+                        }
+                    }
+                }
             }
         }
     }
@@ -97,5 +124,27 @@
             }
 
         }
+    }
+}
+
+
+/* ----------  Flex‑Container & Breakpoint  ---------- */
+.wp-block-columns.is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;               /* Zeilen‑Umbruch aktivieren */
+}
+
+/* Mobile: Bild oben, Text unten */
+@media (max-width: 768px) {
+
+    .wp-block-columns.is-layout-flex .wp-block-column {
+        flex: 1 1 100% !important;   /* 100 % Breite, überschreibt inline flex-basis */
+        max-width: 100% !important;
+        min-width: 0;                /* verhindert „shrink-to-fit“ */
+    }
+
+    /* Optional: Abstand zwischen den Zeilen */
+    .wp-block-columns.is-layout-flex {
+        gap: 1.5rem;                 /* gleiche Gap‑Klasse wie im Desktop‑Layout */
     }
 }
