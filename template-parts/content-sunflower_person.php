@@ -144,24 +144,37 @@ $sunflower_class = 'display-single';
 					</ul>
 
 					<?php if ( $sunflower_persons_person_offices && is_array( $sunflower_persons_person_offices ) ) : ?>
-						<h3 class="wp-block-heading mt-4"><?php esc_html_e( 'Offices', 'sunflower-persons' ); ?></h3>
 						<ul class="sunflower-person__offices">
 							<?php
 							foreach ( $sunflower_persons_person_offices as $sunflower_persons_person_office ) {
 								echo '<li class="sunflower-person__office">';
-								echo '<strong>' . esc_html( $sunflower_persons_person_office['label'] ) . '</strong><br />';
-								echo esc_html( $sunflower_persons_person_office['street'] ) . '<br />';
-								echo esc_html( $sunflower_persons_person_office['city'] ) . '<br />';
+
+								echo '<h3 class="wp-block-heading mt-4">' . esc_html( $sunflower_persons_person_office['label'] ) . '</h3>';
+
+								if ( ! empty( $sunflower_persons_person_office['street'] || ! empty( $sunflower_persons_person_office['city'] ) ) ) {
+									echo '<address class="sunflower-person__address">';
+									if ( ! empty( $sunflower_persons_person_office['street'] ) ) {
+										echo esc_html( $sunflower_persons_person_office['street'] ) . '<br />';
+									}
+									if ( ! empty( $sunflower_persons_person_office['city'] ) ) {
+										echo esc_html( $sunflower_persons_person_office['city'] );
+									}
+									echo '</address>';
+								}
+
 								if ( ! empty( $sunflower_persons_person_office['phone'] ) ) {
 									echo '<i class="fa-solid fa-phone"></i> ' . esc_html( $sunflower_persons_person_office['phone'] ) . '<br />';
 								}
+
 								if ( ! empty( $sunflower_persons_person_office['email'] ) ) {
 									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
 								}
+
 								echo '</li>';
 
 								if ( ! empty( $sunflower_persons_person_office['employees'] ) && is_array( $sunflower_persons_person_office['employees'] ) ) {
-									echo esc_html_e( 'Employees', 'sunflower-persons' ) . '<ul>';
+									echo '<h4 class="wp-block-heading mt-4">' . esc_attr__( 'Employees', 'sunflower-persons' ) . '</h4>';
+									echo '<ul>';
 									foreach ( $sunflower_persons_person_office['employees'] as $sunflower_persons_person_office_employee ) {
 										$sunflower_persons_person_hidesinglepage = get_post_meta( $sunflower_persons_person_office_employee, 'person_hide_single', true );
 										if ( empty( $sunflower_persons_person_hidesinglepage ) ) {
