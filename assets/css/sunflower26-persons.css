@@ -49,13 +49,13 @@
     padding-right: 0;
   }
 }
-.display-single .related-persons .wp-block-group {
-  grid-template-columns: repeat(auto-fill, minmax(min(38rem, 100%), 1fr));
-  container-type: inline-size;
-}
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__image {
   max-height: 200px;
   border-radius: calc(var(--border-radius-medium) - 2px);
+}
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__govoffice,
+.display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__mandate {
+  color: #002216;
 }
 
 /*# sourceMappingURL=sunflower26-persons.css.map */
