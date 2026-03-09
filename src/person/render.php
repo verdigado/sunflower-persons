@@ -124,7 +124,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 							<i class="fa-solid fa-envelope" aria-hidden="true"></i>
 							<span class="sr-only"><?php esc_html_e( 'E‑mail', 'sunflower-persons' ); ?>:</span>
 							<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
-								<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
+								<?php echo ( esc_attr( $sunflower_persons_person_email ) ); ?>
 							</a>
 						</li>
 					<?php endif; ?>

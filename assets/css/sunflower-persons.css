@@ -15,17 +15,13 @@
   list-style: none;
   padding: 0;
   margin: 0.5em 0 0;
+  font-size: 90%;
 }
 .sunflower-person__offices li a, .sunflower-person__meta li a {
   opacity: 1;
   text-decoration: none;
 }
-.sunflower-person__offices__website, .sunflower-person__meta__website {
-  font-size: 87%;
-}
-.sunflower-person__offices__email, .sunflower-person__meta__email {
-  font-size: 87%;
-  display: inline-block;
+.sunflower-person__offices .sunflower-person__email, .sunflower-person__meta .sunflower-person__email {
   max-width: 100%;
   white-space: nowrap;
   overflow: hidden;

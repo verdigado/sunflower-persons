@@ -84,6 +84,14 @@
             text-align: center;
         }
 
+        &__email {
+            display: inline-block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         &-thumb,
         &-medium {
             border-radius: 50%;
@@ -447,37 +455,42 @@
 }
 
 .sunflower-person--single {
+
+
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 2rem;
     max-width: 48rem;
     margin: 0 auto;
-    padding: 2rem;
     background: #fff;
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 
     .sunflower-person__header {
 
+
         display: flex;
         flex-wrap: wrap;
         gap: 1.5rem;
         align-items: flex-start;
+        padding: 1rem;
 
         .sunflower-person {
 
             &__image {
-                flex: 0 1 12rem;
+                flex: 0 1 14rem;
                 width: 100%;
                 height: auto;
                 max-width: 100%;
                 border-radius: 0.5rem;
                 object-fit: cover;
+                min-width: 0;
             }
 
             &__info {
-                display: flex;
+                min-width: 0;
                 flex-direction: column;
+                box-sizing: content-box;
 
                 p.sunflower-person__govoffice,
                 p.sunflower-person__mandate {
@@ -509,6 +522,14 @@
                 }
 
             }
+
+            &__email {
+                max-width: 95%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
         }
     }
 }

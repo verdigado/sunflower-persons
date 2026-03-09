@@ -18,6 +18,7 @@
         list-style: none;
         padding: 0;
         margin: 0.5em 0 0;
+        font-size: 90%;
 
         li {
 
@@ -27,17 +28,14 @@
             }
         }
 
-        &__website {
-            font-size: 87%;
-        }
+        .sunflower-person {
 
-        &__email {
-            font-size: 87%;
-            display: inline-block;
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            &__email {
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 
