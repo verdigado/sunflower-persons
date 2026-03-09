@@ -54,7 +54,7 @@ $sunflower_class = 'display-single';
 	if ( 'sunflower_person' === get_post_type() ) :
 		?>
 			<div class="row">
-				<div class="col-md-8 order-0 order-md-0">
+				<div class="col-md-9 order-0 order-md-0">
 				<?php
 				if ( $sunflower_show_post_thumbnail ) {
 					sunflower_post_thumbnail( $sunflower_styled_layout, true );
@@ -96,9 +96,9 @@ $sunflower_class = 'display-single';
 				}
 
 				?>
-				</div><!-- .col-md-8 -->
+				</div><!-- .col-md-9 -->
 
-				<div class="col-md-4 order-1 order-md-1 has-sand-background-color px-4 py-4">
+				<div class="col-md-3 order-1 order-md-1 has-sand-background-color px-4 py-4">
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Contact', 'sunflower-persons' ); ?></h3>
 					<ul class="sunflower-person__meta">
 						<?php if ( $sunflower_persons_person_phone ) : ?>
@@ -192,11 +192,11 @@ $sunflower_class = 'display-single';
 						</ul>
 					<?php endif; ?>
 				</div>
-				<div class="col-md-8 order-2 order-md-2">
+				<div class="col-md-9 order-2 order-md-2">
 					<?php
 					the_content();
 					?>
-				</div><!-- .col-md-8 -->
+				</div><!-- .col-md-9 -->
 			</div><!-- .row -->
 			<?php
 		endif;
