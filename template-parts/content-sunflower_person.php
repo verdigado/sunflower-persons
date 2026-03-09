@@ -116,8 +116,8 @@ $sunflower_class = 'display-single';
 
 						<?php if ( $sunflower_persons_person_email ) : ?>
 							<li class="sunflower-person__email">
+								<i class="fa-solid fa-envelope"></i>
 								<a href="mailto:<?php echo esc_attr( $sunflower_persons_person_email ); ?>">
-									<i class="fa-solid fa-envelope"></i>
 									<?php echo antispambot( esc_html( $sunflower_persons_person_email ) ); ?>
 								</a>
 							</li>
@@ -125,8 +125,8 @@ $sunflower_class = 'display-single';
 
 						<?php if ( $sunflower_persons_person_website ) : ?>
 							<li class="sunflower-person__website">
+								<i class="fa-solid fa-globe"></i>
 								<a href="<?php echo esc_url( $sunflower_persons_person_website ); ?>" target="_blank" rel="noopener">
-									<i class="fa-solid fa-globe"></i>
 									<?php echo esc_html( $sunflower_persons_person_website ); ?>
 								</a>
 							</li>
@@ -167,7 +167,7 @@ $sunflower_class = 'display-single';
 								}
 
 								if ( ! empty( $sunflower_persons_person_office['email'] ) ) {
-									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . antispambot( esc_html( $sunflower_persons_person_office['email'] ) ) . '</a><br />';
+									echo '<i class="fa-solid fa-envelope"></i> <a href="mailto:' . esc_attr( $sunflower_persons_person_office['email'] ) . '">' . esc_attr__( 'Send Email', 'sunflower-persons' ) . '</a><br />';
 								}
 
 								echo '</li>';
