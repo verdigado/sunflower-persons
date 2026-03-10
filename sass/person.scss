@@ -204,7 +204,7 @@
     }
 }
 
-/* Style single posts with related persons */
+/* Style single person pages */
 .display-single {
 
     .related-persons .wp-block-group {
@@ -284,6 +284,20 @@
                     }
 
                 }
+            }
+        }
+    }
+
+    .sunflower-persons-sidebar {
+        border-radius: var(--border-radius-large, 3px);
+
+        @include themes.themed-sunflower-colorscheme() {
+            background: themes.t("sidebar-background");
+            color: themes.t("sidebar-color");
+
+            a {
+                color: themes.t("sidebar-link-color");
+                font-weight: themes.t("sidebar-link-font-weight");
             }
         }
     }

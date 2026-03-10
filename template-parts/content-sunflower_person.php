@@ -98,7 +98,7 @@ $sunflower_class = 'display-single';
 				?>
 				</div><!-- .col-md-9 -->
 
-				<div class="col-md-3 order-1 order-md-1 has-sand-background-color px-4 py-4">
+				<div class="col-md-3 order-1 order-md-1 sunflower-persons-sidebar px-3 py-3">
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Contact', 'sunflower-persons' ); ?></h3>
 					<ul class="sunflower-person__meta">
 						<?php if ( $sunflower_persons_person_phone ) : ?>
