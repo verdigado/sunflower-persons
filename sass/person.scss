@@ -290,6 +290,7 @@
 
     .sunflower-persons-sidebar {
         border-radius: var(--border-radius-large, 3px);
+
         @include themes.themed-sunflower-colorscheme() {
             background: themes.t("sidebar-background");
             color: themes.t("sidebar-color");
