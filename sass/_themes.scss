@@ -12,17 +12,29 @@ $themes: (
     "colorscheme-light": (
         icon-color: map.get(variables.$custom-colors, "tanne"),
         icon-color-text-hover: map.get(variables.$custom-colors, "white"),
-        icon-color-hover: map.get(variables.$custom-colors, "klee-700")
+        icon-color-hover: map.get(variables.$custom-colors, "klee-700"),
+        sidebar-background: map.get(variables.$custom-colors, "sand"),
+        sidebar-color: map.get(variables.$custom-colors, "black"),
+        sidebar-link-color: map.get(variables.$custom-colors, "black"),
+        sidebar-link-font-weight: 400
     ),
     "colorscheme-green": (
         icon-color: map.get(variables.$custom-colors, "tanne"),
         icon-color-text-hover: map.get(variables.$custom-colors, "white"),
-        icon-color-hover: map.get(variables.$custom-colors, "klee-700")
+        icon-color-hover: map.get(variables.$custom-colors, "klee-700"),
+        sidebar-background: map.get(variables.$custom-colors, "tanne"),
+        sidebar-color: map.get(variables.$custom-colors, "white"),
+        sidebar-link-color: map.get(variables.$custom-colors, "white"),
+        sidebar-link-font-weight: 600
     ),
     "wp-theme-sunflower": (
         icon-color: map.get(variables.$custom-colors, "tanne"),
         icon-color-text-hover: map.get(variables.$custom-colors, "white"),
-        icon-color-hover: map.get(variables.$custom-colors, "klee-700")
+        icon-color-hover: map.get(variables.$custom-colors, "klee-700"),
+        sidebar-background: map.get(variables.$custom-colors, "sand"),
+        sidebar-color: map.get(variables.$custom-colors, "black"),
+        sidebar-link-color: map.get(variables.$custom-colors, "black"),
+        sidebar-link-font-weight: 400
     )
 );
 

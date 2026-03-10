@@ -192,7 +192,7 @@
   }
 }
 
-/* Style single posts with related persons */
+/* Style single person pages */
 .display-single .related-persons .wp-block-group {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -257,6 +257,35 @@
 }
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__meta .sunflower-person__socialmedia {
   padding-top: 10px;
+}
+.display-single .sunflower-persons-sidebar {
+  border-radius: var(--border-radius-large, 3px);
+}
+.colorscheme-light .display-single .sunflower-persons-sidebar {
+  background: #f5f1e9;
+  color: #000;
+}
+.colorscheme-light .display-single .sunflower-persons-sidebar a {
+  color: #000;
+  font-weight: 400;
+}
+
+.colorscheme-green .display-single .sunflower-persons-sidebar {
+  background: #005437;
+  color: #fff;
+}
+.colorscheme-green .display-single .sunflower-persons-sidebar a {
+  color: #fff;
+  font-weight: 600;
+}
+
+.wp-theme-sunflower .display-single .sunflower-persons-sidebar {
+  background: #f5f1e9;
+  color: #000;
+}
+.wp-theme-sunflower .display-single .sunflower-persons-sidebar a {
+  color: #000;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=sunflower-persons.css.map */

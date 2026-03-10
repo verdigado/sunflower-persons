@@ -13,7 +13,7 @@
     --person-width: 180px;
     --person-gap: 1rem;
     --person-filter-gap: 0.5rem;
-    --person-border-radius: 0.25rem;
+    --person-border-radius: var(--border-radius-large, 0.25rem);
 
     .persons-filter {
         display: flex;
@@ -246,7 +246,7 @@
             justify-content: center;
             background: rgba(14, 138, 31, 0.05);
             border: none;
-            border-radius: 3px;
+            border-radius: var(--person-border-radius, 0.25rem);
             cursor: pointer;
             font-size: 2rem;
             color: #333;
@@ -457,6 +457,7 @@
 
 .sunflower-person--single {
 
+    --person-border-radius: var(--border-radius-large, 0.25rem);
 
     display: grid;
     grid-template-rows: auto 1fr;
@@ -464,7 +465,7 @@
     max-width: 48rem;
     margin: 0 auto;
     background: #fff;
-    border-radius: 0.5rem;
+    border-radius: var(--person-border-radius, 0.25rem);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 
     .sunflower-person__header {
@@ -483,7 +484,7 @@
                 width: 100%;
                 height: auto;
                 max-width: 100%;
-                border-radius: 0.5rem;
+                border-radius: var(--person-border-radius, 0.25rem);
                 object-fit: cover;
                 min-width: 0;
             }
