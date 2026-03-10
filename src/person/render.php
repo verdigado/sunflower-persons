@@ -251,7 +251,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 	if ( true === $sunflower_persons_person_navbuttons ) {
 		printf(
-			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa-chevron-left"></i></button>
+			'<button class="sunflower-person-nav prev" aria-label="%s"><i class="fa fa-chevron-left"></i></button>
 		',
 			esc_attr__( 'Back', 'sunflower-persons' )
 		);
@@ -320,7 +320,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 		if ( true === $sunflower_persons_person_navbuttons ) {
 			printf(
 				'
-			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa-chevron-right"></i></button>',
+			<button class="sunflower-person-nav next" aria-label="%s"><i class="fa fa-chevron-right"></i></button>',
 				esc_attr__( 'Next', 'sunflower-persons' )
 			);
 		}
