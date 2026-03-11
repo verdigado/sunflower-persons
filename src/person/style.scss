@@ -121,30 +121,33 @@
             height: calc(var(--person-width) * 2);
         }
 
-        &__meta {
-            list-style: none;
-            padding: 0;
-            margin: 0.5em 0 0;
-            display: flex;
-            flex-wrap: wrap;
+            &__meta {
+                list-style: none;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.3em;
 
-            li {
-                align-items: center;
-
-                @include themes.themed-sunflower-colorscheme() {
-                    color: themes.t("icon-color-hover");
-                    border-color: themes.t("icon-color");
-                }
-
-                &:hover {
-
-                    @include themes.themed-sunflower-colorscheme() {
-                        color: themes.t("icon-color");
-                        border-color: themes.t("icon-color-hover");
-                    }
-                }
+                li {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
 
                 a {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            border: 2px solid themes.t("icon-color");
+                        }
+
 
                     &:hover {
                         text-decoration: none;
@@ -159,15 +162,39 @@
                         &:hover {
 
                             @include themes.themed-sunflower-colorscheme() {
-                                color: themes.t("icon-color-hover");
+                                color: themes.t("icon-color-text-hover");
                             }
                         }
                     }
+
                 }
 
+                > .fa-solid {
+                    color: #fff;
+                }
+
+                b {
+                        width: 32px;
+                        height: 32px;
+                        margin: 0;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            border: 2px solid themes.t("icon-color");
+                        }
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 90%;
+                    }
+
+                    > .fa-solid {
+                        color: #fff;
+                    }
+
+                }
             }
 
-        }
     }
 
     // filmstrip / carousel layout
@@ -198,40 +225,6 @@
             box-sizing: border-box;
             text-align: center;
 
-            &__meta {
-                list-style: none;
-                padding: 0;
-                margin: 0.5em 0 0;
-                gap: 0.3em;
-
-                li {
-                    position: relative;
-                    padding-left: 0;
-                    margin-bottom: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 50%;
-
-                    a {
-                        opacity: 1;
-                        width: 32px;
-                        height: 32px;
-                        border-radius: 50%;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0;
-
-                        i {
-                            color: #fff;
-                        }
-                    }
-
-                    > .fa-solid {
-                        color: #fff;
-                    }
-                }
-            }
         }
 
         // Pfeile
@@ -294,40 +287,6 @@
                 padding: 0;
                 font-size: 0.9em;
                 line-height: normal;
-            }
-
-            &__meta {
-                list-style: none;
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                gap: 0.3em;
-
-                li {
-                    position: relative;
-                    padding-left: 0;
-                    margin-bottom: 0;
-
-                    a {
-                        width: 32px;
-                        height: 32px;
-                        margin: 0;
-
-                        @include themes.themed-sunflower-colorscheme() {
-                            border: 2px solid themes.t("icon-color");
-                        }
-                        border-radius: 50%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 90%;
-                    }
-
-                    > .fa-solid {
-                        color: #fff;
-                    }
-
-                }
             }
 
         }
