@@ -132,6 +132,20 @@ export default function Edit( { attributes, setAttributes } ) {
 		);
 	}, [ allTags, hasResolvedTags, tags ] );
 
+	useEffect( () => {
+		if ( ! hasResolved ) {
+			return;
+		}
+
+		if ( personId > 0 && blockLayout !== 'single' ) {
+			setAttributes( { blockLayout: 'single' } );
+		}
+
+		if ( personId === 0 && blockLayout === 'single' ) {
+			setAttributes( { blockLayout: 'grid' } );
+		}
+	}, [ personId, setAttributes, hasResolved, blockLayout ] );
+
 	const onChangeGroups = ( formGroups ) => {
 		setAttributes( {
 			groups: formGroups.map(
@@ -186,9 +200,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<div { ...blockProps }>
-				<BlockControls>
-					<ToolbarGroup controls={ toolbarControls } />
-				</BlockControls>
+				{ persons && personId === 0 && (
+					<BlockControls>
+						<ToolbarGroup controls={ toolbarControls } />
+					</BlockControls>
+				) }
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'Settings', 'sunflower-persons-person' ) }
@@ -333,7 +349,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								) }
 							/>
 						) }
-						{ blockLayout !== 'carousel' && (
+						{ blockLayout === 'single' && (
 							<ToggleControl
 								label={ __(
 									'Show biography',
