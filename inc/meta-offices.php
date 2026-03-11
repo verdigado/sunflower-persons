@@ -68,7 +68,7 @@ function sunflower_persons_enqueue_office_editor_assets() {
 		)
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_office_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'sunflower_persons_enqueue_office_editor_assets', 30 );
 
 
 /**
