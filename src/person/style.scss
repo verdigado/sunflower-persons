@@ -123,31 +123,49 @@
 
         &__meta {
             list-style: none;
-            padding: 0;
-            margin: 0.5em 0 0;
+            margin: 0;
+            padding: 0.5em 0 0;
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 0.3em;
 
             li {
+                position: relative;
+                display: flex;
+                justify-content: center;
                 align-items: center;
-
-                @include themes.themed-sunflower-colorscheme() {
-                    color: themes.t("icon-color-hover");
-                    border-color: themes.t("icon-color");
-                }
-
-                &:hover {
-
-                    @include themes.themed-sunflower-colorscheme() {
-                        color: themes.t("icon-color");
-                        border-color: themes.t("icon-color-hover");
-                    }
-                }
+                border-radius: 50%;
+                padding: 0;
+                margin: 0;
 
                 a {
+                    width: 32px;
+                    height: 32px;
+                    margin: 0;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    @include themes.themed-sunflower-colorscheme() {
+                        border: 2px solid themes.t("icon-color");
+                    }
+
 
                     &:hover {
                         text-decoration: none;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            background-color: themes.t("icon-color-hover");
+                        }
+
+                        i {
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                color: themes.t("icon-color-text-hover");
+                            }
+                        }
                     }
 
                     i {
@@ -156,18 +174,17 @@
                             color: themes.t("icon-color");
                         }
 
-                        &:hover {
-
-                            @include themes.themed-sunflower-colorscheme() {
-                                color: themes.t("icon-color-hover");
-                            }
-                        }
                     }
+
+                }
+
+                > .fa-solid {
+                    color: #fff;
                 }
 
             }
-
         }
+
     }
 
     // filmstrip / carousel layout
@@ -197,41 +214,8 @@
             min-width: 180px;
             box-sizing: border-box;
             text-align: center;
+            max-width: 20%;
 
-            &__meta {
-                list-style: none;
-                padding: 0;
-                margin: 0.5em 0 0;
-                gap: 0.3em;
-
-                li {
-                    position: relative;
-                    padding-left: 0;
-                    margin-bottom: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 50%;
-
-                    a {
-                        opacity: 1;
-                        width: 32px;
-                        height: 32px;
-                        border-radius: 50%;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0;
-
-                        i {
-                            color: #fff;
-                        }
-                    }
-
-                    > .fa-solid {
-                        color: #fff;
-                    }
-                }
-            }
         }
 
         // Pfeile
@@ -296,40 +280,6 @@
                 line-height: normal;
             }
 
-            &__meta {
-                list-style: none;
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                gap: 0.3em;
-
-                li {
-                    position: relative;
-                    padding-left: 0;
-                    margin-bottom: 0;
-
-                    a {
-                        width: 32px;
-                        height: 32px;
-                        margin: 0;
-
-                        @include themes.themed-sunflower-colorscheme() {
-                            border: 2px solid themes.t("icon-color");
-                        }
-                        border-radius: 50%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 90%;
-                    }
-
-                    > .fa-solid {
-                        color: #fff;
-                    }
-
-                }
-            }
-
         }
     }
     // list layout
@@ -357,6 +307,17 @@
                 padding: 0;
                 margin: 0.5em 0 0;
                 gap: 0.5em;
+                display: block;
+
+                li {
+                    border-radius: 0;
+                    display: block;
+
+                    a {
+                        display: contents;
+                        border: unset !important;
+                    }
+                }
             }
 
             .wp-block-media-text {
@@ -383,7 +344,6 @@
 
                     img {
                         max-width: 100%;
-                        height: auto;
                         display: block;
                     }
                 }
@@ -403,48 +363,6 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-
-                    @include themes.themed-sunflower-colorscheme() {
-                        color: themes.t("icon-color-hover");
-                        border-color: themes.t("icon-color");
-                    }
-
-                    &:hover {
-
-                        @include themes.themed-sunflower-colorscheme() {
-                            color: themes.t("icon-color");
-                            border-color: themes.t("icon-color-hover");
-                        }
-                    }
-
-                    a {
-                        width: 32px;
-                        height: 32px;
-                        margin: 0;
-
-                        @include themes.themed-sunflower-colorscheme() {
-                            border: 2px solid themes.t("icon-color");
-                        }
-                        border-radius: 50%;
-
-                        &:hover {
-                            text-decoration: none;
-                        }
-
-                        i {
-
-                            @include themes.themed-sunflower-colorscheme() {
-                                color: themes.t("icon-color");
-                            }
-
-                            &:hover {
-
-                                @include themes.themed-sunflower-colorscheme() {
-                                    color: themes.t("icon-color-hover");
-                                }
-                            }
-                        }
-                    }
 
                 }
 
