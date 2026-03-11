@@ -17,7 +17,20 @@
 		$sunflower_persons_thumbnail = '';
 		$sunflower_persons_photo_id  = get_post_meta( $args['post_id'], 'person_photo_id', true );
 		if ( $sunflower_persons_photo_id ) {
-			$sunflower_persons_thumbnail = wp_get_attachment_image( $sunflower_persons_photo_id, 'thumbnail', false, array( 'class' => 'sunflower-person-thumb' ) );
+			$sunflower_persons_thumbnail = wp_get_attachment_image(
+				$sunflower_persons_photo_id,
+				'medium',
+				false,
+				array(
+					'class' => 'sunflower-person-thumb',
+					'alt'   => get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true )
+								? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) : sprintf(
+									/* translators: %s = Personen‑Name */
+									__( 'Portrait of %s', 'sunflower-persons' ),
+									get_the_title( $args['post_id'] )
+								),
+				)
+			);
 		}
 
 		// If still empty, take the default image.
