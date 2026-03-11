@@ -247,20 +247,16 @@ const DetailsMetaBox = ( { postType, postId } ) => {
 					setMeta( { ...meta, person_hide_single: value } )
 				}
 			/>
-			{ ! hideSingle && (
-				<TextControl
-					label={ sunflowerPersonDetails.text.govoffice }
-					value={ govoffice }
-					onChange={ ( v ) => updateField( 'person_govoffice', v ) }
-				/>
-			) }
-			{ ! hideSingle && (
-				<TextControl
-					label={ sunflowerPersonDetails.text.mandate }
-					value={ mandate }
-					onChange={ ( v ) => updateField( 'person_mandate', v ) }
-				/>
-			) }
+			<TextControl
+				label={ sunflowerPersonDetails.text.govoffice }
+				value={ govoffice }
+				onChange={ ( v ) => updateField( 'person_govoffice', v ) }
+			/>
+			<TextControl
+				label={ sunflowerPersonDetails.text.mandate }
+				value={ mandate }
+				onChange={ ( v ) => updateField( 'person_mandate', v ) }
+			/>
 			{ ! hideSingle && (
 				<TextControl
 					label={ sunflowerPersonDetails.text.constituency }
