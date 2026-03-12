@@ -64,7 +64,7 @@
 				?>
 			</ul>
 		</div>
-		<div class="wp-block-media-text__media">
+		<div class="wp-block-media-text__media image-style-<?php echo esc_html( $args['image_style'] ); ?>">
 				<?php
 					$sunflower_persons_thumbnail = '';
 					$sunflower_persons_photo_id  = get_post_meta( $args['post_id'], 'person_photo_id', true );

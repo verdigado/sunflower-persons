@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-"
 "person\n"
-"POT-Creation-Date: 2026-02-12T14:44:06+01:00\n"
-"PO-Revision-Date: 2026-02-12 14:45+0100\n"
+"POT-Creation-Date: 2026-03-12T14:13:51+01:00\n"
+"PO-Revision-Date: 2026-03-12 14:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -41,101 +41,113 @@ msgstr ""
 msgid "https://verdigado.com"
 msgstr ""
 
-#: build/editor-plugin/plugin.js:293 src/editor-plugin/plugin.js:82
+#: build/editor-plugin/plugin.js:289 src/editor-plugin/plugin.js:82
 #: build/editor-plugin/plugin.js:155
 msgid "Related persons"
 msgstr ""
 
-#: build/person/index.js:204 src/person/edit.js:77 build/person/index.js:123
+#: build/person/index.js:97 src/person/edit.js:78 build/person/index.js:78
 msgid "Show all persons"
 msgstr "Zeige alle Personen"
 
-#: build/person/index.js:277 src/person/edit.js:180 build/person/index.js:226
+#: build/person/index.js:185 src/person/edit.js:195 build/person/index.js:195
 msgid "Filmstrip view"
 msgstr "Carousel Ansicht"
 
-#: build/person/index.js:292 src/person/edit.js:194 build/person/index.js:240
+#: build/person/index.js:200 src/person/edit.js:211 build/person/index.js:211
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: build/person/index.js:294 src/person/edit.js:197 build/person/index.js:243
+#: build/person/index.js:202 src/person/edit.js:214 build/person/index.js:214
 msgid "Choose person"
 msgstr "Wähle Person"
 
-#: build/person/index.js:302 src/person/edit.js:211 build/person/index.js:257
+#: build/person/index.js:210 src/person/edit.js:228 build/person/index.js:228
 msgid "Groups"
 msgstr "Gruppen"
 
-#: build/person/index.js:307 src/person/edit.js:217 build/person/index.js:263
+#: build/person/index.js:215 src/person/edit.js:234 build/person/index.js:234
 msgid "Show group filter buttons on top"
 msgstr "Zeige Gruppen-Filter Buttons"
 
-#: build/person/index.js:318 src/person/edit.js:233 build/person/index.js:279
+#: build/person/index.js:226 src/person/edit.js:250 build/person/index.js:250
 msgid "Display Options"
-msgstr "Anzeige-Optionien"
+msgstr "Anzeige-Optionen"
 
-#: build/person/index.js:320 src/person/edit.js:240 build/person/index.js:286
+#: build/person/index.js:228 src/person/edit.js:256 build/person/index.js:256
+msgid "Image style"
+msgstr "Bild-Gestaltung"
+
+#: build/person/index.js:231 src/person/edit.js:263 build/person/index.js:263
+msgid "round"
+msgstr "rund"
+
+#: build/person/index.js:234 src/person/edit.js:270 build/person/index.js:270
+msgid "square"
+msgstr "quadratisch"
+
+#: build/person/index.js:241 src/person/edit.js:283 build/person/index.js:283
 msgid "Show navigation buttons"
 msgstr "Zeige Navigations-Buttons (vor/zurück)"
 
-#: build/person/index.js:324 src/person/edit.js:250 build/person/index.js:296
+#: build/person/index.js:245 src/person/edit.js:293 build/person/index.js:293
 msgid "Autoplay sliding"
 msgstr "Automatisches Weiterblättern"
 
-#: build/person/index.js:328 src/person/edit.js:260 build/person/index.js:306
+#: build/person/index.js:249 src/person/edit.js:303 build/person/index.js:303
 msgid "Seconds between slides (autoplay)"
 msgstr "Sekunden bis zum Weiterblättern (Autoplay)"
 
-#: build/person/index.js:336 src/person/edit.js:274 build/person/index.js:320
+#: build/person/index.js:257 src/person/edit.js:317 build/person/index.js:317
 msgid "Number of Persons to show"
 msgstr "Anzahl der Personen"
 
-#: build/person/index.js:344 src/person/edit.js:287 build/person/index.js:333
+#: build/person/index.js:265 src/person/edit.js:330 build/person/index.js:330
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: build/person/index.js:347 build/person/index.js:389 src/person/edit.js:291
-#: src/person/edit.js:389 build/person/index.js:337 build/person/index.js:435
+#: build/person/index.js:268 build/person/index.js:310 src/person/edit.js:334
+#: src/person/edit.js:434 build/person/index.js:334 build/person/index.js:434
 msgid "Random"
 msgstr "Zufall"
 
-#: build/person/index.js:350 src/person/edit.js:298 build/person/index.js:344
+#: build/person/index.js:271 src/person/edit.js:341 build/person/index.js:341
 msgid "alphabetic order (A–Z)"
 msgstr "Alphabetisch (A-Z)"
 
-#: build/person/index.js:353 src/person/edit.js:305 build/person/index.js:351
+#: build/person/index.js:274 src/person/edit.js:348 build/person/index.js:348
 msgid "alphabetic order (Z–A)"
 msgstr "Alphabetisch (Z-A)"
 
-#: build/person/index.js:360 src/person/edit.js:317 build/person/index.js:363
+#: build/person/index.js:281 src/person/edit.js:360 build/person/index.js:360
 msgid "Show Phone number"
 msgstr "Zeige Telefon-Nummer"
 
-#: build/person/index.js:364 src/person/edit.js:326 build/person/index.js:372
+#: build/person/index.js:285 src/person/edit.js:369 build/person/index.js:369
 msgid "Make phone number clickable"
 msgstr "Telefon-Nummer klickbar machen"
 
-#: build/person/index.js:368 src/person/edit.js:338 build/person/index.js:384
+#: build/person/index.js:289 src/person/edit.js:381 build/person/index.js:381
 msgid "Show biography"
 msgstr "Zeige Biographie"
 
-#: build/person/index.js:372 src/person/edit.js:348 build/person/index.js:394
+#: build/person/index.js:293 src/person/edit.js:391 build/person/index.js:391
 msgid "Show government office"
 msgstr "Zeige Amt"
 
-#: build/person/index.js:376 src/person/edit.js:358 build/person/index.js:404
+#: build/person/index.js:297 src/person/edit.js:403 build/person/index.js:403
 msgid "Show mandate"
 msgstr "Zeige Mandat / Position"
 
-#: build/person/index.js:380 src/person/edit.js:368 build/person/index.js:414
+#: build/person/index.js:301 src/person/edit.js:413 build/person/index.js:413
 msgid "Start with position"
 msgstr "Start mit Position"
 
-#: build/person/index.js:383 src/person/edit.js:375 build/person/index.js:421
+#: build/person/index.js:304 src/person/edit.js:420 build/person/index.js:420
 msgid "Start"
 msgstr "Anfang"
 
-#: build/person/index.js:386 src/person/edit.js:382 build/person/index.js:428
+#: build/person/index.js:307 src/person/edit.js:427 build/person/index.js:427
 msgid "Center"
 msgstr "Mitte"
 

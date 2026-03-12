@@ -72,6 +72,10 @@
 	"displayBio": {
 		"type": "boolean",
 		"default": true
+	},
+	"imageStyle": {
+		"type": "string",
+		"default": "square"
 	}
   },
   "editorScript": "file:./index.js",

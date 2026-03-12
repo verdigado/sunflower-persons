@@ -95,7 +95,6 @@
 
         &-thumb,
         &-medium {
-            border-radius: 50%;
             overflow: hidden;
             border: 1px solid #005437;
             object-fit: cover;
@@ -106,16 +105,33 @@
                 object-fit: cover;
                 display: block;
             }
+        }
 
+        &__media {
+
+            &.image-style-round {
+                overflow: hidden;
+
+                img {
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            &.image-style-square {
+                overflow: hidden;
+
+                img {
+                    border-radius: var(--border-radius-large, 3px);
+                    object-fit: cover;
+                }
+            }
         }
 
         &-thumb {
             width: calc(var(--person-width) * 0.75);
             height: calc(var(--person-width) * 0.75);
 
-            &:hover {
-                border-width: 2px;
-            }
         }
 
         &-medium {
@@ -393,10 +409,24 @@
                     align-items: center;
                     justify-content: center;
 
-                    img {
-                        max-width: 100%;
-                        display: block;
+                    &.image-style-round {
+                        overflow: hidden;
+
+                        img {
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
                     }
+
+                    &.image-style-square {
+                        overflow: hidden;
+
+                        img {
+                            border-radius: var(--border-radius-large, 3px);
+                            object-fit: cover;
+                        }
+                    }
+
                 }
             }
 

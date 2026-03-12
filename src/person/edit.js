@@ -60,6 +60,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		displayBio,
 		displayGovOffice,
 		displayMandate,
+		imageStyle,
 	} = attributes;
 
 	const blockProps = useBlockProps( { className: 'sunflower-person-block' } );
@@ -251,6 +252,32 @@ export default function Edit( { attributes, setAttributes } ) {
 							'sunflower-persons-person'
 						) }
 					>
+						<SelectControl
+							label={ __(
+								'Image style',
+								'sunflower-persons-person'
+							) }
+							value={ imageStyle }
+							options={ [
+								{
+									label: __(
+										'round',
+										'sunflower-persons-person'
+									),
+									value: 'round',
+								},
+								{
+									label: __(
+										'square',
+										'sunflower-persons-person'
+									),
+									value: 'square',
+								},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( { imageStyle: value } )
+							}
+						/>
 						{ blockLayout === 'carousel' && (
 							<ToggleControl
 								label={ __(
