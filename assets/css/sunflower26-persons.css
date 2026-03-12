@@ -76,7 +76,6 @@
   }
 }
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__image {
-  max-height: 200px;
   border-radius: calc(var(--border-radius-medium) - 2px);
 }
 .display-single .related-persons .wp-block-group .sunflower-person--single .sunflower-person__header .sunflower-person__info p.sunflower-person__govoffice,
