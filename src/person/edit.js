@@ -272,7 +272,7 @@ export default function Edit( { attributes, setAttributes } ) {
 										'sunflower-persons-person'
 									),
 									value: 'square',
-								}
+								},
 							] }
 							onChange={ ( value ) =>
 								setAttributes( { imageStyle: value } )
