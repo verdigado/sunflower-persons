@@ -97,6 +97,7 @@
             border-radius: 50%;
             overflow: hidden;
             border: 1px solid #005437;
+            object-fit: cover;
 
             img {
                 width: 100%;
@@ -216,6 +217,14 @@
             text-align: center;
             max-width: 20%;
 
+            &__media {
+                    aspect-ratio: 4 / 3;
+                    overflow: hidden;
+                }
+
+            &__meta {
+                margin-top: auto;
+            }
         }
 
         // Pfeile
@@ -260,8 +269,8 @@
 
     // grid multi-column layout
     &--grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: var(--person-gap);
 
         position: relative;
@@ -271,6 +280,18 @@
 
         .sunflower-person {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-basis: 200px;
+
+            &__media {
+                    aspect-ratio: 4 / 3;
+                    overflow: hidden;
+                }
+
+            &__meta {
+                margin-top: auto;
+            }
 
             p.sunflower-person__govoffice,
             p.sunflower-person__mandate {
