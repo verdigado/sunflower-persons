@@ -44,6 +44,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 	id="person-<?php echo esc_attr( $sunflower_persons_post->ID ); ?>">
 
 	<header class="sunflower-person__header">
+		<div class="sunflower-person__media image-style-<?php echo esc_html( $attributes['imageStyle'] ); ?>">
 
 		<?php
 		$sunflower_persons_photo_id = (int) get_post_meta( $sunflower_persons_post->ID, 'person_photo_id', true );
@@ -77,7 +78,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 		echo wp_kses_post( $sunflower_persons_thumbnail );
 		?>
-
+		</div>
 		<div class="sunflower-person__info">
 
 			<h2 class="sunflower-person__title">
@@ -277,6 +278,8 @@ if ( $sunflower_persons_person_id > 0 ) {
 				'website'                 => get_post_meta( get_the_ID(), 'person_website', true ),
 
 				'photo_id'                => get_post_meta( get_the_ID(), 'person_photo_id', true ),
+
+				'image_style'             => $attributes['imageStyle'] ?? 'square',
 
 				'display_phone'           => $attributes['displayPhone'] ?? false,
 				'display_phone_clickable' => $attributes['displayPhoneClickable'] ?? false,

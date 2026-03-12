@@ -12,7 +12,7 @@
 
 	<h4><?php echo esc_html( $args['title'] ); ?></h4>
 	<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
-		<div class="sunflower-person__media">
+		<div class="sunflower-person__media image-style-<?php echo esc_html( $args['image_style'] ); ?>">
 		<?php
 		$sunflower_persons_thumbnail = '';
 		$sunflower_persons_photo_id  = get_post_meta( $args['post_id'], 'person_photo_id', true );

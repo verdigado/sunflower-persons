@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.6.2\n"
+"Project-Id-Version: Sunflower Persons 1.6.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-09T14:03:28+01:00\n"
+"POT-Creation-Date: 2026-03-12T14:15:03+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sunflower-persons\n"
@@ -45,64 +45,67 @@ msgid "Person not found."
 msgstr ""
 
 #. translators: %s = Personen‑Name
-#: build/person/render.php:62
-#: src/person/render.php:62
+#: build/person/render.php:63
+#: src/person/render.php:63
+#: template-parts/persons/carousel/item.php:29
+#: template-parts/persons/grid/item.php:29
+#: template-parts/persons/list/item.php:81
 #: template-parts/persons/related/item.php:32
 #, php-format
 msgid "Portrait of %s"
 msgstr ""
 
-#: build/person/render.php:74
-#: src/person/render.php:74
+#: build/person/render.php:75
+#: src/person/render.php:75
 #: template-parts/persons/related/item.php:44
 msgid "Default person illustration"
 msgstr ""
 
-#: build/person/render.php:109
-#: build/person/render.php:116
+#: build/person/render.php:110
+#: build/person/render.php:117
 #: inc/meta-details.php:58
 #: inc/meta-offices.php:61
-#: src/person/render.php:109
-#: src/person/render.php:116
-#: template-parts/persons/carousel/item.php:39
-#: template-parts/persons/carousel/item.php:43
-#: template-parts/persons/grid/item.php:47
-#: template-parts/persons/grid/item.php:51
+#: src/person/render.php:110
+#: src/person/render.php:117
+#: template-parts/persons/carousel/item.php:52
+#: template-parts/persons/carousel/item.php:56
+#: template-parts/persons/grid/item.php:60
+#: template-parts/persons/grid/item.php:64
 #: template-parts/persons/list/item.php:31
 #: template-parts/persons/list/item.php:36
 msgid "Phone"
 msgstr ""
 
-#: build/person/render.php:125
-#: src/person/render.php:125
+#: build/person/render.php:126
+#: src/person/render.php:126
 msgid "E‑mail"
 msgstr ""
 
-#: build/person/render.php:135
+#: build/person/render.php:136
 #: inc/meta-details.php:61
-#: src/person/render.php:135
+#: src/person/render.php:136
 msgid "Website"
 msgstr ""
 
-#: build/person/render.php:204
-#: src/person/render.php:204
+#: build/person/render.php:205
+#: src/person/render.php:205
 msgid "No persons found."
 msgstr ""
 
-#: build/person/render.php:244
+#: build/person/render.php:245
 #: inc/cpt-person.php:19
 #: inc/cpt-person.php:29
-#: src/person/render.php:244
+#: src/person/render.php:245
 msgid "Persons"
 msgstr ""
 
-#: build/person/render.php:256
-#: src/person/render.php:256
+#: build/person/render.php:257
+#: src/person/render.php:257
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:324
-#: src/person/render.php:324
+#: build/person/render.php:327
+#: src/person/render.php:327
 msgid "Next"
 msgstr ""
 
