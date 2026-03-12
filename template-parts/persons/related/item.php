@@ -9,7 +9,7 @@
 
 ?>
 <article
-	class="sunflower-person sunflower-person--single"
+	class="sunflower-person sunflower-person--single has-sand-background-color"
 	id="person-<?php echo esc_attr( $args['post_id'] ); ?>">
 
 	<a class="sunflower-person__header"
