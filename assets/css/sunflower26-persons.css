@@ -51,6 +51,19 @@
     position: unset;
   }
 }
+.single-sunflower_person .container.container-narrow .sunflower-pagination ul.page-numbers {
+  width: unset !important;
+  border: 0;
+}
+.single-sunflower_person .container.container-narrow .sunflower-pagination ul.page-numbers:hover {
+  background-color: unset;
+}
+.single-sunflower_person .container.container-narrow .sunflower-pagination ul.page-numbers li.page-numbers {
+  border: none;
+}
+.single-sunflower_person .container.container-narrow .sunflower-pagination ul.page-numbers li:last-child {
+  margin-bottom: var(--half-grid-margin);
+}
 
 /* Style single posts with related persons */
 .display-single .related-persons {

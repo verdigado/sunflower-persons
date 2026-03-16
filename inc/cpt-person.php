@@ -349,3 +349,46 @@ function sunflower_persons_post_related_persons_hook( $post ) {
  * Show related persons in single post view. Using the "sunflower/content/before-footer" hook provided by the Sunflower theme.
  */
 add_action( 'sunflower_content_before_footer', 'sunflower_persons_post_related_persons_hook' );
+
+
+
+add_action( 'init', 'sunflower_person_pagination_rewrite' );
+
+/**
+ * Add rewrite rules to handle pagination for person single view, e.g. /person/john-doe/page/2.
+ */
+function sunflower_person_pagination_rewrite() {
+	add_rewrite_rule(
+		'person/([^/]+)/page/?([0-9]{1,})/?$',
+		'index.php?sunflower_person=$matches[1]&paged=$matches[2]',
+		'top'
+	);
+}
+
+add_filter( 'redirect_canonical', 'sunflower_person_disable_redirect', 10, 2 );
+
+/**
+ * Disable canonical redirect for paginated person single view, e.g. /person/john-doe/page/2, to prevent redirecting to the first page.
+ *
+ * @param string $redirect_url The URL to redirect to.
+ * @return string|false The URL to redirect to, or false to disable the redirect.
+ */
+function sunflower_person_disable_redirect( $redirect_url ) {
+	if ( is_singular( 'sunflower_person' ) && get_query_var( 'paged' ) > 0 ) {
+		return false; // Disable canonical redirect for paginated person pages.
+	}
+	return $redirect_url;
+}
+
+add_filter( 'query_vars', 'sunflower_person_query_vars' );
+
+/**
+ * Add 'paged' to the list of recognized query variables so that it can be used in the rewrite rules and template redirection for paginated person single views.
+ *
+ * @param array $vars The existing query variables.
+ * @return array The modified query variables.
+ */
+function sunflower_person_query_vars( $vars ) {
+	$vars[] = 'paged';
+	return $vars;
+}
