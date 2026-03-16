@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Sunflower Persons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-"
 "persons\n"
-"POT-Creation-Date: 2026-03-09T14:03:28+01:00\n"
-"PO-Revision-Date: 2026-03-09 14:04+0100\n"
+"POT-Creation-Date: 2026-03-16T17:10:19+01:00\n"
+"PO-Revision-Date: 2026-03-16 17:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -46,51 +46,54 @@ msgid "Person not found."
 msgstr "Keine Person gefunden."
 
 #. translators: %s = Personen‑Name
-#: build/person/render.php:62 src/person/render.php:62
+#: build/person/render.php:63 src/person/render.php:63
+#: template-parts/persons/carousel/item.php:29
+#: template-parts/persons/grid/item.php:29
+#: template-parts/persons/list/item.php:81
 #: template-parts/persons/related/item.php:32
 #, php-format
 msgid "Portrait of %s"
 msgstr "Portrait Bild von %s"
 
-#: build/person/render.php:74 src/person/render.php:74
+#: build/person/render.php:75 src/person/render.php:75
 #: template-parts/persons/related/item.php:44
 msgid "Default person illustration"
 msgstr "Standard Personen Illustration"
 
-#: build/person/render.php:109 build/person/render.php:116
-#: inc/meta-details.php:58 inc/meta-offices.php:61 src/person/render.php:109
-#: src/person/render.php:116 template-parts/persons/carousel/item.php:39
-#: template-parts/persons/carousel/item.php:43
-#: template-parts/persons/grid/item.php:47
-#: template-parts/persons/grid/item.php:51
+#: build/person/render.php:110 build/person/render.php:117
+#: inc/meta-details.php:58 inc/meta-offices.php:61 src/person/render.php:110
+#: src/person/render.php:117 template-parts/persons/carousel/item.php:52
+#: template-parts/persons/carousel/item.php:56
+#: template-parts/persons/grid/item.php:60
+#: template-parts/persons/grid/item.php:64
 #: template-parts/persons/list/item.php:31
 #: template-parts/persons/list/item.php:36
 msgid "Phone"
 msgstr "Telefon"
 
-#: build/person/render.php:125 src/person/render.php:125
+#: build/person/render.php:126 src/person/render.php:126
 msgid "E‑mail"
 msgstr "E-Mail"
 
-#: build/person/render.php:135 inc/meta-details.php:61
-#: src/person/render.php:135
+#: build/person/render.php:136 inc/meta-details.php:61
+#: src/person/render.php:136
 msgid "Website"
 msgstr "Webseite"
 
-#: build/person/render.php:204 src/person/render.php:204
+#: build/person/render.php:205 src/person/render.php:205
 msgid "No persons found."
 msgstr "Keine Person gefunden."
 
-#: build/person/render.php:244 inc/cpt-person.php:19 inc/cpt-person.php:29
-#: src/person/render.php:244
+#: build/person/render.php:245 inc/cpt-person.php:19 inc/cpt-person.php:29
+#: src/person/render.php:245
 msgid "Persons"
 msgstr "Personen"
 
-#: build/person/render.php:256 src/person/render.php:256
+#: build/person/render.php:257 src/person/render.php:257
 msgid "Back"
 msgstr "zurück"
 
-#: build/person/render.php:324 src/person/render.php:324
+#: build/person/render.php:327 src/person/render.php:327
 msgid "Next"
 msgstr "weiter"
 
@@ -177,6 +180,10 @@ msgstr "Keine Gruppe gefunden"
 #: inc/cpt-person.php:67
 msgid "No group found in trash"
 msgstr "Keine Gruppe im Papierkorb gefunden"
+
+#: inc/cpt-person.php:167
+msgid "Related Persons"
+msgstr "Verbundene Personen"
 
 #: inc/meta-details.php:14
 msgid "Details of person"

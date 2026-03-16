@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.6.5\n"
+"Project-Id-Version: Sunflower Persons 1.6.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons-person\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-12T14:15:04+01:00\n"
+"POT-Creation-Date: 2026-03-16T17:10:21+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sunflower-persons-person\n"
@@ -45,162 +45,162 @@ msgstr ""
 msgid "Related persons"
 msgstr ""
 
-#: build/person/index.js:97
-#: src/person/edit.js:78
-#: build/person/index.js:78
+#: build/person/index.js:100
+#: src/person/edit.js:83
+#: build/person/index.js:83
 msgid "Show all persons"
 msgstr ""
 
-#: build/person/index.js:185
-#: src/person/edit.js:195
-#: build/person/index.js:195
+#: build/person/index.js:188
+#: src/person/edit.js:200
+#: build/person/index.js:200
 msgid "Filmstrip view"
 msgstr ""
 
-#: build/person/index.js:200
-#: src/person/edit.js:211
-#: build/person/index.js:211
+#: build/person/index.js:203
+#: src/person/edit.js:216
+#: build/person/index.js:216
 msgid "Settings"
 msgstr ""
 
-#: build/person/index.js:202
-#: src/person/edit.js:214
-#: build/person/index.js:214
+#: build/person/index.js:205
+#: src/person/edit.js:219
+#: build/person/index.js:219
 msgid "Choose person"
 msgstr ""
 
-#: build/person/index.js:210
-#: src/person/edit.js:228
-#: build/person/index.js:228
+#: build/person/index.js:213
+#: src/person/edit.js:233
+#: build/person/index.js:233
 msgid "Groups"
 msgstr ""
 
-#: build/person/index.js:215
-#: src/person/edit.js:234
-#: build/person/index.js:234
+#: build/person/index.js:218
+#: src/person/edit.js:239
+#: build/person/index.js:239
 msgid "Show group filter buttons on top"
 msgstr ""
 
-#: build/person/index.js:226
-#: src/person/edit.js:250
-#: build/person/index.js:250
+#: build/person/index.js:229
+#: src/person/edit.js:255
+#: build/person/index.js:255
 msgid "Display Options"
 msgstr ""
 
-#: build/person/index.js:228
-#: src/person/edit.js:256
-#: build/person/index.js:256
+#: build/person/index.js:231
+#: src/person/edit.js:261
+#: build/person/index.js:261
 msgid "Image style"
 msgstr ""
 
-#: build/person/index.js:231
-#: src/person/edit.js:263
-#: build/person/index.js:263
+#: build/person/index.js:234
+#: src/person/edit.js:268
+#: build/person/index.js:268
 msgid "round"
 msgstr ""
 
-#: build/person/index.js:234
-#: src/person/edit.js:270
-#: build/person/index.js:270
+#: build/person/index.js:237
+#: src/person/edit.js:275
+#: build/person/index.js:275
 msgid "square"
 msgstr ""
 
-#: build/person/index.js:241
-#: src/person/edit.js:283
-#: build/person/index.js:283
+#: build/person/index.js:244
+#: src/person/edit.js:288
+#: build/person/index.js:288
 msgid "Show navigation buttons"
 msgstr ""
 
-#: build/person/index.js:245
-#: src/person/edit.js:293
-#: build/person/index.js:293
+#: build/person/index.js:248
+#: src/person/edit.js:298
+#: build/person/index.js:298
 msgid "Autoplay sliding"
 msgstr ""
 
-#: build/person/index.js:249
-#: src/person/edit.js:303
-#: build/person/index.js:303
+#: build/person/index.js:252
+#: src/person/edit.js:308
+#: build/person/index.js:308
 msgid "Seconds between slides (autoplay)"
 msgstr ""
 
-#: build/person/index.js:257
-#: src/person/edit.js:317
-#: build/person/index.js:317
+#: build/person/index.js:260
+#: src/person/edit.js:322
+#: build/person/index.js:322
 msgid "Number of Persons to show"
 msgstr ""
 
-#: build/person/index.js:265
-#: src/person/edit.js:330
-#: build/person/index.js:330
+#: build/person/index.js:268
+#: src/person/edit.js:335
+#: build/person/index.js:335
 msgid "Order"
 msgstr ""
 
-#: build/person/index.js:268
-#: build/person/index.js:310
-#: src/person/edit.js:334
-#: src/person/edit.js:434
-#: build/person/index.js:334
-#: build/person/index.js:434
+#: build/person/index.js:271
+#: build/person/index.js:313
+#: src/person/edit.js:339
+#: src/person/edit.js:439
+#: build/person/index.js:339
+#: build/person/index.js:439
 msgid "Random"
 msgstr ""
 
-#: build/person/index.js:271
-#: src/person/edit.js:341
-#: build/person/index.js:341
+#: build/person/index.js:274
+#: src/person/edit.js:346
+#: build/person/index.js:346
 msgid "alphabetic order (A–Z)"
 msgstr ""
 
-#: build/person/index.js:274
-#: src/person/edit.js:348
-#: build/person/index.js:348
+#: build/person/index.js:277
+#: src/person/edit.js:353
+#: build/person/index.js:353
 msgid "alphabetic order (Z–A)"
 msgstr ""
 
-#: build/person/index.js:281
-#: src/person/edit.js:360
-#: build/person/index.js:360
+#: build/person/index.js:284
+#: src/person/edit.js:365
+#: build/person/index.js:365
 msgid "Show Phone number"
 msgstr ""
 
-#: build/person/index.js:285
-#: src/person/edit.js:369
-#: build/person/index.js:369
+#: build/person/index.js:288
+#: src/person/edit.js:374
+#: build/person/index.js:374
 msgid "Make phone number clickable"
 msgstr ""
 
-#: build/person/index.js:289
-#: src/person/edit.js:381
-#: build/person/index.js:381
+#: build/person/index.js:292
+#: src/person/edit.js:386
+#: build/person/index.js:386
 msgid "Show biography"
 msgstr ""
 
-#: build/person/index.js:293
-#: src/person/edit.js:391
-#: build/person/index.js:391
+#: build/person/index.js:296
+#: src/person/edit.js:396
+#: build/person/index.js:396
 msgid "Show government office"
 msgstr ""
 
-#: build/person/index.js:297
-#: src/person/edit.js:403
-#: build/person/index.js:403
+#: build/person/index.js:300
+#: src/person/edit.js:408
+#: build/person/index.js:408
 msgid "Show mandate"
 msgstr ""
 
-#: build/person/index.js:301
-#: src/person/edit.js:413
-#: build/person/index.js:413
+#: build/person/index.js:304
+#: src/person/edit.js:418
+#: build/person/index.js:418
 msgid "Start with position"
 msgstr ""
 
-#: build/person/index.js:304
-#: src/person/edit.js:420
-#: build/person/index.js:420
+#: build/person/index.js:307
+#: src/person/edit.js:425
+#: build/person/index.js:425
 msgid "Start"
 msgstr ""
 
-#: build/person/index.js:307
-#: src/person/edit.js:427
-#: build/person/index.js:427
+#: build/person/index.js:310
+#: src/person/edit.js:432
+#: build/person/index.js:432
 msgid "Center"
 msgstr ""
 
