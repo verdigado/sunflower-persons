@@ -93,6 +93,29 @@ function sunflower_persons_register_details_meta() {
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
+
+	// Allow sorting by person_sortname in REST API collection endpoint.
+	add_filter(
+		'rest_sunflower_person_collection_params',
+		function ( $params ) {
+			$params['orderby']['enum'][] = 'meta_value';
+			return $params;
+		}
+	);
+
+	add_filter(
+		'rest_sunflower_person_query',
+		function ( $args, $request ) {
+			if ( $request->get_param( 'orderby' ) === 'meta_value' ) {
+				$args['meta_key'] = $request->get_param( 'meta_key' );
+				$args['orderby']  = 'meta_value';
+			}
+			return $args;
+		},
+		10,
+		2
+	);
+
 	register_post_meta(
 		'sunflower_person',
 		'person_phone',

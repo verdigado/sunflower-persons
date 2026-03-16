@@ -69,7 +69,12 @@ export default function Edit( { attributes, setAttributes } ) {
 		return select( 'core' ).getEntityRecords(
 			'postType',
 			'sunflower_person',
-			{ per_page: -1 }
+			{
+				per_page: -1,
+				orderby: 'meta_value',
+				meta_key: 'person_sortname',
+				order: 'asc',
+			}
 		);
 	}, [] );
 
