@@ -108,6 +108,151 @@ function sunflower_persons_register_post_persons_meta() {
 }
 add_action( 'init', 'sunflower_persons_register_post_persons_meta' );
 
+// Show related persons in quick edit. See: https://developer.wordpress.org/reference/hooks/quick_edit_custom_box/.
+add_filter( 'manage_post_posts_columns', 'sunflower_add_persons_column' );
+
+/**
+ * Add a column to the post list table to show related persons and enable quick edit for it.
+ *
+ * @param array $columns The existing columns.
+ * @return array The modified columns.
+ */
+function sunflower_add_persons_column( $columns ) {
+	$columns['sunflower-persons-related-persons'] = __( 'Related Persons', 'sunflower-persons' );
+	return $columns;
+}
+
+add_action( 'manage_post_posts_custom_column', 'sunflower_persons_column_content', 10, 2 );
+
+/**
+ * Show related persons in the custom column and add a data attribute with the person ids for quick edit.
+ * The JavaScript reads the data-person-ids attribute to check the checkboxes in quick edit.
+ *
+ * @param string $column The column name.
+ * @param int    $post_id The current post ID.
+ */
+function sunflower_persons_column_content( $column, $post_id ) {
+	if ( 'sunflower-persons-related-persons' !== $column ) {
+		return;
+	}
+
+	$person_ids = get_post_meta( $post_id, 'sunflower_connected_persons', true );
+	$ids_string = '';
+	$names      = array();
+	if ( ! empty( $person_ids ) ) {
+		$ids_string = implode( ',', (array) $person_ids );
+		$names      = array_map(
+			function ( $id ) {
+				return get_the_title( $id );
+			},
+			(array) $person_ids
+		);
+	}
+
+	// data-person-ids es read by JavaScript.
+	printf(
+		'<span data-person-ids="%s">%s</span>',
+		esc_attr( $ids_string ),
+		esc_html( implode( ', ', $names ) )
+	);
+}
+
+add_action( 'quick_edit_custom_box', 'sunflower_quick_edit_persons', 10, 2 );
+
+/**
+ * Add checkboxes for related persons in quick edit.
+ *
+ * @param string $column_name The column name.
+ * @param string $post_type The post type.
+ */
+function sunflower_quick_edit_persons( $column_name, $post_type ) {
+	if ( 'sunflower-persons-related-persons' !== $column_name || 'post' !== $post_type ) {
+		return;
+	}
+
+	$persons = get_posts(
+		array(
+			'post_type'      => 'sunflower_person',
+			'posts_per_page' => -1,
+			'orderby'        => 'meta_value',
+			'meta_key'       => 'person_sortname',
+			'order'          => 'ASC',
+		)
+	);
+
+	wp_nonce_field( 'sunflower_quick_edit', 'sunflower_quick_edit_nonce' );
+	?>
+	<fieldset class="inline-edit-col-right">
+		<div class="inline-edit-col">
+			<span class="title inline-edit-categories-label"><?php echo esc_attr__( 'Related Persons', 'sunflower-persons' ); ?></span>
+			<ul class="cat-checklist category-checklist">
+				<?php foreach ( $persons as $person ) : ?>
+					<li>
+					<label class="selectit">
+						<input type="checkbox"
+								name="sunflower_connected_persons[]"
+								value="<?php echo esc_attr( $person->ID ); ?>">
+						<?php echo esc_html( $person->post_title ); ?>
+					</label>
+				</li>
+				<?php endforeach; ?>
+				</ul>
+		</div>
+	</fieldset>
+	<?php
+}
+
+add_action( 'admin_enqueue_scripts', 'sunflower_quick_edit_script' );
+
+/**
+ * Enqueue JavaScript for quick edit functionality.
+ *
+ * @param string $hook The current admin page hook.
+ */
+function sunflower_quick_edit_script( $hook ) {
+	if ( 'edit.php' !== $hook ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'sunflower-quick-edit',
+		plugin_dir_url( __FILE__ ) . '../assets/js/quick-edit.js',
+		array( 'jquery', 'inline-edit-post' ),
+		'1.0',
+		true
+	);
+}
+
+add_action( 'save_post', 'sunflower_save_quick_edit_persons', 10, 2 );
+
+/**
+ * Save the related persons when a post is saved via quick edit.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function sunflower_save_quick_edit_persons( $post_id ) {
+
+	if ( ! isset( $_POST['sunflower_quick_edit_nonce'] ) ) {
+		return;
+	}
+	if ( ! wp_verify_nonce( $_POST['sunflower_quick_edit_nonce'], 'sunflower_quick_edit' ) ) {
+		return;
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	if ( isset( $_POST['sunflower_connected_persons'] ) ) {
+		$person_ids = array_map( 'intval', $_POST['sunflower_connected_persons'] );
+		update_post_meta( $post_id, 'sunflower_connected_persons', $person_ids );
+	} else {
+		delete_post_meta( $post_id, 'sunflower_connected_persons' );
+	}
+}
+
 /**
  * Enqueue block editor assets.
  */
@@ -187,11 +332,6 @@ add_action(
 
 
 /**
- * Show related persons in single post view. Using the "sunflower/content/before-footer" hook provided by the Sunflower theme.
- */
-add_action( 'sunflower_content_before_footer', 'sunflower_persons_post_related_persons_hook' );
-
-/**
  * Show related persons on a single post.
  *
  * @param WP_Post $post The current post object.
@@ -204,3 +344,8 @@ function sunflower_persons_post_related_persons_hook( $post ) {
 
 	require SUNFLOWER_PERSONS_PATH . 'template-parts/related-persons-posts.php';
 }
+
+/**
+ * Show related persons in single post view. Using the "sunflower/content/before-footer" hook provided by the Sunflower theme.
+ */
+add_action( 'sunflower_content_before_footer', 'sunflower_persons_post_related_persons_hook' );
