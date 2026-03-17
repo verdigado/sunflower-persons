@@ -7,9 +7,6 @@
 
     ul li {
 
-        &::before {
-            all: unset;
-        }
         padding: 0;
         margin: 0;
     }
@@ -32,6 +29,14 @@
             }
         }
 
+    }
+
+    ul.wp-block-list {
+
+        li {
+            padding-left: 30px;
+            margin-bottom: var(--half-grid-margin);
+        }
     }
 
     .container.container-narrow {
