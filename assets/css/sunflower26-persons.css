@@ -1,10 +1,6 @@
 @charset "UTF-8";
 /* Bootstrap
 --------------------------------------------- */
-.sunflower-person ul li::before,
-.sunflower_person ul li::before {
-  all: unset;
-}
 .sunflower-person ul li,
 .sunflower_person ul li {
   padding: 0;
@@ -13,6 +9,10 @@
 
 .single-sunflower_person .sunflower-person__socialmedia ul li i {
   color: unset;
+}
+.single-sunflower_person ul.wp-block-list li {
+  padding-left: 30px;
+  margin-bottom: var(--half-grid-margin);
 }
 @media (max-width: 767px) {
   .single-sunflower_person .container.container-narrow {
