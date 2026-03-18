@@ -19,6 +19,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 
 	setup_postdata( $sunflower_persons_post );
 
+	$sunflower_persons_person_permalink   = get_post_meta( $sunflower_persons_post->ID, 'person_hide_single', true ) ? '#' : get_permalink( $sunflower_persons_post->ID );
 	$sunflower_persons_person_phone       = get_post_meta( $sunflower_persons_post->ID, 'person_phone', true );
 	$sunflower_persons_person_email       = get_post_meta( $sunflower_persons_post->ID, 'person_email', true );
 	$sunflower_persons_person_website     = get_post_meta( $sunflower_persons_post->ID, 'person_website', true );
@@ -49,22 +50,27 @@ if ( $sunflower_persons_person_id > 0 ) {
 		<?php
 		$sunflower_persons_photo_id = (int) get_post_meta( $sunflower_persons_post->ID, 'person_photo_id', true );
 
-		// 1️⃣ Bild aus Medienbibliothek, falls hinterlegt
+		$sunflower_persons_thumbnail = '';
+
 		if ( $sunflower_persons_photo_id ) {
-			$sunflower_persons_thumbnail = wp_get_attachment_image(
-				$sunflower_persons_photo_id,
-				'medium',
-				false,
-				array(
-					'class' => 'sunflower-person__image',
-					'alt'   => get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true )
-								? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) : sprintf(
-									/* translators: %s = Personen‑Name */
-									__( 'Portrait of %s', 'sunflower-persons' ),
-									get_the_title( $sunflower_persons_post )
-								),
-				)
-			);
+			?>
+			<?php
+			$sunflower_persons_thumbnail_attributes = wp_get_attachment_image_src( $sunflower_persons_photo_id, 'medium' );
+			if ( $sunflower_persons_thumbnail_attributes ) {
+				$sunflower_persons_thumbnail = sprintf(
+					'<img src="%s" class="sunflower-person__image" width="%s" height="%s" alt="%s" loading="lazy" decoding="async" />',
+					esc_url( $sunflower_persons_thumbnail_attributes[0] ),
+					esc_attr( $sunflower_persons_thumbnail_attributes[1] ),
+					esc_attr( $sunflower_persons_thumbnail_attributes[2] ),
+					esc_attr(
+						$sunflower_persons_thumbnail_attributes[3] ?? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) ?? sprintf(
+						/* translators: %s = Personen‑Name */
+							__( 'Portrait of %s', 'sunflower-persons' ),
+							get_the_title( $sunflower_persons_post->ID )
+						)
+					)
+				);
+			}
 		}
 
 		// Use default placeholder if no image is set or image is missing in media library.
@@ -76,14 +82,21 @@ if ( $sunflower_persons_person_id > 0 ) {
 			);
 		}
 
-		echo wp_kses_post( $sunflower_persons_thumbnail );
-		?>
+		printf(
+			'<a href="%s" class="sunflower-person__link">%s</a>',
+			esc_url( $sunflower_persons_person_permalink ),
+			wp_kses_post( $sunflower_persons_thumbnail )
+		);
+	?>
 		</div>
 		<div class="sunflower-person__info">
 
-			<h2 class="sunflower-person__title">
-				<?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?>
-			</h2>
+			<a href="<?php echo esc_url( $sunflower_persons_person_permalink ); ?>"
+				class="sunflower-person__link">
+				<h2 class="sunflower-person__title">
+					<?php echo esc_html( get_the_title( $sunflower_persons_post ) ); ?>
+				</h2>
+			</a>
 
 			<?php
 			if ( $sunflower_persons_person_phone
