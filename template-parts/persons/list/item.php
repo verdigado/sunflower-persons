@@ -11,8 +11,10 @@
 <article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', wp_list_pluck( $args['groups'], 'slug' ) ) ); ?>">
 	<div class="wp-block-media-text is-stacked-on-mobile mb-4" style="grid-template-columns:auto 30%">
 		<div class="wp-block-media-text__content">
-			<h4><?php echo esc_html( $args['title'] ); ?></h4>
-
+			<a href="<?php echo esc_url( $args['permalink'] ); ?>"
+				class="sunflower-person__link">
+					<h4><?php echo esc_html( $args['title'] ); ?></h4>
+			</a>
 			<?php if ( $args['display_govoffice'] && $args['govoffice'] ) : ?>
 				<p class="sunflower-person__govoffice"><?php echo esc_html( $args['govoffice'] ); ?></p>
 			<?php endif; ?>
@@ -64,28 +66,31 @@
 				?>
 			</ul>
 		</div>
-		<div class="wp-block-media-text__media image-style-<?php echo esc_html( $args['image_style'] ); ?>">
-				<?php
-					$sunflower_persons_thumbnail = '';
-					$sunflower_persons_photo_id  = get_post_meta( $args['post_id'], 'person_photo_id', true );
-				if ( $sunflower_persons_photo_id ) {
-					$sunflower_persons_thumbnail = wp_get_attachment_image(
-						$sunflower_persons_photo_id,
-						'medium',
-						false,
-						array(
-							'class' => 'sunflower-person-thumb',
-							'alt'   => get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true )
-										? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) : sprintf(
-											/* translators: %s = Personen‑Name */
-											__( 'Portrait of %s', 'sunflower-persons' ),
-											get_the_title( $args['post_id'] )
-										),
-						)
-					);
-				}
-					echo wp_kses_post( $sunflower_persons_thumbnail );
-				?>
-		</div>
+		<a href="<?php echo esc_url( $args['permalink'] ); ?>"
+			class="sunflower-person__link">
+			<div class="wp-block-media-text__media image-style-<?php echo esc_html( $args['image_style'] ); ?>">
+					<?php
+						$sunflower_persons_thumbnail = '';
+						$sunflower_persons_photo_id  = get_post_meta( $args['post_id'], 'person_photo_id', true );
+					if ( $sunflower_persons_photo_id ) {
+						$sunflower_persons_thumbnail = wp_get_attachment_image(
+							$sunflower_persons_photo_id,
+							'medium',
+							false,
+							array(
+								'class' => 'sunflower-person-thumb',
+								'alt'   => get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true )
+											? get_post_meta( $sunflower_persons_photo_id, '_wp_attachment_image_alt', true ) : sprintf(
+												/* translators: %s = Personen‑Name */
+												__( 'Portrait of %s', 'sunflower-persons' ),
+												get_the_title( $args['post_id'] )
+											),
+							)
+						);
+					}
+						echo wp_kses_post( $sunflower_persons_thumbnail );
+					?>
+			</div>
+		</a>
 	</div>
 </article>
