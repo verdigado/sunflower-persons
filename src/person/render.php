@@ -271,7 +271,7 @@ if ( $sunflower_persons_person_id > 0 ) {
 			$sunflower_persons_context = array(
 				'post_id'                 => get_the_ID(),
 				'title'                   => get_the_title(),
-				'permalink'               => get_permalink(),
+				'permalink'               => get_post_meta( get_the_ID(), 'person_hide_single', true ) ? '#' : get_permalink(),
 
 				'phone'                   => get_post_meta( get_the_ID(), 'person_phone', true ),
 				'email'                   => get_post_meta( get_the_ID(), 'person_email', true ),

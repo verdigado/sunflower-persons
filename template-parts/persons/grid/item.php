@@ -11,7 +11,8 @@
 <article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', wp_list_pluck( $args['groups'], 'slug' ) ) ); ?>">
 
 	<h4><?php echo esc_html( $args['title'] ); ?></h4>
-	<a href="<?php the_permalink(); ?>" class="sunflower-person__link">
+	<a href="<?php echo esc_url( $args['permalink'] ); ?>"
+		class="sunflower-person__link">
 		<div class="sunflower-person__media image-style-<?php echo esc_html( $args['image_style'] ); ?>">
 		<?php
 		$sunflower_persons_thumbnail = '';
