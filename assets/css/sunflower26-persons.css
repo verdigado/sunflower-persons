@@ -120,5 +120,9 @@
     gap: 1.5rem; /* gleiche Gap‑Klasse wie im Desktop‑Layout */
   }
 }
+/* overwrite in sunflower26 only... */
+.sunflower-person-list--list .sunflower-person .wp-block-media-text__content {
+  margin-left: var(--wp--style--global--spacing--unit, 1rem);
+}
 
 /*# sourceMappingURL=sunflower26-persons.css.map */
