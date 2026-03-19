@@ -503,9 +503,6 @@
 
     --person-border-radius: var(--border-radius-large, 0.25rem);
 
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 2rem;
     max-width: 48rem;
     margin: 0 auto;
     background: #fff;
