@@ -382,10 +382,75 @@
 
                     a {
                         display: contents;
-                        border: unset !important;
+                    }
+                }
+
+            }
+
+            &__metasocial {
+
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                list-style-type: none;
+                padding: 0;
+                margin: 0.5em 0 0;
+
+                .sunflower-person__socialmedia {
+
+                    margin: 0;
+                    gap: 0.5em;
+
+                    li {
+                        position: relative;
+                        padding-left: 0;
+                        margin-bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                    }
+
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        transition: background-color 0.2s ease;
+
+                        @include themes.themed-sunflower-colorscheme() {
+                            border: 2px solid themes.t("icon-color");
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                background-color: themes.t("icon-color-hover");
+                            }
+
+                            i {
+
+                                @include themes.themed-sunflower-colorscheme() {
+                                    color: themes.t("icon-color-text-hover");
+                                }
+
+                            }
+                        }
+
+                        i {
+
+                            @include themes.themed-sunflower-colorscheme() {
+                                color: themes.t("icon-color");
+                            }
+
+                        }
                     }
                 }
             }
+
 
             .wp-block-media-text {
                 display: grid;
@@ -430,24 +495,6 @@
                 }
             }
 
-            &__metasocial {
-
-                padding: 0.5em 0 0;
-                margin: 0;
-                display: flex;
-                gap: 0.5em;
-
-                li {
-                    position: relative;
-                    padding-left: 0;
-                    margin-bottom: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                }
-
-            }
         }
     }
 }

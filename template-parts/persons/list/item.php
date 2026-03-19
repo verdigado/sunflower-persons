@@ -9,7 +9,7 @@
 
 ?>
 <article class="sunflower-person" data-group="<?php echo esc_attr( implode( ' ', wp_list_pluck( $args['groups'], 'slug' ) ) ); ?>">
-	<div class="wp-block-media-text is-stacked-on-mobile mb-4" style="grid-template-columns:auto 30%">
+	<div class="wp-block-media-text has-media-on-the-right is-stacked-on-mobile mb-4">
 		<div class="wp-block-media-text__content">
 			<a href="<?php echo esc_url( $args['permalink'] ); ?>"
 				class="sunflower-person__link">
