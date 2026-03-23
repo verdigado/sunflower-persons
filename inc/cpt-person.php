@@ -139,7 +139,8 @@ function sunflower_persons_column_content( $column, $post_id ) {
 	$person_ids = get_post_meta( $post_id, 'sunflower_connected_persons', true );
 	$ids_string = '';
 	$names      = array();
-	if ( ! empty( $person_ids ) ) {
+
+	if ( ! empty( $person_ids ) && is_array( $person_ids ) ) {
 		$ids_string = implode( ',', (array) $person_ids );
 		$names      = array_map(
 			function ( $id ) {
@@ -157,10 +158,49 @@ function sunflower_persons_column_content( $column, $post_id ) {
 	);
 }
 
+/**
+ * Render person checkboxes – used by Quick Edit AND Bulk Edit.
+ */
+function sunflower_render_persons_field() {
+	$persons = get_posts(
+		array(
+			'post_type'      => 'sunflower_person',
+			'posts_per_page' => -1,
+			'orderby'        => 'meta_value',
+			'meta_key'       => 'person_sortname',
+			'order'          => 'ASC',
+		)
+	);
+
+	wp_nonce_field( 'sunflower_quick_edit', 'sunflower_quick_edit_nonce' );
+	?>
+	<fieldset class="inline-edit-col-right">
+		<div class="inline-edit-col">
+			<span class="title inline-edit-categories-label">
+				<?php echo esc_html__( 'Related Persons', 'sunflower-persons' ); ?>
+			</span>
+			<ul class="cat-checklist category-checklist sunflower-persons-checklist">
+				<?php foreach ( $persons as $person ) : ?>
+					<li>
+						<label class="selectit">
+							<input value="<?php echo esc_attr( $person->ID ); ?>"
+									type="checkbox"
+									name="sunflower_connected_persons[]">
+							<?php echo esc_html( $person->post_title ); ?>
+						</label>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</fieldset>
+	<?php
+}
+
+// Register for quick edit.
 add_action( 'quick_edit_custom_box', 'sunflower_quick_edit_persons', 10, 2 );
 
 /**
- * Add checkboxes for related persons in quick edit.
+ * Render person checkboxes for quick edit.
  *
  * @param string $column_name The column name.
  * @param string $post_type The post type.
@@ -202,7 +242,43 @@ function sunflower_quick_edit_persons( $column_name, $post_type ) {
 	<?php
 }
 
-add_action( 'admin_enqueue_scripts', 'sunflower_quick_edit_script' );
+// Register for bulk edit (actually the same as for quick edit).
+add_action( 'bulk_edit_custom_box', 'sunflower_bulk_edit_persons', 10, 2 );
+
+/**
+ * Render person checkboxes for bulk edit.
+ *
+ * @param string $column_name The column name.
+ * @param string $post_type The post type.
+ */
+function sunflower_bulk_edit_persons( $column_name, $post_type ) {
+	if ( 'sunflower-persons-related-persons' !== $column_name || 'post' !== $post_type ) {
+		return;
+	}
+	sunflower_render_persons_field();
+}
+
+/**
+ * Load style for indeterminate state in tri-state checkboxes.
+ */
+function sunflower_bulk_edit_styles() {
+	wp_register_style(
+		'sunflower-persons-admin',
+		SUNFLOWER_PERSONS_URL . 'assets/css/admin.css',
+		array(),
+		SUNFLOWER_PERSONS_VERSION
+	);
+	wp_enqueue_style( 'sunflower-persons-admin' );
+	wp_enqueue_script(
+		'sunflower-quick-edit',
+		plugin_dir_url( __FILE__ ) . '../assets/js/quick-edit.js',
+		array( 'jquery', 'inline-edit-post' ),
+		SUNFLOWER_PERSONS_VERSION,
+		true
+	);
+}
+
+add_action( 'admin_enqueue_scripts', 'sunflower_bulk_edit_styles' );
 
 /**
  * Enqueue JavaScript for quick edit functionality.
@@ -218,7 +294,7 @@ function sunflower_quick_edit_script( $hook ) {
 		'sunflower-quick-edit',
 		plugin_dir_url( __FILE__ ) . '../assets/js/quick-edit.js',
 		array( 'jquery', 'inline-edit-post' ),
-		'1.0',
+		'1.1.1',
 		true
 	);
 }
@@ -251,6 +327,44 @@ function sunflower_save_quick_edit_persons( $post_id ) {
 	} else {
 		delete_post_meta( $post_id, 'sunflower_connected_persons' );
 	}
+}
+
+add_action( 'wp_ajax_sunflower_bulk_edit_persons', 'sunflower_process_bulk_edit' );
+
+/**
+ * Process the bulk edit AJAX request to update related persons for multiple posts.
+ */
+function sunflower_process_bulk_edit() {
+	check_ajax_referer( 'sunflower_quick_edit', 'sunflower_quick_edit_nonce' );
+
+	$post_ids       = array_map( 'intval', $_POST['post_ids'] ?? array() );
+	$add_persons    = array_map( 'intval', $_POST['add_persons'] ?? array() );
+	$remove_persons = array_map( 'intval', $_POST['remove_persons'] ?? array() );
+
+	if ( empty( $post_ids ) || ( empty( $add_persons ) && empty( $remove_persons ) ) ) {
+		wp_send_json_success();
+		return;
+	}
+
+	foreach ( $post_ids as $post_id ) {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			continue;
+		}
+
+		$existing = get_post_meta( $post_id, 'sunflower_connected_persons', true );
+		$existing = is_array( $existing ) ? $existing : array();
+
+		$updated = array_unique( array_merge( $existing, $add_persons ) );
+		$updated = array_diff( $updated, $remove_persons );
+
+		if ( ! empty( $updated ) ) {
+			update_post_meta( $post_id, 'sunflower_connected_persons', array_values( $updated ) );
+		} else {
+			delete_post_meta( $post_id, 'sunflower_connected_persons' );
+		}
+	}
+
+	wp_send_json_success( array( 'updated' => count( $post_ids ) ) );
 }
 
 /**
