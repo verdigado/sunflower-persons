@@ -1,0 +1,10 @@
+ul.cat-checklist input[name="sunflower_connected_persons[]"]:indeterminate::before {
+    content: '';
+    border-top: 2px solid grey;
+    width: 65%;
+    height: 2px;
+    position: absolute;
+    top: calc(50% + 1px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
