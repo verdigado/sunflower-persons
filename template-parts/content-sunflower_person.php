@@ -162,6 +162,10 @@ $sunflower_class = 'display-single';
 									echo '</address>';
 								}
 
+								if ( ! empty( $sunflower_persons_person_office['opening_hours'] ) ) {
+									echo '<i class="fa-solid fa-clock"></i> ' . esc_html( $sunflower_persons_person_office['opening_hours'] ) . '<br />';
+								}
+
 								if ( ! empty( $sunflower_persons_person_office['phone'] ) ) {
 									echo '<i class="fa-solid fa-phone"></i> ' . esc_html( $sunflower_persons_person_office['phone'] ) . '<br />';
 								}

@@ -58,6 +58,7 @@ function sunflower_persons_enqueue_office_editor_assets() {
 					'label'             => esc_html__( 'Label', 'sunflower-persons' ),
 					'streethousenumber' => esc_html__( 'Street and housenumber', 'sunflower-persons' ),
 					'ziplocation'       => esc_html__( 'ZIP and location', 'sunflower-persons' ),
+					'opening_hours'     => esc_html__( 'Opening hours', 'sunflower-persons' ),
 					'phone'             => esc_html__( 'Phone', 'sunflower-persons' ),
 					'email'             => esc_html__( 'E-Mail', 'sunflower-persons' ),
 					'employees'         => esc_html__( 'Employees', 'sunflower-persons' ),
@@ -87,27 +88,31 @@ function sunflower_persons_register_office_meta() {
 					'items' => array(
 						'type'       => 'object',
 						'properties' => array(
-							'label'     => array(
+							'label'         => array(
 								'type'   => 'string',
 								'format' => 'text-field',
 							),
-							'street'    => array(
+							'street'        => array(
 								'type'   => 'string',
 								'format' => 'text-field',
 							),
-							'city'      => array(
+							'city'          => array(
 								'type'   => 'string',
 								'format' => 'text-field',
 							),
-							'phone'     => array(
+							'phone'         => array(
 								'type'   => 'string',
 								'format' => 'text-field',
 							),
-							'email'     => array(
+							'opening_hours' => array(
 								'type'   => 'string',
 								'format' => 'text-field',
 							),
-							'employees' => array(
+							'email'         => array(
+								'type'   => 'string',
+								'format' => 'text-field',
+							),
+							'employees'     => array(
 								'type'  => 'array',
 								'items' => array( 'type' => 'integer' ),
 							),

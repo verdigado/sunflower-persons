@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sunflower Persons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sunflower Persons 1.6.6\n"
+"Project-Id-Version: Sunflower Persons 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sunflower-persons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-16T17:10:19+01:00\n"
+"POT-Creation-Date: 2026-03-25T15:02:29+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sunflower-persons\n"
@@ -45,67 +45,67 @@ msgid "Person not found."
 msgstr ""
 
 #. translators: %s = Personen‑Name
-#: build/person/render.php:63
-#: src/person/render.php:63
-#: template-parts/persons/carousel/item.php:29
-#: template-parts/persons/grid/item.php:29
-#: template-parts/persons/list/item.php:81
+#: build/person/render.php:68
+#: src/person/render.php:68
+#: template-parts/persons/carousel/item.php:30
+#: template-parts/persons/grid/item.php:30
+#: template-parts/persons/list/item.php:85
 #: template-parts/persons/related/item.php:32
 #, php-format
 msgid "Portrait of %s"
 msgstr ""
 
-#: build/person/render.php:75
-#: src/person/render.php:75
+#: build/person/render.php:81
+#: src/person/render.php:81
 #: template-parts/persons/related/item.php:44
 msgid "Default person illustration"
 msgstr ""
 
-#: build/person/render.php:110
-#: build/person/render.php:117
+#: build/person/render.php:123
+#: build/person/render.php:130
 #: inc/meta-details.php:58
-#: inc/meta-offices.php:61
-#: src/person/render.php:110
-#: src/person/render.php:117
-#: template-parts/persons/carousel/item.php:52
-#: template-parts/persons/carousel/item.php:56
-#: template-parts/persons/grid/item.php:60
-#: template-parts/persons/grid/item.php:64
-#: template-parts/persons/list/item.php:31
-#: template-parts/persons/list/item.php:36
+#: inc/meta-offices.php:62
+#: src/person/render.php:123
+#: src/person/render.php:130
+#: template-parts/persons/carousel/item.php:53
+#: template-parts/persons/carousel/item.php:57
+#: template-parts/persons/grid/item.php:61
+#: template-parts/persons/grid/item.php:65
+#: template-parts/persons/list/item.php:33
+#: template-parts/persons/list/item.php:38
 msgid "Phone"
 msgstr ""
 
-#: build/person/render.php:126
-#: src/person/render.php:126
+#: build/person/render.php:139
+#: src/person/render.php:139
 msgid "E‑mail"
 msgstr ""
 
-#: build/person/render.php:136
+#: build/person/render.php:149
 #: inc/meta-details.php:61
-#: src/person/render.php:136
+#: src/person/render.php:149
 msgid "Website"
 msgstr ""
 
-#: build/person/render.php:205
-#: src/person/render.php:205
+#: build/person/render.php:218
+#: src/person/render.php:218
 msgid "No persons found."
 msgstr ""
 
-#: build/person/render.php:245
+#: build/person/render.php:258
 #: inc/cpt-person.php:19
 #: inc/cpt-person.php:29
-#: src/person/render.php:245
+#: src/person/render.php:258
 msgid "Persons"
 msgstr ""
 
-#: build/person/render.php:257
-#: src/person/render.php:257
+#: build/person/render.php:270
+#: src/person/render.php:270
 msgid "Back"
 msgstr ""
 
-#: build/person/render.php:327
-#: src/person/render.php:327
+#: build/person/render.php:340
+#: src/person/render.php:340
 msgid "Next"
 msgstr ""
 
@@ -194,7 +194,9 @@ msgstr ""
 msgid "No group found in trash"
 msgstr ""
 
-#: inc/cpt-person.php:167
+#: inc/cpt-person.php:121
+#: inc/cpt-person.php:180
+#: inc/cpt-person.php:227
 msgid "Related Persons"
 msgstr ""
 
@@ -211,7 +213,7 @@ msgid "Mobile phone"
 msgstr ""
 
 #: inc/meta-details.php:60
-#: inc/meta-offices.php:62
+#: inc/meta-offices.php:63
 msgid "E-Mail"
 msgstr ""
 
@@ -286,16 +288,20 @@ msgstr ""
 msgid "ZIP and location"
 msgstr ""
 
-#: inc/meta-offices.php:63
-#: template-parts/content-sunflower_person.php:176
-msgid "Employees"
+#: inc/meta-offices.php:61
+msgid "Opening hours"
 msgstr ""
 
 #: inc/meta-offices.php:64
-msgid "Remove office"
+#: template-parts/content-sunflower_person.php:180
+msgid "Employees"
 msgstr ""
 
 #: inc/meta-offices.php:65
+msgid "Remove office"
+msgstr ""
+
+#: inc/meta-offices.php:66
 msgid "Add office"
 msgstr ""
 
@@ -303,12 +309,12 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: template-parts/content-sunflower_person.php:170
+#: template-parts/content-sunflower_person.php:174
 msgid "Send Email"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: template-parts/related-posts.php:15
+#: template-parts/related-posts.php:38
 msgid "Latest posts"
 msgstr ""
 
