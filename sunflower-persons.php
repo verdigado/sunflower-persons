@@ -287,6 +287,14 @@ function sunflower_persons_enqueue_frontend_assets() {
 			SUNFLOWER_PERSONS_VERSION
 		);
 	}
+
+	wp_enqueue_script(
+		'sunflower-persons-frontend-script',
+		SUNFLOWER_PERSONS_URL . 'assets/js/single-person.js',
+		array(),
+		SUNFLOWER_PERSONS_VERSION,
+		true
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'sunflower_persons_enqueue_frontend_assets' );

@@ -3,177 +3,193 @@
 /* global MutationObserver */
 /* global ajaxurl */
 /* global location */
-( function( $ ) {
+( function ( $ ) {
+	/**
+	 * Quick Edit: Checkboxen aktivieren
+	 */
+	const originalInlineEdit = inlineEditPost.edit;
 
-    /**
-     * Quick Edit: Checkboxen aktivieren
-     */
-    const originalInlineEdit = inlineEditPost.edit;
+	inlineEditPost.edit = function ( id ) {
+		originalInlineEdit.apply( this, arguments );
 
-    inlineEditPost.edit = function( id ) {
-        originalInlineEdit.apply( this, arguments );
+		if ( typeof id === 'object' ) {
+			id = this.getId( id );
+		}
 
-        if ( typeof id === 'object' ) {
-            id = this.getId( id );
-        }
+		const editRow = $( '#edit-' + id );
+		const postRow = $( '#post-' + id );
 
-        const editRow = $( '#edit-' + id );
-        const postRow = $( '#post-' + id );
+		editRow
+			.find( 'input[name="sunflower_connected_persons[]"]' )
+			.prop( 'checked', false );
 
-        editRow
-            .find( 'input[name="sunflower_connected_persons[]"]' )
-            .prop( 'checked', false );
+		const personIds = postRow
+			.find( '.column-sunflower-persons-related-persons span' )
+			.data( 'person-ids' );
 
-        const personIds = postRow
-            .find( '.column-sunflower-persons-related-persons span' )
-            .data( 'person-ids' );
+		if ( personIds ) {
+			String( personIds )
+				.split( ',' )
+				.forEach( function ( pid ) {
+					editRow
+						.find(
+							'input[name="sunflower_connected_persons[]"][value="' +
+								pid.trim() +
+								'"]'
+						)
+						.prop( 'checked', true );
+				} );
+		}
+	};
 
-        if ( personIds ) {
-            String( personIds ).split( ',' ).forEach( function( pid ) {
-                editRow
-                    .find( 'input[name="sunflower_connected_persons[]"][value="' + pid.trim() + '"]' )
-                    .prop( 'checked', true );
-            } );
-        }
-    };
+	/**
+	 * Bulk Edit: Indeterminate setzen für gemischte Zustände
+	 */
+	function initBulkEditPersons() {
+		const checkedPosts = [];
+		$( 'tbody th.check-column input[type="checkbox"]:checked' ).each(
+			function () {
+				checkedPosts.push( $( this ).val() );
+			}
+		);
 
-    /**
-     * Bulk Edit: Indeterminate setzen für gemischte Zustände
-     */
-    function initBulkEditPersons() {
-        const $bulkRow = $( '#bulk-edit' );
+		if ( ! checkedPosts.length ) {
+			return;
+		}
 
-        const checkedPosts = [];
-        $( 'tbody th.check-column input[type="checkbox"]:checked' ).each( function() {
-            checkedPosts.push( $( this ).val() );
-        } );
+		// Pro Person zählen
+		const personCounts = {};
+		checkedPosts.forEach( function ( postId ) {
+			const personIds = $( '#post-' + postId )
+				.find( '.column-sunflower-persons-related-persons span' )
+				.data( 'person-ids' );
 
-        if ( ! checkedPosts.length ) {
-            return;
-        }
+			if ( personIds ) {
+				String( personIds )
+					.split( ',' )
+					.forEach( function ( pid ) {
+						pid = pid.trim();
+						personCounts[ pid ] = ( personCounts[ pid ] || 0 ) + 1;
+					} );
+			}
+		} );
 
-        // Pro Person zählen
-        const personCounts = {};
-        checkedPosts.forEach( function( postId ) {
-            const personIds = $( '#post-' + postId )
-                .find( '.column-sunflower-persons-related-persons span' )
-                .data( 'person-ids' );
+		const totalPosts = checkedPosts.length;
 
-            if ( personIds ) {
-                String( personIds ).split( ',' ).forEach( function( pid ) {
-                    pid = pid.trim();
-                    personCounts[ pid ] = ( personCounts[ pid ] || 0 ) + 1;
-                } );
-            }
-        } );
+		const $bulkRow = $( '#bulk-edit' );
 
-        const totalPosts = checkedPosts.length;
+		$bulkRow
+			.find( 'input[name="sunflower_connected_persons[]"]' )
+			.each( function () {
+				const $cb = $( this );
+				const count = personCounts[ $cb.val() ] || 0;
 
-        $bulkRow.find( 'input[name="sunflower_connected_persons[]"]' ).each( function() {
-            const $cb    = $( this );
-            const count  = personCounts[ $cb.val() ] || 0;
+				if ( count === totalPosts ) {
+					$cb.prop( 'checked', true ).prop( 'indeterminate', false );
+				} else if ( count === 0 ) {
+					$cb.prop( 'checked', false ).prop( 'indeterminate', false );
+				} else {
+					// ▣ Gemischt: Indeterminate + als "nicht angefasst" markieren
+					$cb.prop( 'checked', false ).prop( 'indeterminate', true );
+					$cb.data( 'was-indeterminate', true );
+				}
 
-            if ( count === totalPosts ) {
-                $cb.prop( 'checked', true ).prop( 'indeterminate', false );
-            } else if ( count === 0 ) {
-                $cb.prop( 'checked', false ).prop( 'indeterminate', false );
-            } else {
-                // ▣ Gemischt: Indeterminate + als "nicht angefasst" markieren
-                $cb.prop( 'checked', false ).prop( 'indeterminate', true );
-                $cb.data( 'was-indeterminate', true );
-            }
+				// Merken: wurde diese Checkbox vom User angeklickt?
+				$cb.data( 'changed', false );
+			} );
 
-            // Merken: wurde diese Checkbox vom User angeklickt?
-            $cb.data( 'changed', false );
-        } );
+		// Ein Klick auf indeterminate → wird normale Checkbox
+		$bulkRow
+			.find( 'input[name="sunflower_connected_persons[]"]' )
+			.off( 'change.bulk' )
+			.on( 'change.bulk', function () {
+				$( this )
+					.prop( 'indeterminate', false )
+					.data( 'changed', true );
+			} );
+	}
 
-        // Ein Klick auf indeterminate → wird normale Checkbox
-        $bulkRow
-            .find( 'input[name="sunflower_connected_persons[]"]' )
-            .off( 'change.bulk' )
-            .on( 'change.bulk', function() {
-                $( this )
-                    .prop( 'indeterminate', false )
-                    .data( 'changed', true );
-            } );
-    }
+	/**
+	 * Bulk Edit öffnen erkennen
+	 */
+	const observer = new MutationObserver( function () {
+		if ( $( '#bulk-edit' ).is( ':visible' ) ) {
+			initBulkEditPersons();
+		}
+	} );
 
-    /**
-     * Bulk Edit öffnen erkennen
-     */
-    const observer = new MutationObserver( function() {
-        if ( $( '#bulk-edit' ).is( ':visible' ) ) {
-            initBulkEditPersons();
-        }
-    } );
+	const bulkRow = document.getElementById( 'bulk-edit' );
+	if ( bulkRow ) {
+		observer.observe( bulkRow, {
+			attributes: true,
+			attributeFilter: [ 'class', 'style' ],
+		} );
+	}
 
-    const bulkRow = document.getElementById( 'bulk-edit' );
-    if ( bulkRow ) {
-        observer.observe( bulkRow, {
-            attributes: true,
-            attributeFilter: [ 'class', 'style' ],
-        } );
-    }
+	$( document ).on( 'click', '#doaction, #doaction2', function () {
+		setTimeout( initBulkEditPersons, 200 );
+	} );
 
-    $( document ).on( 'click', '#doaction, #doaction2', function() {
-        setTimeout( initBulkEditPersons, 200 );
-    } );
+	/**
+	 * Bulk Edit: Speichern – nur geänderte Checkboxen
+	 */
+	$( document ).on( 'click', '#bulk_edit', function () {
+		const postIds = [];
+		$( 'tbody th.check-column input[type="checkbox"]:checked' ).each(
+			function () {
+				postIds.push( $( this ).val() );
+			}
+		);
 
-    /**
-     * Bulk Edit: Speichern – nur geänderte Checkboxen
-     */
-    $( document ).on( 'click', '#bulk_edit', function() {
-        const postIds = [];
-        $( 'tbody th.check-column input[type="checkbox"]:checked' ).each( function() {
-            postIds.push( $( this ).val() );
-        } );
+		if ( ! postIds.length ) {
+			return;
+		}
 
-        if ( ! postIds.length ) {
-            return;
-        }
+		// Nur Checkboxen sammeln die angeklickt wurden
+		const addPersons = [];
+		const removePersons = [];
+		let hasChanges = false;
 
-        // Nur Checkboxen sammeln die angeklickt wurden
-        const addPersons    = [];
-        const removePersons = [];
-        let hasChanges      = false;
+		$( '#bulk-edit input[name="sunflower_connected_persons[]"]' ).each(
+			function () {
+				const $cb = $( this );
 
-        $( '#bulk-edit input[name="sunflower_connected_persons[]"]' ).each( function() {
-            const $cb = $( this );
+				// Nicht angefasst → ignorieren
+				if ( ! $cb.data( 'changed' ) ) {
+					return;
+				}
 
-            // Nicht angefasst → ignorieren
-            if ( ! $cb.data( 'changed' ) ) {
-                return;
-            }
+				hasChanges = true;
 
-            hasChanges = true;
+				if ( $cb.prop( 'checked' ) ) {
+					addPersons.push( $cb.val() );
+				} else {
+					removePersons.push( $cb.val() );
+				}
+			}
+		);
 
-            if ( $cb.prop( 'checked' ) ) {
-                addPersons.push( $cb.val() );
-            } else {
-                removePersons.push( $cb.val() );
-            }
-        } );
+		if ( ! hasChanges ) {
+			return;
+		}
 
-        if ( ! hasChanges ) {
-            return;
-        }
-
-        $.ajax( {
-            url: ajaxurl,
-            type: 'POST',
-            data: {
-                action: 'sunflower_bulk_edit_persons',
-                sunflower_quick_edit_nonce: $( '#sunflower_quick_edit_nonce' ).val(),
-                post_ids: postIds,
-                add_persons: addPersons,
-                remove_persons: removePersons,
-            },
-            success: function( response ) {
-                if ( response.success ) {
-                    location.reload();
-                }
-            },
-        } );
-    } );
-
+		$.ajax( {
+			url: ajaxurl,
+			type: 'POST',
+			data: {
+				action: 'sunflower_bulk_edit_persons',
+				sunflower_quick_edit_nonce: $(
+					'#sunflower_quick_edit_nonce'
+				).val(),
+				post_ids: postIds,
+				add_persons: addPersons,
+				remove_persons: removePersons,
+			},
+			success( response ) {
+				if ( response.success ) {
+					location.reload();
+				}
+			},
+		} );
+	} );
 } )( jQuery );

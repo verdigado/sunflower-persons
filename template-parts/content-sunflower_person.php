@@ -54,7 +54,7 @@ $sunflower_class = 'display-single';
 	if ( 'sunflower_person' === get_post_type() ) :
 		?>
 			<div class="row">
-				<div class="col-md-9 order-0 order-md-0">
+				<div class="col-md-9 order-0 order-md-0" id="person-main">
 				<?php
 				if ( $sunflower_show_post_thumbnail ) {
 					sunflower_post_thumbnail( $sunflower_styled_layout, true );
@@ -192,7 +192,7 @@ $sunflower_class = 'display-single';
 						</ul>
 					<?php endif; ?>
 				</div>
-				<div class="col-md-9 order-2 order-md-2">
+				<div class="col-md-9 order-2 order-md-2" id="person-content">
 					<?php
 					the_content();
 					?>

@@ -70,6 +70,9 @@
 .single-sunflower_person .container.container-narrow .sunflower-pagination ul.page-numbers li:last-child {
   margin-bottom: var(--half-grid-margin);
 }
+.single-sunflower_person .wp-block-accordion .wp-block-accordion-item {
+  margin-right: 2px;
+}
 
 /* Style single posts with related persons */
 .display-single .related-persons {
