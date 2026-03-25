@@ -45,6 +45,7 @@ const OfficeMetaBox = ( { postType, postId } ) => {
 				label: '',
 				street: '',
 				city: '',
+				opening_hours: '',
 				phone: '',
 				email: '',
 				employees: [],
@@ -89,6 +90,15 @@ const OfficeMetaBox = ( { postType, postId } ) => {
 						value={ office.city }
 						onChange={ ( val ) =>
 							updateOffice( index, 'city', val )
+						}
+					/>
+					<TextControl
+						label={
+							sunflowerPersonOffices.text.office.opening_hours
+						}
+						value={ office.opening_hours }
+						onChange={ ( val ) =>
+							updateOffice( index, 'opening_hours', val )
 						}
 					/>
 					<TextControl
