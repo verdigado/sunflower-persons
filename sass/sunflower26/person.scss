@@ -60,9 +60,10 @@
                     a:has(.wp-post-image) {
                         height: auto;
                         max-height: 100%;
+                        position: absolute;
                         top: 0;
-                        margin-left: 0;
-                        margin-right: 0;
+                        left: 0;
+                        margin-top: 0;
                         aspect-ratio: auto 4/3;
                         border-radius: calc(var(--border-radius-medium) - 2px);
 
