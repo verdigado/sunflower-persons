@@ -82,6 +82,33 @@ function sunflower_persons_register_group_taxonomy() {
 add_action( 'init', 'sunflower_persons_register_group_taxonomy' );
 
 /**
+ * Exclude the "group" taxonomy from the default WordPress XML sitemaps.
+ *
+ * @param array $taxonomies The existing taxonomies included in the sitemap.
+ * @return array The modified taxonomies with "group" excluded.
+ */
+function sunflower_persons_sitemap_taxonomies( $taxonomies ) {
+	unset( $taxonomies['sunflower_group'] );
+	return $taxonomies;
+}
+
+add_filter( 'wp_sitemaps_taxonomies', 'sunflower_persons_sitemap_taxonomies' );
+
+/**
+ * Exclude the "group" taxonomy from the Yoast SEO XML sitemaps.
+ *
+ * @param boolean $excluded Whether the taxonomy is excluded by default.
+ * @param string  $taxonomy The taxonomy to exclude.
+ *
+ * @return bool Whether a given taxonomy should be excluded.
+ */
+function sunflower_persons_wpseo_sitemap_exclude_taxonomy( $excluded, $taxonomy ) {
+	return 'sunflower_group' === $taxonomy;
+}
+
+add_filter( 'wpseo_sitemap_exclude_taxonomy', 'sunflower_persons_wpseo_sitemap_exclude_taxonomy', 10, 2 );
+
+/**
  * Register meta field to connect persons to posts.
  */
 function sunflower_persons_register_post_persons_meta() {
