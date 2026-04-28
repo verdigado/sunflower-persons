@@ -34,7 +34,7 @@ function sunflower_register_cpt_person() {
 		array(
 			'labels'       => $labels,
 			'public'       => true,
-			'has_archive'  => true,
+			'has_archive'  => false,
 			'show_in_rest' => true,
 			'rest_base'    => 'sunflower_person',
 			'hierarchical' => false,
@@ -76,6 +76,8 @@ function sunflower_persons_register_group_taxonomy() {
 			'labels'       => $labels,
 			'rewrite'      => array( 'slug' => 'group' ),
 			'show_in_rest' => true,
+			'show_ui'      => true,
+			'public'       => false,
 		)
 	);
 }
@@ -107,6 +109,58 @@ function sunflower_persons_wpseo_sitemap_exclude_taxonomy( $excluded, $taxonomy 
 }
 
 add_filter( 'wpseo_sitemap_exclude_taxonomy', 'sunflower_persons_wpseo_sitemap_exclude_taxonomy', 10, 2 );
+
+/**
+ * Remove person single pages from sitemap if person_hide_single is true.
+ *
+ * @param array   $sitemap_entry Sitemap entry for the post.
+ * @param WP_Post $post          Post object.
+ * @param string  $post_type     Name of the post_type.
+ * @return array|false
+ */
+function sunflower_persons_sitemap_exclude_hidesinglepage( $sitemap_entry, $post, $post_type ) {
+
+	if ( 'sunflower_person' !== $post_type || 'sunflower_person' !== $post->post_type ) {
+		return $sitemap_entry;
+	}
+
+	$hide = get_post_meta( $post->ID, 'person_hide_single', true );
+
+	$exclude = ( $hide && ! in_array( $hide, array( '0', '', 'false', 'no' ), true ) );
+
+	if ( $exclude ) {
+		unset( $sitemap_entry['loc'] ); // Remove the 'loc' key to exclude the entry from the sitemap.
+	}
+
+	return $sitemap_entry;
+}
+add_filter( 'wp_sitemaps_posts_entry', 'sunflower_persons_sitemap_exclude_hidesinglepage', 10, 3 );
+
+/**
+ * Remove person single pages from Yoast SEO sitemap if person_hide_single is true.
+ *
+ * @param bool|array $url    The URL to include in the sitemap, or false to exclude it.
+ * @param string     $post_type The post type of the current post.
+ * @param WP_Post    $post          Post object.
+ * @return bool|array
+ */
+function sunflower_persons_wpseo_sitemap_exclude_hidesinglepage( $url, $post_type, $post ) {
+
+	if ( false === $url || 'post' !== $post_type || 'sunflower_person' !== $post->post_type ) {
+		return $url;
+	}
+
+	$hide = get_post_meta( $post->ID, 'person_hide_single', true );
+
+	$exclude = ( $hide && ! in_array( $hide, array( '0', '', 'false', 'no' ), true ) );
+
+	if ( $exclude ) {
+		return false;
+	}
+
+	return $url;
+}
+add_filter( 'wpseo_sitemap_entry', 'sunflower_persons_wpseo_sitemap_exclude_hidesinglepage', 10, 3 );
 
 /**
  * Register meta field to connect persons to posts.
